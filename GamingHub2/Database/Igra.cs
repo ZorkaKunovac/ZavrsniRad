@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GamingHub2.Database
 {
-    public class Igra
+    public partial class Igra
     {
         public Igra()
         {
@@ -30,7 +30,7 @@ namespace GamingHub2.Database
         //[MaxLength(100, ErrorMessage = "Maksimalno 100 znakova")]
         public string VideoLink { get; set; }
         public byte[] SlikaLink { get; set; }
-        public ICollection<IgraKonzola> IgraKonzola { get; set; }
-        public ICollection<IgraZanr> IgraZanr { get; set; }
+        public virtual ICollection<IgraKonzola> IgraKonzola { get; set; }
+        public virtual ICollection<IgraZanr> IgraZanr { get; set; }
     }
 }

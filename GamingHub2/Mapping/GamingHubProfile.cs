@@ -19,13 +19,15 @@ namespace GamingHub2.Mapping
             CreateMap<KonzolaUpsertRequest, Database.Konzola>();
             CreateMap<Database.Igra, Model.Igra>();
             CreateMap<Database.Igra, IgraUpsertRequest>().ReverseMap();
+            CreateMap<Database.IgraKonzola, Model.IgraKonzola>();
+            CreateMap<Database.IgraZanr, Model.IgraZanr>();
 
-           // CreateMap<IgraUpsertRequest, Database.Igra>();
+            // CreateMap<IgraUpsertRequest, Database.Igra>();
             CreateMap<Database.Proizvod, Model.Proizvod>(); //ReverseMap?
             CreateMap<Database.Korisnik, Model.Korisnik>();
             CreateMap<KorisnikInsertRequest, Database.Korisnik>().ReverseMap();
             CreateMap<KorisnikUpdateRequest, Database.Korisnik>();
-            // CreateMap<KorisnikUpdateRequest, Database.Korisnik>();
+
             //CreateMap<Database.Korisnik,KorisnikUpdateRequest>(); //reversemap? V3 39:30
 
         }

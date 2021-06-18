@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 
 namespace GamingHub2.Services
 {
@@ -82,12 +83,12 @@ namespace GamingHub2.Services
             return _mapper.Map<List<Model.Igra>>(list);
         }
 
+        [HttpGet("{id}")]
         public override Model.Igra GetById(int id)
         {
             //var entity = Context.Rezervacije.Include("DodatnaOprema.Oprema").Include(x => x.Kupac).Include("Vozilo.Model").Include(x => x.Osiguranje).Where(x => x.RezervacijaId == id).FirstOrDefault();
             //return _mapper.Map<Model.Rezervacije>(entity);
-            var entity = Context.Igra.Include("IgraKonzola.Konzola") /*.Include(x => x.Kupac)
-               .Include("Vozilo.Model").Include(x => x.Osiguranje)*/.Where(x => x.ID == id).FirstOrDefault();
+            var entity = Context.Igra.Include("IgraKonzola.Konzola").Where(x => x.ID == id).FirstOrDefault();
             return _mapper.Map<Model.Igra>(entity);
 
         }
