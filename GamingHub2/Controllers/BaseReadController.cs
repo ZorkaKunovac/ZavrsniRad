@@ -1,0 +1,38 @@
+﻿using AutoMapper;
+using GamingHub2.Services;
+using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace GamingHub2.Controllers
+{
+    //[ApiController]
+    //[Route("[controller]")]
+
+    [ApiController]
+    [Route("api/[controller]")] //api dodano naknadno, tokom izrade Proizvoda, nije provjereno radi li bez problema
+    public class BaseReadController<T,TSearch> : ControllerBase where T: class where TSearch : class
+    {
+        protected IReadService<T, TSearch> _service { get; set; }
+        public BaseReadController(IReadService<T, TSearch> service)
+        {
+            _service = service;
+        }
+
+        [HttpGet]
+        public virtual IEnumerable<T> Get([FromQuery] TSearch search)
+        {
+            return _service.Get(search);
+        }
+
+        [HttpGet("{id}")]
+        public virtual T GetById(int id)
+        {
+            return _service.GetById(id);
+        }
+
+
+    }
+}
