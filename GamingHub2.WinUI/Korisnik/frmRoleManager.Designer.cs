@@ -30,10 +30,10 @@ namespace GamingHub2.WinUI.Korisnik
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnDodajUlogu = new System.Windows.Forms.Button();
+            this.txtNaziv = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgvUloge = new System.Windows.Forms.DataGridView();
-            this.txtNaziv = new System.Windows.Forms.TextBox();
-            this.btnDodajUlogu = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUloge)).BeginInit();
@@ -49,6 +49,22 @@ namespace GamingHub2.WinUI.Korisnik
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Role Manager";
+            // 
+            // btnDodajUlogu
+            // 
+            this.btnDodajUlogu.Location = new System.Drawing.Point(367, 37);
+            this.btnDodajUlogu.Name = "btnDodajUlogu";
+            this.btnDodajUlogu.Size = new System.Drawing.Size(75, 23);
+            this.btnDodajUlogu.TabIndex = 1;
+            this.btnDodajUlogu.Text = "Dodaj ulogu";
+            this.btnDodajUlogu.UseVisualStyleBackColor = true;
+            // 
+            // txtNaziv
+            // 
+            this.txtNaziv.Location = new System.Drawing.Point(33, 37);
+            this.txtNaziv.Name = "txtNaziv";
+            this.txtNaziv.Size = new System.Drawing.Size(181, 20);
+            this.txtNaziv.TabIndex = 0;
             // 
             // groupBox2
             // 
@@ -72,27 +88,11 @@ namespace GamingHub2.WinUI.Korisnik
             this.dgvUloge.Size = new System.Drawing.Size(501, 169);
             this.dgvUloge.TabIndex = 0;
             // 
-            // txtNaziv
-            // 
-            this.txtNaziv.Location = new System.Drawing.Point(33, 37);
-            this.txtNaziv.Name = "txtNaziv";
-            this.txtNaziv.Size = new System.Drawing.Size(181, 20);
-            this.txtNaziv.TabIndex = 0;
-            // 
-            // btnDodajUlogu
-            // 
-            this.btnDodajUlogu.Location = new System.Drawing.Point(367, 37);
-            this.btnDodajUlogu.Name = "btnDodajUlogu";
-            this.btnDodajUlogu.Size = new System.Drawing.Size(75, 23);
-            this.btnDodajUlogu.TabIndex = 1;
-            this.btnDodajUlogu.Text = "Dodaj ulogu";
-            this.btnDodajUlogu.UseVisualStyleBackColor = true;
-            // 
             // frmRoleManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(689, 393);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "frmRoleManager";

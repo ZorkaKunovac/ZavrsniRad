@@ -7,7 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
-
+using GamingHub2.Model;
 
 namespace GamingHub2
 {
@@ -51,6 +51,8 @@ namespace GamingHub2
             services.AddScoped<IProizvodService, ProizvodService>();
             services.AddScoped<IKonzolaService, KonzolaService>();
             services.AddScoped<IKorisnikService, KorisnikService>();
+            services.AddScoped<IReadService<Model.Uloga, object>, BaseReadService<Model.Uloga, Database.Uloga, object>>();
+            //services.AddScoped<IReadService<Model.Uloge, object>, BaseReadService<Model.Uloge, object, Database.Uloge>>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
