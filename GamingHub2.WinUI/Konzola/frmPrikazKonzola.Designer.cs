@@ -30,41 +30,43 @@ namespace GamingHub2.WinUI.Konzola
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dgvZanrovi = new System.Windows.Forms.DataGridView();
+            this.dgvKonzole = new System.Windows.Forms.DataGridView();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Naziv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Detalji = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnDodajKonzolu = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvZanrovi)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvKonzole)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.dgvZanrovi);
-            this.groupBox1.Location = new System.Drawing.Point(12, 54);
+            this.groupBox1.Controls.Add(this.dgvKonzole);
+            this.groupBox1.Location = new System.Drawing.Point(11, 61);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(490, 194);
+            this.groupBox1.Size = new System.Drawing.Size(392, 206);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Zanrovi";
+            this.groupBox1.Text = "Konzole";
             // 
-            // dgvZanrovi
+            // dgvKonzole
             // 
-            this.dgvZanrovi.AllowUserToAddRows = false;
-            this.dgvZanrovi.AllowUserToDeleteRows = false;
-            this.dgvZanrovi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvZanrovi.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvKonzole.AllowUserToAddRows = false;
+            this.dgvKonzole.AllowUserToDeleteRows = false;
+            this.dgvKonzole.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvKonzole.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
             this.Naziv,
             this.Detalji});
-            this.dgvZanrovi.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvZanrovi.Location = new System.Drawing.Point(3, 16);
-            this.dgvZanrovi.Name = "dgvZanrovi";
-            this.dgvZanrovi.ReadOnly = true;
-            this.dgvZanrovi.RowTemplate.Height = 25;
-            this.dgvZanrovi.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvZanrovi.Size = new System.Drawing.Size(484, 175);
-            this.dgvZanrovi.TabIndex = 0;
+            this.dgvKonzole.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvKonzole.Location = new System.Drawing.Point(3, 16);
+            this.dgvKonzole.Name = "dgvKonzole";
+            this.dgvKonzole.ReadOnly = true;
+            this.dgvKonzole.RowTemplate.Height = 25;
+            this.dgvKonzole.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvKonzole.Size = new System.Drawing.Size(386, 187);
+            this.dgvKonzole.TabIndex = 0;
+            this.dgvKonzole.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvKonzole_MouseDoubleClick);
             // 
             // Id
             // 
@@ -88,16 +90,28 @@ namespace GamingHub2.WinUI.Konzola
             this.Detalji.Name = "Detalji";
             this.Detalji.ReadOnly = true;
             // 
+            // btnDodajKonzolu
+            // 
+            this.btnDodajKonzolu.Location = new System.Drawing.Point(289, 26);
+            this.btnDodajKonzolu.Name = "btnDodajKonzolu";
+            this.btnDodajKonzolu.Size = new System.Drawing.Size(99, 23);
+            this.btnDodajKonzolu.TabIndex = 5;
+            this.btnDodajKonzolu.Text = "Dodaj konzolu";
+            this.btnDodajKonzolu.UseVisualStyleBackColor = true;
+            this.btnDodajKonzolu.Click += new System.EventHandler(this.btnDodajKonzolu_Click);
+            // 
             // frmPrikazKonzola
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(510, 318);
+            this.ClientSize = new System.Drawing.Size(415, 299);
+            this.Controls.Add(this.btnDodajKonzolu);
             this.Controls.Add(this.groupBox1);
             this.Name = "frmPrikazKonzola";
             this.Text = "frmPrikazKonzola";
+            this.Load += new System.EventHandler(this.frmPrikazKonzola_Load);
             this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvZanrovi)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvKonzole)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -105,9 +119,10 @@ namespace GamingHub2.WinUI.Konzola
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DataGridView dgvZanrovi;
+        private System.Windows.Forms.DataGridView dgvKonzole;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn Naziv;
         private System.Windows.Forms.DataGridViewTextBoxColumn Detalji;
+        private System.Windows.Forms.Button btnDodajKonzolu;
     }
 }

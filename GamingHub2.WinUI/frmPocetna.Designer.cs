@@ -40,6 +40,9 @@ namespace GamingHub2.WinUI
             this.igreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.prikaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.novaIgraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.konzoleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.prikazKonzolaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dodajKonzoluToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
@@ -52,7 +55,8 @@ namespace GamingHub2.WinUI
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.korisnikToolStripMenuItem,
             this.zanroviToolStripMenuItem,
-            this.igreToolStripMenuItem});
+            this.igreToolStripMenuItem,
+            this.konzoleToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Size = new System.Drawing.Size(632, 24);
@@ -117,16 +121,39 @@ namespace GamingHub2.WinUI
             // prikaToolStripMenuItem
             // 
             this.prikaToolStripMenuItem.Name = "prikaToolStripMenuItem";
-            this.prikaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.prikaToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.prikaToolStripMenuItem.Text = "Prikaz igara";
             this.prikaToolStripMenuItem.Click += new System.EventHandler(this.prikaToolStripMenuItem_Click);
             // 
             // novaIgraToolStripMenuItem
             // 
             this.novaIgraToolStripMenuItem.Name = "novaIgraToolStripMenuItem";
-            this.novaIgraToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.novaIgraToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.novaIgraToolStripMenuItem.Text = "Nova igra";
             this.novaIgraToolStripMenuItem.Click += new System.EventHandler(this.novaIgraToolStripMenuItem_Click);
+            // 
+            // konzoleToolStripMenuItem
+            // 
+            this.konzoleToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.prikazKonzolaToolStripMenuItem,
+            this.dodajKonzoluToolStripMenuItem});
+            this.konzoleToolStripMenuItem.Name = "konzoleToolStripMenuItem";
+            this.konzoleToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
+            this.konzoleToolStripMenuItem.Text = "Konzole";
+            // 
+            // prikazKonzolaToolStripMenuItem
+            // 
+            this.prikazKonzolaToolStripMenuItem.Name = "prikazKonzolaToolStripMenuItem";
+            this.prikazKonzolaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.prikazKonzolaToolStripMenuItem.Text = "Prikaz konzola";
+            this.prikazKonzolaToolStripMenuItem.Click += new System.EventHandler(this.prikazKonzolaToolStripMenuItem_Click);
+            // 
+            // dodajKonzoluToolStripMenuItem
+            // 
+            this.dodajKonzoluToolStripMenuItem.Name = "dodajKonzoluToolStripMenuItem";
+            this.dodajKonzoluToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.dodajKonzoluToolStripMenuItem.Text = "Nova konzola";
+            this.dodajKonzoluToolStripMenuItem.Click += new System.EventHandler(this.dodajKonzoluToolStripMenuItem_Click);
             // 
             // statusStrip
             // 
@@ -180,6 +207,9 @@ namespace GamingHub2.WinUI
         private System.Windows.Forms.ToolStripMenuItem novaIgraToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem dodajUrediZanrToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem prikaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem konzoleToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem prikazKonzolaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem dodajKonzoluToolStripMenuItem;
     }
 }
 

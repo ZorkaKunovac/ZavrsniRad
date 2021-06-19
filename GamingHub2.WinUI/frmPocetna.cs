@@ -1,4 +1,5 @@
 ﻿using GamingHub2.WinUI.Igra;
+using GamingHub2.WinUI.Konzola;
 using GamingHub2.WinUI.Korisnik;
 using GamingHub2.WinUI.Zanr;
 using GamingHub2.WinUI.Zanrovi;
@@ -157,6 +158,19 @@ namespace GamingHub2.WinUI
             frm.Show();
         }
 
-        
+        private void prikazKonzolaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmPrikazKonzola frm = new frmPrikazKonzola();
+            frm.MdiParent = this;
+            frm.WindowState = FormWindowState.Maximized;
+            frm.Show();
+        }
+
+        private void dodajKonzoluToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmKonzolaDodajUredi frm = new frmKonzolaDodajUredi();
+            frm.MdiParent = this;
+            frm.Show();
+        }
     }
 }

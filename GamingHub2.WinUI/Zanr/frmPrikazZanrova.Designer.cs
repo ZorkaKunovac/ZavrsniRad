@@ -50,7 +50,7 @@ namespace GamingHub2.WinUI.Zanrovi
             this.groupBox2.Controls.Add(this.txtNaziv);
             this.groupBox2.Location = new System.Drawing.Point(7, 18);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(488, 70);
+            this.groupBox2.Size = new System.Drawing.Size(433, 70);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Pretraga";
@@ -66,7 +66,7 @@ namespace GamingHub2.WinUI.Zanrovi
             // 
             // btnPrikazi
             // 
-            this.btnPrikazi.Location = new System.Drawing.Point(406, 40);
+            this.btnPrikazi.Location = new System.Drawing.Point(358, 40);
             this.btnPrikazi.Name = "btnPrikazi";
             this.btnPrikazi.Size = new System.Drawing.Size(64, 20);
             this.btnPrikazi.TabIndex = 1;
@@ -86,7 +86,7 @@ namespace GamingHub2.WinUI.Zanrovi
             this.groupBox1.Controls.Add(this.dgvZanrovi);
             this.groupBox1.Location = new System.Drawing.Point(7, 94);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(490, 194);
+            this.groupBox1.Size = new System.Drawing.Size(433, 194);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Zanrovi";
@@ -106,7 +106,7 @@ namespace GamingHub2.WinUI.Zanrovi
             this.dgvZanrovi.ReadOnly = true;
             this.dgvZanrovi.RowTemplate.Height = 25;
             this.dgvZanrovi.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvZanrovi.Size = new System.Drawing.Size(484, 175);
+            this.dgvZanrovi.Size = new System.Drawing.Size(427, 175);
             this.dgvZanrovi.TabIndex = 0;
             this.dgvZanrovi.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvZanrovi_MouseDoubleClick);
             // 
@@ -136,7 +136,7 @@ namespace GamingHub2.WinUI.Zanrovi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(510, 298);
+            this.ClientSize = new System.Drawing.Size(453, 298);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
             this.Name = "frmPrikazZanrova";

@@ -84,6 +84,12 @@
     <Compile Include="Igra\frmPrikazIgara.Designer.cs">
       <DependentUpon>frmPrikazIgara.cs</DependentUpon>
     </Compile>
+    <Compile Include="Konzola\frmKonzolaDodajUredi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Konzola\frmKonzolaDodajUredi.Designer.cs">
+      <DependentUpon>frmKonzolaDodajUredi.cs</DependentUpon>
+    </Compile>
     <Compile Include="Konzola\frmPrikazKonzola.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -136,6 +142,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Igra\frmPrikazIgara.resx">
       <DependentUpon>frmPrikazIgara.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Konzola\frmKonzolaDodajUredi.resx">
+      <DependentUpon>frmKonzolaDodajUredi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Konzola\frmPrikazKonzola.resx">
       <DependentUpon>frmPrikazKonzola.cs</DependentUpon>
