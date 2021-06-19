@@ -26,59 +26,7 @@ namespace GamingHub2.Services
                 entity = entity.Where(x => x.Naziv.StartsWith(search.Naziv));
             }
 
-            //Database.Igra e;
-            //foreach (var konzola in search.Konzole)
-            //{
-            //    Context.IgraKonzola.Where(ik => ik.IgraID == e.ID))
-            //                {
-
-            //    }
-            //}
-            //    Context.IgraKonzola.Add(new Database.IgraKonzola()
-            //    {
-            //        IgraID = entity.ID,
-            //        KonzolaID = konzola
-            //    });
-
-                //if (search?.IsKonzoleLoadingEnabled == true)
-                //{
-                //    //entity = entity.Include(x => x.);
-
-                //    foreach (var konzola in search.Konzole)
-                //    {
-                //        Context.IgraKonzola.Where(ik => ik.IgraID == i.ID))
-                //            {
-
-                //        }
-                //        //Context.IgraKonzola.Add(new Database.IgraKonzola()
-                //        //{
-                //        //    IgraID = entity.ID,
-                //        //    KonzolaID = konzola
-                //        //});
-
-                //    konzola = Context.IgraKonzola
-                // .Where(ik => ik.IgraID == entity.ID)
-                // .Select(ik => new CheckBoxHelper
-                // {
-                //     Id = ik.ID,
-                //     Text = ik.Konzola.Naziv,
-                //     IsChecked = ik.IsChecked,
-                //     KonzolaId = ik.KonzolaID
-                // }).ToList();
-                //}
-                //    Konzola = db.IgraKonzola
-                //    .Where(ik => ik.IgraID == IgraID)
-                //    .Select(ik => new CheckBoxHelper
-                //    {
-                //        Id = ik.ID,
-                //        Text = ik.Konzola.Naziv,
-                //        IsChecked = ik.IsChecked,
-                //        KonzolaId = ik.KonzolaID
-                //    }).ToList();
-                //}
-
-
-                var list = entity.ToList();
+            var list = entity.ToList();
 
             return _mapper.Map<List<Model.Igra>>(list);
         }
@@ -88,7 +36,8 @@ namespace GamingHub2.Services
         {
             //var entity = Context.Rezervacije.Include("DodatnaOprema.Oprema").Include(x => x.Kupac).Include("Vozilo.Model").Include(x => x.Osiguranje).Where(x => x.RezervacijaId == id).FirstOrDefault();
             //return _mapper.Map<Model.Rezervacije>(entity);
-            var entity = Context.Igra.Include("IgraKonzola.Konzola").Where(x => x.ID == id).FirstOrDefault();
+            var entity = Context.Igra.Include("IgraKonzola.Konzola").Include("IgraZanr.Zanr")
+                .Where(x => x.ID == id).FirstOrDefault();
             return _mapper.Map<Model.Igra>(entity);
 
         }
@@ -131,69 +80,55 @@ namespace GamingHub2.Services
             Context.Igra.Attach(entity);
             Context.Igra.Update(entity);
 
-            //var listIgraKonzola = Context.IgraKonzola.Where(x => x.IgraID == id).ToList();
+            var listIgraKonzola = Context.IgraKonzola.Where(x => x.IgraID == id).ToList();
 
-            //foreach (var item in listIgraKonzola)
-            //{
-            //    Context.IgraKonzola.Remove(item);
-            //}
-            //Context.SaveChanges();
-
-
-            //foreach (var oprema in request.Oprema)
-            //{
-            //    if (oprema != 0)
-            //    {
-
-            //        Database.DodatnaOprema dodatnaOprema = new Database.DodatnaOprema
-            //        {
-            //            RezervacijaId = entity.RezervacijaId,
-            //            OpremaId = oprema,
-            //            Datum = DateTime.Now
-            //        };
-            //        _context.DodatnaOprema.Add(dodatnaOprema);
-            //    }
-            //}
-            //_context.SaveChanges();
+            foreach (var item in listIgraKonzola)
+            {
+                Context.IgraKonzola.Remove(item);
+            }
+            Context.SaveChanges();
 
 
+            foreach (var konzola in request.Konzole)
+            {
+                if (konzola != 0)
+                {
+
+                    Database.IgraKonzola igrakonzola = new Database.IgraKonzola
+                    {
+                        IgraID= entity.ID,
+                        KonzolaID= konzola,
+                        DatumIzmjene =DateTime.Now
+                    };
+                    Context.IgraKonzola.Add(igrakonzola);
+                }
+            }
+            Context.SaveChanges();
 
 
-            //List<IgraKonzola> igraKonzola = Context.IgraKonzola.Where(ik => ik.IgraID == entity.ID).ToList();
-            //foreach (var item in igraKonzola)
-            //{
-            //    request.Konzole.Add(item.ID);
-            //    //foreach (var i in igra.Konzola)
-            //    //{
-            //    //    if (item.ID == i.Id)
-            //    //    {
-            //    //        item.IsChecked = i.IsChecked;
-            //    //    }
-            //    //}
-            //}
+            var listIgraZanr = Context.IgraZanr.Where(x => x.IgraID == id).ToList();
 
-            //List
-            //foreach (var uloga in request.Uloge)
-            //{
-            //    Database.KorisniciUloge korisniciUloge = new KorisniciUloge();
-            //    korisniciUloge.KorisnikId = entity.KorisnikId;
-            //    korisniciUloge.UlogaId = uloga;
-            //    korisniciUloge.DatumIzmjene = DateTime.Now;
+            foreach (var item in listIgraZanr)
+            {
+                Context.IgraZanr.Remove(item);
+            }
+            Context.SaveChanges();
 
-            //    Context.KorisniciUloges.Add(korisniciUloge);
-            //}
 
-            //    Konzola = db.IgraKonzola
-            //    .Where(ik => ik.IgraID == IgraID)
-            //    .Select(ik => new CheckBoxHelper
-            //    {
-            //        Id = ik.ID,
-            //        Text = ik.Konzola.Naziv,
-            //        IsChecked = ik.IsChecked,
-            //        KonzolaId = ik.KonzolaID
-            //    }).ToList();
-            //}
-
+            foreach (var zanr in request.Zanrovi)
+            {
+                if (zanr != 0)
+                {
+                    Database.IgraZanr igrazanr = new Database.IgraZanr
+                    {
+                        IgraID = entity.ID,
+                        ZanrID = zanr,
+                        DatumIzmjene = DateTime.Now
+                    };
+                    Context.IgraZanr.Add(igrazanr);
+                }
+            }
+            Context.SaveChanges();
 
 
             _mapper.Map(request, entity);

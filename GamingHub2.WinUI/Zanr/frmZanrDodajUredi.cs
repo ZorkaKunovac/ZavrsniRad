@@ -62,7 +62,7 @@ namespace GamingHub2.WinUI.Zanr
         {
             if (string.IsNullOrWhiteSpace(txtNaziv.Text))
             {
-                errorProvider.SetError(txtNaziv, Properties.Resources.ObavezanUnosPolja);
+                errorProvider.SetError(txtNaziv, Properties.Resources.ObaveznoPolje);
                 e.Cancel = true;
             }
             else if (!Regex.IsMatch(txtNaziv.Text, @"^[A-za-z \t]{3,40}$"))

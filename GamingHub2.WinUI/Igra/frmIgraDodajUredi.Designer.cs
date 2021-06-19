@@ -39,7 +39,7 @@ namespace GamingHub2.WinUI.Igra
             this.txtSlika = new System.Windows.Forms.TextBox();
             this.btnAddPicture = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pbSlika = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
             this.dtpDatumIzlaska = new System.Windows.Forms.DateTimePicker();
             this.txtVideoLink = new System.Windows.Forms.TextBox();
@@ -53,7 +53,7 @@ namespace GamingHub2.WinUI.Igra
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbSlika)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
@@ -67,7 +67,7 @@ namespace GamingHub2.WinUI.Igra
             this.groupBox1.Controls.Add(this.txtSlika);
             this.groupBox1.Controls.Add(this.btnAddPicture);
             this.groupBox1.Controls.Add(this.btnSave);
-            this.groupBox1.Controls.Add(this.pictureBox1);
+            this.groupBox1.Controls.Add(this.pbSlika);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.dtpDatumIzlaska);
             this.groupBox1.Controls.Add(this.txtVideoLink);
@@ -156,13 +156,13 @@ namespace GamingHub2.WinUI.Igra
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // pictureBox1
+            // pbSlika
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(320, 31);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(141, 135);
-            this.pictureBox1.TabIndex = 10;
-            this.pictureBox1.TabStop = false;
+            this.pbSlika.Location = new System.Drawing.Point(320, 31);
+            this.pbSlika.Name = "pbSlika";
+            this.pbSlika.Size = new System.Drawing.Size(141, 135);
+            this.pbSlika.TabIndex = 10;
+            this.pbSlika.TabStop = false;
             // 
             // label5
             // 
@@ -266,7 +266,7 @@ namespace GamingHub2.WinUI.Igra
             this.Load += new System.EventHandler(this.frmIgraDodajUredi_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbSlika)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
 
@@ -283,7 +283,7 @@ namespace GamingHub2.WinUI.Igra
         private System.Windows.Forms.TextBox txtSlika;
         private System.Windows.Forms.Button btnAddPicture;
         private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pbSlika;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DateTimePicker dtpDatumIzlaska;
         private System.Windows.Forms.TextBox txtVideoLink;

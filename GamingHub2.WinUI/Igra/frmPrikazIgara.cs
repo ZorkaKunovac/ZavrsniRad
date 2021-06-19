@@ -35,52 +35,10 @@ namespace GamingHub2.WinUI.Igra
 
         private async void frmIgre_Load(object sender, EventArgs e)
         {
-            //dgvKorisnici.AutoGenerateColumns = false;
-
             //var result = await _service.Get<List<Model.Igra>>(null);
-            //dgvIgre.DataSource = result;
+            dgvIgre.AutoGenerateColumns = false;
             dgvIgre.DataSource = await _service.Get<List<Model.Igra>>(null);
-
         }
-
-
-        //  IgraUpsertRequest request = new IgraUpsertRequest();
-
-        //private async void btnSave_Click(object sender, EventArgs e)
-        //{
-        //    //if (ValidateChildren())
-        //    //{
-        //        var konzole = clbKonzole.CheckedItems.Cast<Model.Konzola>().Select(x => x.ID).ToList();
-        //        var zanrovi = clbZanrovi.CheckedItems.Cast<Model.Zanr>().Select(x => x.ID).ToList();
-
-        //        request.Naziv = txtNaziv.Text;
-        //        request.Developer = txtDeveloper.Text;
-        //        request.Izdavac = txtIzdavac.Text;
-        //        request.DatumIzlaska = dtpDatumIzlaska.Value;
-        //        request.VideoLink = txtVideoLink.Text;
-        //        request.Konzole = konzole;
-        //        request.Zanrovi = zanrovi;
-
-        //       // await _service.Insert<Model.Proizvod>(request);
-        //        Model.Igra entity = null;
-        //        if (!_id.HasValue)
-        //        {
-        //            entity = await _service.Insert<Model.Igra>(request);
-        //        }
-        //        else
-        //        {
-        //            entity = await _service.Update<Model.Igra>(_id.Value, request);
-        //        }
-
-        //        if (entity != null)
-        //        {
-        //            MessageBox.Show("Uspješno izvršeno");
-        //            this.Close();
-        //            dgvIgre.DataSource = await _service.Get<List<Model.Igra>>(null);
-        //        }
-        //    //}
-        //}
-
 
         private async void dgvIgre_MouseDoubleClick(object sender, MouseEventArgs e)
         {

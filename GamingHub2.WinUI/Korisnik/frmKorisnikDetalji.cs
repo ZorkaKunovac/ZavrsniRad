@@ -83,7 +83,7 @@ namespace GamingHub2.WinUI.Korisnik
             if (string.IsNullOrWhiteSpace(txtIme.Text))
             {
                 e.Cancel = true;
-                errorProvider.SetError(txtIme, Resources.ObavezanUnosPolja);
+                errorProvider.SetError(txtIme, Resources.ObaveznoPolje);
             }
             else
             {
@@ -96,7 +96,7 @@ namespace GamingHub2.WinUI.Korisnik
             if (string.IsNullOrWhiteSpace(txtPrezime.Text))
             {
                 e.Cancel = true;
-                errorProvider.SetError(txtPrezime, Resources.ObavezanUnosPolja);
+                errorProvider.SetError(txtPrezime, Resources.ObaveznoPolje);
             }
             else
             {
@@ -109,7 +109,7 @@ namespace GamingHub2.WinUI.Korisnik
             if (string.IsNullOrWhiteSpace(txtEmail.Text))
             {
                 e.Cancel = true;
-                errorProvider.SetError(txtEmail, Resources.ObavezanUnosPolja);
+                errorProvider.SetError(txtEmail, Resources.ObaveznoPolje);
             }
             else
             {
@@ -122,7 +122,7 @@ namespace GamingHub2.WinUI.Korisnik
             if (string.IsNullOrWhiteSpace(txtKorisnickoIme.Text) || txtKorisnickoIme.Text.Length < 3)
             {
                 e.Cancel = true;
-                errorProvider.SetError(txtEmail, Resources.ObavezanUnosPolja);
+                errorProvider.SetError(txtEmail, Resources.ObaveznoPolje);
             }
             else
             {

@@ -72,9 +72,9 @@ namespace GamingHub2.WinUI.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Polje je obavezno!.
         /// </summary>
-        internal static string ObavezanUnosPolja {
+        internal static string ObaveznoPolje {
             get {
-                return ResourceManager.GetString("ObavezanUnosPolja", resourceCulture);
+                return ResourceManager.GetString("ObaveznoPolje", resourceCulture);
             }
         }
         

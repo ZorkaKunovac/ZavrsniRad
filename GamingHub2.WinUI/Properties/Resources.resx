@@ -120,7 +120,7 @@
   <data name="NeispravanFormat" xml:space="preserve">
     <value>"Niste unijeli ispravan format!"</value>
   </data>
-  <data name="ObavezanUnosPolja" xml:space="preserve">
+  <data name="ObaveznoPolje" xml:space="preserve">
     <value>Polje je obavezno!</value>
   </data>
   <data name="PrekoracenjeKaraktera" xml:space="preserve">
