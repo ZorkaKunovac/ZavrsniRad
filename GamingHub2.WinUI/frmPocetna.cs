@@ -172,5 +172,13 @@ namespace GamingHub2.WinUI
             frm.MdiParent = this;
             frm.Show();
         }
+
+        private void ulogeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmRoleManager frm = new frmRoleManager();
+            frm.MdiParent = this;
+            frm.WindowState = FormWindowState.Maximized;
+            frm.Show();
+        }
     }
 }

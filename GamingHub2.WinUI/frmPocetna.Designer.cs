@@ -46,6 +46,7 @@ namespace GamingHub2.WinUI
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.ulogeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -67,7 +68,8 @@ namespace GamingHub2.WinUI
             // 
             this.korisnikToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.prikazKorisnikaToolStripMenuItem,
-            this.noviKorisnikToolStripMenuItem});
+            this.noviKorisnikToolStripMenuItem,
+            this.ulogeToolStripMenuItem});
             this.korisnikToolStripMenuItem.Name = "korisnikToolStripMenuItem";
             this.korisnikToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
             this.korisnikToolStripMenuItem.Text = "Korisnici";
@@ -75,14 +77,14 @@ namespace GamingHub2.WinUI
             // prikazKorisnikaToolStripMenuItem
             // 
             this.prikazKorisnikaToolStripMenuItem.Name = "prikazKorisnikaToolStripMenuItem";
-            this.prikazKorisnikaToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.prikazKorisnikaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.prikazKorisnikaToolStripMenuItem.Text = "Prikaz korisnika";
             this.prikazKorisnikaToolStripMenuItem.Click += new System.EventHandler(this.prikazKorisnikaToolStripMenuItem_Click);
             // 
             // noviKorisnikToolStripMenuItem
             // 
             this.noviKorisnikToolStripMenuItem.Name = "noviKorisnikToolStripMenuItem";
-            this.noviKorisnikToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.noviKorisnikToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.noviKorisnikToolStripMenuItem.Text = "Novi korisnik";
             this.noviKorisnikToolStripMenuItem.Click += new System.EventHandler(this.noviKorisnikToolStripMenuItem_Click);
             // 
@@ -144,14 +146,14 @@ namespace GamingHub2.WinUI
             // prikazKonzolaToolStripMenuItem
             // 
             this.prikazKonzolaToolStripMenuItem.Name = "prikazKonzolaToolStripMenuItem";
-            this.prikazKonzolaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.prikazKonzolaToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.prikazKonzolaToolStripMenuItem.Text = "Prikaz konzola";
             this.prikazKonzolaToolStripMenuItem.Click += new System.EventHandler(this.prikazKonzolaToolStripMenuItem_Click);
             // 
             // dodajKonzoluToolStripMenuItem
             // 
             this.dodajKonzoluToolStripMenuItem.Name = "dodajKonzoluToolStripMenuItem";
-            this.dodajKonzoluToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.dodajKonzoluToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.dodajKonzoluToolStripMenuItem.Text = "Nova konzola";
             this.dodajKonzoluToolStripMenuItem.Click += new System.EventHandler(this.dodajKonzoluToolStripMenuItem_Click);
             // 
@@ -170,6 +172,13 @@ namespace GamingHub2.WinUI
             this.toolStripStatusLabel.Name = "toolStripStatusLabel";
             this.toolStripStatusLabel.Size = new System.Drawing.Size(39, 17);
             this.toolStripStatusLabel.Text = "Status";
+            // 
+            // ulogeToolStripMenuItem
+            // 
+            this.ulogeToolStripMenuItem.Name = "ulogeToolStripMenuItem";
+            this.ulogeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ulogeToolStripMenuItem.Text = "Uloge";
+            this.ulogeToolStripMenuItem.Click += new System.EventHandler(this.ulogeToolStripMenuItem_Click);
             // 
             // frmPocetna
             // 
@@ -210,6 +219,7 @@ namespace GamingHub2.WinUI
         private System.Windows.Forms.ToolStripMenuItem konzoleToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem prikazKonzolaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem dodajKonzoluToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ulogeToolStripMenuItem;
     }
 }
 

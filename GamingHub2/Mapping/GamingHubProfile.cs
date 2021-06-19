@@ -28,6 +28,9 @@ namespace GamingHub2.Mapping
             CreateMap<KorisnikInsertRequest, Database.Korisnik>().ReverseMap();
             CreateMap<KorisnikUpdateRequest, Database.Korisnik>();
 
+            CreateMap<Database.Uloga, Model.Uloga>();
+            CreateMap<UlogaInsertRequest, Database.Uloga>();
+
             //CreateMap<Database.Korisnik,KorisnikUpdateRequest>(); //reversemap? V3 39:30
 
         }

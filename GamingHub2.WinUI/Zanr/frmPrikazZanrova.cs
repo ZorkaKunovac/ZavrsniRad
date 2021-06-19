@@ -30,27 +30,19 @@ namespace GamingHub2.WinUI.Zanrovi
         private async void frmPrikazZanrova_Load(object sender, EventArgs e)
         {
             dgvZanrovi.DataSource = await _service.Get<List<Model.Zanr>>(null);
-
         }
 
         private async void dgvZanrovi_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            //var korisnikId = int.Parse(dgvKorisnici.SelectedRows[0].Cells[0].Value.ToString());
-
-            //frmKorisnikDetalji frm = new frmKorisnikDetalji(korisnikId);
-            //frm.Show();
-
             var ZanrId = int.Parse(dgvZanrovi.SelectedRows[0].Cells[0].Value.ToString());
 
             frmZanrDodajUredi frm = new frmZanrDodajUredi(ZanrId);
             // frm.Show();
             var result = frm.ShowDialog();
-            //dgvKorisnici.Refresh();
             if (frm.DialogResult == DialogResult.OK)
             {
                 dgvZanrovi.DataSource = await _service.Get<List<Model.Zanr>>(null);
             }
-
         }
     }
 }

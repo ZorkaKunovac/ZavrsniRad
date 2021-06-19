@@ -8,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using GamingHub2.Model;
+using GamingHub2.Model.Requests;
 
 namespace GamingHub2
 {
@@ -51,7 +52,7 @@ namespace GamingHub2
             services.AddScoped<IProizvodService, ProizvodService>();
             services.AddScoped<IKonzolaService, KonzolaService>();
             services.AddScoped<IKorisnikService, KorisnikService>();
-            services.AddScoped<IReadService<Model.Uloga, object>, BaseReadService<Model.Uloga, Database.Uloga, object>>();
+            services.AddScoped<ICRUDService<Model.Uloga, object,UlogaInsertRequest,object>, BaseCRUDService<Model.Uloga, Database.Uloga, object,UlogaInsertRequest,object>>();
             //services.AddScoped<IReadService<Model.Uloge, object>, BaseReadService<Model.Uloge, object, Database.Uloge>>();
         }
 
