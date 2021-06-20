@@ -29,6 +29,7 @@ namespace GamingHub2.WinUI.Korisnik
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnDodajUlogu = new System.Windows.Forms.Button();
@@ -36,9 +37,11 @@ namespace GamingHub2.WinUI.Korisnik
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgvUloge = new System.Windows.Forms.DataGridView();
             this.Naziv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUloge)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -78,6 +81,7 @@ namespace GamingHub2.WinUI.Korisnik
             this.txtNaziv.Name = "txtNaziv";
             this.txtNaziv.Size = new System.Drawing.Size(130, 20);
             this.txtNaziv.TabIndex = 0;
+            this.txtNaziv.Validating += new System.ComponentModel.CancelEventHandler(this.txtNaziv_Validating);
             // 
             // groupBox2
             // 
@@ -110,6 +114,10 @@ namespace GamingHub2.WinUI.Korisnik
             this.Naziv.Name = "Naziv";
             this.Naziv.ReadOnly = true;
             // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
+            // 
             // frmRoleManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -124,6 +132,7 @@ namespace GamingHub2.WinUI.Korisnik
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvUloge)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -137,5 +146,6 @@ namespace GamingHub2.WinUI.Korisnik
         private System.Windows.Forms.TextBox txtNaziv;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Naziv;
+        private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }

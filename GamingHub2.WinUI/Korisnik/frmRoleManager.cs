@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -45,5 +46,22 @@ namespace GamingHub2.WinUI.Korisnik
             dgvUloge.DataSource = await _service.Get<List<Model.Uloga>>(null);
         }
 
+        private void txtNaziv_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtNaziv.Text))
+            {
+                errorProvider.SetError(txtNaziv, Properties.Resources.ObaveznoPolje);
+                e.Cancel = true;
+            }
+            else if (!Regex.IsMatch(txtNaziv.Text, @"^[A-Z][a-z]{3,40}$"))
+            {
+                errorProvider.SetError(txtNaziv, Properties.Resources.NeispravanFormat);
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider.Clear();
+            }
+        }
     }
 }
