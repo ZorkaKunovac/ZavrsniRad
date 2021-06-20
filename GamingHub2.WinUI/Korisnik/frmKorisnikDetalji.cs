@@ -15,15 +15,26 @@ namespace GamingHub2.WinUI.Korisnik
     public partial class frmKorisnikDetalji : Form
     {
         private readonly APIService _service = new APIService("Korisnik");
+        APIService _ulogaService = new APIService("Uloga");
+
         private int? _id = null;
         public frmKorisnikDetalji(int? id = null)
         {
             InitializeComponent();
             _id = id;
         }
+        private async Task LoadUloge()
+        {
+            var ulogeList = await _ulogaService.Get<List<Model.Uloga>>(null);
+            clbUloge.DataSource = ulogeList;
+            clbUloge.DisplayMember = "Naziv";
+            clbUloge.ValueMember = "Id";
+        }
 
         private async void frmKorisnikDetalji_Load(object sender, EventArgs e)
         {
+            await LoadUloge();
+
             if (_id.HasValue)
             {
                 var korisnik = await _service.GetById<Model.Korisnik>(_id);
@@ -33,7 +44,17 @@ namespace GamingHub2.WinUI.Korisnik
                 txtKorisnickoIme.Text = korisnik.KorisnickoIme;
                 txtEmail.Text = korisnik.Email;
                 txtTelefon.Text = korisnik.Telefon;
-                //txtPassword.Text=korisnik.
+                foreach (var item in korisnik.KorisnikUloga)
+                {
+                    for (int i = 0; i < clbUloge.Items.Count; i++)
+                    {
+                        Model.Uloga trenutni = (Model.Uloga)clbUloge.Items[i];
+                        if (trenutni.UlogaId == item.UlogaId)
+                        {
+                            clbUloge.SetItemCheckState(i, CheckState.Checked);
+                        }
+                    }
+                }
             }
         }
 
@@ -41,6 +62,8 @@ namespace GamingHub2.WinUI.Korisnik
         {
             if (ValidateChildren())
             {
+                var uloge = clbUloge.CheckedItems.Cast<Model.Uloga>().Select(x => x.UlogaId).ToList();
+
                 if (!_id.HasValue)
                 {
                     KorisnikInsertRequest request = new KorisnikInsertRequest()
@@ -51,7 +74,8 @@ namespace GamingHub2.WinUI.Korisnik
                         Telefon = txtTelefon.Text,
                         KorisnickoIme = txtKorisnickoIme.Text,
                         Password = txtPassword.Text,
-                        PasswordPotvrda = txtPasswordPotvrda.Text
+                        PasswordPotvrda = txtPasswordPotvrda.Text,
+                        Uloge = uloge
                     };
 
                     await _service.Insert<Model.Korisnik>(request);
@@ -64,8 +88,8 @@ namespace GamingHub2.WinUI.Korisnik
                         Prezime = txtPrezime.Text,
                         Telefon = txtTelefon.Text,
                         Password = txtPassword.Text,
-                        PasswordPotvrda = txtPasswordPotvrda.Text
-
+                        PasswordPotvrda = txtPasswordPotvrda.Text,
+                        Uloge = uloge
                     };
                     await _service.Update<Model.Korisnik>(_id.Value, request);
                 }
@@ -73,9 +97,6 @@ namespace GamingHub2.WinUI.Korisnik
             MessageBox.Show("Uspješno izvršeno");
             DialogResult = DialogResult.OK;//sada možeš vidjeti
             this.Close();
-           // frmPrikazKorisnika frmPrikazKorisnika = new frmPrikazKorisnika();
-            //frmPrikazKorisnika.
-          // frmPrikazKorisnika.dgvKorisnici.DataSource = await _service.Get<List<Model.Korisnik>>(null);
         }
 
         private void txtIme_Validating(object sender, CancelEventArgs e)
@@ -129,5 +150,7 @@ namespace GamingHub2.WinUI.Korisnik
                 errorProvider.SetError(txtEmail, null);
             }
         }
+
+
     }
 }

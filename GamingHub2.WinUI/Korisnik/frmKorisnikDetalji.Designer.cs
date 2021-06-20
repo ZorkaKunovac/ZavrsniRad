@@ -46,13 +46,14 @@ namespace GamingHub2.WinUI.Korisnik
             this.label7 = new System.Windows.Forms.Label();
             this.btnSnimi = new System.Windows.Forms.Button();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.clbUloge = new System.Windows.Forms.CheckedListBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(26, 51);
+            this.label1.Location = new System.Drawing.Point(39, 14);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(24, 13);
             this.label1.TabIndex = 0;
@@ -60,7 +61,7 @@ namespace GamingHub2.WinUI.Korisnik
             // 
             // txtIme
             // 
-            this.txtIme.Location = new System.Drawing.Point(27, 71);
+            this.txtIme.Location = new System.Drawing.Point(40, 34);
             this.txtIme.Name = "txtIme";
             this.txtIme.Size = new System.Drawing.Size(297, 20);
             this.txtIme.TabIndex = 1;
@@ -68,7 +69,7 @@ namespace GamingHub2.WinUI.Korisnik
             // 
             // txtPrezime
             // 
-            this.txtPrezime.Location = new System.Drawing.Point(27, 119);
+            this.txtPrezime.Location = new System.Drawing.Point(40, 82);
             this.txtPrezime.Name = "txtPrezime";
             this.txtPrezime.Size = new System.Drawing.Size(297, 20);
             this.txtPrezime.TabIndex = 3;
@@ -77,7 +78,7 @@ namespace GamingHub2.WinUI.Korisnik
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(24, 99);
+            this.label2.Location = new System.Drawing.Point(37, 62);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(44, 13);
             this.label2.TabIndex = 2;
@@ -85,7 +86,7 @@ namespace GamingHub2.WinUI.Korisnik
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(28, 223);
+            this.txtEmail.Location = new System.Drawing.Point(41, 186);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(296, 20);
             this.txtEmail.TabIndex = 7;
@@ -94,7 +95,7 @@ namespace GamingHub2.WinUI.Korisnik
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(25, 203);
+            this.label3.Location = new System.Drawing.Point(38, 166);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(32, 13);
             this.label3.TabIndex = 6;
@@ -102,7 +103,7 @@ namespace GamingHub2.WinUI.Korisnik
             // 
             // txtTelefon
             // 
-            this.txtTelefon.Location = new System.Drawing.Point(28, 267);
+            this.txtTelefon.Location = new System.Drawing.Point(41, 230);
             this.txtTelefon.Name = "txtTelefon";
             this.txtTelefon.Size = new System.Drawing.Size(296, 20);
             this.txtTelefon.TabIndex = 5;
@@ -110,7 +111,7 @@ namespace GamingHub2.WinUI.Korisnik
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(25, 251);
+            this.label4.Location = new System.Drawing.Point(38, 214);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(43, 13);
             this.label4.TabIndex = 4;
@@ -118,7 +119,7 @@ namespace GamingHub2.WinUI.Korisnik
             // 
             // txtKorisnickoIme
             // 
-            this.txtKorisnickoIme.Location = new System.Drawing.Point(28, 170);
+            this.txtKorisnickoIme.Location = new System.Drawing.Point(41, 133);
             this.txtKorisnickoIme.Name = "txtKorisnickoIme";
             this.txtKorisnickoIme.Size = new System.Drawing.Size(296, 20);
             this.txtKorisnickoIme.TabIndex = 9;
@@ -127,7 +128,7 @@ namespace GamingHub2.WinUI.Korisnik
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(25, 150);
+            this.label5.Location = new System.Drawing.Point(38, 113);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(75, 13);
             this.label5.TabIndex = 8;
@@ -135,16 +136,16 @@ namespace GamingHub2.WinUI.Korisnik
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(29, 320);
+            this.txtPassword.Location = new System.Drawing.Point(42, 283);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(135, 20);
+            this.txtPassword.Size = new System.Drawing.Size(145, 20);
             this.txtPassword.TabIndex = 11;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(26, 304);
+            this.label6.Location = new System.Drawing.Point(39, 267);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(44, 13);
             this.label6.TabIndex = 10;
@@ -152,16 +153,16 @@ namespace GamingHub2.WinUI.Korisnik
             // 
             // txtPasswordPotvrda
             // 
-            this.txtPasswordPotvrda.Location = new System.Drawing.Point(189, 320);
+            this.txtPasswordPotvrda.Location = new System.Drawing.Point(193, 283);
             this.txtPasswordPotvrda.Name = "txtPasswordPotvrda";
             this.txtPasswordPotvrda.PasswordChar = '*';
-            this.txtPasswordPotvrda.Size = new System.Drawing.Size(135, 20);
+            this.txtPasswordPotvrda.Size = new System.Drawing.Size(144, 20);
             this.txtPasswordPotvrda.TabIndex = 13;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(186, 304);
+            this.label7.Location = new System.Drawing.Point(199, 267);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(80, 13);
             this.label7.TabIndex = 12;
@@ -169,7 +170,7 @@ namespace GamingHub2.WinUI.Korisnik
             // 
             // btnSnimi
             // 
-            this.btnSnimi.Location = new System.Drawing.Point(249, 363);
+            this.btnSnimi.Location = new System.Drawing.Point(262, 326);
             this.btnSnimi.Name = "btnSnimi";
             this.btnSnimi.Size = new System.Drawing.Size(75, 23);
             this.btnSnimi.TabIndex = 14;
@@ -181,11 +182,20 @@ namespace GamingHub2.WinUI.Korisnik
             // 
             this.errorProvider.ContainerControl = this;
             // 
+            // clbUloge
+            // 
+            this.clbUloge.FormattingEnabled = true;
+            this.clbUloge.Location = new System.Drawing.Point(42, 326);
+            this.clbUloge.Name = "clbUloge";
+            this.clbUloge.Size = new System.Drawing.Size(145, 94);
+            this.clbUloge.TabIndex = 15;
+            // 
             // frmKorisnikDetalji
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(553, 456);
+            this.Controls.Add(this.clbUloge);
             this.Controls.Add(this.btnSnimi);
             this.Controls.Add(this.txtPasswordPotvrda);
             this.Controls.Add(this.label7);
@@ -228,5 +238,6 @@ namespace GamingHub2.WinUI.Korisnik
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnSnimi;
         private System.Windows.Forms.ErrorProvider errorProvider;
+        private System.Windows.Forms.CheckedListBox clbUloge;
     }
 }

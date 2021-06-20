@@ -45,10 +45,9 @@ namespace GamingHub2.WinUI.Igra
             var igraId = int.Parse(dgvIgre.SelectedRows[0].Cells[0].Value.ToString());
 
             frmIgraDodajUredi frm = new frmIgraDodajUredi(igraId);
-            var result = frm.ShowDialog();
             if (frm.DialogResult == DialogResult.OK)
             {
-                dgvIgre.DataSource = await _service.Get<List<Model.Korisnik>>(null);
+                dgvIgre.DataSource = await _service.Get<List<Model.Igra>>(null);
             }
 
         }

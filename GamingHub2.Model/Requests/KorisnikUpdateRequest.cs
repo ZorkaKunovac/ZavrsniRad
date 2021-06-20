@@ -14,6 +14,9 @@ namespace GamingHub2.Model.Requests
         [Required(AllowEmptyStrings = false)]
         public string PasswordPotvrda { get; set; }
 
-     //   public bool? Status { get; set; }
+        public List<int> Uloge { get; set; } = new List<int>();
+
+
+        //   public bool? Status { get; set; }
     }
 }

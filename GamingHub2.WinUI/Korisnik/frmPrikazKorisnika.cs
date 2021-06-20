@@ -36,12 +36,10 @@ namespace GamingHub2.WinUI.Korisnik
 
         private async void dgvKorisnici_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            
             var korisnikId = int.Parse(dgvKorisnici.SelectedRows[0].Cells[0].Value.ToString());
 
             frmKorisnikDetalji frm = new frmKorisnikDetalji(korisnikId);
-            //frm.Show();
-            var result = frm.ShowDialog();
+
             if (frm.DialogResult==DialogResult.OK)
             {
                 dgvKorisnici.DataSource = await _service.Get<List<Model.Korisnik>>(null);

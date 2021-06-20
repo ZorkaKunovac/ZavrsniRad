@@ -19,8 +19,6 @@ namespace GamingHub2.Model.Requests
         [StringLength(50, ErrorMessage = "{0} mora biti izmedju {2} i {1} znakova.", MinimumLength = 3)]
         public string Izdavac { get; set; }
         public DateTime? DatumIzlaska { get; set; }
-        //public List<SelectListItem> IgraZarn { get; set; }
-        //public List<SelectListItem> IgraKonzola { get; set; }
         public string VideoLink { get; set; }
         //public string SlikaLink { get; set; }
         public byte[] SlikaLink { get; set; }
