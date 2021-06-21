@@ -33,7 +33,14 @@ namespace GamingHub2.WinUI.Korisnik
 
         private async void frmKorisnikDetalji_Load(object sender, EventArgs e)
         {
-            await LoadUloge();
+            //var ulogeList = await _ulogaService.Get<List<Model.Uloga>>(null);
+            //clbUloge.DataSource = ulogeList;
+            //clbUloge.DisplayMember = "Naziv";
+            //clbUloge.ValueMember = "Id";
+            var uloge = await _ulogaService.Get<List<Model.Uloga>>(null);
+            clbUloge.DataSource = uloge;
+            clbUloge.DisplayMember = "Naziv";
+
 
             if (_id.HasValue)
             {
@@ -49,7 +56,7 @@ namespace GamingHub2.WinUI.Korisnik
                     for (int i = 0; i < clbUloge.Items.Count; i++)
                     {
                         Model.Uloga trenutni = (Model.Uloga)clbUloge.Items[i];
-                        if (trenutni.UlogaId == item.UlogaId)
+                        if (trenutni.Id == item.UlogaId)
                         {
                             clbUloge.SetItemCheckState(i, CheckState.Checked);
                         }
@@ -62,8 +69,9 @@ namespace GamingHub2.WinUI.Korisnik
         {
             if (ValidateChildren())
             {
-                var uloge = clbUloge.CheckedItems.Cast<Model.Uloga>().Select(x => x.UlogaId).ToList();
+                var uloge = clbUloge.CheckedItems.Cast<Model.Uloga>().Select(x => x.Id).ToList();
 
+                Model.Korisnik entity = null;
                 if (!_id.HasValue)
                 {
                     KorisnikInsertRequest request = new KorisnikInsertRequest()
@@ -78,7 +86,7 @@ namespace GamingHub2.WinUI.Korisnik
                         Uloge = uloge
                     };
 
-                    await _service.Insert<Model.Korisnik>(request);
+                   entity=  await _service.Insert<Model.Korisnik>(request);
                 }
                 else
                 {
@@ -91,20 +99,27 @@ namespace GamingHub2.WinUI.Korisnik
                         PasswordPotvrda = txtPasswordPotvrda.Text,
                         Uloge = uloge
                     };
-                    await _service.Update<Model.Korisnik>(_id.Value, request);
+                    entity = await _service.Update<Model.Korisnik>(_id.Value, request);
+                }
+                if (entity != null)
+                {
+                    MessageBox.Show("Uspješno izvršeno");
+                    DialogResult = DialogResult.OK;//sada možeš vidjeti
+                    this.Close();
+                    //  dgvIgre.DataSource = await _service.Get<List<Model.Igra>>(null);
                 }
             }
-            MessageBox.Show("Uspješno izvršeno");
-            DialogResult = DialogResult.OK;//sada možeš vidjeti
-            this.Close();
+            //MessageBox.Show("Uspješno izvršeno");
+            //DialogResult = DialogResult.OK;//sada možeš vidjeti
+            //this.Close();
         }
 
         private void txtIme_Validating(object sender, CancelEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtIme.Text))
             {
-                e.Cancel = true;
                 errorProvider.SetError(txtIme, Resources.ObaveznoPolje);
+                e.Cancel = true;
             }
             else
             {
@@ -116,8 +131,8 @@ namespace GamingHub2.WinUI.Korisnik
         {
             if (string.IsNullOrWhiteSpace(txtPrezime.Text))
             {
-                e.Cancel = true;
                 errorProvider.SetError(txtPrezime, Resources.ObaveznoPolje);
+                e.Cancel = true;
             }
             else
             {
@@ -129,8 +144,8 @@ namespace GamingHub2.WinUI.Korisnik
         {
             if (string.IsNullOrWhiteSpace(txtEmail.Text))
             {
-                e.Cancel = true;
                 errorProvider.SetError(txtEmail, Resources.ObaveznoPolje);
+                e.Cancel = true;
             }
             else
             {
@@ -142,8 +157,8 @@ namespace GamingHub2.WinUI.Korisnik
         {
             if (string.IsNullOrWhiteSpace(txtKorisnickoIme.Text) || txtKorisnickoIme.Text.Length < 3)
             {
-                e.Cancel = true;
                 errorProvider.SetError(txtEmail, Resources.ObaveznoPolje);
+                e.Cancel = true;
             }
             else
             {

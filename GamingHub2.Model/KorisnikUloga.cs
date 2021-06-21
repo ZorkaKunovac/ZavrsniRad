@@ -13,7 +13,7 @@ namespace GamingHub2.Model
 
         public virtual Korisnik Korisnik { get; set; }
         public virtual Uloga Uloga { get; set; }
-        public IEnumerable<string> Uloge { get; set; }
+        //public IEnumerable<string> Uloge { get; set; }
 
     }
 }

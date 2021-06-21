@@ -10,7 +10,10 @@ namespace GamingHub2.Database
 {
     public class Korisnik
     {
-
+        public Korisnik()
+        {
+            KorisnikUloga = new HashSet<KorisnikUloga>();
+        }
         public int Id { get; set; }
         [StringLength(50, ErrorMessage = "{0} mora biti izmedju {2} i {1} znakova.", MinimumLength = 2)]
         public string Ime { get; set; }

@@ -40,13 +40,13 @@ namespace GamingHub2.WinUI.Korisnik
             this.label4 = new System.Windows.Forms.Label();
             this.txtKorisnickoIme = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.txtPassword = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtPasswordPotvrda = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.btnSnimi = new System.Windows.Forms.Button();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.clbUloge = new System.Windows.Forms.CheckedListBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtPasswordPotvrda = new System.Windows.Forms.TextBox();
+            this.txtPassword = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
@@ -134,40 +134,6 @@ namespace GamingHub2.WinUI.Korisnik
             this.label5.TabIndex = 8;
             this.label5.Text = "Korisnicko ime";
             // 
-            // txtPassword
-            // 
-            this.txtPassword.Location = new System.Drawing.Point(42, 283);
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(145, 20);
-            this.txtPassword.TabIndex = 11;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(39, 267);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(44, 13);
-            this.label6.TabIndex = 10;
-            this.label6.Text = "Lozinka";
-            // 
-            // txtPasswordPotvrda
-            // 
-            this.txtPasswordPotvrda.Location = new System.Drawing.Point(193, 283);
-            this.txtPasswordPotvrda.Name = "txtPasswordPotvrda";
-            this.txtPasswordPotvrda.PasswordChar = '*';
-            this.txtPasswordPotvrda.Size = new System.Drawing.Size(144, 20);
-            this.txtPasswordPotvrda.TabIndex = 13;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(199, 267);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(80, 13);
-            this.label7.TabIndex = 12;
-            this.label7.Text = "Potvrda lozinke";
-            // 
             // btnSnimi
             // 
             this.btnSnimi.Location = new System.Drawing.Point(262, 326);
@@ -189,6 +155,40 @@ namespace GamingHub2.WinUI.Korisnik
             this.clbUloge.Name = "clbUloge";
             this.clbUloge.Size = new System.Drawing.Size(145, 94);
             this.clbUloge.TabIndex = 15;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(39, 267);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(44, 13);
+            this.label6.TabIndex = 10;
+            this.label6.Text = "Lozinka";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(199, 267);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(80, 13);
+            this.label7.TabIndex = 12;
+            this.label7.Text = "Potvrda lozinke";
+            // 
+            // txtPasswordPotvrda
+            // 
+            this.txtPasswordPotvrda.Location = new System.Drawing.Point(193, 283);
+            this.txtPasswordPotvrda.Name = "txtPasswordPotvrda";
+            this.txtPasswordPotvrda.PasswordChar = '*';
+            this.txtPasswordPotvrda.Size = new System.Drawing.Size(144, 20);
+            this.txtPasswordPotvrda.TabIndex = 13;
+            // 
+            // txtPassword
+            // 
+            this.txtPassword.Location = new System.Drawing.Point(42, 283);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
+            this.txtPassword.Size = new System.Drawing.Size(145, 20);
+            this.txtPassword.TabIndex = 11;
             // 
             // frmKorisnikDetalji
             // 
@@ -232,12 +232,12 @@ namespace GamingHub2.WinUI.Korisnik
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtKorisnickoIme;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtPassword;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtPasswordPotvrda;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnSnimi;
         private System.Windows.Forms.ErrorProvider errorProvider;
         private System.Windows.Forms.CheckedListBox clbUloge;
+        private System.Windows.Forms.TextBox txtPasswordPotvrda;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtPassword;
+        private System.Windows.Forms.Label label6;
     }
 }

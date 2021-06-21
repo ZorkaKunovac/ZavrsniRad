@@ -26,9 +26,18 @@ namespace GamingHub2.WinUI.Konzola
 
         private async void dgvKonzole_MouseDoubleClick(object sender, MouseEventArgs e)
         {
+            //var KonzolaId = int.Parse(dgvKonzole.SelectedRows[0].Cells[0].Value.ToString());
+
+            //frmKonzolaDodajUredi frm = new frmKonzolaDodajUredi(KonzolaId);
+            //if (frm.DialogResult == DialogResult.OK)
+            //{
+            //    dgvKonzole.DataSource = await _service.Get<List<Model.Konzola>>(null);
+            //}
             var KonzolaId = int.Parse(dgvKonzole.SelectedRows[0].Cells[0].Value.ToString());
 
             frmKonzolaDodajUredi frm = new frmKonzolaDodajUredi(KonzolaId);
+            // frm.Show();
+            var result = frm.ShowDialog();
             if (frm.DialogResult == DialogResult.OK)
             {
                 dgvKonzole.DataSource = await _service.Get<List<Model.Konzola>>(null);

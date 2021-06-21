@@ -18,7 +18,7 @@ namespace GamingHub2.Model
         public string Email { get; set; }
         public string Telefon { get; set; }
         public string KorisnickoIme { get; set; }
-        public byte[] Slika { get; set; }
+      //  public byte[] Slika { get; set; }
         public ICollection<KorisnikUloga> KorisnikUloga { get; set; }
       //  public string Uloga { get; set; }
 

@@ -29,22 +29,19 @@ namespace GamingHub2.WinUI.Igra
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgvIgre = new System.Windows.Forms.DataGridView();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btnPrikazi = new System.Windows.Forms.Button();
-            this.txtNaziv = new System.Windows.Forms.TextBox();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Naziv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Developer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Izdavac = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DatumIzlaska = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SlikaLink = new System.Windows.Forms.DataGridViewImageColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnPrikazi = new System.Windows.Forms.Button();
+            this.txtNaziv = new System.Windows.Forms.TextBox();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvIgre)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -53,10 +50,6 @@ namespace GamingHub2.WinUI.Igra
             // openFileDialog
             // 
             this.openFileDialog.FileName = "openFileDialog";
-            // 
-            // errorProvider
-            // 
-            this.errorProvider.ContainerControl = this;
             // 
             // groupBox2
             // 
@@ -90,44 +83,6 @@ namespace GamingHub2.WinUI.Igra
             this.dgvIgre.Size = new System.Drawing.Size(743, 242);
             this.dgvIgre.TabIndex = 0;
             this.dgvIgre.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvIgre_MouseDoubleClick);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.btnPrikazi);
-            this.groupBox1.Controls.Add(this.txtNaziv);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(746, 86);
-            this.groupBox1.TabIndex = 2;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Pretraga";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 24);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Naziv igre:";
-            // 
-            // btnPrikazi
-            // 
-            this.btnPrikazi.Location = new System.Drawing.Point(653, 37);
-            this.btnPrikazi.Name = "btnPrikazi";
-            this.btnPrikazi.Size = new System.Drawing.Size(88, 23);
-            this.btnPrikazi.TabIndex = 1;
-            this.btnPrikazi.Text = "Prikaži";
-            this.btnPrikazi.UseVisualStyleBackColor = true;
-            this.btnPrikazi.Click += new System.EventHandler(this.btnPrikazi_Click);
-            // 
-            // txtNaziv
-            // 
-            this.txtNaziv.Location = new System.Drawing.Point(6, 40);
-            this.txtNaziv.Name = "txtNaziv";
-            this.txtNaziv.Size = new System.Drawing.Size(376, 20);
-            this.txtNaziv.TabIndex = 0;
             // 
             // Id
             // 
@@ -172,6 +127,44 @@ namespace GamingHub2.WinUI.Igra
             this.SlikaLink.Name = "SlikaLink";
             this.SlikaLink.ReadOnly = true;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.btnPrikazi);
+            this.groupBox1.Controls.Add(this.txtNaziv);
+            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(746, 86);
+            this.groupBox1.TabIndex = 2;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Pretraga";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 24);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(57, 13);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Naziv igre:";
+            // 
+            // btnPrikazi
+            // 
+            this.btnPrikazi.Location = new System.Drawing.Point(653, 37);
+            this.btnPrikazi.Name = "btnPrikazi";
+            this.btnPrikazi.Size = new System.Drawing.Size(88, 23);
+            this.btnPrikazi.TabIndex = 1;
+            this.btnPrikazi.Text = "Prikaži";
+            this.btnPrikazi.UseVisualStyleBackColor = true;
+            this.btnPrikazi.Click += new System.EventHandler(this.btnPrikazi_Click);
+            // 
+            // txtNaziv
+            // 
+            this.txtNaziv.Location = new System.Drawing.Point(6, 40);
+            this.txtNaziv.Name = "txtNaziv";
+            this.txtNaziv.Size = new System.Drawing.Size(376, 20);
+            this.txtNaziv.TabIndex = 0;
+            // 
             // frmPrikazIgara
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -181,8 +174,8 @@ namespace GamingHub2.WinUI.Igra
             this.Controls.Add(this.groupBox2);
             this.Name = "frmPrikazIgara";
             this.Text = "Igre";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmIgre_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvIgre)).EndInit();
             this.groupBox1.ResumeLayout(false);
@@ -193,7 +186,6 @@ namespace GamingHub2.WinUI.Igra
 
         #endregion
         private System.Windows.Forms.OpenFileDialog openFileDialog;
-        private System.Windows.Forms.ErrorProvider errorProvider;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.DataGridView dgvIgre;
         private System.Windows.Forms.GroupBox groupBox1;

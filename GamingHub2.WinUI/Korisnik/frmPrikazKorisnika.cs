@@ -39,11 +39,12 @@ namespace GamingHub2.WinUI.Korisnik
             var korisnikId = int.Parse(dgvKorisnici.SelectedRows[0].Cells[0].Value.ToString());
 
             frmKorisnikDetalji frm = new frmKorisnikDetalji(korisnikId);
-
-            if (frm.DialogResult==DialogResult.OK)
+            var result = frm.ShowDialog();
+            if (frm.DialogResult == DialogResult.OK)
             {
                 dgvKorisnici.DataSource = await _service.Get<List<Model.Korisnik>>(null);
             }
+
         }
     }
 }

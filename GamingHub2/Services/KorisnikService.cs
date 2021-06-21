@@ -1,12 +1,14 @@
 ﻿using AutoMapper;
+using GamingHub2.Database;
 using GamingHub2.Model;
 using GamingHub2.Model.Requests;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System;
-using GamingHub2.Filters;
-using Microsoft.EntityFrameworkCore;
-
+using System.Threading.Tasks;
+//using GamingHub2.Filters;
+using Microsoft.AspNetCore.Mvc;
 
 namespace GamingHub2.Services
 {
@@ -38,47 +40,58 @@ namespace GamingHub2.Services
             */
         }
 
+        [HttpGet("{id}")]
         public override Model.Korisnik GetById(int id)
         {
             var entity = Context.Korisnik.Include("KorisnikUloga.Uloga").Where(x => x.Id == id).FirstOrDefault();
             return _mapper.Map<Model.Korisnik>(entity);
         }
 
-        public override Korisnik Insert(KorisnikInsertRequest request)
+        public override Model.Korisnik Insert(KorisnikInsertRequest request)
         {
             var set = Context.Set<Database.Korisnik>();
             var entity = _mapper.Map<Database.Korisnik>(request);
 
-            if (request.Password != request.PasswordPotvrda)
-            {
-                throw new UserException("Passwordi se ne slažu");
-            }
-      
+            set.Add(entity);
+            Context.SaveChanges();
+            //if (request.Password != request.PasswordPotvrda)
+            //{
+            //    throw new UserException("Passwordi se ne slažu");
+            //}
+
             entity.LozinkaHash = "test";
             entity.LozinkaSalt = "test";
 
-            set.Add(entity);
-            Context.SaveChanges();
             foreach (var uloga in request.Uloge)
             {
-                Database.KorisnikUloga korisnikUloga = new Database.KorisnikUloga
+                Context.KorisnikUloga.Add(new Database.KorisnikUloga()
                 {
                     KorisnikId = entity.Id,
-                    UlogaId = uloga,
-                    DatumIzmjene = DateTime.Now
-                };
+                    UlogaId = uloga
+                });
+                //Database.KorisnikUloga korisnikUloga = new Database.KorisnikUloga
+                //{
+                //    KorisnikId = entity.Id,
+                //    UlogaId = uloga,
+                //    DatumIzmjene = DateTime.Now
+                //};
 
-                Context.KorisnikUloga.Add(korisnikUloga);
+                //Context.KorisnikUloga.Add(korisnikUloga);
             }
             Context.SaveChanges();
             return _mapper.Map<Model.Korisnik>(entity);
         }
 
 
-        public override Korisnik Update(int id, KorisnikUpdateRequest request)
+        public override Model.Korisnik Update(int id, KorisnikUpdateRequest request)
         {
-            var set = Context.Set<Database.Korisnik>();
-            var entity = set.Find(id);
+            //var set = Context.Set<Database.Korisnik>();
+            //var entity = set.Find(id);
+
+            var entity = Context.Korisnik.Find(id);
+
+            Context.Korisnik.Attach(entity);
+            Context.Korisnik.Update(entity);
 
             var listKorisnikUloga = Context.KorisnikUloga.Where(x => x.KorisnikId == id).ToList();
 
@@ -105,10 +118,10 @@ namespace GamingHub2.Services
 
 
             _mapper.Map(request, entity);
-            if (request.Password != request.PasswordPotvrda)
-            {
-                throw new UserException("Passwordi se ne slažu");
-            }
+            //if (request.Password != request.PasswordPotvrda)
+            //{
+            //    throw new UserException("Passwordi se ne slažu");
+            //}
 
             Context.SaveChanges();
 
