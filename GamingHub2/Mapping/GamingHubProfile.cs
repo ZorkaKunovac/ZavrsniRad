@@ -22,10 +22,11 @@ namespace GamingHub2.Mapping
             CreateMap<Database.IgraKonzola, Model.IgraKonzola>();
             CreateMap<Database.IgraZanr, Model.IgraZanr>();
 
-            // CreateMap<IgraUpsertRequest, Database.Igra>();
             CreateMap<Database.Proizvod, Model.Proizvod>(); //ReverseMap?
             CreateMap<Database.Korisnik, Model.Korisnik>();
-            CreateMap<KorisnikInsertRequest, Database.Korisnik>().ReverseMap();
+            CreateMap<Database.Korisnik, KorisnikInsertRequest>().ReverseMap(); //reversemap? V3 39:30
+
+            //CreateMap<KorisnikInsertRequest, Database.Korisnik>().ReverseMap();
             CreateMap<KorisnikUpdateRequest, Database.Korisnik>();
             CreateMap<Database.KorisnikUloga, Model.KorisnikUloga>();
 

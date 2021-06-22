@@ -26,20 +26,26 @@ namespace GamingHub2
         {
             // services.AddControllers();
 
- //           services.AddControllers().AddNewtonsoftJson(x =>
- //x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
-
-
+            //           services.AddControllers().AddNewtonsoftJson(x =>
+            //x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
             //services.AddControllers(x =>
             //{
             //    x.Filters.Add<ErrorFilter>();
             //});
 
-            services.AddSwaggerGen();
-            services.AddMvc(options => options.Filters.Add<ErrorFilter>()).SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-            services.AddMvc(options => options.EnableEndpointRouting = false);
+            //services.AddMvc(x => x.Filters.Add<ErrorFilter>()).SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc(x => x.Filters.Add<ErrorFilter>()).AddRazorPagesOptions(options =>
+            {
+                options.Conventions.AddPageRoute("/Swagger", "");
+            });
+
+            services.AddControllers();
+            
             services.AddAutoMapper(typeof(Startup));
-            //si jo
+
+            services.AddSwaggerGen();
+            //services.AddMvc(options => options.EnableEndpointRouting = false);
+
             services.AddDbContext<ApplicationDbContext>(options =>
                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
@@ -57,40 +63,65 @@ namespace GamingHub2
             services.AddScoped<IProizvodService, ProizvodService>();
             services.AddScoped<IKonzolaService, KonzolaService>();
             services.AddScoped<IKorisnikService, KorisnikService>();
+         //   services.AddScoped<IUlogaService, UlogaService>();
+
             services.AddScoped<ICRUDService<Model.Uloga, object,UlogaInsertRequest,object>, BaseCRUDService<Model.Uloga, Database.Uloga, object,UlogaInsertRequest,object>>();
-            //services.AddScoped<IReadService<Model.Uloge, object>, BaseReadService<Model.Uloge, object, Database.Uloge>>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            //if (env.IsDevelopment())
+            //{
+            //    app.UseDeveloperExceptionPage();
+            //}
+
+            //app.UseSwagger();
+
+            //// Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.), 
+            //// specifying the Swagger JSON endpoint.
+            //app.UseSwaggerUI(c =>
+            //{
+            //    c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+            //});
+            //// app.UseMvc();
+            ////app.UseHttpsRedirection();
+
+            ////app.UseRouting();
+
+            ////app.UseAuthorization();
+
+            ////app.UseEndpoints(endpoints =>
+            ////{
+            ////    endpoints.MapControllers();
+            ////});
+
+            //app.UseHttpsRedirection();
+            //app.UseMvc();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseSwagger();
+            app.UseAuthentication();
 
-            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.), 
-            // specifying the Swagger JSON endpoint.
+            app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
             });
-           // app.UseMvc();
+
             //app.UseHttpsRedirection();
 
             app.UseRouting();
 
             app.UseAuthorization();
 
-            //app.UseEndpoints(endpoints =>
-            //{
-            //    endpoints.MapControllers();
-            //});
-
-            app.UseHttpsRedirection();
-            app.UseMvc();
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
         }
     }
 }

@@ -8,7 +8,7 @@ using Xunit;
 
 namespace GamingHub2.Database
 {
-    public class Korisnik
+    public partial class Korisnik
     {
         public Korisnik()
         {

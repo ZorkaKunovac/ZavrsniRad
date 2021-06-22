@@ -42,7 +42,6 @@ namespace GamingHub2.WinUI.Korisnik
             this.label5 = new System.Windows.Forms.Label();
             this.btnSnimi = new System.Windows.Forms.Button();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.clbUloge = new System.Windows.Forms.CheckedListBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.txtPasswordPotvrda = new System.Windows.Forms.TextBox();
@@ -148,14 +147,6 @@ namespace GamingHub2.WinUI.Korisnik
             // 
             this.errorProvider.ContainerControl = this;
             // 
-            // clbUloge
-            // 
-            this.clbUloge.FormattingEnabled = true;
-            this.clbUloge.Location = new System.Drawing.Point(42, 326);
-            this.clbUloge.Name = "clbUloge";
-            this.clbUloge.Size = new System.Drawing.Size(145, 94);
-            this.clbUloge.TabIndex = 15;
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -195,7 +186,6 @@ namespace GamingHub2.WinUI.Korisnik
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(553, 456);
-            this.Controls.Add(this.clbUloge);
             this.Controls.Add(this.btnSnimi);
             this.Controls.Add(this.txtPasswordPotvrda);
             this.Controls.Add(this.label7);
@@ -234,7 +224,6 @@ namespace GamingHub2.WinUI.Korisnik
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnSnimi;
         private System.Windows.Forms.ErrorProvider errorProvider;
-        private System.Windows.Forms.CheckedListBox clbUloge;
         private System.Windows.Forms.TextBox txtPasswordPotvrda;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtPassword;

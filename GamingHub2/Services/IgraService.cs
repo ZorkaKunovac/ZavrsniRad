@@ -36,6 +36,7 @@ namespace GamingHub2.Services
         {
             //var entity = Context.Rezervacije.Include("DodatnaOprema.Oprema").Include(x => x.Kupac).Include("Vozilo.Model").Include(x => x.Osiguranje).Where(x => x.RezervacijaId == id).FirstOrDefault();
             //return _mapper.Map<Model.Rezervacije>(entity);
+          //  var entity = Context.Igra.Include(x=>x.IgraKonzola.)
             var entity = Context.Igra.Include("IgraKonzola.Konzola").Include("IgraZanr.Zanr")
                 .Where(x => x.ID == id).FirstOrDefault();
             return _mapper.Map<Model.Igra>(entity);

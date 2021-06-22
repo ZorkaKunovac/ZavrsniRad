@@ -23,13 +23,13 @@ namespace GamingHub2.WinUI.Korisnik
             InitializeComponent();
             _id = id;
         }
-        private async Task LoadUloge()
-        {
-            var ulogeList = await _ulogaService.Get<List<Model.Uloga>>(null);
-            clbUloge.DataSource = ulogeList;
-            clbUloge.DisplayMember = "Naziv";
-            clbUloge.ValueMember = "Id";
-        }
+        //private async Task LoadUloge()
+        //{
+        //    var ulogeList = await _ulogaService.Get<List<Model.Uloga>>(null);
+        //    clbUloge.DataSource = ulogeList;
+        //    clbUloge.DisplayMember = "Naziv";
+        //    clbUloge.ValueMember = "Id";
+        //}
 
         private async void frmKorisnikDetalji_Load(object sender, EventArgs e)
         {
@@ -37,9 +37,9 @@ namespace GamingHub2.WinUI.Korisnik
             //clbUloge.DataSource = ulogeList;
             //clbUloge.DisplayMember = "Naziv";
             //clbUloge.ValueMember = "Id";
-            var uloge = await _ulogaService.Get<List<Model.Uloga>>(null);
-            clbUloge.DataSource = uloge;
-            clbUloge.DisplayMember = "Naziv";
+            //var uloge = await _ulogaService.Get<List<Model.Uloga>>(null);
+            //clbUloge.DataSource = uloge;
+            //clbUloge.DisplayMember = "Naziv";
 
 
             if (_id.HasValue)
@@ -51,17 +51,17 @@ namespace GamingHub2.WinUI.Korisnik
                 txtKorisnickoIme.Text = korisnik.KorisnickoIme;
                 txtEmail.Text = korisnik.Email;
                 txtTelefon.Text = korisnik.Telefon;
-                foreach (var item in korisnik.KorisnikUloga)
-                {
-                    for (int i = 0; i < clbUloge.Items.Count; i++)
-                    {
-                        Model.Uloga trenutni = (Model.Uloga)clbUloge.Items[i];
-                        if (trenutni.Id == item.UlogaId)
-                        {
-                            clbUloge.SetItemCheckState(i, CheckState.Checked);
-                        }
-                    }
-                }
+                //foreach (var item in korisnik.KorisnikUloga)
+                //{
+                //    for (int i = 0; i < clbUloge.Items.Count; i++)
+                //    {
+                //        Model.Uloga trenutni = (Model.Uloga)clbUloge.Items[i];
+                //        if (trenutni.Id == item.UlogaId)
+                //        {
+                //            clbUloge.SetItemCheckState(i, CheckState.Checked);
+                //        }
+                //    }
+                //}
             }
         }
 
@@ -69,7 +69,7 @@ namespace GamingHub2.WinUI.Korisnik
         {
             if (ValidateChildren())
             {
-                var uloge = clbUloge.CheckedItems.Cast<Model.Uloga>().Select(x => x.Id).ToList();
+                //var uloge = clbUloge.CheckedItems.Cast<Model.Uloga>().Select(x => x.Id).ToList();
 
                 Model.Korisnik entity = null;
                 if (!_id.HasValue)
@@ -83,7 +83,7 @@ namespace GamingHub2.WinUI.Korisnik
                         KorisnickoIme = txtKorisnickoIme.Text,
                         Password = txtPassword.Text,
                         PasswordPotvrda = txtPasswordPotvrda.Text,
-                        Uloge = uloge
+                        //Uloge = uloge
                     };
 
                    entity=  await _service.Insert<Model.Korisnik>(request);
@@ -97,7 +97,7 @@ namespace GamingHub2.WinUI.Korisnik
                         Telefon = txtTelefon.Text,
                         Password = txtPassword.Text,
                         PasswordPotvrda = txtPasswordPotvrda.Text,
-                        Uloge = uloge
+                        //Uloge = uloge
                     };
                     entity = await _service.Update<Model.Korisnik>(_id.Value, request);
                 }
