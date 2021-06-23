@@ -46,6 +46,7 @@ namespace GamingHub2.WinUI.Korisnik
             this.label7 = new System.Windows.Forms.Label();
             this.txtPasswordPotvrda = new System.Windows.Forms.TextBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
+            this.clbUloge = new System.Windows.Forms.CheckedListBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
@@ -181,11 +182,20 @@ namespace GamingHub2.WinUI.Korisnik
             this.txtPassword.Size = new System.Drawing.Size(145, 20);
             this.txtPassword.TabIndex = 11;
             // 
+            // clbUloge
+            // 
+            this.clbUloge.FormattingEnabled = true;
+            this.clbUloge.Location = new System.Drawing.Point(42, 326);
+            this.clbUloge.Name = "clbUloge";
+            this.clbUloge.Size = new System.Drawing.Size(120, 94);
+            this.clbUloge.TabIndex = 15;
+            // 
             // frmKorisnikDetalji
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(553, 456);
+            this.Controls.Add(this.clbUloge);
             this.Controls.Add(this.btnSnimi);
             this.Controls.Add(this.txtPasswordPotvrda);
             this.Controls.Add(this.label7);
@@ -228,5 +238,6 @@ namespace GamingHub2.WinUI.Korisnik
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.CheckedListBox clbUloge;
     }
 }

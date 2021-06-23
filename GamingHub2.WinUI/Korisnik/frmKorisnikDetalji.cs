@@ -1,4 +1,5 @@
-﻿using GamingHub2.Model.Requests;
+﻿using GamingHub2.Model;
+using GamingHub2.Model.Requests;
 using GamingHub2.WinUI.Properties;
 using System;
 using System.Collections.Generic;
@@ -14,37 +15,33 @@ namespace GamingHub2.WinUI.Korisnik
 {
     public partial class frmKorisnikDetalji : Form
     {
-        private readonly APIService _service = new APIService("Korisnik");
-        APIService _ulogaService = new APIService("Uloga");
+        APIService _service = new APIService("Korisnici");
+        APIService _ulogaService = new APIService("Uloge");
 
-        private int? _id = null;
-        public frmKorisnikDetalji(int? id = null)
+        // private int? _id = null;
+        private Model.Korisnici _korisnik;
+        public frmKorisnikDetalji(Model.Korisnici korisnik = null)
         {
             InitializeComponent();
-            _id = id;
+            _korisnik = korisnik;
+            
         }
-        //private async Task LoadUloge()
-        //{
-        //    var ulogeList = await _ulogaService.Get<List<Model.Uloga>>(null);
-        //    clbUloge.DataSource = ulogeList;
-        //    clbUloge.DisplayMember = "Naziv";
-        //    clbUloge.ValueMember = "Id";
-        //}
+        private async Task LoadUloge()
+        {
+            var ulogeList = await _ulogaService.Get<List<Model.Uloge>>(null);
+            clbUloge.DataSource = ulogeList;
+            clbUloge.DisplayMember = "Naziv";
+            //clbUloge.ValueMember = "Id";
+        }
 
         private async void frmKorisnikDetalji_Load(object sender, EventArgs e)
         {
-            //var ulogeList = await _ulogaService.Get<List<Model.Uloga>>(null);
-            //clbUloge.DataSource = ulogeList;
-            //clbUloge.DisplayMember = "Naziv";
-            //clbUloge.ValueMember = "Id";
-            //var uloge = await _ulogaService.Get<List<Model.Uloga>>(null);
-            //clbUloge.DataSource = uloge;
-            //clbUloge.DisplayMember = "Naziv";
+            await LoadUloge();
 
-
-            if (_id.HasValue)
+            if (_korisnik!=null)
             {
-                var korisnik = await _service.GetById<Model.Korisnik>(_id);
+
+                var korisnik = await _service.GetById<Model.Korisnici>(_korisnik.KorisnikId);
 
                 txtIme.Text = korisnik.Ime;
                 txtPrezime.Text = korisnik.Prezime;
@@ -69,49 +66,93 @@ namespace GamingHub2.WinUI.Korisnik
         {
             if (ValidateChildren())
             {
-                //var uloge = clbUloge.CheckedItems.Cast<Model.Uloga>().Select(x => x.Id).ToList();
-
-                Model.Korisnik entity = null;
-                if (!_id.HasValue)
+                var roleList = clbUloge.CheckedItems.Cast<Model.Uloge>().Select(x => x.UlogaId).ToList();
+                var request = new KorisniciUpsertRequest()
                 {
-                    KorisnikInsertRequest request = new KorisnikInsertRequest()
-                    {
-                        Ime = txtIme.Text,
-                        Prezime = txtPrezime.Text,
-                        Email = txtEmail.Text,
-                        Telefon = txtTelefon.Text,
-                        KorisnickoIme = txtKorisnickoIme.Text,
-                        Password = txtPassword.Text,
-                        PasswordPotvrda = txtPasswordPotvrda.Text,
-                        //Uloge = uloge
-                    };
+                    Ime = txtIme.Text,
+                    Prezime = txtPrezime.Text,
+                    Email = txtEmail.Text,
+                    Telefon = txtTelefon.Text,
+                    KorisnickoIme = txtKorisnickoIme.Text,
+                    Password = txtPassword.Text,
+                    PasswordPotvrda = txtPasswordPotvrda.Text,
+                   // Status = cbStatus.Checked,
+                    Uloge = roleList
+                };
 
-                   entity=  await _service.Insert<Model.Korisnik>(request);
+                Model.Korisnici entity = null;
+                try
+                {
+                    if (_korisnik == null)
+                    {
+
+                        entity = await _service.Update<Model.Korisnici>(_korisnik.KorisnikId, request);
+                        //if (entity.KorisnickoIme.Equals(APIService.Username))
+                        //{
+                        //    APIService.Password = request.Password;
+                        //}
+                    }
+                    else
+                    {
+                        entity = await _service.Insert<Model.Korisnici>(request);
+                    }
                 }
-                else
+                catch (Exception err)
                 {
-                    KorisnikUpdateRequest request = new KorisnikUpdateRequest()
-                    {
-                        Ime = txtIme.Text,
-                        Prezime = txtPrezime.Text,
-                        Telefon = txtTelefon.Text,
-                        Password = txtPassword.Text,
-                        PasswordPotvrda = txtPasswordPotvrda.Text,
-                        //Uloge = uloge
-                    };
-                    entity = await _service.Update<Model.Korisnik>(_id.Value, request);
+
+                    MessageBox.Show(err.Message);
                 }
                 if (entity != null)
                 {
                     MessageBox.Show("Uspješno izvršeno");
-                    DialogResult = DialogResult.OK;//sada možeš vidjeti
-                    this.Close();
-                    //  dgvIgre.DataSource = await _service.Get<List<Model.Igra>>(null);
                 }
+                this.Close();
+
+                //var uloge = clbUloge.CheckedItems.Cast<Model.Uloga>().Select(x => x.Id).ToList();
+                //var ulogeList = clbUloge.CheckedItems.Cast<Model.Uloga>().Select(x => x.Id).ToList();
+
+                // Model.Korisnik entity = null;
+                /* if (_korisnik == null)
+                 {
+                     var ulogeList = clbUloge.CheckedItems.Cast<Uloge>();
+                     var ulogeIdList = ulogeList.Select(x => x.UlogaId).ToList();
+
+                     //    KorisnikInsertRequest request = new KorisnikInsertRequest()
+                     //    {
+                     //        Ime = txtIme.Text,
+                     //        Prezime = txtPrezime.Text,
+                     //        Email = txtEmail.Text,
+                     //        Telefon = txtTelefon.Text,
+                     //        KorisnickoIme = txtKorisnickoIme.Text,
+                     //        Password = txtPassword.Text,
+                     //        PasswordPotvrda = txtPasswordPotvrda.Text,
+                     //        Uloge = ulogeIdList
+                     //    };
+
+                     //    var korisnik =  await _service.Insert<Model.Korisnik>(request);
+                     //}
+                     //else
+                     //{
+                     //    KorisnikUpdateRequest request = new KorisnikUpdateRequest()
+                     //    {
+                     //        Ime = txtIme.Text,
+                     //        Prezime = txtPrezime.Text,
+                     //        Telefon = txtTelefon.Text,
+                     //        Password = txtPassword.Text,
+                     //        PasswordPotvrda = txtPasswordPotvrda.Text,
+                     //        //Uloge = uloge
+                     //    };
+                     //    var korisnik = await _service.Update<Model.Korisnik>(_korisnik.Id, request);
+                     //}
+                     //if (entity != null)
+                     //{
+                     //    MessageBox.Show("Uspješno izvršeno");
+                     // //   DialogResult = DialogResult.OK;//sada možeš vidjeti
+                     //    this.Close();
+                     //    //  dgvIgre.DataSource = await _service.Get<List<Model.Igra>>(null);
+                     //}
+                 }*/
             }
-            //MessageBox.Show("Uspješno izvršeno");
-            //DialogResult = DialogResult.OK;//sada možeš vidjeti
-            //this.Close();
         }
 
         private void txtIme_Validating(object sender, CancelEventArgs e)

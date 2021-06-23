@@ -13,7 +13,7 @@ namespace GamingHub2.WinUI.Korisnik
 {
     public partial class frmPrikazKorisnika : Form
     {
-        APIService _service = new APIService("Korisnik");
+        APIService _service = new APIService("Korisnici");
         public frmPrikazKorisnika()
         {
             InitializeComponent();
@@ -25,26 +25,48 @@ namespace GamingHub2.WinUI.Korisnik
             {
                 Ime = txtIme.Text
             };
-            dgvKorisnici.DataSource = await _service.Get<List<Model.Korisnik>>(request);
+          //  dgvKorisnici.DataSource = await _service.Get<List<Model.Korisnici>>(request);
+
+            var result = await _service.Get<List<Model.Korisnici>>(request);
+            //foreach (var item in result)
+            //{
+            //    item.Uloge = "";
+            //    foreach (var x in item.KorisniciUloge)
+            //    {
+            //        item.Uloge += $"{x.Uloga.Naziv} ";
+            //    }
+            //}
+            dgvKorisnici.AutoGenerateColumns = false;
+            dgvKorisnici.DataSource = result;
         }
 
         private async void frmPrikazKorisnika_Load(object sender, EventArgs e)
         {
             dgvKorisnici.AutoGenerateColumns = false;
-            dgvKorisnici.DataSource = await _service.Get<List<Model.Korisnik>>(null);
+            dgvKorisnici.DataSource = await _service.Get<List<Model.Korisnici>>(null);
         }
 
         private async void dgvKorisnici_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            var korisnikId = int.Parse(dgvKorisnici.SelectedRows[0].Cells[0].Value.ToString());
+            var item = dgvKorisnici.SelectedRows[0].DataBoundItem;
+            frmKorisnikDetalji frm = new frmKorisnikDetalji(item as Model.Korisnici);
+            frm.ShowDialog();
 
-            frmKorisnikDetalji frm = new frmKorisnikDetalji(korisnikId);
-            var result = frm.ShowDialog();
-            if (frm.DialogResult == DialogResult.OK)
-            {
-                dgvKorisnici.DataSource = await _service.Get<List<Model.Korisnik>>(null);
-            }
+            //var korisnikId = int.Parse(dgvKorisnici.SelectedRows[0].Cells[0].Value.ToString());
 
+            //frmKorisnikDetalji frm = new frmKorisnikDetalji(korisnikId);
+            //var result = frm.ShowDialog();
+            //if (frm.DialogResult == DialogResult.OK)
+            //{
+            //    dgvKorisnici.DataSource = await _service.Get<List<Model.Korisnik>>(null);
+            //}
+
+        }
+
+        private void btnNoviKorisnik_Click(object sender, EventArgs e)
+        {
+            frmKorisnikDetalji frm = new frmKorisnikDetalji();
+            frm.ShowDialog();
         }
     }
 }

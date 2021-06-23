@@ -5,11 +5,15 @@ using Flurl.Http;
 using Flurl;
 using System.Threading.Tasks;
 using GamingHub2.Model;
+using System.Windows.Forms;
 
 namespace GamingHub2.WinUI
 {
     public class APIService
     {
+        public static string Username { get; set; }
+        public static string Password { get; set; }
+
         private string _route = null;
         public string endpoint = $"{Properties.Settings.Default.ApiURL}";
         public APIService(string route) //Kontroler
@@ -22,17 +26,14 @@ namespace GamingHub2.WinUI
             var query = "";
             if (searchRequest!=null)
                 query += await searchRequest?.ToQueryString();
-            var endpointt = $"{endpoint}/{_route}?{query}";
-            //var end = "https://localhost:5001/api/Zanr";
 
-
-            var result = await $"{endpoint}/{_route}?{query}".GetJsonAsync<T>();
+            var result = await $"{endpoint}/{_route}?{query}"/*.WithBasicAuth(Username, Password)*/.GetJsonAsync<T>();
             return result;
         }
         public async Task<T> GetById<T>(object id)
         {
             var url = $"{endpoint}/{_route}/{id}";
-            return await url.GetJsonAsync<T>();
+            return await url./*WithBasicAuth(Username, Password).*/GetJsonAsync<T>();
         }
         public async Task<T> Insert<T>(object request)
         {
@@ -40,12 +41,47 @@ namespace GamingHub2.WinUI
 
             var result = await url.PostJsonAsync(request).ReceiveJson<T>();
             return result;
+            //try
+            //{
+            //    return await url.WithBasicAuth(Username, Password).PostJsonAsync(request).ReceiveJson<T>();
+            //}
+            //catch (FlurlHttpException ex)
+            //{
+            //    var errors = await ex.GetResponseJsonAsync<Dictionary<string, string[]>>();
+
+            //    var stringBuilder = new StringBuilder();
+            //    foreach (var error in errors)
+            //    {
+            //        stringBuilder.AppendLine($"{error.Key}, ${string.Join(",", error.Value)}");
+            //    }
+
+            //    MessageBox.Show(stringBuilder.ToString(), "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    return default(T);
+            //}
         }
         public async Task<T> Update<T>(object id, object request)
         {
             var url = $"{endpoint}/{_route}/{id}";
             var result = await url.PutJsonAsync(request).ReceiveJson<T>();
             return result;
+
+            //try
+            //{
+            //    return await url.WithBasicAuth(Username, Password).PutJsonAsync(request).ReceiveJson<T>();
+            //}
+            //catch (FlurlHttpException ex)
+            //{
+            //    var errors = await ex.GetResponseJsonAsync<Dictionary<string, string[]>>();
+
+            //    var stringBuilder = new StringBuilder();
+            //    foreach (var error in errors)
+            //    {
+            //        stringBuilder.AppendLine($"{error.Key}, ${string.Join(",", error.Value)}");
+            //    }
+
+            //    MessageBox.Show(stringBuilder.ToString(), "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    return default(T);
+            //}
         }
     }
 }

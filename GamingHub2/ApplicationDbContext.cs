@@ -46,8 +46,8 @@ namespace GamingHub2
         public DbSet<KreditnaKartica> KreditnaKartica { get; set; }
         public DbSet<TipKartice> TipKartice { get; set; }
         public DbSet<Drzava> Drzava { get; set; }
-        public DbSet<Uloga> Uloga { get; set; }
-        public DbSet<KorisnikUloga> KorisnikUloga { get; set; }
+        public virtual DbSet<Uloge> Uloge { get; set; }
+        public virtual DbSet<KorisniciUloge> KorisniciUloge { get; set; }
 
 
     }

@@ -14,7 +14,7 @@ namespace GamingHub2.WinUI.Korisnik
 {
     public partial class frmRoleManager : Form
     {
-        APIService _service = new APIService("Uloga");
+        APIService _service = new APIService("Uloge");
         public frmRoleManager()
         {
             InitializeComponent();
@@ -26,8 +26,8 @@ namespace GamingHub2.WinUI.Korisnik
             {
                 Naziv = txtNaziv.Text
             };
-            Model.Uloga entity = null;
-            entity = await _service.Insert<Model.Uloga>(request);
+            Model.Uloge entity = null;
+            entity = await _service.Insert<Model.Uloge>(request);
 
             if (entity != null)
             {
@@ -35,7 +35,7 @@ namespace GamingHub2.WinUI.Korisnik
                 DialogResult = DialogResult.OK;
                 if (this.DialogResult == DialogResult.OK)
                 {
-                    dgvUloge.DataSource = await _service.Get<List<Model.Uloga>>(null);
+                    dgvUloge.DataSource = await _service.Get<List<Model.Uloge>>(null);
                 }
             }
         }
@@ -43,7 +43,7 @@ namespace GamingHub2.WinUI.Korisnik
         private async void frmRoleManager_Load(object sender, EventArgs e)
         {
             dgvUloge.AutoGenerateColumns = false;
-            dgvUloge.DataSource = await _service.Get<List<Model.Uloga>>(null);
+            dgvUloge.DataSource = await _service.Get<List<Model.Uloge>>(null);
         }
 
         private void txtNaziv_Validating(object sender, CancelEventArgs e)

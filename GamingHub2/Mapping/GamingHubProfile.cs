@@ -23,15 +23,24 @@ namespace GamingHub2.Mapping
             CreateMap<Database.IgraZanr, Model.IgraZanr>();
 
             CreateMap<Database.Proizvod, Model.Proizvod>(); //ReverseMap?
-            CreateMap<Database.Korisnik, Model.Korisnik>();
-            CreateMap<Database.Korisnik, KorisnikInsertRequest>().ReverseMap(); //reversemap? V3 39:30
+            CreateMap<Database.Korisnik, Model.Korisnici>();
 
-            //CreateMap<KorisnikInsertRequest, Database.Korisnik>().ReverseMap();
-            CreateMap<KorisnikUpdateRequest, Database.Korisnik>();
-            CreateMap<Database.KorisnikUloga, Model.KorisnikUloga>();
+            //CreateMap<Database.Korisnici, Model.Korisnici>().ReverseMap();
+            CreateMap<KorisniciUpsertRequest, Database.Korisnik>().ReverseMap();
+            //CreateMap<Database.Kupci, Model.Kupci>().ReverseMap();
+            CreateMap<Database.KorisniciUloge, Model.KorisniciUloge>().ReverseMap();
+            CreateMap<Database.Uloge, Model.Uloge>().ReverseMap();
 
-            CreateMap<Database.Uloga, Model.Uloga>();
-            CreateMap<UlogaInsertRequest, Database.Uloga>();
+            //CreateMap<Database.Uloga, Model.Uloga>();
+            //CreateMap<UlogaInsertRequest, Database.Uloga>();
+
+            //CreateMap<Database.Korisnik, KorisnikInsertRequest>().ReverseMap(); //reversemap? V3 39:30
+            ////CreateMap<KorisnikInsertRequest, Database.Korisnik>().ReverseMap();
+            //CreateMap<KorisnikUpdateRequest, Database.Korisnik>();
+            //CreateMap<Database.KorisniciUloge, Model.KorisnikUloga>();
+            //CreateMap<Database.Uloga, Model.Uloga>();
+            //CreateMap<UlogaInsertRequest, Database.Uloga>();
+
 
             //CreateMap<Database.Korisnik,KorisnikUpdateRequest>(); //reversemap? V3 39:30
 

@@ -3,6 +3,7 @@ using GamingHub2.WinUI.Konzola;
 using GamingHub2.WinUI.Korisnik;
 using GamingHub2.WinUI.Zanr;
 using GamingHub2.WinUI.Zanrovi;
+using GamingHub2.WinUI.Korisnici;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -178,6 +179,21 @@ namespace GamingHub2.WinUI
             frmRoleManager frm = new frmRoleManager();
             frm.MdiParent = this;
             frm.WindowState = FormWindowState.Maximized;
+            frm.Show();
+        }
+
+        private void prikazKorisnikaToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
+            frmKorisnici frm = new frmKorisnici();
+            frm.MdiParent = this;
+            frm.WindowState = FormWindowState.Maximized;
+            frm.Show();
+        }
+
+        private void noviKorisnikToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            frmKorisniciDetalji frm = new frmKorisniciDetalji();
             frm.Show();
         }
     }
