@@ -30,9 +30,9 @@ namespace GamingHub2.Mapping
             //CreateMap<Database.Kupci, Model.Kupci>().ReverseMap();
             CreateMap<Database.KorisniciUloge, Model.KorisniciUloge>().ReverseMap();
             CreateMap<Database.Uloge, Model.Uloge>().ReverseMap();
+            CreateMap<UlogaInsertRequest, Database.Uloge>();
 
             //CreateMap<Database.Uloga, Model.Uloga>();
-            //CreateMap<UlogaInsertRequest, Database.Uloga>();
 
             //CreateMap<Database.Korisnik, KorisnikInsertRequest>().ReverseMap(); //reversemap? V3 39:30
             ////CreateMap<KorisnikInsertRequest, Database.Korisnik>().ReverseMap();

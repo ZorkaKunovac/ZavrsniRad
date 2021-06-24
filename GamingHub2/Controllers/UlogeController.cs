@@ -6,12 +6,13 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using GamingHub2.Model;
 using GamingHub2.Services;
+using GamingHub2.Model.Requests;
 
 namespace GamingHub2.Controllers
 {
-    public class UlogeController : BaseReadController<Model.Uloge, object>
+    public class UlogeController : BaseCRUDController<Model.Uloge, object,UlogaInsertRequest,object>
     {
-        public UlogeController(IReadService<Uloge, object> service) : base(service)
+        public UlogeController(ICRUDService<Uloge, object,UlogaInsertRequest,object> service) : base(service)
         {
         }
     }
