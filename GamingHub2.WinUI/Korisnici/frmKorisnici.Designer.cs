@@ -46,6 +46,7 @@ namespace GamingHub2.WinUI.Korisnici
             this.Status = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Uloge = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnNoviKorisnik = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKorisnici)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -53,7 +54,7 @@ namespace GamingHub2.WinUI.Korisnici
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(478, 25);
+            this.label3.Location = new System.Drawing.Point(403, 24);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(75, 13);
             this.label3.TabIndex = 23;
@@ -61,7 +62,7 @@ namespace GamingHub2.WinUI.Korisnici
             // 
             // txtKorisnickoIme
             // 
-            this.txtKorisnickoIme.Location = new System.Drawing.Point(481, 40);
+            this.txtKorisnickoIme.Location = new System.Drawing.Point(406, 40);
             this.txtKorisnickoIme.Name = "txtKorisnickoIme";
             this.txtKorisnickoIme.Size = new System.Drawing.Size(170, 20);
             this.txtKorisnickoIme.TabIndex = 22;
@@ -69,7 +70,7 @@ namespace GamingHub2.WinUI.Korisnici
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(251, 24);
+            this.label2.Location = new System.Drawing.Point(214, 24);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(44, 13);
             this.label2.TabIndex = 21;
@@ -86,7 +87,7 @@ namespace GamingHub2.WinUI.Korisnici
             // 
             // txtPrezime
             // 
-            this.txtPrezime.Location = new System.Drawing.Point(254, 40);
+            this.txtPrezime.Location = new System.Drawing.Point(217, 40);
             this.txtPrezime.Name = "txtPrezime";
             this.txtPrezime.Size = new System.Drawing.Size(170, 20);
             this.txtPrezime.TabIndex = 19;
@@ -100,7 +101,7 @@ namespace GamingHub2.WinUI.Korisnici
             // 
             // btnPrikazi
             // 
-            this.btnPrikazi.Location = new System.Drawing.Point(700, 40);
+            this.btnPrikazi.Location = new System.Drawing.Point(592, 40);
             this.btnPrikazi.Name = "btnPrikazi";
             this.btnPrikazi.Size = new System.Drawing.Size(75, 23);
             this.btnPrikazi.TabIndex = 17;
@@ -205,11 +206,22 @@ namespace GamingHub2.WinUI.Korisnici
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Korisnici";
             // 
+            // btnNoviKorisnik
+            // 
+            this.btnNoviKorisnik.Location = new System.Drawing.Point(685, 40);
+            this.btnNoviKorisnik.Name = "btnNoviKorisnik";
+            this.btnNoviKorisnik.Size = new System.Drawing.Size(89, 23);
+            this.btnNoviKorisnik.TabIndex = 24;
+            this.btnNoviKorisnik.Text = "Novi korisnik";
+            this.btnNoviKorisnik.UseVisualStyleBackColor = true;
+            this.btnNoviKorisnik.Click += new System.EventHandler(this.btnNoviKorisnik_Click);
+            // 
             // frmKorisnici
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnNoviKorisnik);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtKorisnickoIme);
             this.Controls.Add(this.label2);
@@ -246,5 +258,6 @@ namespace GamingHub2.WinUI.Korisnici
         private System.Windows.Forms.DataGridViewCheckBoxColumn Status;
         private System.Windows.Forms.DataGridViewTextBoxColumn Uloge;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button btnNoviKorisnik;
     }
 }

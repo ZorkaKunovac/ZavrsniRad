@@ -49,9 +49,11 @@ namespace GamingHub2.WinUI.Korisnici
             frm.ShowDialog();
         }
 
-        //private void frmKorisnici_Load(object sender, EventArgs e)
-        //{
+        private void btnNoviKorisnik_Click(object sender, EventArgs e)
+        {
+            frmKorisniciDetalji frm = new frmKorisniciDetalji();
+            frm.ShowDialog();
+        }
 
-        //}
     }
 }
