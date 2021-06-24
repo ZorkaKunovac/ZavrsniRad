@@ -43,7 +43,7 @@ namespace GamingHub2.WinUI.Korisnici
             this.KorisnickoIme = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Telefon = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Status = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.SlikaLink = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Uloge = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnNoviKorisnik = new System.Windows.Forms.Button();
@@ -113,7 +113,7 @@ namespace GamingHub2.WinUI.Korisnici
             // 
             this.dgvKorisnici.AllowUserToAddRows = false;
             this.dgvKorisnici.AllowUserToDeleteRows = false;
-            this.dgvKorisnici.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgvKorisnici.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvKorisnici.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvKorisnici.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.KorisnikId,
@@ -122,7 +122,7 @@ namespace GamingHub2.WinUI.Korisnici
             this.KorisnickoIme,
             this.Email,
             this.Telefon,
-            this.Status,
+            this.SlikaLink,
             this.Uloge});
             this.dgvKorisnici.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvKorisnici.Location = new System.Drawing.Point(3, 16);
@@ -147,7 +147,6 @@ namespace GamingHub2.WinUI.Korisnici
             this.Ime.HeaderText = "Ime";
             this.Ime.Name = "Ime";
             this.Ime.ReadOnly = true;
-            this.Ime.Width = 49;
             // 
             // Prezime
             // 
@@ -155,7 +154,6 @@ namespace GamingHub2.WinUI.Korisnici
             this.Prezime.HeaderText = "Prezime";
             this.Prezime.Name = "Prezime";
             this.Prezime.ReadOnly = true;
-            this.Prezime.Width = 69;
             // 
             // KorisnickoIme
             // 
@@ -170,7 +168,6 @@ namespace GamingHub2.WinUI.Korisnici
             this.Email.HeaderText = "Email";
             this.Email.Name = "Email";
             this.Email.ReadOnly = true;
-            this.Email.Width = 57;
             // 
             // Telefon
             // 
@@ -178,15 +175,13 @@ namespace GamingHub2.WinUI.Korisnici
             this.Telefon.HeaderText = "Telefon";
             this.Telefon.Name = "Telefon";
             this.Telefon.ReadOnly = true;
-            this.Telefon.Width = 68;
             // 
-            // Status
+            // SlikaLink
             // 
-            this.Status.DataPropertyName = "Status";
-            this.Status.HeaderText = "Status";
-            this.Status.Name = "Status";
-            this.Status.ReadOnly = true;
-            this.Status.Width = 43;
+            this.SlikaLink.DataPropertyName = "SlikaLink";
+            this.SlikaLink.HeaderText = "Slika";
+            this.SlikaLink.Name = "SlikaLink";
+            this.SlikaLink.ReadOnly = true;
             // 
             // Uloge
             // 
@@ -194,7 +189,6 @@ namespace GamingHub2.WinUI.Korisnici
             this.Uloge.HeaderText = "Uloge";
             this.Uloge.Name = "Uloge";
             this.Uloge.ReadOnly = true;
-            this.Uloge.Width = 60;
             // 
             // groupBox1
             // 
@@ -232,6 +226,7 @@ namespace GamingHub2.WinUI.Korisnici
             this.Controls.Add(this.groupBox1);
             this.Name = "frmKorisnici";
             this.Text = "frmKorisnici";
+            this.Load += new System.EventHandler(this.frmKorisnici_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvKorisnici)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -249,15 +244,15 @@ namespace GamingHub2.WinUI.Korisnici
         private System.Windows.Forms.TextBox txtIme;
         private System.Windows.Forms.Button btnPrikazi;
         private System.Windows.Forms.DataGridView dgvKorisnici;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button btnNoviKorisnik;
         private System.Windows.Forms.DataGridViewTextBoxColumn KorisnikId;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ime;
         private System.Windows.Forms.DataGridViewTextBoxColumn Prezime;
         private System.Windows.Forms.DataGridViewTextBoxColumn KorisnickoIme;
         private System.Windows.Forms.DataGridViewTextBoxColumn Email;
         private System.Windows.Forms.DataGridViewTextBoxColumn Telefon;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Status;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SlikaLink;
         private System.Windows.Forms.DataGridViewTextBoxColumn Uloge;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button btnNoviKorisnik;
     }
 }

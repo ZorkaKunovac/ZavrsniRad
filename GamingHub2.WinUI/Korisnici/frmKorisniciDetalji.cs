@@ -66,6 +66,7 @@ namespace GamingHub2.WinUI.Korisnici
                 if (entity != null)
                 {
                     MessageBox.Show("Uspješno izvršeno");
+                    DialogResult = DialogResult.OK;
                 }
                 this.Close();
             }
@@ -108,14 +109,63 @@ namespace GamingHub2.WinUI.Korisnici
                 errorProvider.SetError(txtIme, Properties.Resources.ObaveznoPolje);
                 e.Cancel = true;
             }
-            else if (!Regex.IsMatch(txtIme.Text, @"^[\w \t:]{5,50}$"))
+            else if (!Regex.IsMatch(txtIme.Text, @"^[A-Z][A-Za-z \t-]{2,50}$"))
             {
                 errorProvider.SetError(txtIme, Properties.Resources.NeispravanFormat);
                 e.Cancel = true;
             }
             else
             {
-                //ili errorProvider.SetError(txtNaziv, null);
+                errorProvider.Clear();
+            }
+        }
+
+        private void txtPrezime_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtPrezime.Text))
+            {
+                errorProvider.SetError(txtPrezime, Properties.Resources.ObaveznoPolje);
+                e.Cancel = true;
+            }
+            else if (!Regex.IsMatch(txtPrezime.Text, @"^[A-Z][A-Za-z \t-]{2,50}$"))
+            {
+                errorProvider.SetError(txtPrezime, Properties.Resources.NeispravanFormat);
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider.Clear();
+            }
+
+        }
+
+        private void txtEmail_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtEmail.Text))
+            {
+                errorProvider.SetError(txtEmail, Properties.Resources.ObaveznoPolje);
+                e.Cancel = true;
+            }
+            else if (!Regex.IsMatch(txtEmail.Text, @"^[a-z]+[-+.'\w]+@[a-z]+\.[-.\w]+$", RegexOptions.IgnoreCase))
+            {
+                errorProvider.SetError(txtEmail, Properties.Resources.NeispravanFormat);
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider.Clear();
+            }
+        }
+
+        private void txtTelefon_Validating(object sender, CancelEventArgs e)
+        {
+           if (!Regex.IsMatch(txtTelefon.Text, @"^[+]?\d{3}[ ]?\d{2}[ ]?\d{3}[ ]?\d{3}$", RegexOptions.IgnoreCase))
+            {
+                errorProvider.SetError(txtTelefon, "Format telefona je: +387 61 000 111");
+                e.Cancel = true;
+            }
+            else
+            {
                 errorProvider.Clear();
             }
         }

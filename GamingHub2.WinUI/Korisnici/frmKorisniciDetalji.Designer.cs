@@ -146,6 +146,7 @@ namespace GamingHub2.WinUI.Korisnici
             this.txtTelefon.Name = "txtTelefon";
             this.txtTelefon.Size = new System.Drawing.Size(237, 20);
             this.txtTelefon.TabIndex = 8;
+            this.txtTelefon.Validating += new System.ComponentModel.CancelEventHandler(this.txtTelefon_Validating);
             // 
             // label4
             // 
@@ -179,6 +180,7 @@ namespace GamingHub2.WinUI.Korisnici
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(237, 20);
             this.txtEmail.TabIndex = 4;
+            this.txtEmail.Validating += new System.ComponentModel.CancelEventHandler(this.txtEmail_Validating);
             // 
             // label2
             // 
@@ -195,6 +197,7 @@ namespace GamingHub2.WinUI.Korisnici
             this.txtPrezime.Name = "txtPrezime";
             this.txtPrezime.Size = new System.Drawing.Size(237, 20);
             this.txtPrezime.TabIndex = 2;
+            this.txtPrezime.Validating += new System.ComponentModel.CancelEventHandler(this.txtPrezime_Validating);
             // 
             // label1
             // 

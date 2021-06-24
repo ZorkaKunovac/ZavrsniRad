@@ -42,18 +42,32 @@ namespace GamingHub2.WinUI.Korisnici
             dgvKorisnici.DataSource = result;
         }
 
-        private void dgvKorisnici_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private async void dgvKorisnici_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             var id = dgvKorisnici.SelectedRows[0].Cells[0].Value;
             frmKorisniciDetalji frm = new frmKorisniciDetalji(int.Parse(id.ToString()));
-            frm.ShowDialog();
+            var result = frm.ShowDialog();
+            if (frm.DialogResult == DialogResult.OK)
+            {
+                dgvKorisnici.DataSource = await _korisniciService.Get<List<Model.Korisnici>>(null);
+            }
         }
 
-        private void btnNoviKorisnik_Click(object sender, EventArgs e)
+        private async void btnNoviKorisnik_Click(object sender, EventArgs e)
         {
             frmKorisniciDetalji frm = new frmKorisniciDetalji();
             frm.ShowDialog();
+            if (frm.DialogResult == DialogResult.OK)
+            {
+                dgvKorisnici.DataSource = await _korisniciService.Get<List<Model.Korisnici>>(null);
+            }
+
         }
 
+        private async void frmKorisnici_Load(object sender, EventArgs e)
+        {
+            dgvKorisnici.AutoGenerateColumns = false;
+            dgvKorisnici.DataSource = await _korisniciService.Get<List<Model.Korisnici>>(null);
+        }
     }
 }
