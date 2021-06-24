@@ -12,7 +12,6 @@ namespace GamingHub2.Model
         public string Email { get; set; }
         public string Telefon { get; set; }
         public string KorisnickoIme { get; set; }
-        public bool Status { get; set; }
 
         public ICollection<KorisniciUloge> KorisniciUloge { get; set; }
         public string Uloge { get; set; }

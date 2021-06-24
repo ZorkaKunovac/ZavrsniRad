@@ -14,7 +14,6 @@ namespace GamingHub2.Database
         [Key]
         public int UlogaId { get; set; }
         public string Naziv { get; set; }
-        public string Opis { get; set; }
 
         public virtual ICollection<KorisniciUloge> KorisniciUloge { get; set; }
     }

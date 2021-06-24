@@ -9,6 +9,5 @@ namespace GamingHub2.Model
     {
         public int UlogaId { get; set; }
         public string Naziv { get; set; }
-        public string Opis { get; set; }
     }
 }

@@ -8,22 +8,23 @@ namespace GamingHub2.Model.Requests
     public class KorisniciUpsertRequest
     {
         //[Required(AllowEmptyStrings = false)]
-        [Required]
+        //  [Required]
+
+
+        [StringLength(50, ErrorMessage = "{0} mora biti izmedju {2} i {1} znakova.", MinimumLength = 2)]
         public string Ime { get; set; }
-        [Required]
+
+        [StringLength(50, ErrorMessage = "{0} mora biti izmedju {2} i {1} znakova.", MinimumLength = 2)]
         public string Prezime { get; set; }
+        [Required]
         [EmailAddress]
-        [Required]
         public string Email { get; set; }
-        [Required]
         [Phone]
         public string Telefon { get; set; }
         [Required]
         public string KorisnickoIme { get; set; }
         public string Password { get; set; }
         public string PasswordPotvrda { get; set; }
-        [Required]
-        public bool Status { get; set; }
         public List<int> Uloge { get; set; } = new List<int>();
     }
 }

@@ -33,7 +33,6 @@ namespace GamingHub2.WinUI.Korisnici
             this.btnSacuvaj = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.clbUloge = new System.Windows.Forms.CheckedListBox();
-            this.cbStatus = new System.Windows.Forms.CheckBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtLozinka = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -50,6 +49,7 @@ namespace GamingHub2.WinUI.Korisnici
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.label6 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
@@ -77,22 +77,10 @@ namespace GamingHub2.WinUI.Korisnici
             // clbUloge
             // 
             this.clbUloge.FormattingEnabled = true;
-            this.clbUloge.Location = new System.Drawing.Point(9, 122);
+            this.clbUloge.Location = new System.Drawing.Point(92, 120);
             this.clbUloge.Name = "clbUloge";
             this.clbUloge.Size = new System.Drawing.Size(108, 49);
             this.clbUloge.TabIndex = 2;
-            // 
-            // cbStatus
-            // 
-            this.cbStatus.AutoSize = true;
-            this.cbStatus.Checked = true;
-            this.cbStatus.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbStatus.Location = new System.Drawing.Point(273, 122);
-            this.cbStatus.Name = "cbStatus";
-            this.cbStatus.Size = new System.Drawing.Size(56, 17);
-            this.cbStatus.TabIndex = 3;
-            this.cbStatus.Text = "Status";
-            this.cbStatus.UseVisualStyleBackColor = true;
             // 
             // label5
             // 
@@ -137,9 +125,9 @@ namespace GamingHub2.WinUI.Korisnici
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.clbUloge);
-            this.groupBox2.Controls.Add(this.cbStatus);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.txtLozinka);
             this.groupBox2.Controls.Add(this.label7);
@@ -183,6 +171,7 @@ namespace GamingHub2.WinUI.Korisnici
             this.txtIme.Name = "txtIme";
             this.txtIme.Size = new System.Drawing.Size(237, 20);
             this.txtIme.TabIndex = 6;
+            this.txtIme.Validating += new System.ComponentModel.CancelEventHandler(this.txtIme_Validating);
             // 
             // txtEmail
             // 
@@ -237,6 +226,15 @@ namespace GamingHub2.WinUI.Korisnici
             // 
             this.errorProvider.ContainerControl = this;
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(37, 120);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(35, 13);
+            this.label6.TabIndex = 18;
+            this.label6.Text = "Uloge";
+            // 
             // frmKorisniciDetalji
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -262,7 +260,6 @@ namespace GamingHub2.WinUI.Korisnici
         private System.Windows.Forms.Button btnSacuvaj;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.CheckedListBox clbUloge;
-        private System.Windows.Forms.CheckBox cbStatus;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtLozinka;
         private System.Windows.Forms.Label label7;
@@ -279,5 +276,6 @@ namespace GamingHub2.WinUI.Korisnici
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ErrorProvider errorProvider;
+        private System.Windows.Forms.Label label6;
     }
 }

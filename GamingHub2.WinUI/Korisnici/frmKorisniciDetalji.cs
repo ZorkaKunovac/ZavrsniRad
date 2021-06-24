@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -37,7 +38,6 @@ namespace GamingHub2.WinUI.Korisnici
                     KorisnickoIme = txtKorisnickoIme.Text,
                     Password = txtLozinka.Text,
                     PasswordPotvrda = txtPotvrdaLozinke.Text,
-                    Status = cbStatus.Checked,
                     Uloge = roleList
                 };
 
@@ -86,7 +86,6 @@ namespace GamingHub2.WinUI.Korisnici
                 txtEmail.Text = result.Email;
                 txtTelefon.Text = result.Telefon;
                 txtKorisnickoIme.Text = result.KorisnickoIme;
-                cbStatus.Checked = result.Status;
 
                 foreach (var item in result.KorisniciUloge)
                 {
@@ -99,6 +98,25 @@ namespace GamingHub2.WinUI.Korisnici
                         }
                     }
                 }
+            }
+        }
+
+        private void txtIme_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtIme.Text))
+            {
+                errorProvider.SetError(txtIme, Properties.Resources.ObaveznoPolje);
+                e.Cancel = true;
+            }
+            else if (!Regex.IsMatch(txtIme.Text, @"^[\w \t:]{5,50}$"))
+            {
+                errorProvider.SetError(txtIme, Properties.Resources.NeispravanFormat);
+                e.Cancel = true;
+            }
+            else
+            {
+                //ili errorProvider.SetError(txtNaziv, null);
+                errorProvider.Clear();
             }
         }
     }
