@@ -39,6 +39,7 @@ namespace GamingHub2.WinUI.Korisnici
             this.txtKorisnickoIme = new System.Windows.Forms.TextBox();
             this.txtPotvrdaLozinke = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.txtTelefon = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -49,7 +50,6 @@ namespace GamingHub2.WinUI.Korisnici
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.label6 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
@@ -140,6 +140,15 @@ namespace GamingHub2.WinUI.Korisnici
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Korisnički podaci";
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(37, 120);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(35, 13);
+            this.label6.TabIndex = 18;
+            this.label6.Text = "Uloge";
+            // 
             // txtTelefon
             // 
             this.txtTelefon.Location = new System.Drawing.Point(92, 106);
@@ -228,15 +237,6 @@ namespace GamingHub2.WinUI.Korisnici
             // errorProvider
             // 
             this.errorProvider.ContainerControl = this;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(37, 120);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(35, 13);
-            this.label6.TabIndex = 18;
-            this.label6.Text = "Uloge";
             // 
             // frmKorisniciDetalji
             // 

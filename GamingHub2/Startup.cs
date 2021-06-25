@@ -40,9 +40,6 @@ namespace GamingHub2
         public void ConfigureServices(IServiceCollection services)
         {
             // services.AddControllers();
-
-            //           services.AddControllers().AddNewtonsoftJson(x =>
-            //x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
             //services.AddControllers(x =>
             //{
             //    x.Filters.Add<ErrorFilter>();
@@ -81,13 +78,7 @@ namespace GamingHub2
             services.AddAuthentication("BasicAuthentication")
               .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", null);
 
-            //services.AddMvc(option => option.EnableEndpointRouting = false)
-            //    .SetCompatibilityVersion(CompatibilityVersion.Version_3_0)
-            //    .AddNewtonsoftJson(opt => opt.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
-
             //  services.AddControllers(.)
-            // services.AddControllers().AddNewtonsoftJson(x => x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
-           // JsonConvert.SerializeObject(model, new JsonSerializerSettings { ReferenceLoopHandling = ReferenceLoopHandling.Ignore });
 
             services.AddAutoMapper(typeof(Startup));
 
@@ -123,30 +114,6 @@ namespace GamingHub2
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            //if (env.IsDevelopment())
-            //{
-            //    app.UseDeveloperExceptionPage();
-            //}
-
-            //app.UseSwagger();
-
-            //// Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.), 
-            //// specifying the Swagger JSON endpoint.
-            //app.UseSwaggerUI(c =>
-            //{
-            //    c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
-            //});
-            //// app.UseMvc();
-            ////app.UseHttpsRedirection();
-
-            ////app.UseRouting();
-
-            ////app.UseAuthorization();
-
-            ////app.UseEndpoints(endpoints =>
-            ////{
-            ////    endpoints.MapControllers();
-            ////});
 
             //app.UseHttpsRedirection();
             //app.UseMvc();

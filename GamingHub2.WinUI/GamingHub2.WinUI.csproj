@@ -126,6 +126,12 @@
     <Compile Include="Korisnici\frmRoleManager.Designer.cs">
       <DependentUpon>frmRoleManager.cs</DependentUpon>
     </Compile>
+    <Compile Include="Profil\frmProfil.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Profil\frmProfil.Designer.cs">
+      <DependentUpon>frmProfil.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Proizvod\Proizvodi.cs">
       <SubType>Form</SubType>
@@ -216,8 +222,6 @@
       <Name>GamingHub2.Model</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Profil\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
