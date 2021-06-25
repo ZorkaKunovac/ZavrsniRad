@@ -42,16 +42,15 @@ namespace GamingHub2.Security
                 var username = credentials[0];
                 var password = credentials[1];
                 user = _userService.Authenticiraj(username, password);
-                //user = await _userService.Login(username, password);
             }
-            //catch
-            //{
-            //    return AuthenticateResult.Fail("Invalid Authorization Header");
-            //}
-            catch (Exception ex)
+            catch
             {
-                return AuthenticateResult.Fail("Incorrect username or password");
+                return AuthenticateResult.Fail("Invalid Authorization Header");
             }
+            //catch (Exception ex)
+            //{
+            //    return AuthenticateResult.Fail("Incorrect username or password");
+            //}
 
             if (user == null)
                 return AuthenticateResult.Fail("Invalid Username or Password");

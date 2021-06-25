@@ -16,7 +16,7 @@ namespace GamingHub2.WinUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmPocetna());
+            Application.Run(new frmLogin());
         }
     }
 }

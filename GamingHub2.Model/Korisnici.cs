@@ -20,5 +20,12 @@ namespace GamingHub2.Model
         {
             return $"{Ime} {Prezime} - {KorisnickoIme}";
         }
+
+
+        //public int KorisnikId { get; set; }
+        //public DateTime? DatumRodjenja { get; set; }
+        //public string LozinkaHash { get; set; }
+        //public string LozinkaSalt { get; set; }
+        //public bool? Status { get; set; }
     }
 }
