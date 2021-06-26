@@ -13,6 +13,5 @@ namespace GamingHub2.Model.Requests
 
         [MaxLength(500, ErrorMessage = "Maksimalno 500 znakova")]
         public string Opis { get; set; }
-
     }
 }

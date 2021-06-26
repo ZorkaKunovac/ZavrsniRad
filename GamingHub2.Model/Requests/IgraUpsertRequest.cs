@@ -20,12 +20,9 @@ namespace GamingHub2.Model.Requests
         public string Izdavac { get; set; }
         public DateTime? DatumIzlaska { get; set; }
         public string VideoLink { get; set; }
-        //public string SlikaLink { get; set; }
         public byte[] SlikaLink { get; set; }
-        //public int KonzolaID { get; internal set; }
         public List<int> Konzole { get; set; } = new List<int>();
         public List<int> Zanrovi { get; set; } = new List<int>();
 
-        //public List<IgraKonzola> Konzola { get; set; }
     }
 }
