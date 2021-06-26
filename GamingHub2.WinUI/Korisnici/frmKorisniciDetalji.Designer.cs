@@ -229,7 +229,7 @@ namespace GamingHub2.WinUI.Korisnici
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(38, 21);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(345, 134);
+            this.groupBox1.Size = new System.Drawing.Size(516, 134);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Lični podaci";
@@ -242,7 +242,7 @@ namespace GamingHub2.WinUI.Korisnici
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(434, 450);
+            this.ClientSize = new System.Drawing.Size(580, 450);
             this.Controls.Add(this.btnSacuvaj);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
