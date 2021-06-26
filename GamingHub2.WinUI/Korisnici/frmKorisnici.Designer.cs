@@ -37,16 +37,16 @@ namespace GamingHub2.WinUI.Korisnici
             this.txtIme = new System.Windows.Forms.TextBox();
             this.btnPrikazi = new System.Windows.Forms.Button();
             this.dgvKorisnici = new System.Windows.Forms.DataGridView();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnNoviKorisnik = new System.Windows.Forms.Button();
             this.KorisnikId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Prezime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.KorisnickoIme = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Telefon = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SlikaLink = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Slika = new System.Windows.Forms.DataGridViewImageColumn();
             this.Uloge = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnNoviKorisnik = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKorisnici)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -122,7 +122,7 @@ namespace GamingHub2.WinUI.Korisnici
             this.KorisnickoIme,
             this.Email,
             this.Telefon,
-            this.SlikaLink,
+            this.Slika,
             this.Uloge});
             this.dgvKorisnici.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvKorisnici.Location = new System.Drawing.Point(3, 16);
@@ -132,6 +132,26 @@ namespace GamingHub2.WinUI.Korisnici
             this.dgvKorisnici.Size = new System.Drawing.Size(741, 321);
             this.dgvKorisnici.TabIndex = 0;
             this.dgvKorisnici.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvKorisnici_CellContentClick);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.dgvKorisnici);
+            this.groupBox1.Location = new System.Drawing.Point(28, 86);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(747, 340);
+            this.groupBox1.TabIndex = 16;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Korisnici";
+            // 
+            // btnNoviKorisnik
+            // 
+            this.btnNoviKorisnik.Location = new System.Drawing.Point(685, 40);
+            this.btnNoviKorisnik.Name = "btnNoviKorisnik";
+            this.btnNoviKorisnik.Size = new System.Drawing.Size(89, 23);
+            this.btnNoviKorisnik.TabIndex = 24;
+            this.btnNoviKorisnik.Text = "Novi korisnik";
+            this.btnNoviKorisnik.UseVisualStyleBackColor = true;
+            this.btnNoviKorisnik.Click += new System.EventHandler(this.btnNoviKorisnik_Click);
             // 
             // KorisnikId
             // 
@@ -176,12 +196,12 @@ namespace GamingHub2.WinUI.Korisnici
             this.Telefon.Name = "Telefon";
             this.Telefon.ReadOnly = true;
             // 
-            // SlikaLink
+            // Slika
             // 
-            this.SlikaLink.DataPropertyName = "SlikaLink";
-            this.SlikaLink.HeaderText = "Slika";
-            this.SlikaLink.Name = "SlikaLink";
-            this.SlikaLink.ReadOnly = true;
+            this.Slika.DataPropertyName = "Slika";
+            this.Slika.HeaderText = "Slika";
+            this.Slika.Name = "Slika";
+            this.Slika.ReadOnly = true;
             // 
             // Uloge
             // 
@@ -189,26 +209,6 @@ namespace GamingHub2.WinUI.Korisnici
             this.Uloge.HeaderText = "Uloge";
             this.Uloge.Name = "Uloge";
             this.Uloge.ReadOnly = true;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.dgvKorisnici);
-            this.groupBox1.Location = new System.Drawing.Point(28, 86);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(747, 340);
-            this.groupBox1.TabIndex = 16;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Korisnici";
-            // 
-            // btnNoviKorisnik
-            // 
-            this.btnNoviKorisnik.Location = new System.Drawing.Point(685, 40);
-            this.btnNoviKorisnik.Name = "btnNoviKorisnik";
-            this.btnNoviKorisnik.Size = new System.Drawing.Size(89, 23);
-            this.btnNoviKorisnik.TabIndex = 24;
-            this.btnNoviKorisnik.Text = "Novi korisnik";
-            this.btnNoviKorisnik.UseVisualStyleBackColor = true;
-            this.btnNoviKorisnik.Click += new System.EventHandler(this.btnNoviKorisnik_Click);
             // 
             // frmKorisnici
             // 
@@ -226,7 +226,6 @@ namespace GamingHub2.WinUI.Korisnici
             this.Controls.Add(this.groupBox1);
             this.Name = "frmKorisnici";
             this.Text = "frmKorisnici";
-            this.Load += new System.EventHandler(this.frmKorisnici_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvKorisnici)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -252,7 +251,7 @@ namespace GamingHub2.WinUI.Korisnici
         private System.Windows.Forms.DataGridViewTextBoxColumn KorisnickoIme;
         private System.Windows.Forms.DataGridViewTextBoxColumn Email;
         private System.Windows.Forms.DataGridViewTextBoxColumn Telefon;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SlikaLink;
+        private System.Windows.Forms.DataGridViewImageColumn Slika;
         private System.Windows.Forms.DataGridViewTextBoxColumn Uloge;
     }
 }

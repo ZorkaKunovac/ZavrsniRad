@@ -112,7 +112,7 @@ namespace GamingHub2.WinUI
 
         private void prikazKorisnikaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmPrikazKorisnika frm = new frmPrikazKorisnika();
+            frmKorisnici frm = new frmKorisnici();
             frm.MdiParent = this;
             frm.WindowState = FormWindowState.Maximized;
             frm.Show();
@@ -135,9 +135,9 @@ namespace GamingHub2.WinUI
 
         private void noviKorisnikToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmKorisnikDetalji frm = new frmKorisnikDetalji();
-           // frm.MdiParent = this;
+            frmKorisniciDetalji frm = new frmKorisniciDetalji();
             frm.Show();
+           // frm.MdiParent = this;
 
             // frm.ShowDialog(); omogucava refreshanje dgv-a nakon unosa podataka ali nije moguce jer forma ima parent.
             //DialogResult = DialogResult.OK;

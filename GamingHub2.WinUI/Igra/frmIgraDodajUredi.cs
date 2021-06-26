@@ -83,10 +83,6 @@ namespace GamingHub2.WinUI.Igra
             }
         }
 
-        //if (result.Slika.Length != 0) {
-        //           pbSlika.Image = Image.FromStream(new MemoryStream(result.SlikaThumb));
-        //       }
-
         public Image BytesToImage(byte[] arr)
         {
             MemoryStream ms = new MemoryStream(arr);
@@ -115,7 +111,6 @@ namespace GamingHub2.WinUI.Igra
                 request.Izdavac = txtIzdavac.Text;
                 request.DatumIzlaska = dtpDatumIzlaska.Value;
                 request.VideoLink = txtVideoLink.Text;
-              //  request.SlikaLink = pictureBox1.Image;
                 request.Konzole = konzole;
                 request.Zanrovi = zanrovi;
                 if (txtSlika.Text != string.Empty)//Slika

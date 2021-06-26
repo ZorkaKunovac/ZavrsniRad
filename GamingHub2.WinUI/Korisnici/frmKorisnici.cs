@@ -49,7 +49,17 @@ namespace GamingHub2.WinUI.Korisnici
             var result = frm.ShowDialog();
             if (frm.DialogResult == DialogResult.OK)
             {
-                dgvKorisnici.DataSource = await _korisniciService.Get<List<Model.Korisnici>>(null);
+                var result2 = await _korisniciService.Get<List<Model.Korisnici>>(null);
+                foreach (var item in result2)
+                {
+                    item.Uloge = "";
+                    foreach (var x in item.KorisniciUloge)
+                    {
+                        item.Uloge += $"{x.Uloga.Naziv} ";
+                    }
+                }
+                dgvKorisnici.AutoGenerateColumns = false;
+                dgvKorisnici.DataSource = result2;
             }
         }
 
@@ -64,10 +74,5 @@ namespace GamingHub2.WinUI.Korisnici
 
         }
 
-        private async void frmKorisnici_Load(object sender, EventArgs e)
-        {
-            dgvKorisnici.AutoGenerateColumns = false;
-            dgvKorisnici.DataSource = await _korisniciService.Get<List<Model.Korisnici>>(null);
-        }
     }
 }

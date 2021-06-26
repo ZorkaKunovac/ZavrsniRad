@@ -108,18 +108,6 @@
     <Compile Include="Korisnici\frmKorisniciDetalji.Designer.cs">
       <DependentUpon>frmKorisniciDetalji.cs</DependentUpon>
     </Compile>
-    <Compile Include="Korisnik\frmKorisnikDetalji.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Korisnik\frmKorisnikDetalji.Designer.cs">
-      <DependentUpon>frmKorisnikDetalji.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Korisnik\frmPrikazKorisnika.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Korisnik\frmPrikazKorisnika.Designer.cs">
-      <DependentUpon>frmPrikazKorisnika.cs</DependentUpon>
-    </Compile>
     <Compile Include="Korisnici\frmRoleManager.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -170,12 +158,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Korisnici\frmKorisniciDetalji.resx">
       <DependentUpon>frmKorisniciDetalji.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Korisnik\frmKorisnikDetalji.resx">
-      <DependentUpon>frmKorisnikDetalji.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Korisnik\frmPrikazKorisnika.resx">
-      <DependentUpon>frmPrikazKorisnika.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Korisnici\frmRoleManager.resx">
       <DependentUpon>frmRoleManager.cs</DependentUpon>

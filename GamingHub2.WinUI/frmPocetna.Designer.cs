@@ -47,9 +47,6 @@ namespace GamingHub2.WinUI
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.korisnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.prikazKorisnikaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.noviKorisnikToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -60,8 +57,7 @@ namespace GamingHub2.WinUI
             this.korisnikToolStripMenuItem,
             this.zanroviToolStripMenuItem,
             this.igreToolStripMenuItem,
-            this.konzoleToolStripMenuItem,
-            this.korisnToolStripMenuItem});
+            this.konzoleToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Size = new System.Drawing.Size(632, 24);
@@ -184,29 +180,6 @@ namespace GamingHub2.WinUI
             this.toolStripStatusLabel.Size = new System.Drawing.Size(39, 17);
             this.toolStripStatusLabel.Text = "Status";
             // 
-            // korisnToolStripMenuItem
-            // 
-            this.korisnToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.prikazKorisnikaToolStripMenuItem1,
-            this.noviKorisnikToolStripMenuItem1});
-            this.korisnToolStripMenuItem.Name = "korisnToolStripMenuItem";
-            this.korisnToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
-            this.korisnToolStripMenuItem.Text = "Korisn";
-            // 
-            // prikazKorisnikaToolStripMenuItem1
-            // 
-            this.prikazKorisnikaToolStripMenuItem1.Name = "prikazKorisnikaToolStripMenuItem1";
-            this.prikazKorisnikaToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.prikazKorisnikaToolStripMenuItem1.Text = "Prikaz korisnika";
-            this.prikazKorisnikaToolStripMenuItem1.Click += new System.EventHandler(this.prikazKorisnikaToolStripMenuItem1_Click);
-            // 
-            // noviKorisnikToolStripMenuItem1
-            // 
-            this.noviKorisnikToolStripMenuItem1.Name = "noviKorisnikToolStripMenuItem1";
-            this.noviKorisnikToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.noviKorisnikToolStripMenuItem1.Text = "Novi korisnik";
-            this.noviKorisnikToolStripMenuItem1.Click += new System.EventHandler(this.noviKorisnikToolStripMenuItem1_Click);
-            // 
             // frmPocetna
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -247,9 +220,6 @@ namespace GamingHub2.WinUI
         private System.Windows.Forms.ToolStripMenuItem prikazKonzolaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem dodajKonzoluToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ulogeToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem korisnToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem prikazKorisnikaToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem noviKorisnikToolStripMenuItem1;
     }
 }
 

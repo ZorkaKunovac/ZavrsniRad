@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -17,6 +18,7 @@ namespace GamingHub2.WinUI.Korisnici
         private readonly APIService _korisniciService = new APIService("Korisnici");
         private readonly APIService _ulogeService = new APIService("Uloge");
         private int? _id = null;
+        private byte[] slikaTemp;
 
         public frmKorisniciDetalji(int? korisnikId = null)
         {
@@ -24,22 +26,31 @@ namespace GamingHub2.WinUI.Korisnici
             _id = korisnikId;
         }
 
+        KorisniciUpsertRequest request = new KorisniciUpsertRequest();
         private async void btnSacuvaj_Click(object sender, EventArgs e)
         {
-            if (ValidateChildren() /*&& txtLozinka_Validating() && await txtKorisnickoIme_Validating() && await txtEmail_Validating()*/)
+            if (ValidateChildren() && txtSlika_Validating()
+                )
             {
                 var roleList = clbUloge.CheckedItems.Cast<Model.Uloge>().Select(x => x.UlogaId).ToList();
-                var request = new KorisniciUpsertRequest()
+
+                request.Ime = txtIme.Text;
+                request.Prezime = txtPrezime.Text;
+                request.Email = txtEmail.Text;
+                request.Telefon = txtTelefon.Text;
+                request.KorisnickoIme = txtKorisnickoIme.Text;
+                request.Password = txtLozinka.Text;
+                request.PasswordPotvrda = txtPotvrdaLozinke.Text;
+                request.Uloge = roleList;
+                if (txtSlika.Text != string.Empty)//Slika
                 {
-                    Ime = txtIme.Text,
-                    Prezime = txtPrezime.Text,
-                    Email = txtEmail.Text,
-                    Telefon = txtTelefon.Text,
-                    KorisnickoIme = txtKorisnickoIme.Text,
-                    Password = txtLozinka.Text,
-                    PasswordPotvrda = txtPotvrdaLozinke.Text,
-                    Uloge = roleList
-                };
+                    var file = File.ReadAllBytes(txtSlika.Text);
+                    request.Slika = file;
+                }
+                else
+                {
+                    request.Slika = slikaTemp;
+                }
 
                 Model.Korisnici entity = null;
                 try
@@ -87,6 +98,11 @@ namespace GamingHub2.WinUI.Korisnici
                 txtEmail.Text = result.Email;
                 txtTelefon.Text = result.Telefon;
                 txtKorisnickoIme.Text = result.KorisnickoIme;
+                slikaTemp = result.Slika;
+                if (result.Slika.Length != 0)
+                {
+                    pbSlika.Image = BytesToImage(result.Slika);
+                }
 
                 foreach (var item in result.KorisniciUloge)
                 {
@@ -101,7 +117,48 @@ namespace GamingHub2.WinUI.Korisnici
                 }
             }
         }
+        private void btnAddPicture_Click(object sender, EventArgs e)
+        {
+            var result = openFileDialog.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                var filename = openFileDialog.FileName;
+                var file = File.ReadAllBytes(filename);
 
+                request.Slika = file;
+
+                txtSlika.Text = filename;
+
+                Image image = Image.FromFile(filename);
+                pbSlika.Image = image;
+            }
+        }
+        public Image BytesToImage(byte[] arr)
+        {
+            MemoryStream ms = new MemoryStream(arr);
+            return Image.FromStream(ms);
+        }
+        public byte[] ImageToByteArray(System.Drawing.Image imageIn)
+        {
+            using (var ms = new MemoryStream())
+            {
+                imageIn.Save(ms, imageIn.RawFormat);
+                return ms.ToArray();
+            }
+        }
+        private bool txtSlika_Validating()
+        {
+            if (string.IsNullOrWhiteSpace(txtSlika.Text) && !_id.HasValue)
+            {
+                errorProvider.SetError(txtSlika, Properties.Resources.ObaveznoPolje);
+                return false;
+            }
+            else
+            {
+                errorProvider.SetError(txtSlika, null);
+            }
+            return true;
+        }
         private void txtIme_Validating(object sender, CancelEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtIme.Text))
@@ -169,5 +226,7 @@ namespace GamingHub2.WinUI.Korisnici
                 errorProvider.Clear();
             }
         }
+
+     
     }
 }
