@@ -3,15 +3,12 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace GamingHub2.Model
+namespace GamingHub2.Model.Requests
 {
-    public class Recenzija
+    public class RecenzijaUpsertRequest
     {
-        public int ID { get; set; }
         public int KorisnikId { get; set; }
         public int IgraId { get; set; }
-        public virtual Korisnici Korisnik { get; set; }
-        public virtual Igra Igra { get; set; }
 
         [Required(ErrorMessage = "Obavezno polje")]
         [StringLength(250, ErrorMessage = "{0} mora biti izmedju {2} i {1} znakova.", MinimumLength = 5)]
@@ -29,15 +26,5 @@ namespace GamingHub2.Model
         public string VideoRecenzija { get; set; }
 
 
-        //public int ID { get; set; }
-
-        ////[MaxLength(250, ErrorMessage = "Maksimalno {1} znakova")]
-        //public string Naslov { get; set; }
-        //public string KorisnickoIme { get; set; }
-        //public DateTime? DatumObjave { get; set; }
-
-        ////[MaxLength(300, ErrorMessage = "Maksimalno {1} znakova")]
-        //public string Sadrzaj { get; set; }
-        //public byte[] Slika Slika { get; set; }
     }
 }
