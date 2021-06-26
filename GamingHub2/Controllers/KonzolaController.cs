@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace GamingHub2.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Administrator")]
     public class KonzolaController : BaseCRUDController<Model.Konzola, object, KonzolaUpsertRequest, KonzolaUpsertRequest>
     {
         public KonzolaController(IKonzolaService service) : base(service)

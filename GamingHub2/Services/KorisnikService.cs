@@ -29,18 +29,32 @@ namespace GamingHub2.Services
         //-----------------------------------------------------------------------------------
         public Model.Korisnici Authenticiraj(string username, string pass)
         {
-            var user = _context.Korisnik.Include("KorisniciUloge.Uloga").FirstOrDefault(x => x.KorisnickoIme == username);
+            var entity = _context.Korisnik.Include("KorisniciUloge.Uloga").FirstOrDefault(x => x.KorisnickoIme == username);
 
-            if (user != null)
+            //if (user != null)
+            //{
+            //    var newHash = GenerateHash(user.LozinkaSalt, pass);
+
+            //    if (newHash == user.LozinkaHash)
+            //    {
+            //        return _mapper.Map<Model.Korisnici>(user);
+            //    }
+            //}
+            //return null;
+
+            if (entity == null)
             {
-                var newHash = GenerateHash(user.LozinkaSalt, pass);
-
-                if (newHash == user.LozinkaHash)
-                {
-                    return _mapper.Map<Model.Korisnici>(user);
-                }
+                throw new UserException("Pogrešan username ili password");
             }
-            return null;
+
+            var hash = GenerateHash(entity.LozinkaSalt, pass);
+
+            if (hash != entity.LozinkaHash)
+            {
+                throw new UserException("Pogrešan username ili password");
+            }
+
+            return _mapper.Map<Model.Korisnici>(entity);
         }
         //-----------------------------------------------------------------------------------
         public static string GenerateSalt()
@@ -174,41 +188,6 @@ namespace GamingHub2.Services
     //    {
     //    }
 
-    //    public Model.Korisnik Authenticiraj(string username, string pass)
-    //    {
-    //        var user = Context.Korisnik.Include("KorisnikUloga.Uloga").FirstOrDefault(x => x.KorisnickoIme == username);
-
-    //        if (user != null)
-    //        {
-    //            var newHash = GenerateHash(user.LozinkaSalt, pass);
-
-    //            if (newHash == user.LozinkaHash)
-    //            {
-    //                return _mapper.Map<Model.Korisnik>(user);
-    //            }
-    //        }
-    //        return null;
-    //    }
-    //    public static string GenerateSalt()
-    //    {
-    //        var buf = new byte[16];
-    //        (new RNGCryptoServiceProvider()).GetBytes(buf);
-    //        return Convert.ToBase64String(buf);
-    //    }
-
-    //    public static string GenerateHash(string salt, string password)
-    //    {
-    //        byte[] src = Convert.FromBase64String(salt);
-    //        byte[] bytes = Encoding.Unicode.GetBytes(password);
-    //        byte[] dst = new byte[src.Length + bytes.Length];
-
-    //        System.Buffer.BlockCopy(src, 0, dst, 0, src.Length);
-    //        System.Buffer.BlockCopy(bytes, 0, dst, src.Length, bytes.Length);
-
-    //        HashAlgorithm algorithm = HashAlgorithm.Create("SHA1");
-    //        byte[] inArray = algorithm.ComputeHash(dst);
-    //        return Convert.ToBase64String(inArray);
-    //    }
 
     //    public override IEnumerable<Model.Korisnik> Get(KorisnikSearchRequest search = null)
     //    {
@@ -223,30 +202,12 @@ namespace GamingHub2.Services
     //        {
     //            entity = entity.Include(x => x.KorisnikUloga);
     //        }
-
-
     //        var list = entity.ToList();
 
     //        return _mapper.Map<List<Model.Korisnik>>(list);
-
-
     //    }
 
-    //    [Authorize(Roles ="Administrator")]
-    //    public override Model.Korisnik GetById(int id)
-    //    {
-    //        var entity = Context.Korisnik.Find(id);
 
-    //        return _mapper.Map<Model.Korisnik>(entity);
-    //    }
-
-    //    //[HttpGet("{id}")]
-    //    //public override Model.Korisnik GetById(int id)
-    //    //{
-    //    //    var entity = Context.Korisnik.Include(x=>x.KorisnikUloga).Where(x => x.Id == id).FirstOrDefault();
-    //    //    //var entity = Context.Korisnik.Include("KorisnikUloga.Uloga").Where(x => x.Id == id).FirstOrDefault();
-    //    //    return _mapper.Map<Model.Korisnik>(entity);
-    //    //}
 
     //    public override Model.Korisnik Insert(KorisnikInsertRequest request)
     //    {

@@ -78,8 +78,6 @@ namespace GamingHub2
             services.AddAuthentication("BasicAuthentication")
               .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", null);
 
-            //  services.AddControllers(.)
-
             services.AddAutoMapper(typeof(Startup));
 
             services.AddSwaggerGen();
@@ -88,26 +86,16 @@ namespace GamingHub2
             services.AddDbContext<ApplicationDbContext>(options =>
                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            //services.AddSwaggerGen(c =>
-            //{
-            //    //c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
-            //});
-
-            //var connection = @"Server=.\REPORTING;Database=eProdaja;Trusted_Connection=True;ConnectRetryCount=0";
-            //services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connection));
-
             services.AddScoped<IZanrService, ZanrService>();
             services.AddScoped<IKonzolaService, KonzolaService>();
             services.AddScoped<IIgraService, IgraService>();
             services.AddScoped<IProizvodService, ProizvodService>();
             services.AddScoped<IKonzolaService, KonzolaService>();
             services.AddScoped<IKorisnikService, KorisniciService>();
-            //   services.AddScoped<IUlogaService, UlogaService>();
 
             //services.AddScoped<ICRUDService<Model.Uloga, object,UlogaInsertRequest,object>, BaseCRUDService<Model.Uloga, Database.Uloga, object,UlogaInsertRequest,object>>();
             //services.AddScoped<IReadService<Model.Uloge, object>, BaseReadService<Model.Uloge, Database.Uloge, object>>();
             services.AddScoped<ICRUDService<Model.Uloge, object, UlogaInsertRequest, object>, BaseCRUDService<Model.Uloge, Database.Uloge, object, UlogaInsertRequest, object>>();
-
 
         }
 
