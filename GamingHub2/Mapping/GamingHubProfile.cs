@@ -31,16 +31,11 @@ namespace GamingHub2.Mapping
             CreateMap<Database.KorisniciUloge, Model.KorisniciUloge>().ReverseMap();
             CreateMap<Database.Uloge, Model.Uloge>().ReverseMap();
             CreateMap<UlogaInsertRequest, Database.Uloge>();
+            CreateMap<Database.Recenzija, Model.Recenzija>().ReverseMap();
+            CreateMap<RecenzijaUpsertRequest, Database.Recenzija>();
 
-            //CreateMap<Database.Uloga, Model.Uloga>();
 
             //CreateMap<Database.Korisnik, KorisnikInsertRequest>().ReverseMap(); //reversemap? V3 39:30
-            ////CreateMap<KorisnikInsertRequest, Database.Korisnik>().ReverseMap();
-            //CreateMap<KorisnikUpdateRequest, Database.Korisnik>();
-            //CreateMap<Database.KorisniciUloge, Model.KorisnikUloga>();
-
-
-            //CreateMap<Database.Korisnik,KorisnikUpdateRequest>(); //reversemap? V3 39:30
 
         }
     }

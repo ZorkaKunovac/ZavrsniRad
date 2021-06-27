@@ -28,16 +28,7 @@ namespace GamingHub2.Model
         [MaxLength(100, ErrorMessage = "Maksimalno {1} znakova")]
         public string VideoRecenzija { get; set; }
 
-
-        //public int ID { get; set; }
-
-        ////[MaxLength(250, ErrorMessage = "Maksimalno {1} znakova")]
-        //public string Naslov { get; set; }
-        //public string KorisnickoIme { get; set; }
-        //public DateTime? DatumObjave { get; set; }
-
-        ////[MaxLength(300, ErrorMessage = "Maksimalno {1} znakova")]
-        //public string Sadrzaj { get; set; }
-        //public byte[] Slika Slika { get; set; }
+        public string IgraNaziv => Igra?.Naziv;
+        // public string VrstaIdNaziv => $"{Vrsta?.VrstaId} - {Vrsta?.Naziv}";
     }
 }
