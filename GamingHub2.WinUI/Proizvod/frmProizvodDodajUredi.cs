@@ -10,11 +10,14 @@ using System.Windows.Forms;
 
 namespace GamingHub2.WinUI.Proizvod
 {
-    public partial class Proizvodi : Form
+    public partial class frmProizvodDodajUredi : Form
     {
-        public Proizvodi()
+        APIService _service = new APIService("Proizvod");
+        private int? _id = null;
+        public frmProizvodDodajUredi(int? id = null)
         {
             InitializeComponent();
+            _id = id;
         }
     }
 }

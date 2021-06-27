@@ -55,7 +55,7 @@ namespace GamingHub2.WinUI.Recenzija
             // cmbKorisnici
             // 
             this.cmbKorisnici.FormattingEnabled = true;
-            this.cmbKorisnici.Location = new System.Drawing.Point(325, 46);
+            this.cmbKorisnici.Location = new System.Drawing.Point(369, 45);
             this.cmbKorisnici.Name = "cmbKorisnici";
             this.cmbKorisnici.Size = new System.Drawing.Size(183, 21);
             this.cmbKorisnici.TabIndex = 32;
@@ -63,7 +63,7 @@ namespace GamingHub2.WinUI.Recenzija
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(322, 30);
+            this.label1.Location = new System.Drawing.Point(366, 29);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(44, 13);
             this.label1.TabIndex = 31;
@@ -82,7 +82,7 @@ namespace GamingHub2.WinUI.Recenzija
             // 
             this.txtNaslov.Location = new System.Drawing.Point(6, 46);
             this.txtNaslov.Name = "txtNaslov";
-            this.txtNaslov.Size = new System.Drawing.Size(212, 20);
+            this.txtNaslov.Size = new System.Drawing.Size(299, 20);
             this.txtNaslov.TabIndex = 35;
             // 
             // groupBox1
@@ -116,7 +116,7 @@ namespace GamingHub2.WinUI.Recenzija
             this.cmbIgre.FormattingEnabled = true;
             this.cmbIgre.Location = new System.Drawing.Point(618, 46);
             this.cmbIgre.Name = "cmbIgre";
-            this.cmbIgre.Size = new System.Drawing.Size(183, 21);
+            this.cmbIgre.Size = new System.Drawing.Size(187, 21);
             this.cmbIgre.TabIndex = 38;
             // 
             // label2

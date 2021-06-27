@@ -73,7 +73,7 @@ namespace GamingHub2.WinUI.Recenzija
 
             cmbIgre.DataSource = result;
             cmbIgre.DisplayMember = "Naziv";
-            cmbIgre.ValueMember = "Id"; //Ili je Id
+            cmbIgre.ValueMember = "Id"; 
         }
 
         private async void dgvRecenzije_MouseDoubleClick(object sender, MouseEventArgs e)
