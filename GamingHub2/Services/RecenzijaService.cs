@@ -32,10 +32,6 @@ namespace GamingHub2.Services
                 entity = entity.Where(x => x.IgraId == search.IgraId);
             }
 
-            //if (search.KorisnikId != 0 && search.KorisnikId.HasValue)
-            //{
-            //    entity = entity.Where(x => x.IgraId == search.IgraId);
-            //}
 
             var list = entity.OrderByDescending(x => x.DatumObjave).ToList();
             return _mapper.Map<List<Model.Recenzija>>(list);

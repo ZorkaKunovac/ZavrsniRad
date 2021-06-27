@@ -1,4 +1,5 @@
 ﻿using GamingHub2.Model.Requests;
+using GamingHub2.WinUI.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -7,6 +8,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -138,5 +140,54 @@ namespace GamingHub2.WinUI.Recenzija
             return true;
         }
 
+        private void txtNaslov_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtNaslov.Text))
+            {
+                errorProvider.SetError(txtNaslov, Properties.Resources.ObaveznoPolje);
+                e.Cancel = true;
+            }
+            else if(txtNaslov.Text.Length<5 || txtNaslov.Text.Length>250)
+            {
+                errorProvider.SetError(txtNaslov, "Naslov mora biti izmedju 5 i 250 karaktera");
+            }
+            else
+            {
+                errorProvider.Clear();
+            }
+        }
+
+        private void txtVideoRecenzija_Validating(object sender, CancelEventArgs e)
+        {
+
+            if (txtVideoRecenzija.Text.Length >= 100)
+            {
+                errorProvider.SetError(txtVideoRecenzija, Resources.PrekoracenjeKaraktera);
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider.Clear();
+            }
+        }
+
+        private void rtbSadrzaj_Validating(object sender, CancelEventArgs e)
+        {
+
+            if (string.IsNullOrWhiteSpace(rtbSadrzaj.Text))
+            {
+                errorProvider.SetError(rtbSadrzaj, Properties.Resources.ObaveznoPolje);
+                e.Cancel = true;
+            }
+            else if (rtbSadrzaj.Text.Length <400 || rtbSadrzaj.Text.Length>= 20000)
+            {
+                errorProvider.SetError(rtbSadrzaj, "Sadrzaj mora biti izmedju 400 i 20000 karaktera");
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider.Clear();
+            }
+        }
     }  
 }

@@ -43,8 +43,6 @@ namespace GamingHub2.WinUI.Recenzija
             else
                 request.IgraId = int.Parse(objIgre.ToString());
 
-            //var objIgre = cmbIgre.SelectedValue;
-            //request.IgraId = int.Parse(objIgre?.ToString() ?? "0");
 
             var result = await _recenzijaService.Get<List<Model.Recenzija>>(request);
 

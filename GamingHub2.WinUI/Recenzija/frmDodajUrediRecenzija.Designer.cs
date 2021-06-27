@@ -91,6 +91,7 @@ namespace GamingHub2.WinUI.Recenzija
             this.rtbSadrzaj.Size = new System.Drawing.Size(378, 158);
             this.rtbSadrzaj.TabIndex = 49;
             this.rtbSadrzaj.Text = "";
+            this.rtbSadrzaj.Validating += new System.ComponentModel.CancelEventHandler(this.rtbSadrzaj_Validating);
             // 
             // label2
             // 
@@ -150,6 +151,7 @@ namespace GamingHub2.WinUI.Recenzija
             this.txtVideoRecenzija.Name = "txtVideoRecenzija";
             this.txtVideoRecenzija.Size = new System.Drawing.Size(194, 20);
             this.txtVideoRecenzija.TabIndex = 41;
+            this.txtVideoRecenzija.Validating += new System.ComponentModel.CancelEventHandler(this.txtVideoRecenzija_Validating);
             // 
             // label1
             // 
@@ -174,6 +176,7 @@ namespace GamingHub2.WinUI.Recenzija
             this.txtNaslov.Name = "txtNaslov";
             this.txtNaslov.Size = new System.Drawing.Size(195, 20);
             this.txtNaslov.TabIndex = 37;
+            this.txtNaslov.Validating += new System.ComponentModel.CancelEventHandler(this.txtNaslov_Validating);
             // 
             // label4
             // 

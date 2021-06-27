@@ -208,7 +208,6 @@ namespace GamingHub2.WinUI.Igra
             }
             else
             {
-                //ili errorProvider.SetError(txtNaziv, null);
                 errorProvider.Clear();
             }
         }
@@ -227,7 +226,6 @@ namespace GamingHub2.WinUI.Igra
             }
             else
             {
-                //ili errorProvider.SetError(txtNaziv, null);
                 errorProvider.Clear();
             }
         }
