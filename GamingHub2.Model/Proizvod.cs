@@ -8,7 +8,6 @@ namespace GamingHub2.Model
     {
         public int ID { get; set; }
         public string NazivProizvoda { get; set; }
-        //public string Opis { get; set; }
         public float ProdajnaCijena { get; set; }
         public float Popust { get; set; }
         public bool? Status { get; set; }

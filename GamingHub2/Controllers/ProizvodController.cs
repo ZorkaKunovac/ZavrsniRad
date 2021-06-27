@@ -10,7 +10,7 @@ namespace GamingHub2.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class ProizvodController : BaseCRUDController<Model.Proizvod, object, ProizvodInsertRequest, ProizvodUpdateRequest>
+    public class ProizvodController : BaseCRUDController<Model.Proizvod, ProizvodSearchRequest, ProizvodInsertRequest, ProizvodUpdateRequest>
     {
         public ProizvodController(IProizvodService service) : base(service)
         {
