@@ -137,7 +137,6 @@ namespace GamingHub2.WinUI.Igra
                 {
                     MessageBox.Show("Uspješno izvršeno");
                     this.Close();
-                    //  dgvIgre.DataSource = await _service.Get<List<Model.Igra>>(null);
                 }
 
             }

@@ -27,8 +27,24 @@ namespace GamingHub2.WinUI.Recenzija
             {
                 Naslov = txtNaslov.Text
             };
+
             var objKorisnici = cmbKorisnici.SelectedValue;
-            request.KorisnikId = int.Parse(objKorisnici?.ToString() ?? "0");
+            if (objKorisnici == null)
+                request.KorisnikId = 0;
+            else
+                request.KorisnikId = int.Parse(objKorisnici.ToString());
+
+            //var objKorisnici = cmbKorisnici.SelectedValue;
+            //request.KorisnikId = int.Parse(objKorisnici?.ToString() ?? "0");
+
+            var objIgre = cmbIgre.SelectedValue;
+            if (objIgre == null)
+                request.IgraId = 0;
+            else
+                request.IgraId = int.Parse(objIgre.ToString());
+
+            //var objIgre = cmbIgre.SelectedValue;
+            //request.IgraId = int.Parse(objIgre?.ToString() ?? "0");
 
             var result = await _recenzijaService.Get<List<Model.Recenzija>>(request);
 
@@ -36,6 +52,11 @@ namespace GamingHub2.WinUI.Recenzija
             dgvRecenzije.DataSource = result;
         }
 
+        private async void frmPrikazRecenzija_Load(object sender, EventArgs e)
+        {
+            await LoadKorisnici();
+            await LoadIgre();
+        }
 
         private async Task LoadKorisnici()
         {
@@ -46,6 +67,29 @@ namespace GamingHub2.WinUI.Recenzija
             cmbKorisnici.DisplayMember = "KorisnickoIme";
             cmbKorisnici.ValueMember = "KorisnikId"; //Ili je Id
         }
+    
+        private async Task LoadIgre()
+        {
+            var result = await _igraService.Get<List<Model.Igra>>(null);
+            result.Insert(0, new Model.Igra());
 
+            cmbIgre.DataSource = result;
+            cmbIgre.DisplayMember = "Naziv";
+            cmbIgre.ValueMember = "Id"; //Ili je Id
+        }
+
+        private async void dgvRecenzije_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            var recenzijaId = int.Parse(dgvRecenzije.SelectedRows[0].Cells[0].Value.ToString());
+
+            frmDodajUrediRecenzija frm = new frmDodajUrediRecenzija(recenzijaId);
+            var result = frm.ShowDialog();
+            if (frm.DialogResult == DialogResult.OK)
+            {
+                dgvRecenzije.DataSource = await _recenzijaService.Get<List<Model.Recenzija>>(null);
+            }
+        }
+
+    
     }
 }

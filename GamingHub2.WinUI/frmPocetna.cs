@@ -13,6 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using GamingHub2.WinUI.Recenzija;
 
 namespace GamingHub2.WinUI
 {
@@ -194,6 +195,20 @@ namespace GamingHub2.WinUI
         private void noviKorisnikToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             frmKorisniciDetalji frm = new frmKorisniciDetalji();
+            frm.Show();
+        }
+
+        private void prikazRecenzijaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmPrikazRecenzija frm = new frmPrikazRecenzija();
+            frm.MdiParent = this;
+            frm.WindowState = FormWindowState.Maximized;
+            frm.Show();
+        }
+
+        private void novaRecenzijaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmDodajUrediRecenzija frm = new frmDodajUrediRecenzija();
             frm.Show();
         }
     }

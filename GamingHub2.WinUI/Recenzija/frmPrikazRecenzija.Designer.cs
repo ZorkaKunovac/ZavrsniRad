@@ -46,7 +46,7 @@ namespace GamingHub2.WinUI.Recenzija
             this.DatumObjave = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Sadrzaj = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Slika = new System.Windows.Forms.DataGridViewImageColumn();
-            this.VideoLink = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VideoRecenzija = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRecenzije)).BeginInit();
@@ -55,7 +55,7 @@ namespace GamingHub2.WinUI.Recenzija
             // cmbKorisnici
             // 
             this.cmbKorisnici.FormattingEnabled = true;
-            this.cmbKorisnici.Location = new System.Drawing.Point(224, 46);
+            this.cmbKorisnici.Location = new System.Drawing.Point(325, 46);
             this.cmbKorisnici.Name = "cmbKorisnici";
             this.cmbKorisnici.Size = new System.Drawing.Size(183, 21);
             this.cmbKorisnici.TabIndex = 32;
@@ -63,7 +63,7 @@ namespace GamingHub2.WinUI.Recenzija
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(221, 30);
+            this.label1.Location = new System.Drawing.Point(322, 30);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(44, 13);
             this.label1.TabIndex = 31;
@@ -82,7 +82,7 @@ namespace GamingHub2.WinUI.Recenzija
             // 
             this.txtNaslov.Location = new System.Drawing.Point(6, 46);
             this.txtNaslov.Name = "txtNaslov";
-            this.txtNaslov.Size = new System.Drawing.Size(195, 20);
+            this.txtNaslov.Size = new System.Drawing.Size(212, 20);
             this.txtNaslov.TabIndex = 35;
             // 
             // groupBox1
@@ -96,14 +96,14 @@ namespace GamingHub2.WinUI.Recenzija
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Location = new System.Drawing.Point(12, 24);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(757, 100);
+            this.groupBox1.Size = new System.Drawing.Size(977, 100);
             this.groupBox1.TabIndex = 37;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Pretraga";
             // 
             // btnPrikazi
             // 
-            this.btnPrikazi.Location = new System.Drawing.Point(665, 44);
+            this.btnPrikazi.Location = new System.Drawing.Point(881, 43);
             this.btnPrikazi.Name = "btnPrikazi";
             this.btnPrikazi.Size = new System.Drawing.Size(75, 23);
             this.btnPrikazi.TabIndex = 39;
@@ -114,7 +114,7 @@ namespace GamingHub2.WinUI.Recenzija
             // cmbIgre
             // 
             this.cmbIgre.FormattingEnabled = true;
-            this.cmbIgre.Location = new System.Drawing.Point(436, 46);
+            this.cmbIgre.Location = new System.Drawing.Point(618, 46);
             this.cmbIgre.Name = "cmbIgre";
             this.cmbIgre.Size = new System.Drawing.Size(183, 21);
             this.cmbIgre.TabIndex = 38;
@@ -122,7 +122,7 @@ namespace GamingHub2.WinUI.Recenzija
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(433, 30);
+            this.label2.Location = new System.Drawing.Point(615, 30);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(25, 13);
             this.label2.TabIndex = 37;
@@ -133,7 +133,7 @@ namespace GamingHub2.WinUI.Recenzija
             this.groupBox2.Controls.Add(this.dgvRecenzije);
             this.groupBox2.Location = new System.Drawing.Point(12, 149);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(756, 276);
+            this.groupBox2.Size = new System.Drawing.Size(980, 276);
             this.groupBox2.TabIndex = 38;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Recenzije";
@@ -152,14 +152,15 @@ namespace GamingHub2.WinUI.Recenzija
             this.DatumObjave,
             this.Sadrzaj,
             this.Slika,
-            this.VideoLink});
+            this.VideoRecenzija});
             this.dgvRecenzije.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvRecenzije.Location = new System.Drawing.Point(3, 16);
             this.dgvRecenzije.Name = "dgvRecenzije";
             this.dgvRecenzije.ReadOnly = true;
             this.dgvRecenzije.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvRecenzije.Size = new System.Drawing.Size(750, 257);
+            this.dgvRecenzije.Size = new System.Drawing.Size(974, 257);
             this.dgvRecenzije.TabIndex = 0;
+            this.dgvRecenzije.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvRecenzije_MouseDoubleClick);
             // 
             // Id
             // 
@@ -211,22 +212,23 @@ namespace GamingHub2.WinUI.Recenzija
             this.Slika.Name = "Slika";
             this.Slika.ReadOnly = true;
             // 
-            // VideoLink
+            // VideoRecenzija
             // 
-            this.VideoLink.DataPropertyName = "VideoLink";
-            this.VideoLink.HeaderText = "VideoLink";
-            this.VideoLink.Name = "VideoLink";
-            this.VideoLink.ReadOnly = true;
+            this.VideoRecenzija.DataPropertyName = "VideoRecenzija";
+            this.VideoRecenzija.HeaderText = "VideoRecenzija";
+            this.VideoRecenzija.Name = "VideoRecenzija";
+            this.VideoRecenzija.ReadOnly = true;
             // 
             // frmPrikazRecenzija
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1004, 450);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "frmPrikazRecenzija";
             this.Text = "frmPrikazRecenzija";
+            this.Load += new System.EventHandler(this.frmPrikazRecenzija_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -254,6 +256,6 @@ namespace GamingHub2.WinUI.Recenzija
         private System.Windows.Forms.DataGridViewTextBoxColumn DatumObjave;
         private System.Windows.Forms.DataGridViewTextBoxColumn Sadrzaj;
         private System.Windows.Forms.DataGridViewImageColumn Slika;
-        private System.Windows.Forms.DataGridViewTextBoxColumn VideoLink;
+        private System.Windows.Forms.DataGridViewTextBoxColumn VideoRecenzija;
     }
 }
