@@ -7,7 +7,7 @@ using GamingHub2.Model.Requests;
 
 namespace GamingHub2.Services
 {
-    public interface IProizvodService : ICRUDService<Proizvod, object, ProizvodInsertRequest, ProizvodUpdateRequest>
+    public interface IProizvodService : ICRUDService<Proizvod, ProizvodSearchRequest, ProizvodInsertRequest, ProizvodUpdateRequest>
     {
         
     }
