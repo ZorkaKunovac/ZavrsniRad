@@ -21,8 +21,6 @@ namespace GamingHub2.Mapping
             CreateMap<Database.Igra, IgraUpsertRequest>().ReverseMap();
             CreateMap<Database.IgraKonzola, Model.IgraKonzola>();
             CreateMap<Database.IgraZanr, Model.IgraZanr>();
-
-            CreateMap<Database.Proizvod, Model.Proizvod>(); //ReverseMap?
             CreateMap<Database.Korisnik, Model.Korisnici>();
 
             //CreateMap<Database.Korisnici, Model.Korisnici>().ReverseMap();
@@ -33,6 +31,9 @@ namespace GamingHub2.Mapping
             CreateMap<UlogaInsertRequest, Database.Uloge>();
             CreateMap<Database.Recenzija, Model.Recenzija>().ReverseMap();
             CreateMap<RecenzijaUpsertRequest, Database.Recenzija>();
+            CreateMap<Database.Proizvod, Model.Proizvod>().ReverseMap();
+            CreateMap<ProizvodInsertRequest, Database.Proizvod>();
+            CreateMap<ProizvodUpdateRequest, Database.Proizvod>();
 
 
             //CreateMap<Database.Korisnik, KorisnikInsertRequest>().ReverseMap(); //reversemap? V3 39:30

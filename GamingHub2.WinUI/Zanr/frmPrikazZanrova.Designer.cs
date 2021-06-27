@@ -38,6 +38,7 @@ namespace GamingHub2.WinUI.Zanrovi
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Naziv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Opis = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnNoviZanr = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvZanrovi)).BeginInit();
@@ -45,6 +46,7 @@ namespace GamingHub2.WinUI.Zanrovi
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnNoviZanr);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.btnPrikazi);
             this.groupBox2.Controls.Add(this.txtNaziv);
@@ -66,9 +68,9 @@ namespace GamingHub2.WinUI.Zanrovi
             // 
             // btnPrikazi
             // 
-            this.btnPrikazi.Location = new System.Drawing.Point(358, 40);
+            this.btnPrikazi.Location = new System.Drawing.Point(210, 39);
             this.btnPrikazi.Name = "btnPrikazi";
-            this.btnPrikazi.Size = new System.Drawing.Size(64, 20);
+            this.btnPrikazi.Size = new System.Drawing.Size(64, 23);
             this.btnPrikazi.TabIndex = 1;
             this.btnPrikazi.Text = "Prikaži";
             this.btnPrikazi.UseVisualStyleBackColor = true;
@@ -78,7 +80,7 @@ namespace GamingHub2.WinUI.Zanrovi
             // 
             this.txtNaziv.Location = new System.Drawing.Point(5, 41);
             this.txtNaziv.Name = "txtNaziv";
-            this.txtNaziv.Size = new System.Drawing.Size(108, 20);
+            this.txtNaziv.Size = new System.Drawing.Size(167, 20);
             this.txtNaziv.TabIndex = 0;
             // 
             // groupBox1
@@ -95,6 +97,7 @@ namespace GamingHub2.WinUI.Zanrovi
             // 
             this.dgvZanrovi.AllowUserToAddRows = false;
             this.dgvZanrovi.AllowUserToDeleteRows = false;
+            this.dgvZanrovi.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvZanrovi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvZanrovi.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
@@ -132,6 +135,16 @@ namespace GamingHub2.WinUI.Zanrovi
             this.Opis.Name = "Opis";
             this.Opis.ReadOnly = true;
             // 
+            // btnNoviZanr
+            // 
+            this.btnNoviZanr.Location = new System.Drawing.Point(325, 39);
+            this.btnNoviZanr.Name = "btnNoviZanr";
+            this.btnNoviZanr.Size = new System.Drawing.Size(89, 23);
+            this.btnNoviZanr.TabIndex = 25;
+            this.btnNoviZanr.Text = "Novi zanr";
+            this.btnNoviZanr.UseVisualStyleBackColor = true;
+            this.btnNoviZanr.Click += new System.EventHandler(this.btnNoviZanr_Click);
+            // 
             // frmPrikazZanrova
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -161,5 +174,6 @@ namespace GamingHub2.WinUI.Zanrovi
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn Naziv;
         private System.Windows.Forms.DataGridViewTextBoxColumn Opis;
+        private System.Windows.Forms.Button btnNoviZanr;
     }
 }

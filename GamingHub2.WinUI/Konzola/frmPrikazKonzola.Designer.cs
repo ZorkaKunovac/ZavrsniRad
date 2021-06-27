@@ -53,6 +53,7 @@ namespace GamingHub2.WinUI.Konzola
             // 
             this.dgvKonzole.AllowUserToAddRows = false;
             this.dgvKonzole.AllowUserToDeleteRows = false;
+            this.dgvKonzole.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvKonzole.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvKonzole.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,

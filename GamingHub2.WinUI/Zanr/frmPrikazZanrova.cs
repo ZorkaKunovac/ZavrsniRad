@@ -44,5 +44,15 @@ namespace GamingHub2.WinUI.Zanrovi
                 dgvZanrovi.DataSource = await _service.Get<List<Model.Zanr>>(null);
             }
         }
+
+        private async void btnNoviZanr_Click(object sender, EventArgs e)
+        {
+            frmZanrDodajUredi frm = new frmZanrDodajUredi();
+            frm.ShowDialog();
+            if (frm.DialogResult == DialogResult.OK)
+            {
+                dgvZanrovi.DataSource = await _service.Get<List<Model.Zanr>>(null);
+            }
+        }
     }
 }

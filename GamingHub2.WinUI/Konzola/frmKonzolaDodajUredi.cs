@@ -71,7 +71,6 @@ namespace GamingHub2.WinUI.Konzola
             }
             else
             {
-                //ili errorProvider.SetError(txtNaziv, null);
                 errorProvider.Clear();
             }
         }
