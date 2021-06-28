@@ -25,10 +25,10 @@ namespace GamingHub2.Model
         public ICollection<IgraKonzola> IgraKonzola { get; set; }
         public ICollection<IgraZanr> IgraZanr { get; set; }
 
-        //public override string ToString()
-        //{
-        //    return $"{Id} - {Naziv}";
-        //}
+        public override string ToString()
+        {
+            return $"{Naziv}";
+        }
         public string Konzola { get; set; }
     }
 }

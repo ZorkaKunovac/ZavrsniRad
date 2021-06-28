@@ -12,9 +12,16 @@ namespace GamingHub2.Model
         public DateTime DatumIzmjene { get; set; }
         //  public bool IsChecked { get; set; }
 
-     //   public virtual Igra Igra { get; set; }
+        public virtual Igra Igra { get; set; }
         public virtual Konzola Konzola { get; set; }
         public virtual Proizvod Proizvod { get; set; }
+
+        public string Naziv => $"{Igra?.Naziv} - {Konzola?.Naziv}";
+
+        //public override string ToString()
+        //{
+        //    return $"{Igra?.Naziv} - {Konzola?.Naziv}";
+        //}
 
     }
 }

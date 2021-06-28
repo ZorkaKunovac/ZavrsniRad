@@ -22,6 +22,11 @@ namespace GamingHub2.Services
                 entity = entity.Where(x => x.NazivProizvoda.StartsWith(search.Naziv));
             }
 
+            if (search.IgraKonzolaId != 0 && search.IgraKonzolaId.HasValue)
+            {
+                entity = entity.Where(x => x.IgraKonzolaID == search.IgraKonzolaId);
+            }
+
             var list = entity.ToList();
 
             return _mapper.Map<List<Model.Proizvod>>(list);

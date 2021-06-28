@@ -54,7 +54,6 @@ namespace GamingHub2.WinUI.Recenzija
                 rtbSadrzaj.Text = recenzija.Sadrzaj;
                 if (recenzija.Slika.Length != 0)
                     pbSlika.Image = BytesToImage(recenzija.Slika);
-
             }
         }
 

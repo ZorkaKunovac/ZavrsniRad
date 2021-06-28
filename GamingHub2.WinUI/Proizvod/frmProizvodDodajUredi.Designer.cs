@@ -53,7 +53,7 @@ namespace GamingHub2.WinUI.Proizvod
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.cmbIgraKonzola);
-            this.groupBox1.Location = new System.Drawing.Point(33, 23);
+            this.groupBox1.Location = new System.Drawing.Point(21, 21);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(269, 253);
             this.groupBox1.TabIndex = 0;
@@ -130,6 +130,7 @@ namespace GamingHub2.WinUI.Proizvod
             this.btnSave.TabIndex = 51;
             this.btnSave.Text = "Sačuvaj";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // chbStatus
             // 
@@ -151,6 +152,7 @@ namespace GamingHub2.WinUI.Proizvod
             this.Controls.Add(this.groupBox1);
             this.Name = "frmProizvodDodajUredi";
             this.Text = "frmProizvodDodajUredi";
+            this.Load += new System.EventHandler(this.frmProizvodDodajUredi_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numCijena)).EndInit();

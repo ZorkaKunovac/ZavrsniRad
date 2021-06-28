@@ -14,6 +14,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using GamingHub2.WinUI.Recenzija;
+using GamingHub2.WinUI.Proizvod;
 
 namespace GamingHub2.WinUI
 {
@@ -209,6 +210,20 @@ namespace GamingHub2.WinUI
         private void novaRecenzijaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmDodajUrediRecenzija frm = new frmDodajUrediRecenzija();
+            frm.Show();
+        }
+
+        private void prikazProizvodaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmProizvodi frm = new frmProizvodi();
+            frm.MdiParent = this;
+            frm.WindowState = FormWindowState.Maximized;
+            frm.Show();
+        }
+
+        private void noviProizvodToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmProizvodDodajUredi frm = new frmProizvodDodajUredi();
             frm.Show();
         }
     }
