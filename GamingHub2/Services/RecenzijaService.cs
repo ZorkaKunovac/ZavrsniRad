@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using GamingHub2.Model.Requests;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,13 +38,13 @@ namespace GamingHub2.Services
             //    entity = entity.Include(x => x.JedinicaMjere);
             //}
 
-            //if (search?.IncludeList?.Length > 0)
-            //{
-            //    foreach (var item in search.IncludeList)
-            //    {
-            //        entity = entity.Include(item);
-            //    }
-            //}
+            if (search?.IncludeList?.Length > 0)
+            {
+                foreach (var item in search.IncludeList)
+                {
+                    entity = entity.Include(item);
+                }
+            }
 
             var list = entity.OrderByDescending(x => x.DatumObjave).ToList();
             return _mapper.Map<List<Model.Recenzija>>(list);

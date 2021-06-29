@@ -28,6 +28,12 @@ namespace GamingHub2.WinUI.Recenzija
                 Naslov = txtNaslov.Text
             };
 
+                request.IncludeList = new string[]
+             {
+                    "Korisnik",
+                    "Igra"
+             };
+
             var objKorisnici = cmbKorisnici.SelectedValue;
             if (objKorisnici == null)
                 request.KorisnikId = 0;
@@ -54,6 +60,7 @@ namespace GamingHub2.WinUI.Recenzija
         {
             await LoadKorisnici();
             await LoadIgre();
+           
         }
 
         private async Task LoadKorisnici()

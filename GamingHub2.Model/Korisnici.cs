@@ -17,10 +17,6 @@ namespace GamingHub2.Model
         public ICollection<KorisniciUloge> KorisniciUloge { get; set; }
         public string Uloge { get; set; }
 
-        public override string ToString()
-        {
-            return $"{Ime} {Prezime} - {KorisnickoIme}";
-        }
 
 
         //public int KorisnikId { get; set; }

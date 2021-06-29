@@ -28,9 +28,7 @@ namespace GamingHub2.Model
         [MaxLength(100, ErrorMessage = "Maksimalno {1} znakova")]
         public string VideoRecenzija { get; set; }
 
-        //public string VrstaNaziv => Vrsta?.Naziv;
-        //public string VrstaIdNaziv => $"{Vrsta?.VrstaId} - {Vrsta?.Naziv}";
-
+        public string KorisnikNaziv => Korisnik?.KorisnickoIme;
         public string IgraNaziv => Igra?.Naziv;
         // public string VrstaIdNaziv => $"{Vrsta?.VrstaId} - {Vrsta?.Naziv}";
     }

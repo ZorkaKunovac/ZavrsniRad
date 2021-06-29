@@ -172,7 +172,7 @@ namespace GamingHub2.WinUI.Recenzija
             // 
             // Korisnik
             // 
-            this.Korisnik.DataPropertyName = "Korisnik";
+            this.Korisnik.DataPropertyName = "KorisnikNaziv";
             this.Korisnik.HeaderText = "Korisnik";
             this.Korisnik.Name = "Korisnik";
             this.Korisnik.ReadOnly = true;
@@ -186,7 +186,7 @@ namespace GamingHub2.WinUI.Recenzija
             // 
             // Igra
             // 
-            this.Igra.DataPropertyName = "Igra";
+            this.Igra.DataPropertyName = "IgraNaziv";
             this.Igra.HeaderText = "Igra";
             this.Igra.Name = "Igra";
             this.Igra.ReadOnly = true;
