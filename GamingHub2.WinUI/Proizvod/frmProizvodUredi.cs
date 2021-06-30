@@ -64,6 +64,32 @@ namespace GamingHub2.WinUI.Proizvod
             }
         }
 
+        private void numCijena_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrEmpty(((Control)this.numCijena).Text))
+            {
+                errorProvider.SetError(numCijena, Properties.Resources.ObaveznoPolje);
+                e.Cancel = true;
+            }
+            else if (numCijena.Value < 0)
+                errorProvider.SetError(numCijena, "Cijena mora biti veca od 0");
+            else
+                errorProvider.Clear();
+        }
 
+        private void numPopust_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrEmpty(((Control)this.numPopust).Text))
+            {
+                errorProvider.SetError(numPopust, Properties.Resources.ObaveznoPolje);
+                e.Cancel = true;
+            }
+            else if (numPopust.Value < 0)
+            {
+                errorProvider.SetError(numPopust, Properties.Resources.NeispravanFormat);
+            }
+            else
+                errorProvider.Clear();
+        }
     }
 }

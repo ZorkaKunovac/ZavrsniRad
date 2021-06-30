@@ -29,18 +29,21 @@ namespace GamingHub2.WinUI.Proizvod
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.chbStatus = new System.Windows.Forms.CheckBox();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.numPopust = new System.Windows.Forms.NumericUpDown();
+            this.numCijena = new System.Windows.Forms.NumericUpDown();
+            this.txtNazivProizvoda = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtNazivProizvoda = new System.Windows.Forms.TextBox();
-            this.numCijena = new System.Windows.Forms.NumericUpDown();
-            this.numPopust = new System.Windows.Forms.NumericUpDown();
-            this.chbStatus = new System.Windows.Forms.CheckBox();
-            this.btnSave = new System.Windows.Forms.Button();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numCijena)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPopust)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numCijena)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -59,6 +62,65 @@ namespace GamingHub2.WinUI.Proizvod
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Uredjivanje proizvoda";
+            // 
+            // chbStatus
+            // 
+            this.chbStatus.AutoSize = true;
+            this.chbStatus.Checked = true;
+            this.chbStatus.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chbStatus.Location = new System.Drawing.Point(24, 198);
+            this.chbStatus.Name = "chbStatus";
+            this.chbStatus.Size = new System.Drawing.Size(62, 17);
+            this.chbStatus.TabIndex = 56;
+            this.chbStatus.Text = "Aktivan";
+            this.chbStatus.UseVisualStyleBackColor = true;
+            // 
+            // btnSave
+            // 
+            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.Location = new System.Drawing.Point(130, 198);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(89, 28);
+            this.btnSave.TabIndex = 55;
+            this.btnSave.Text = "Sačuvaj";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // numPopust
+            // 
+            this.numPopust.DecimalPlaces = 2;
+            this.numPopust.Location = new System.Drawing.Point(21, 147);
+            this.numPopust.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.numPopust.Name = "numPopust";
+            this.numPopust.Size = new System.Drawing.Size(195, 20);
+            this.numPopust.TabIndex = 54;
+            this.numPopust.Validating += new System.ComponentModel.CancelEventHandler(this.numPopust_Validating);
+            // 
+            // numCijena
+            // 
+            this.numCijena.DecimalPlaces = 2;
+            this.numCijena.Location = new System.Drawing.Point(21, 94);
+            this.numCijena.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.numCijena.Name = "numCijena";
+            this.numCijena.Size = new System.Drawing.Size(195, 20);
+            this.numCijena.TabIndex = 53;
+            this.numCijena.Validating += new System.ComponentModel.CancelEventHandler(this.numCijena_Validating);
+            // 
+            // txtNazivProizvoda
+            // 
+            this.txtNazivProizvoda.Location = new System.Drawing.Point(21, 47);
+            this.txtNazivProizvoda.Name = "txtNazivProizvoda";
+            this.txtNazivProizvoda.ReadOnly = true;
+            this.txtNazivProizvoda.Size = new System.Drawing.Size(198, 20);
+            this.txtNazivProizvoda.TabIndex = 50;
             // 
             // label2
             // 
@@ -87,62 +149,9 @@ namespace GamingHub2.WinUI.Proizvod
             this.label1.TabIndex = 47;
             this.label1.Text = "Naziv";
             // 
-            // txtNazivProizvoda
+            // errorProvider
             // 
-            this.txtNazivProizvoda.Location = new System.Drawing.Point(21, 47);
-            this.txtNazivProizvoda.Name = "txtNazivProizvoda";
-            this.txtNazivProizvoda.ReadOnly = true;
-            this.txtNazivProizvoda.Size = new System.Drawing.Size(198, 20);
-            this.txtNazivProizvoda.TabIndex = 50;
-            // 
-            // numCijena
-            // 
-            this.numCijena.DecimalPlaces = 2;
-            this.numCijena.Location = new System.Drawing.Point(21, 94);
-            this.numCijena.Maximum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            0});
-            this.numCijena.Name = "numCijena";
-            this.numCijena.Size = new System.Drawing.Size(195, 20);
-            this.numCijena.TabIndex = 53;
-            // 
-            // numPopust
-            // 
-            this.numPopust.DecimalPlaces = 2;
-            this.numPopust.Location = new System.Drawing.Point(21, 147);
-            this.numPopust.Maximum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            0});
-            this.numPopust.Name = "numPopust";
-            this.numPopust.Size = new System.Drawing.Size(195, 20);
-            this.numPopust.TabIndex = 54;
-            // 
-            // chbStatus
-            // 
-            this.chbStatus.AutoSize = true;
-            this.chbStatus.Checked = true;
-            this.chbStatus.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chbStatus.Location = new System.Drawing.Point(24, 198);
-            this.chbStatus.Name = "chbStatus";
-            this.chbStatus.Size = new System.Drawing.Size(62, 17);
-            this.chbStatus.TabIndex = 56;
-            this.chbStatus.Text = "Aktivan";
-            this.chbStatus.UseVisualStyleBackColor = true;
-            // 
-            // btnSave
-            // 
-            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(130, 198);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(89, 28);
-            this.btnSave.TabIndex = 55;
-            this.btnSave.Text = "Sačuvaj";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            this.errorProvider.ContainerControl = this;
             // 
             // frmProizvodUredi
             // 
@@ -155,8 +164,9 @@ namespace GamingHub2.WinUI.Proizvod
             this.Load += new System.EventHandler(this.frmProizvodUredi_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numCijena)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPopust)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numCijena)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -172,5 +182,6 @@ namespace GamingHub2.WinUI.Proizvod
         private System.Windows.Forms.NumericUpDown numCijena;
         private System.Windows.Forms.CheckBox chbStatus;
         private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }

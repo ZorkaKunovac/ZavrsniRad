@@ -29,6 +29,7 @@ namespace GamingHub2.WinUI.Proizvod
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.chbStatus = new System.Windows.Forms.CheckBox();
             this.btnSave = new System.Windows.Forms.Button();
@@ -38,9 +39,11 @@ namespace GamingHub2.WinUI.Proizvod
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.cmbIgraKonzola = new System.Windows.Forms.ComboBox();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numPopust)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numCijena)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -104,6 +107,7 @@ namespace GamingHub2.WinUI.Proizvod
             this.numPopust.Name = "numPopust";
             this.numPopust.Size = new System.Drawing.Size(195, 20);
             this.numPopust.TabIndex = 45;
+            this.numPopust.Validating += new System.ComponentModel.CancelEventHandler(this.numPopust_Validating);
             // 
             // numCijena
             // 
@@ -117,6 +121,7 @@ namespace GamingHub2.WinUI.Proizvod
             this.numCijena.Name = "numCijena";
             this.numCijena.Size = new System.Drawing.Size(195, 20);
             this.numCijena.TabIndex = 43;
+            this.numCijena.Validating += new System.ComponentModel.CancelEventHandler(this.numCijena_Validating);
             // 
             // label4
             // 
@@ -144,19 +149,24 @@ namespace GamingHub2.WinUI.Proizvod
             this.cmbIgraKonzola.Size = new System.Drawing.Size(195, 21);
             this.cmbIgraKonzola.TabIndex = 41;
             // 
-            // frmProizvodDodajUredi
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
+            // 
+            // frmProizvodDodaj
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(314, 303);
             this.Controls.Add(this.groupBox1);
-            this.Name = "frmProizvodDodajUredi";
+            this.Name = "frmProizvodDodaj";
             this.Text = "frmProizvodDodajUredi";
             this.Load += new System.EventHandler(this.frmProizvodDodajUredi_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numPopust)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numCijena)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -172,5 +182,6 @@ namespace GamingHub2.WinUI.Proizvod
         private System.Windows.Forms.ComboBox cmbIgraKonzola;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.CheckBox chbStatus;
+        private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }
