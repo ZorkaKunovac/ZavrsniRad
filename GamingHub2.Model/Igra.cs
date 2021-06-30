@@ -26,9 +26,6 @@ namespace GamingHub2.Model
         public ICollection<IgraZanr> IgraZanr { get; set; }
 
         public string Konzola { get; set; }
-        //public override string ToString()
-        //{
-        //    return $"{Naziv}";
-        //}
+
     }
 }

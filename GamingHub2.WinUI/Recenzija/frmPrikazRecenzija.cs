@@ -95,6 +95,16 @@ namespace GamingHub2.WinUI.Recenzija
             }
         }
 
-    
+        private async void btnDodajRecenziju_Click(object sender, EventArgs e)
+        {
+            frmDodajUrediRecenzija frm = new frmDodajUrediRecenzija();
+            frm.ShowDialog();
+            if (frm.DialogResult == DialogResult.OK)
+            {
+                dgvRecenzije.DataSource = await _recenzijaService.Get<List<Model.Recenzija>>(null);
+            }
+
+        }
+
     }
 }

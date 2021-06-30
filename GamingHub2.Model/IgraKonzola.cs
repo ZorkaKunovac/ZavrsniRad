@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
+
 namespace GamingHub2.Model
 {
     public partial class IgraKonzola
@@ -16,12 +17,7 @@ namespace GamingHub2.Model
         public virtual Konzola Konzola { get; set; }
         public virtual Proizvod Proizvod { get; set; }
 
-        public string Naziv => $"{Igra?.Naziv} - {Konzola?.Naziv}";
-
-        //public override string ToString()
-        //{
-        //    return $"{Igra?.Naziv} - {Konzola?.Naziv}";
-        //}
-
-    }
+        //public string Naziv => $"{Igra?.Naziv} - {Konzola?.Naziv}";
+        public string Naziv { get; set; }
+}
 }

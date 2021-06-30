@@ -34,6 +34,7 @@ namespace GamingHub2.WinUI.Recenzija
             this.label4 = new System.Windows.Forms.Label();
             this.txtNaslov = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnDodajRecenziju = new System.Windows.Forms.Button();
             this.btnPrikazi = new System.Windows.Forms.Button();
             this.cmbIgre = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -55,7 +56,7 @@ namespace GamingHub2.WinUI.Recenzija
             // cmbKorisnici
             // 
             this.cmbKorisnici.FormattingEnabled = true;
-            this.cmbKorisnici.Location = new System.Drawing.Point(369, 45);
+            this.cmbKorisnici.Location = new System.Drawing.Point(299, 45);
             this.cmbKorisnici.Name = "cmbKorisnici";
             this.cmbKorisnici.Size = new System.Drawing.Size(183, 21);
             this.cmbKorisnici.TabIndex = 32;
@@ -63,7 +64,7 @@ namespace GamingHub2.WinUI.Recenzija
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(366, 29);
+            this.label1.Location = new System.Drawing.Point(296, 29);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(44, 13);
             this.label1.TabIndex = 31;
@@ -82,11 +83,12 @@ namespace GamingHub2.WinUI.Recenzija
             // 
             this.txtNaslov.Location = new System.Drawing.Point(6, 46);
             this.txtNaslov.Name = "txtNaslov";
-            this.txtNaslov.Size = new System.Drawing.Size(299, 20);
+            this.txtNaslov.Size = new System.Drawing.Size(273, 20);
             this.txtNaslov.TabIndex = 35;
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnDodajRecenziju);
             this.groupBox1.Controls.Add(this.btnPrikazi);
             this.groupBox1.Controls.Add(this.cmbIgre);
             this.groupBox1.Controls.Add(this.label2);
@@ -101,9 +103,19 @@ namespace GamingHub2.WinUI.Recenzija
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Pretraga";
             // 
+            // btnDodajRecenziju
+            // 
+            this.btnDodajRecenziju.Location = new System.Drawing.Point(829, 46);
+            this.btnDodajRecenziju.Name = "btnDodajRecenziju";
+            this.btnDodajRecenziju.Size = new System.Drawing.Size(99, 23);
+            this.btnDodajRecenziju.TabIndex = 40;
+            this.btnDodajRecenziju.Text = "Dodaj recenziju";
+            this.btnDodajRecenziju.UseVisualStyleBackColor = true;
+            this.btnDodajRecenziju.Click += new System.EventHandler(this.btnDodajRecenziju_Click);
+            // 
             // btnPrikazi
             // 
-            this.btnPrikazi.Location = new System.Drawing.Point(881, 43);
+            this.btnPrikazi.Location = new System.Drawing.Point(721, 46);
             this.btnPrikazi.Name = "btnPrikazi";
             this.btnPrikazi.Size = new System.Drawing.Size(75, 23);
             this.btnPrikazi.TabIndex = 39;
@@ -114,7 +126,7 @@ namespace GamingHub2.WinUI.Recenzija
             // cmbIgre
             // 
             this.cmbIgre.FormattingEnabled = true;
-            this.cmbIgre.Location = new System.Drawing.Point(618, 46);
+            this.cmbIgre.Location = new System.Drawing.Point(510, 46);
             this.cmbIgre.Name = "cmbIgre";
             this.cmbIgre.Size = new System.Drawing.Size(187, 21);
             this.cmbIgre.TabIndex = 38;
@@ -122,7 +134,7 @@ namespace GamingHub2.WinUI.Recenzija
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(615, 30);
+            this.label2.Location = new System.Drawing.Point(507, 30);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(25, 13);
             this.label2.TabIndex = 37;
@@ -257,5 +269,6 @@ namespace GamingHub2.WinUI.Recenzija
         private System.Windows.Forms.DataGridViewTextBoxColumn Sadrzaj;
         private System.Windows.Forms.DataGridViewImageColumn Slika;
         private System.Windows.Forms.DataGridViewTextBoxColumn VideoRecenzija;
+        private System.Windows.Forms.Button btnDodajRecenziju;
     }
 }

@@ -123,7 +123,7 @@ namespace GamingHub2.WinUI.Proizvod
             // 
             // Naziv
             // 
-            this.Naziv.DataPropertyName = "Naziv";
+            this.Naziv.DataPropertyName = "IgraKonzolaNaziv";
             this.Naziv.HeaderText = "Naziv";
             this.Naziv.Name = "Naziv";
             this.Naziv.ReadOnly = true;

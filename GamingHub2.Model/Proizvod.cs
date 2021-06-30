@@ -14,5 +14,7 @@ namespace GamingHub2.Model
         public int IgraKonzolaID { get; set; }
         public virtual IgraKonzola IgraKonzola { get; set; }
 
+        public string IgraKonzolaNaziv => $"{IgraKonzola?.Igra.Naziv} - {IgraKonzola?.Konzola.Naziv}";
+
     }
 }

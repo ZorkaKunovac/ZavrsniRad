@@ -97,6 +97,7 @@ namespace GamingHub2
             //services.AddScoped<IReadService<Model.Uloge, object>, BaseReadService<Model.Uloge, Database.Uloge, object>>();
             services.AddScoped<ICRUDService<Model.Uloge, object, UlogaInsertRequest, object>, BaseCRUDService<Model.Uloge, Database.Uloge, object, UlogaInsertRequest, object>>();
             services.AddScoped<IRecenzijaService, RecenzijaService>();
+            services.AddScoped<IIgraKonzolaService, IgraKonzolaService>();
 
         }
 

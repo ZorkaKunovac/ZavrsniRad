@@ -26,7 +26,7 @@ namespace GamingHub2.WinUI.Proizvod
         private async Task LoadIgraKonzola()
         {
             var result = await _igrakonzolaservice.Get<List<Model.IgraKonzola>>(null);
-            result.Insert(0, new Model.IgraKonzola());
+          //  result.Insert(0, new Model.IgraKonzola());
             cmbIgraKonzola.DataSource = result;
             cmbIgraKonzola.DisplayMember = "Naziv";
             cmbIgraKonzola.ValueMember = "ID";

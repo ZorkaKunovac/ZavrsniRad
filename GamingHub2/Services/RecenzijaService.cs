@@ -23,30 +23,37 @@ namespace GamingHub2.Services
                 entity = entity.Where(x => x.Naslov.StartsWith(search.Naslov));
             }
 
-            if (search.KorisnikId != 0 && search.KorisnikId.HasValue)
-            {
-                entity = entity.Where(x => x.KorisnikId == search.KorisnikId);
-            }
-
-            if (search.IgraId != 0 && search.IgraId.HasValue)
-            {
-                entity = entity.Where(x => x.IgraId == search.IgraId);
-            }
-
-            //if (search?.IncludeJedinicaMjere == true)
+            //if (search.KorisnikId != 0 && search.KorisnikId.HasValue)
             //{
-            //    entity = entity.Include(x => x.JedinicaMjere);
+            //    entity = entity.Where(x => x.KorisnikId == search.KorisnikId);
             //}
 
-            if (search?.IncludeList?.Length > 0)
-            {
-                foreach (var item in search.IncludeList)
-                {
-                    entity = entity.Include(item);
-                }
-            }
+            //if (search.IgraId != 0 && search.IgraId.HasValue)
+            //{
+            //    entity = entity.Where(x => x.IgraId == search.IgraId);
+            //}
 
-            var list = entity.OrderByDescending(x => x.DatumObjave).ToList();
+
+            //if (search?.IncludeKorisnik == true)
+            //{
+            //    entity = entity.Include(x => x.Korisnik);
+            //}
+
+            //if (search?.IncludeIgra == true)
+            //{
+            //    entity = entity.Include(x => x.Igra);
+            //}
+
+            //if (search?.IncludeList?.Length > 0)
+            //{
+            //    foreach (var item in search.IncludeList)
+            //    {
+            //        entity = entity.Include(item);
+            //    }
+            //}
+
+          //  var list = entity.Include(x => x.Korisnik).Include(x => x.Igra).OrderByDescending(x => x.DatumObjave).ToList();
+            var list = entity.Include(x => x.Korisnik).Include(x => x.Igra).OrderByDescending(x => x.DatumObjave).ToList();
             return _mapper.Map<List<Model.Recenzija>>(list);
         }
     }

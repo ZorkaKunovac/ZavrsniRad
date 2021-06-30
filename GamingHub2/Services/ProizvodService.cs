@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using GamingHub2.Model.Requests;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,6 +28,7 @@ namespace GamingHub2.Services
                 entity = entity.Where(x => x.IgraKonzolaID == search.IgraKonzolaId);
             }
 
+            //var list = entity.Include(x => x.IgraKonzola.Igra).Include(x => x.IgraKonzola.Konzola).ToList();
             var list = entity.ToList();
 
             return _mapper.Map<List<Model.Proizvod>>(list);
