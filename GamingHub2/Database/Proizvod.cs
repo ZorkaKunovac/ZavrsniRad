@@ -14,10 +14,9 @@ namespace GamingHub2.Database
 
         [Required(ErrorMessage = "Polje je obavezno")]
         [Column(TypeName = "decimal(8, 2)")]
-        public float ProdajnaCijena { get; set; }
+        public decimal ProdajnaCijena { get; set; }
         [Column(TypeName = "decimal(8, 2)")]
-
-        public float Popust { get; set; }
+        public decimal Popust { get; set; }
         [Required(ErrorMessage = "Polje je obavezno")]
         public bool? Status { get; set; }
         public int IgraKonzolaID { get; set; }

@@ -26,7 +26,7 @@ namespace GamingHub2.WinUI.Proizvod
         private async Task LoadIgraKonzola()
         {
             var result = await _igrakonzolaservice.Get<List<Model.IgraKonzola>>(null);
-          //  result.Insert(0, new Model.IgraKonzola());
+            result.Insert(0, new Model.IgraKonzola());
             cmbIgraKonzola.DataSource = result;
             cmbIgraKonzola.DisplayMember = "Naziv";
             cmbIgraKonzola.ValueMember = "ID";
@@ -41,16 +41,14 @@ namespace GamingHub2.WinUI.Proizvod
                 var proizvod = await _service.GetById<Model.Proizvod>(_id.Value);
 
                 cmbIgraKonzola.SelectedValue = proizvod.IgraKonzolaID;
-                numCijena.Value = (decimal)proizvod.ProdajnaCijena;
-                numPopust.Value = (decimal)proizvod.Popust;
+                numCijena.Value = proizvod.ProdajnaCijena;
+                numPopust.Value = proizvod.Popust;
                 chbStatus.Checked = (bool)(proizvod.Status);
             }
         }
 
         private async void btnSave_Click(object sender, EventArgs e)
         {
-
-
             if (ValidateChildren())
             {
                 Model.Proizvod entity = null;
@@ -60,9 +58,10 @@ namespace GamingHub2.WinUI.Proizvod
                     ProizvodInsertRequest request = new ProizvodInsertRequest()
                     {
                         IgraKonzolaID = int.Parse(cmbIgraKonzola.SelectedValue.ToString()),
-                        NazivProizvoda = cmbIgraKonzola.DisplayMember,
-                        ProdajnaCijena = (float)numCijena.Value,
-                        Popust = (float)numPopust.Value,
+                        
+                        NazivProizvoda = cmbIgraKonzola.Text,
+                        ProdajnaCijena = numCijena.Value,
+                        Popust = numPopust.Value,
                         Status = chbStatus.Checked
                     };
                     entity = await _service.Insert<Model.Proizvod>(request);
@@ -71,9 +70,9 @@ namespace GamingHub2.WinUI.Proizvod
                 {
                     ProizvodUpdateRequest request = new ProizvodUpdateRequest()
                     {
-                        NazivProizvoda = cmbIgraKonzola.DisplayMember,
-                        ProdajnaCijena = (float)numCijena.Value,
-                        Popust = (float)numPopust.Value,
+                        NazivProizvoda = cmbIgraKonzola.Text,
+                        ProdajnaCijena = numCijena.Value,
+                        Popust = numPopust.Value,
                         Status = chbStatus.Checked
                     };
                     entity = await _service.Update<Model.Proizvod>(_id.Value, request);

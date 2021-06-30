@@ -109,6 +109,7 @@ namespace GamingHub2.WinUI.Proizvod
             this.dgvProizvodi.Location = new System.Drawing.Point(3, 16);
             this.dgvProizvodi.Name = "dgvProizvodi";
             this.dgvProizvodi.ReadOnly = true;
+            this.dgvProizvodi.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvProizvodi.Size = new System.Drawing.Size(514, 171);
             this.dgvProizvodi.TabIndex = 0;
             this.dgvProizvodi.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvProizvodi_MouseDoubleClick);
@@ -123,14 +124,14 @@ namespace GamingHub2.WinUI.Proizvod
             // 
             // Naziv
             // 
-            this.Naziv.DataPropertyName = "IgraKonzolaNaziv";
+            this.Naziv.DataPropertyName = "NazivProizvoda";
             this.Naziv.HeaderText = "Naziv";
             this.Naziv.Name = "Naziv";
             this.Naziv.ReadOnly = true;
             // 
             // Cijena
             // 
-            this.Cijena.DataPropertyName = "Cijena";
+            this.Cijena.DataPropertyName = "ProdajnaCijena";
             this.Cijena.HeaderText = "Cijena";
             this.Cijena.Name = "Cijena";
             this.Cijena.ReadOnly = true;

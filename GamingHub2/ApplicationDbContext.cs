@@ -26,6 +26,18 @@ namespace GamingHub2
                .HasOne<Kupac>(k => k.Kupac)
                .WithOne(ad => ad.Korisnik)
                .HasForeignKey<Kupac>(ad => ad.KorisnikId);
+
+            //modelBuilder.Entity<Korisnik>()
+            //   .HasIndex(k => new { k.Email, k.KorisnickoIme })
+            //   .IsUnique(true);
+
+            modelBuilder.Entity<Korisnik>()
+               .HasIndex(u => u.Email)
+               .IsUnique();
+
+            modelBuilder.Entity<Korisnik>()
+            .HasIndex(u => u.KorisnickoIme)
+            .IsUnique();
         }
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)

@@ -10,10 +10,11 @@ namespace GamingHub2.Model.Requests
         //[Required(AllowEmptyStrings = false)]
         //  [Required]
 
-
+        [Required(ErrorMessage = "Polje je obavezno")]
         [StringLength(50, ErrorMessage = "{0} mora biti izmedju {2} i {1} znakova.", MinimumLength = 2)]
         public string Ime { get; set; }
 
+        [Required(ErrorMessage = "Polje je obavezno")]
         [StringLength(50, ErrorMessage = "{0} mora biti izmedju {2} i {1} znakova.", MinimumLength = 2)]
         public string Prezime { get; set; }
         [Required]

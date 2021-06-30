@@ -17,9 +17,7 @@ namespace GamingHub2.Database
         [Required(ErrorMessage = "Obavezno polje")]
         [StringLength(250, ErrorMessage = "{0} mora biti izmedju {2} i {1} znakova.", MinimumLength = 5)]
         public string Naslov { get; set; }
-        public DateTime? DatumObjave { get; set; }
-
-        //public DateTime DatumIzmjene { get; set; } ??
+        public DateTime DatumObjave { get; set; }
 
         [Required(ErrorMessage = "Obavezno polje")]
         [StringLength(20000, ErrorMessage = "{0} mora biti izmedju {2} i {1} znakova.", MinimumLength = 400)]
