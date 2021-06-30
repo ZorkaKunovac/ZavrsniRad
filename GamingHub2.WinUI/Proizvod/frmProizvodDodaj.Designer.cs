@@ -1,7 +1,7 @@
 ﻿
 namespace GamingHub2.WinUI.Proizvod
 {
-    partial class frmProizvodDodajUredi
+    partial class frmProizvodDodaj
     {
         /// <summary>
         /// Required designer variable.

@@ -39,7 +39,7 @@ namespace GamingHub2.WinUI.Proizvod
         {
             var proizvodId = int.Parse(dgvProizvodi.SelectedRows[0].Cells[0].Value.ToString());
 
-            frmProizvodDodajUredi frm = new frmProizvodDodajUredi(proizvodId);
+            frmProizvodUredi frm = new frmProizvodUredi(proizvodId);
             var result = frm.ShowDialog();
             if (frm.DialogResult == DialogResult.OK)
             {
@@ -49,7 +49,7 @@ namespace GamingHub2.WinUI.Proizvod
 
         private async void btnDodajProizvod_Click(object sender, EventArgs e)
         {
-            frmProizvodDodajUredi frm = new frmProizvodDodajUredi();
+            frmProizvodDodaj frm = new frmProizvodDodaj();
             frm.ShowDialog();
             if (frm.DialogResult == DialogResult.OK)
             {

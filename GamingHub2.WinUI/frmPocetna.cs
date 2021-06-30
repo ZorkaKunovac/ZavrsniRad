@@ -223,7 +223,7 @@ namespace GamingHub2.WinUI
 
         private void noviProizvodToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmProizvodDodajUredi frm = new frmProizvodDodajUredi();
+            frmProizvodDodaj frm = new frmProizvodDodaj();
             frm.Show();
         }
     }

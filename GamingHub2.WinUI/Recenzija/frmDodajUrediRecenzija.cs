@@ -107,6 +107,7 @@ namespace GamingHub2.WinUI.Recenzija
                 if (entity != null)
                 {
                     MessageBox.Show("Uspješno izvršeno");
+                    DialogResult = DialogResult.OK;
                     this.Close();
                 }
             }

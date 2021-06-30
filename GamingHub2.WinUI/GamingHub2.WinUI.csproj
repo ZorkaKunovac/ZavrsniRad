@@ -115,17 +115,23 @@
       <DependentUpon>frmRoleManager.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
-    <Compile Include="Proizvod\frmProizvodDodajUredi.cs">
+    <Compile Include="Proizvod\frmProizvodDodaj.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Proizvod\frmProizvodDodajUredi.Designer.cs">
-      <DependentUpon>frmProizvodDodajUredi.cs</DependentUpon>
+    <Compile Include="Proizvod\frmProizvodDodaj.Designer.cs">
+      <DependentUpon>frmProizvodDodaj.cs</DependentUpon>
     </Compile>
     <Compile Include="Proizvod\frmProizvodi.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Proizvod\frmProizvodi.Designer.cs">
       <DependentUpon>frmProizvodi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Proizvod\frmProizvodUredi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Proizvod\frmProizvodUredi.Designer.cs">
+      <DependentUpon>frmProizvodUredi.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Recenzija\frmDodajUrediRecenzija.cs">
@@ -180,11 +186,14 @@
     <EmbeddedResource Include="Korisnici\frmRoleManager.resx">
       <DependentUpon>frmRoleManager.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Proizvod\frmProizvodDodajUredi.resx">
-      <DependentUpon>frmProizvodDodajUredi.cs</DependentUpon>
+    <EmbeddedResource Include="Proizvod\frmProizvodDodaj.resx">
+      <DependentUpon>frmProizvodDodaj.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Proizvod\frmProizvodi.resx">
       <DependentUpon>frmProizvodi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Proizvod\frmProizvodUredi.resx">
+      <DependentUpon>frmProizvodUredi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
