@@ -30,17 +30,17 @@ namespace GamingHub2.WinUI.Proizvod
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.cmbIgraKonzola = new System.Windows.Forms.ComboBox();
+            this.chbStatus = new System.Windows.Forms.CheckBox();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.numPopust = new System.Windows.Forms.NumericUpDown();
             this.numCijena = new System.Windows.Forms.NumericUpDown();
             this.label4 = new System.Windows.Forms.Label();
-            this.numPopust = new System.Windows.Forms.NumericUpDown();
-            this.label2 = new System.Windows.Forms.Label();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.chbStatus = new System.Windows.Forms.CheckBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cmbIgraKonzola = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numCijena)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPopust)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numCijena)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -60,22 +60,50 @@ namespace GamingHub2.WinUI.Proizvod
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Proizvodi";
             // 
-            // label1
+            // chbStatus
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(19, 32);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(34, 13);
-            this.label1.TabIndex = 42;
-            this.label1.Text = "Naziv";
+            this.chbStatus.AutoSize = true;
+            this.chbStatus.Checked = true;
+            this.chbStatus.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chbStatus.Location = new System.Drawing.Point(22, 190);
+            this.chbStatus.Name = "chbStatus";
+            this.chbStatus.Size = new System.Drawing.Size(62, 17);
+            this.chbStatus.TabIndex = 52;
+            this.chbStatus.Text = "Aktivan";
+            this.chbStatus.UseVisualStyleBackColor = true;
             // 
-            // cmbIgraKonzola
+            // btnSave
             // 
-            this.cmbIgraKonzola.FormattingEnabled = true;
-            this.cmbIgraKonzola.Location = new System.Drawing.Point(22, 48);
-            this.cmbIgraKonzola.Name = "cmbIgraKonzola";
-            this.cmbIgraKonzola.Size = new System.Drawing.Size(195, 21);
-            this.cmbIgraKonzola.TabIndex = 41;
+            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.Location = new System.Drawing.Point(128, 190);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(89, 28);
+            this.btnSave.TabIndex = 51;
+            this.btnSave.Text = "Sačuvaj";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(22, 133);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(40, 13);
+            this.label2.TabIndex = 46;
+            this.label2.Text = "Popust";
+            // 
+            // numPopust
+            // 
+            this.numPopust.DecimalPlaces = 2;
+            this.numPopust.Location = new System.Drawing.Point(22, 152);
+            this.numPopust.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.numPopust.Name = "numPopust";
+            this.numPopust.Size = new System.Drawing.Size(195, 20);
+            this.numPopust.TabIndex = 45;
             // 
             // numCijena
             // 
@@ -99,50 +127,22 @@ namespace GamingHub2.WinUI.Proizvod
             this.label4.TabIndex = 44;
             this.label4.Text = "Cijena";
             // 
-            // numPopust
+            // label1
             // 
-            this.numPopust.DecimalPlaces = 2;
-            this.numPopust.Location = new System.Drawing.Point(22, 152);
-            this.numPopust.Maximum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            0});
-            this.numPopust.Name = "numPopust";
-            this.numPopust.Size = new System.Drawing.Size(195, 20);
-            this.numPopust.TabIndex = 45;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(19, 32);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(34, 13);
+            this.label1.TabIndex = 42;
+            this.label1.Text = "Naziv";
             // 
-            // label2
+            // cmbIgraKonzola
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(22, 133);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(40, 13);
-            this.label2.TabIndex = 46;
-            this.label2.Text = "Popust";
-            // 
-            // btnSave
-            // 
-            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(128, 190);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(89, 28);
-            this.btnSave.TabIndex = 51;
-            this.btnSave.Text = "Sačuvaj";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // chbStatus
-            // 
-            this.chbStatus.AutoSize = true;
-            this.chbStatus.Checked = true;
-            this.chbStatus.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chbStatus.Location = new System.Drawing.Point(22, 190);
-            this.chbStatus.Name = "chbStatus";
-            this.chbStatus.Size = new System.Drawing.Size(62, 17);
-            this.chbStatus.TabIndex = 52;
-            this.chbStatus.Text = "Aktivan";
-            this.chbStatus.UseVisualStyleBackColor = true;
+            this.cmbIgraKonzola.FormattingEnabled = true;
+            this.cmbIgraKonzola.Location = new System.Drawing.Point(22, 48);
+            this.cmbIgraKonzola.Name = "cmbIgraKonzola";
+            this.cmbIgraKonzola.Size = new System.Drawing.Size(195, 21);
+            this.cmbIgraKonzola.TabIndex = 41;
             // 
             // frmProizvodDodajUredi
             // 
@@ -155,8 +155,8 @@ namespace GamingHub2.WinUI.Proizvod
             this.Load += new System.EventHandler(this.frmProizvodDodajUredi_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numCijena)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPopust)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numCijena)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -33,12 +33,10 @@ namespace GamingHub2.WinUI.Proizvod
         {
             dgvProizvodi.AutoGenerateColumns = false;
             dgvProizvodi.DataSource = await _service.Get<List<Model.Proizvod>>(null);
-
         }
 
         private async void dgvProizvodi_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-
             var proizvodId = int.Parse(dgvProizvodi.SelectedRows[0].Cells[0].Value.ToString());
 
             frmProizvodDodajUredi frm = new frmProizvodDodajUredi(proizvodId);
@@ -47,13 +45,16 @@ namespace GamingHub2.WinUI.Proizvod
             {
                 dgvProizvodi.DataSource = await _service.Get<List<Model.Proizvod>>(null);
             }
+        }
 
-            //var proizvodId = int.Parse(dgvProizvodi.SelectedRows[0].Cells[0].Value.ToString());
-
-            //frmProizvodDodajUredi frm = new frmProizvodDodajUredi(proizvodId);
-            //var result = frm.ShowDialog();
-            //if(frm.DialogResult== DialogResult.OK)
-            //    dgvProizvodi.DataSource = await _service.Get<List<Model.Proizvod>>(null);
+        private async void btnDodajProizvod_Click(object sender, EventArgs e)
+        {
+            frmProizvodDodajUredi frm = new frmProizvodDodajUredi();
+            frm.ShowDialog();
+            if (frm.DialogResult == DialogResult.OK)
+            {
+                dgvProizvodi.DataSource = await _service.Get<List<Model.Proizvod>>(null);
+            }
         }
     }
 }

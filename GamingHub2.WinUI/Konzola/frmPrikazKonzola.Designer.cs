@@ -44,7 +44,7 @@ namespace GamingHub2.WinUI.Konzola
             this.groupBox1.Controls.Add(this.dgvKonzole);
             this.groupBox1.Location = new System.Drawing.Point(11, 61);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(392, 206);
+            this.groupBox1.Size = new System.Drawing.Size(392, 355);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Konzole";
@@ -65,7 +65,7 @@ namespace GamingHub2.WinUI.Konzola
             this.dgvKonzole.ReadOnly = true;
             this.dgvKonzole.RowTemplate.Height = 25;
             this.dgvKonzole.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvKonzole.Size = new System.Drawing.Size(386, 187);
+            this.dgvKonzole.Size = new System.Drawing.Size(386, 336);
             this.dgvKonzole.TabIndex = 0;
             this.dgvKonzole.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvKonzole_MouseDoubleClick);
             // 
@@ -105,7 +105,7 @@ namespace GamingHub2.WinUI.Konzola
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(415, 299);
+            this.ClientSize = new System.Drawing.Size(415, 428);
             this.Controls.Add(this.btnDodajKonzolu);
             this.Controls.Add(this.groupBox1);
             this.Name = "frmPrikazKonzola";

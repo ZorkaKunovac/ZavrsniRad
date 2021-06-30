@@ -44,6 +44,7 @@ namespace GamingHub2.WinUI.Proizvod
                 numCijena.Value = proizvod.ProdajnaCijena;
                 numPopust.Value = proizvod.Popust;
                 chbStatus.Checked = (bool)(proizvod.Status);
+               // cmbIgraKonzola.AllowDrop = false;
             }
         }
 

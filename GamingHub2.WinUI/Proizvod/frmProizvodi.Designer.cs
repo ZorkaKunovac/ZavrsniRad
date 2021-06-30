@@ -30,6 +30,7 @@ namespace GamingHub2.WinUI.Proizvod
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnDodajProizvod = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.btnPrikazi = new System.Windows.Forms.Button();
             this.txtNaziv = new System.Windows.Forms.TextBox();
@@ -47,6 +48,7 @@ namespace GamingHub2.WinUI.Proizvod
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnDodajProizvod);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.btnPrikazi);
             this.groupBox1.Controls.Add(this.txtNaziv);
@@ -56,6 +58,16 @@ namespace GamingHub2.WinUI.Proizvod
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Pretraga";
+            // 
+            // btnDodajProizvod
+            // 
+            this.btnDodajProizvod.Location = new System.Drawing.Point(391, 42);
+            this.btnDodajProizvod.Name = "btnDodajProizvod";
+            this.btnDodajProizvod.Size = new System.Drawing.Size(92, 23);
+            this.btnDodajProizvod.TabIndex = 6;
+            this.btnDodajProizvod.Text = "Dodaj proizvod";
+            this.btnDodajProizvod.UseVisualStyleBackColor = true;
+            this.btnDodajProizvod.Click += new System.EventHandler(this.btnDodajProizvod_Click);
             // 
             // label1
             // 
@@ -68,7 +80,7 @@ namespace GamingHub2.WinUI.Proizvod
             // 
             // btnPrikazi
             // 
-            this.btnPrikazi.Location = new System.Drawing.Point(397, 42);
+            this.btnPrikazi.Location = new System.Drawing.Point(265, 42);
             this.btnPrikazi.Name = "btnPrikazi";
             this.btnPrikazi.Size = new System.Drawing.Size(81, 23);
             this.btnPrikazi.TabIndex = 4;
@@ -80,7 +92,7 @@ namespace GamingHub2.WinUI.Proizvod
             // 
             this.txtNaziv.Location = new System.Drawing.Point(16, 45);
             this.txtNaziv.Name = "txtNaziv";
-            this.txtNaziv.Size = new System.Drawing.Size(167, 20);
+            this.txtNaziv.Size = new System.Drawing.Size(194, 20);
             this.txtNaziv.TabIndex = 3;
             // 
             // groupBox2
@@ -154,7 +166,7 @@ namespace GamingHub2.WinUI.Proizvod
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(618, 450);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "frmProizvodi";
@@ -181,5 +193,6 @@ namespace GamingHub2.WinUI.Proizvod
         private System.Windows.Forms.DataGridViewTextBoxColumn Cijena;
         private System.Windows.Forms.DataGridViewTextBoxColumn Popust;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Status;
+        private System.Windows.Forms.Button btnDodajProizvod;
     }
 }

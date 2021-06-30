@@ -30,6 +30,7 @@ namespace GamingHub2.WinUI.Zanrovi
         private void InitializeComponent()
         {
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnNoviZanr = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.btnPrikazi = new System.Windows.Forms.Button();
             this.txtNaziv = new System.Windows.Forms.TextBox();
@@ -38,7 +39,6 @@ namespace GamingHub2.WinUI.Zanrovi
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Naziv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Opis = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnNoviZanr = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvZanrovi)).BeginInit();
@@ -56,6 +56,16 @@ namespace GamingHub2.WinUI.Zanrovi
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Pretraga";
+            // 
+            // btnNoviZanr
+            // 
+            this.btnNoviZanr.Location = new System.Drawing.Point(325, 39);
+            this.btnNoviZanr.Name = "btnNoviZanr";
+            this.btnNoviZanr.Size = new System.Drawing.Size(89, 23);
+            this.btnNoviZanr.TabIndex = 25;
+            this.btnNoviZanr.Text = "Novi zanr";
+            this.btnNoviZanr.UseVisualStyleBackColor = true;
+            this.btnNoviZanr.Click += new System.EventHandler(this.btnNoviZanr_Click);
             // 
             // label1
             // 
@@ -88,7 +98,7 @@ namespace GamingHub2.WinUI.Zanrovi
             this.groupBox1.Controls.Add(this.dgvZanrovi);
             this.groupBox1.Location = new System.Drawing.Point(7, 94);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(433, 194);
+            this.groupBox1.Size = new System.Drawing.Size(433, 325);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Zanrovi";
@@ -109,7 +119,7 @@ namespace GamingHub2.WinUI.Zanrovi
             this.dgvZanrovi.ReadOnly = true;
             this.dgvZanrovi.RowTemplate.Height = 25;
             this.dgvZanrovi.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvZanrovi.Size = new System.Drawing.Size(427, 175);
+            this.dgvZanrovi.Size = new System.Drawing.Size(427, 306);
             this.dgvZanrovi.TabIndex = 0;
             this.dgvZanrovi.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvZanrovi_MouseDoubleClick);
             // 
@@ -135,21 +145,11 @@ namespace GamingHub2.WinUI.Zanrovi
             this.Opis.Name = "Opis";
             this.Opis.ReadOnly = true;
             // 
-            // btnNoviZanr
-            // 
-            this.btnNoviZanr.Location = new System.Drawing.Point(325, 39);
-            this.btnNoviZanr.Name = "btnNoviZanr";
-            this.btnNoviZanr.Size = new System.Drawing.Size(89, 23);
-            this.btnNoviZanr.TabIndex = 25;
-            this.btnNoviZanr.Text = "Novi zanr";
-            this.btnNoviZanr.UseVisualStyleBackColor = true;
-            this.btnNoviZanr.Click += new System.EventHandler(this.btnNoviZanr_Click);
-            // 
             // frmPrikazZanrova
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(453, 298);
+            this.ClientSize = new System.Drawing.Size(450, 431);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
             this.Name = "frmPrikazZanrova";

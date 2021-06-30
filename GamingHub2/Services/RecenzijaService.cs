@@ -23,15 +23,15 @@ namespace GamingHub2.Services
                 entity = entity.Where(x => x.Naslov.StartsWith(search.Naslov));
             }
 
-            //if (search.KorisnikId != 0 && search.KorisnikId.HasValue)
-            //{
-            //    entity = entity.Where(x => x.KorisnikId == search.KorisnikId);
-            //}
+            if (search.KorisnikId != 0 && search.KorisnikId.HasValue)
+            {
+                entity = entity.Where(x => x.KorisnikId == search.KorisnikId);
+            }
 
-            //if (search.IgraId != 0 && search.IgraId.HasValue)
-            //{
-            //    entity = entity.Where(x => x.IgraId == search.IgraId);
-            //}
+            if (search.IgraId != 0 && search.IgraId.HasValue)
+            {
+                entity = entity.Where(x => x.IgraId == search.IgraId);
+            }
 
 
             //if (search?.IncludeKorisnik == true)
@@ -52,7 +52,7 @@ namespace GamingHub2.Services
             //    }
             //}
 
-          //  var list = entity.Include(x => x.Korisnik).Include(x => x.Igra).OrderByDescending(x => x.DatumObjave).ToList();
+            //  var list = entity.Include(x => x.Korisnik).Include(x => x.Igra).OrderByDescending(x => x.DatumObjave).ToList();
             var list = entity.Include(x => x.Korisnik).Include(x => x.Igra).OrderByDescending(x => x.DatumObjave).ToList();
             return _mapper.Map<List<Model.Recenzija>>(list);
         }
