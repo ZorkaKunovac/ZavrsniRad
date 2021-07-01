@@ -116,6 +116,15 @@ namespace GamingHub2.Services
                 throw new Exception("Passwordi se ne slažu");
             }
 
+            Korisnik user = _context.Korisnik.FirstOrDefault(u => u.KorisnickoIme == request.KorisnickoIme);
+            Korisnik emil = _context.Korisnik.FirstOrDefault(u => u.Email == request.Email);
+
+            if (user != null)
+                throw new UserException("Korisnicko ime vec postoji!");
+                //ModelState.AddModelError("UserName", "Username Already Exist!");
+            if (emil != null)
+                throw new UserException("Email vec postoji!");
+            
             entity.LozinkaSalt = GenerateSalt();
             entity.LozinkaHash = GenerateHash(entity.LozinkaSalt, request.Password);
 
@@ -182,106 +191,4 @@ namespace GamingHub2.Services
         }
     }
 
-    //public class KorisnikService : BaseCRUDService<Model.Korisnik, Database.Korisnik, KorisnikSearchRequest, KorisnikInsertRequest, KorisnikUpdateRequest>, IKorisnikService
-    //{
-    //    public KorisnikService(ApplicationDbContext context, IMapper mapper) : base(context, mapper)
-    //    {
-    //    }
-
-
-    //    public override IEnumerable<Model.Korisnik> Get(KorisnikSearchRequest search = null)
-    //    {
-    //        var entity = Context.Set<Database.Korisnik>().AsQueryable();
-
-    //        if (!string.IsNullOrWhiteSpace(search?.Ime))
-    //        {
-    //            entity = entity.Where(x => x.Ime.StartsWith(search.Ime));
-    //        }
-
-    //        if (search?.IsUlogeLoadingEnabled == true)
-    //        {
-    //            entity = entity.Include(x => x.KorisnikUloga);
-    //        }
-    //        var list = entity.ToList();
-
-    //        return _mapper.Map<List<Model.Korisnik>>(list);
-    //    }
-
-
-
-    //    public override Model.Korisnik Insert(KorisnikInsertRequest request)
-    //    {
-    //        var entity = _mapper.Map<Database.Korisnik>(request);
-    //        Context.Add(entity);
-    //        if (request.Password != request.PasswordPotvrda)
-    //        {
-    //            //throw new NotImplementedException();
-    //            throw new UserException("Lozinka nije ispravna");
-    //        }
-
-    //        entity.LozinkaSalt = GenerateSalt();
-    //        entity.LozinkaHash = GenerateHash(entity.LozinkaSalt, request.Password);
-
-    //        Context.SaveChanges();
-
-    //        foreach (var uloga in request.Uloge)
-    //        {
-    //            Database.KorisniciUloge korisniciUloge = new Database.KorisniciUloge();
-    //            korisniciUloge.KorisnikId = entity.Id;
-    //            korisniciUloge.UlogaId = uloga;
-    //            korisniciUloge.DatumIzmjene = DateTime.Now;
-
-    //            Context.KorisnikUloga.Add(korisniciUloge);
-    //        }
-    //        Context.SaveChanges();
-
-    //        return _mapper.Map<Model.Korisnik>(entity);
-    //    }
-
-
-    //    public override Model.Korisnik Update(int id, KorisnikUpdateRequest request)
-    //    {
-    //        //var set = Context.Set<Database.Korisnik>();
-    //        //var entity = set.Find(id);
-
-    //        var entity = Context.Korisnik.Find(id);
-
-    //        Context.Korisnik.Attach(entity);
-    //        Context.Korisnik.Update(entity);
-
-    //        //var listKorisnikUloga = Context.KorisnikUloga.Where(x => x.KorisnikId == id).ToList();
-
-    //        //foreach (var item in listKorisnikUloga)
-    //        //{
-    //        //    Context.KorisnikUloga.Remove(item);
-    //        //}
-    //        //Context.SaveChanges();
-
-    //        //foreach (var uloga in request.Uloge)
-    //        //{
-    //        //    if (uloga != 0)
-    //        //    {
-    //        //        Database.KorisnikUloga korisnikUloga = new Database.KorisnikUloga
-    //        //        {
-    //        //            KorisnikId=entity.Id,
-    //        //            UlogaId=uloga,
-    //        //            DatumIzmjene = DateTime.Now
-    //        //        };
-    //        //        Context.KorisnikUloga.Add(korisnikUloga);
-    //        //    }
-    //        //}
-    //        //Context.SaveChanges();
-
-
-    //        _mapper.Map(request, entity);
-    //        //if (request.Password != request.PasswordPotvrda)
-    //        //{
-    //        //    throw new UserException("Passwordi se ne slažu");
-    //        //}
-
-    //        Context.SaveChanges();
-
-    //        return _mapper.Map<Model.Korisnik>(entity);
-    //    }
-    //}
 }
