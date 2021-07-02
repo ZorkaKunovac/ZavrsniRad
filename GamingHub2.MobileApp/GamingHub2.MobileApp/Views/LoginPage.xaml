@@ -17,6 +17,7 @@
             <Label Text="Lozinka:"/>
             <Entry Text="{Binding Password}"></Entry>
             <Button VerticalOptions="Center" Text="Login" Command="{Binding LoginCommand}"/>
+            <Label IsVisible="{Binding IsBusy}" Text="Working..."></Label>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
