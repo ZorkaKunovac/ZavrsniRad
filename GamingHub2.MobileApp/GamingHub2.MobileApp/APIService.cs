@@ -16,7 +16,10 @@ namespace GamingHub2.MobileApp
 
         private string _route = null;
 #if DEBUG
-        private string _apiURL = "https://localhost:5001/api/";
+        private string _apiURL = "http://localhost:25001/api";
+        //    "https://localhost:5001/api/";
+        //http://localhost:51490
+        //http://localhost:25001
 #endif
 #if RELEASE
         private string _apiURL = "https://mywebsite/api/";

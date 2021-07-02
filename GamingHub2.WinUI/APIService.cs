@@ -16,7 +16,7 @@ namespace GamingHub2.WinUI
         public static string Password { get; set; }
 
         private string _route = null;
-        public string endpoint = $"{Properties.Settings.Default.ApiURL}";
+        public string endpoint = $"{Properties.Settings.Default.ApiURL2}";
         public APIService(string route) //Kontroler
         {
             _route = route;

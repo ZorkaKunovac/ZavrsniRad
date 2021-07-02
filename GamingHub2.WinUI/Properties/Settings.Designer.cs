@@ -26,9 +26,21 @@ namespace GamingHub2.WinUI.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("https://localhost:5001/api")]
+        public string ApiURL2 {
+            get {
+                return ((string)(this["ApiURL2"]));
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:25001/api")]
         public string ApiURL {
             get {
                 return ((string)(this["ApiURL"]));
+            }
+            set {
+                this["ApiURL"] = value;
             }
         }
     }
