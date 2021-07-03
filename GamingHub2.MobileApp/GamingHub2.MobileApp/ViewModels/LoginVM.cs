@@ -44,7 +44,7 @@ namespace GamingHub2.MobileApp.ViewModels
                 Model.Korisnici korisnik = listKorisnici.Where(x => x.KorisnickoIme == APIService.Username).FirstOrDefault();
                 if (korisnik != null)
                 {
-                    Application.Current.MainPage = new Page();
+                    Application.Current.MainPage = new AppShell();
                 }
                 else
                 {

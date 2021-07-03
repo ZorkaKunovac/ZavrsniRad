@@ -17,5 +17,9 @@ namespace GamingHub2.MobileApp.Views
             InitializeComponent();
             this.BindingContext = new LoginVM();
         }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+        }
     }
 }

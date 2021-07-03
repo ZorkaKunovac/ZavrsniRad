@@ -15,7 +15,8 @@ namespace GamingHub2.MobileApp
 
             DependencyService.Register<MockDataStore>();
             //MainPage = new AppShell();
-            MainPage = new LoginPage();
+             MainPage = new LoginPage();
+            //MainPage = new ProizvodiPage();
         }
 
         protected override void OnStart()
