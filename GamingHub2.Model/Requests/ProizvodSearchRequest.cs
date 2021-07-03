@@ -12,6 +12,6 @@ namespace GamingHub2.Model.Requests
         //public bool? IncludeKorisnik { get; set; }
 
         //public string[] IncludeList { get; set; }
-
+        public string NazivKonzole { get; set; }
     }
 }

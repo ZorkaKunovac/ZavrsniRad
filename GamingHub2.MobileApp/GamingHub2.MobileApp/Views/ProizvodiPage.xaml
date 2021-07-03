@@ -12,11 +12,13 @@
             <Label Text="Proizvodi"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
+            <Picker ItemsSource="{Binding KonzolaList}" SelectedItem="{Binding SelectedKonzola}" ItemDisplayBinding="{Binding Naziv}"></Picker>
             <ListView ItemsSource="{Binding ProizvodiList}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                         <StackLayout Padding="10" >
+                                <Image Source="{Binding Slika}"></Image>
                             <Label Text="{Binding NazivProizvoda}" 
                             LineBreakMode="NoWrap" 
                             Style="{DynamicResource ListItemTextStyle}" 
