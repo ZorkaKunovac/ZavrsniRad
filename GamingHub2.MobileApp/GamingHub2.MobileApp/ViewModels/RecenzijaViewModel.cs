@@ -3,6 +3,7 @@ using GamingHub2.Model.Requests;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -12,14 +13,18 @@ namespace GamingHub2.MobileApp.ViewModels
 {
     public class RecenzijaViewModel : BaseViewModel
     {
-        private readonly APIService _service = new APIService("Recenzija");
+        APIService _service = new APIService("Recenzija");
+        public ICommand InitCommand { get; set; }
+        public Command PretragaCommand { get; }
 
         public RecenzijaViewModel()
         {
             InitCommand = new Command(async () => await Init());
+            PretragaCommand = new Command(async () => await Pretraga());
         }
-        public ObservableCollection<Recenzija> RecenzijaList { get; set; } = new ObservableCollection<Recenzija>();
+       // public ObservableCollection<Recenzija> RecenzijaList { get; set; } = new ObservableCollection<Recenzija>();
 
+        public ObservableCollection<Recenzija> recenzije { get; set; } = new ObservableCollection<Recenzija>();
 
 
         string _searchnaslov = null;
@@ -34,35 +39,21 @@ namespace GamingHub2.MobileApp.ViewModels
             }
         }
 
-        //Konzola _selectedKonzola = null;
-        //public Konzola SelectedKonzola
-        //{
-        //    get { return _selectedKonzola; }
-        //    set
-        //    {
-        //        SetProperty(ref _selectedKonzola, value);
-        //        if (value != null)
-        //        {
-        //            InitCommand.Execute(null);
-        //        }
-        //    }
-        public ICommand InitCommand { get; set; }
-
         public async Task Init()
         {
             var list = await _service.Get<IEnumerable<Recenzija>>(null);
-            //RecenzijaList.Clear();
+            //recenzije.Clear();
             //foreach (var recenzija in list)
             //{
-            //    RecenzijaList.Add(recenzija);
+            //    recenzije.Add(recenzija);
             //}
 
             if (Naslov == null)
             {
-                RecenzijaList.Clear();
+                recenzije.Clear();
                 foreach (var recenzija in list)
                 {
-                    RecenzijaList.Add(recenzija);
+                    recenzije.Add(recenzija);
                 }
             }
             else
@@ -71,24 +62,78 @@ namespace GamingHub2.MobileApp.ViewModels
                 search.Naslov = _searchnaslov;
 
                 list = await _service.Get<IEnumerable<Recenzija>>(search);
-                RecenzijaList.Clear();
+                recenzije.Clear();
                 foreach (var recenzija in list)
                 {
-                    RecenzijaList.Add(recenzija);
+                    recenzije.Add(recenzija);
                 }
             }
 
         }
-        void OnTextChanged(object sender, EventArgs e)
+
+        public async Task Pretraga()
         {
-            SearchBar searchBar = (SearchBar)sender;
-            RecenzijaSearchRequest search = new RecenzijaSearchRequest();
-            search.Naslov = _searchnaslov;
+            RecenzijaSearchRequest search = new RecenzijaSearchRequest
+            {
+                Naslov = _searchnaslov
+            };
+            //if (SelectedKategorija != null)
+            //{
+            //    search.KategorijaId = SelectedKategorija.Id;
+            //}
+            //var list = await _service.Get<IEnumerable<Recenzija>>(null);
+            //recenzije.Clear();
+            //foreach (var recenzija in list)
+            //{
+            //    recenzije.Add(recenzija);
+            //}
 
-            //var keyword = searchBar.Text;
-            //searchResults.ItemsSource =
-
-            //searchResults.ItemsSource = DataService.GetSearchResults(searchBar.Text);
+            var list = await _service.Get<IEnumerable<Recenzija>>(search);
+            recenzije.Clear();
+            foreach (Recenzija r in list)
+            {
+                recenzije.Add(r);
+            }
         }
+
+        //private  void RecenzijaSearchBar_TextChanged(object sender, TextChangedEventArgs e)
+        //{
+
+        //    var searchterm = e.NewTextValue;
+        //    //var searchterm = e.NewTextValue;
+        //    if (string.IsNullOrWhiteSpace(searchterm))
+        //    {
+        //        searchterm = string.Empty;
+        //    }
+        //    // searchterm = searchterm.ToLowerInvariant();
+
+        //    // var filteredItems = sourceitems.Where(value => value.Naslov.ToLowerInvariant().Contains(searchterm)).ToList();
+        //    var filteredItems = sourceitems.Where(value => value.Naslov.Contains(searchterm)).ToList();
+
+        //    if (string.IsNullOrWhiteSpace(searchterm))
+        //    {
+        //        filteredItems = sourceitems.ToList();
+        //    }
+        //    foreach (var value in sourceitems)
+        //    {
+        //        if (!filteredItems.Contains(value))
+        //            RecenzijaList.Remove(value);
+        //        else if (!RecenzijaList.Contains(value))
+        //        {
+        //            RecenzijaList.Add(value);
+        //        }
+        //    }
+        //}
+        //void OnTextChanged(object sender, EventArgs e)
+        //{
+        //    SearchBar searchBar = (SearchBar)sender;
+        //    RecenzijaSearchRequest search = new RecenzijaSearchRequest();
+        //    search.Naslov = _searchnaslov;
+
+        //    //var keyword = searchBar.Text;
+        //    //searchResults.ItemsSource =
+
+        //    //searchResults.ItemsSource = DataService.GetSearchResults(searchBar.Text);
+        //}
     }
 }

@@ -1,4 +1,5 @@
 ﻿using GamingHub2.MobileApp.ViewModels;
+using GamingHub2.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -19,58 +20,88 @@ namespace GamingHub2.MobileApp.Views
         //{
         //    "Mohamad","Ahmed","Karim","Hasan","Hamed","Marwen"
         //};
-        private readonly string[] sourceitems= new []
-        {
-            "Mohamad","Ahmed","Karim","Hasan","Hamed","Marwen"
-        };
-        public ObservableCollection<string> MyItems { get; set; }
+        //private readonly APIService _service = new APIService("Recenzija");
+        //public ObservableCollection<Recenzija> RecenzijaList { get; set; } = new ObservableCollection<Recenzija>();
+
+        //public ObservableCollection<Recenzija> sourceitems = new ObservableCollection<Recenzija>();
+        //public async Task GetRecenzije()
+        //{
+
+        //    var list = await _service.Get<IEnumerable<Recenzija>>(null);
+        //    RecenzijaList.Clear();
+        //    sourceitems.Clear();
+        //    foreach (var recenzija in list)
+        //    {
+        //        RecenzijaList.Add(recenzija);
+        //        sourceitems.Add(recenzija);
+        //    }
+        //}
+
+
         public RecenzijaPage()
         {
             InitializeComponent();
             BindingContext = model = new RecenzijaViewModel();
-            MyItems = new ObservableCollection<string>(sourceitems);
-            //BindingContext=this;
-
-            //List<string> names = new List<string>
-            //{
-            //model.Naslov
-            //};
-            //searchResults.ItemsSource = names;
         }
-        // void RecenzijaSearchBar_TextChanged( object sender,TextChangedEventArgs e)
-        //{
-        //    var keyword = RecenzijaSearchBar.Text;
-        //}
 
         protected async override void OnAppearing()
         {
             base.OnAppearing();
             await model.Init();
+          //  model.onappear
         }
 
-        private void RecenzijaSearchBar_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            var searchterm = e.NewTextValue;
-            if(string.IsNullOrWhiteSpace(searchterm))
-            {
-                searchterm = string.Empty;
-            }
-            searchterm = searchterm.ToLowerInvariant();
+        //private void RecenzijaSearchBar_TextChanged(object sender, TextChangedEventArgs e)
+        //{
 
-            var filteredItems = sourceitems.Where(value => value.ToLowerInvariant().Contains(searchterm)).ToList();
-            if(string.IsNullOrWhiteSpace(searchterm))
-            {
-                filteredItems = sourceitems.ToList();
-            }
-            foreach (var value in sourceitems)
-            {
-                if (!filteredItems.Contains(value))
-                    MyItems.Remove(value);
-                else if(!MyItems.Contains(value))
-                {
-                    MyItems.Add(value);
-                }
-            }
-        }
+        //    var searchterm = e.NewTextValue;
+        //    //var searchterm = e.NewTextValue;
+        //    if (string.IsNullOrWhiteSpace(searchterm))
+        //    {
+        //        searchterm = string.Empty;
+        //    }
+        //    // searchterm = searchterm.ToLowerInvariant();
+
+        //    // var filteredItems = sourceitems.Where(value => value.Naslov.ToLowerInvariant().Contains(searchterm)).ToList();
+        //    var filteredItems = sourceitems.Where(value => value.Naslov.Contains(searchterm)).ToList();
+
+        //    if (string.IsNullOrWhiteSpace(searchterm))
+        //    {
+        //        filteredItems = sourceitems.ToList();
+        //    }
+        //    foreach (var value in sourceitems)
+        //    {
+        //        if (!filteredItems.Contains(value))
+        //            RecenzijaList.Remove(value);
+        //        else if (!RecenzijaList.Contains(value))
+        //        {
+        //            RecenzijaList.Add(value);
+        //        }
+        //    }
+        //}
+        //private void RecenzijaSearchBar_TextChanged(object sender, TextChangedEventArgs e)
+        //{
+        //    var searchterm = e.NewTextValue;
+        //    if (string.IsNullOrWhiteSpace(searchterm))
+        //    {
+        //        searchterm = string.Empty;
+        //    }
+        //    searchterm = searchterm.ToLowerInvariant();
+
+        //    var filteredItems = sourceitems.Where(value => value.Naslov.ToLowerInvariant().Contains(searchterm)).ToList();
+        //    if (string.IsNullOrWhiteSpace(searchterm))
+        //    {
+        //        filteredItems = sourceitems.ToList();
+        //    }
+        //    foreach (var value in sourceitems)
+        //    {
+        //        if (!filteredItems.Contains(value))
+        //            MyItems.Remove(value);
+        //        else if (!MyItems.Contains(value))
+        //        {
+        //            MyItems.Add(value);
+        //        }
+        //    }
+        //}
     }
 }

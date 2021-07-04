@@ -20,7 +20,7 @@ namespace GamingHub2.Services
 
             if (!string.IsNullOrWhiteSpace(search?.Naslov))
             {
-                entity = entity.Where(x => x.Naslov.StartsWith(search.Naslov));
+                entity = entity.Where(x => x.Naslov.Contains(search.Naslov));
             }
 
             if (search.KorisnikId != 0 && search.KorisnikId.HasValue)
