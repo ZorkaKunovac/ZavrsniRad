@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:vm="clr-namespace:GamingHub2.MobileApp.ViewModels" xmlns:converters="clr-namespace:GamingHub2.MobileApp.Converters"
+             x:Class="GamingHub2.MobileApp.Views.RecenzijaPage">
+
+    <ContentPage.BindingContext>
+        <vm:RecenzijaViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ImageConverter x:Key="imgConv"></converters:ImageConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+<ContentPage.Content>
+
+   
+
+        <StackLayout>
+            <Label Text="Recenzije"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+            <SearchBar Placeholder="Search items..."
+           CancelButtonColor="DarkGray"
+           PlaceholderColor="DarkGray"
+           TextColor="DarkGray"
+           TextTransform="Lowercase"  HorizontalTextAlignment="Center" FontSize="Medium"  FontAttributes="Italic"
+                      x:Name="RecenzijaSearchBar" 
+                       TextChanged="RecenzijaSearchBar_TextChanged" />
+
+            <ListView x:Name="searchResults" ItemsSource="{Binding RecenzijaList}  ">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="10"  Orientation="Horizontal" >
+                                <StackLayout WidthRequest="400" HeightRequest="400">
+                                    <Image Source="{Binding Slika,Converter={StaticResource imgConv}}"></Image>
+                                </StackLayout>
+                                <StackLayout  Orientation="Vertical">
+                                    <Label Text="{Binding Naslov}" 
+                            LineBreakMode="NoWrap" 
+                            Style="{DynamicResource ListItemTextStyle}" 
+                            FontSize="16" />
+                                <Label Text="{Binding KorisnikNaziv}" 
+                            LineBreakMode="NoWrap"
+                            Style="{DynamicResource ListItemDetailTextStyle}"
+                            FontSize="13" />
+                                <Label Text="{Binding DatumObjave}" 
+                            Style="{DynamicResource ListItemDetailTextStyle}"
+                            FontSize="13" />
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
