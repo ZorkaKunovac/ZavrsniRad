@@ -1,0 +1,218 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="GamingHub2.MobileApp.Views.ArticleDetailPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:controls="clr-namespace:GamingHub2.MobileApp.Controls"
+    xmlns:converter="clr-namespace:GamingHub2.MobileApp.Converters"
+    xmlns:template="clr-namespace:GamingHub2.MobileApp.Views.Templates"
+    xmlns:viewModel="clr-namespace:GamingHub2.MobileApp.ViewModels" x:DataType="viewModel:ArticleDetailPageViewModel"
+    x:Name="detailPage"
+    BackgroundColor="{DynamicResource Gray-Bg}"
+    NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.Resources>
+        <converter:BooleanToStringConverter x:Key="boolToStringConverter" />
+    </ContentPage.Resources>
+
+    <ContentPage.ControlTemplate>
+        <ControlTemplate>
+            <StackLayout Spacing="0">
+                <!--  Title View  -->
+                <controls:TitleView Title="Brainstorm">
+                    <controls:TitleView.LeadingView>
+                        <buttons:SfButton
+                            x:Name="backButton"
+                            Command="{Binding BindingContext.BackButtonCommand, Source={x:Reference detailPage}}"
+                            CommandParameter="{x:Reference backButton}"
+                            Style="{StaticResource IconButtonStyle}"
+                            Text="{StaticResource Back}" />
+                    </controls:TitleView.LeadingView>
+                    <controls:TitleView.TrailingView>
+                        <StackLayout Orientation="Horizontal">
+
+                            <!--  Favourite button  -->
+                            <buttons:SfButton
+                                x:Name="favouriteButton"
+                                Command="{Binding Path=BindingContext.FavouriteCommand, Source={x:Reference detailPage}}"
+                                CommandParameter="{Binding}"
+                                Style="{StaticResource IconButtonStyle}"
+                                Text="{Binding IsFavourite, Converter={StaticResource boolToStringConverter}, ConverterParameter=1}" />
+
+                            <!--  Bookmark button  -->
+                            <buttons:SfButton
+                                x:Name="bookmarkButton"
+                                Command="{Binding Path=BindingContext.BookmarkCommand, Source={x:Reference detailPage}}"
+                                CommandParameter="{Binding}"
+                                Style="{StaticResource IconButtonStyle}"
+                                Text="{Binding IsBookmarked, Converter={StaticResource boolToStringConverter}, ConverterParameter=0}" />
+
+                            <StackLayout.BindingContext>
+                                <viewModel:ArticleDetailPageViewModel />
+                            </StackLayout.BindingContext>
+
+                        </StackLayout>
+                    </controls:TitleView.TrailingView>
+                </controls:TitleView>
+
+                <ContentPresenter />
+            </StackLayout>
+        </ControlTemplate>
+    </ContentPage.ControlTemplate>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Spacing="0">
+
+                <StackLayout Margin="{OnIdiom Phone='16,0', Tablet='48,0', Desktop='48,0'}" Spacing="0">
+
+                    <!--  Article Tile  -->
+                    <Label
+                        Margin="0,16,0,8"
+                        FontFamily="Montserrat-Bold"
+                        FontSize="20"
+                        LineHeight="1.25"
+                        Text="{Binding Recenzija.Naslov}"
+                        TextColor="{DynamicResource Gray-900}" />
+
+                    <!--  Article author, title & average reading time  -->
+                    <Label
+                        Margin="0,0,0,16"
+                        FontSize="12"
+                        LineHeight="{OnPlatform Default=-1,
+                                                Android=1.5}">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span
+                                    FontFamily="Montserrat-Medium"
+                                    Text="{Binding ArticleAuthor}"
+                                    TextColor="{DynamicResource Gray-900}" />
+                                <Span Text="    " />
+                                <Span
+                                    FontFamily="Montserrat-Regular"
+                                    Text="{Binding ArticleDate}"
+                                    TextColor="{DynamicResource Gray-700}" />
+                                <Span Text=" | " TextColor="{DynamicResource Gray-700}" />
+                                <Span
+                                    FontFamily="Montserrat-Regular"
+                                    Text="{Binding ArticleReadingTime}"
+                                    TextColor="{DynamicResource Gray-700}" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+
+                    <!--  Image of the blog  -->
+                    <Image
+                        Margin="{OnIdiom Phone='-16,0',
+                                         Tablet='-48,0',
+                                         Desktop='-48,0'}"
+                        Aspect="AspectFill"
+                        BackgroundColor="{DynamicResource Gray-200}"
+                        HeightRequest="210">
+                        <Image.Source>
+                            <UriImageSource
+                                CacheValidity="14"
+                                CachingEnabled="true"
+                                Uri="{Binding ArticleImage}" />
+                        </Image.Source>
+                    </Image>
+
+                    <!--  Article content  -->
+                    <Label
+                        Margin="0,16"
+                        FontFamily="Montserrat-Medium"
+                        FontSize="14"
+                        LineHeight="1.5"
+                        Text="{Binding ArticleContent}"
+                        TextColor="{DynamicResource Gray-700}" />
+
+                    <!--  Decription image of the blog  -->
+                    <Image
+                        Margin="{OnIdiom Phone='16,8',
+                                         Tablet='0,24,0,8',
+                                         Desktop='0,24,0,8'}"
+                        Aspect="AspectFill"
+                        BackgroundColor="{DynamicResource Gray-200}"
+                        HeightRequest="150"
+                        HorizontalOptions="{OnIdiom Tablet=Center,
+                                                    Desktop=Center,
+                                                    Phone=FillAndExpand}"
+                        Source="{Binding ArticleSubImage}" />
+
+                    <!--  Description image name  -->
+                    <Label
+                        FontFamily="Montserrat-Medium"
+                        FontSize="12"
+                        HorizontalOptions="Center"
+                        HorizontalTextAlignment="Center"
+                        LineHeight="1.25"
+                        Text="Image_1"
+                        TextColor="{DynamicResource Gray-700}" />
+
+                    <!--  Subtitle of the blog  -->
+                    <Label
+                        Margin="0,24,0,8"
+                        FontFamily="Montserrat-SemiBold"
+                        FontSize="16"
+                        LineHeight="1.25"
+                        Text="{Binding SubTitle1}"
+                        TextColor="{DynamicResource Gray-900}" />
+
+                    <StackLayout
+                        Margin="0,0,0,24"
+                        BindableLayout.ItemsSource="{Binding ContentList}"
+                        Spacing="16">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout Orientation="Horizontal">
+
+                                    <Label
+                                        Margin="{OnPlatform Default='0, 3, 0, 0',
+                                                            iOS='0, 10, 0, 0'}"
+                                        FontFamily="FontIcons"
+                                        FontSize="14"
+                                        Text="&#xe720;"
+                                        TextColor="{DynamicResource Gray-500}" />
+
+                                    <!--<Label
+                                        FontFamily="Montserrat-Medium"
+                                        FontSize="14"
+                                        LineHeight="1.5"
+                                        Text="{Binding Description}"
+                                        TextColor="{DynamicResource Gray-700}" />-->
+
+                                </StackLayout>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </StackLayout>
+
+                </StackLayout>
+
+                <!--  Related stroies label  -->
+                <Label
+                    Margin="16,0"
+                    FontFamily="Montserrat-SemiBold"
+                    FontSize="12"
+                    LineHeight="{OnPlatform Default=-1,
+                                            Android=1.25}"
+                    Text="{Binding SubTitle2}"
+                    TextColor="{DynamicResource Gray-800}" />
+
+                <!--  Related blog list  -->
+                <StackLayout
+                    x:Name="stackLayout"
+                    Padding="0,16"
+                    BindableLayout.ItemsSource="{Binding RelatedStories}"
+                    Spacing="16">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <template:ArticleListTemplate ParentBindingContext="{Binding Path=BindingContext, Source={x:Reference detailPage}}" />
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

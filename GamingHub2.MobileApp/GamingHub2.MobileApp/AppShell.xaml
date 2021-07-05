@@ -90,7 +90,9 @@
     <FlyoutItem Title="Recenzije" Icon="icon_feed.png">
         <ShellContent Route="RecenzijaPage" ContentTemplate="{DataTemplate local:RecenzijaPage}" />
     </FlyoutItem>
-
+    <FlyoutItem Title="DetaljiArtikli" Icon="icon_feed.png">
+        <ShellContent Route="ArticleDetailPage" ContentTemplate="{DataTemplate local:ArticleDetailPage}" />
+    </FlyoutItem>
     <!-- When the Flyout is visible this will be a menu item you can tie a click behavior to  -->
     <MenuItem Text="Logout" StyleClass="MenuItemLayoutStyle" Clicked="OnMenuItemClicked">
     </MenuItem>

@@ -15,25 +15,22 @@
     
 <ContentPage.Content>
        <StackLayout>
-            <Label Text="Recenzije"
+            <Label FontSize="30" Text="Pretraga Recenzija"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
             <!--<SearchBar x:Name="RecenzijaSearchBar" Placeholder="Search items..."
-           CancelButtonColor="DarkGray"
-           PlaceholderColor="DarkGray"
-           TextColor="DarkGray"
-           HorizontalTextAlignment="Center" FontSize="Medium" 
-                       FontAttributes="Italic"  
+           CancelButtonColor="DarkGray"  PlaceholderColor="DarkGray" TextColor="DarkGray"
+           HorizontalTextAlignment="Center" FontSize="Medium" FontAttributes="Italic"  
                        TextChanged="RecenzijaSearchBar_TextChanged"
                       
                         />-->
-            <Label FontSize="30" HorizontalTextAlignment="Center">Pretraga Recenzija</Label>
+            <!--<Label FontSize="30" HorizontalTextAlignment="Center">Pretraga Recenzija</Label>-->
             <StackLayout Orientation="Horizontal">
                 <Label VerticalTextAlignment="Center">Naslov</Label>
                 <Entry Text="{Binding Naslov}"></Entry>
                 <Button VerticalOptions="Center" Text="Prikazi" Command="{Binding PretragaCommand}"/>
             </StackLayout>
-            <ListView ItemsSource="{Binding recenzije}">
+            <ListView ItemsSource="{Binding recenzije}" ItemSelected="ListView_ItemSelected">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -43,14 +40,14 @@
                                 </StackLayout>
                                 <StackLayout  Orientation="Vertical">
                                     <Label Text="{Binding Naslov}" 
-                                    LineBreakMode="WordWrap" 
+                                    LineBreakMode="NoWrap" 
                                     Style="{DynamicResource ListItemTextStyle}" 
                                     FontSize="16" />
                                     <Label Text="{Binding KorisnikNaziv}" 
                                     LineBreakMode="NoWrap"
                                     Style="{DynamicResource ListItemDetailTextStyle}"
                                     FontSize="13" />
-                                        <Label Text="{Binding DatumObjave}" 
+                                    <Label Text="{Binding DatumObjave}" 
                                     Style="{DynamicResource ListItemDetailTextStyle}"
                                     FontSize="13" />
                                 </StackLayout>
@@ -58,9 +55,8 @@
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
-
-
             </ListView>
+           
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

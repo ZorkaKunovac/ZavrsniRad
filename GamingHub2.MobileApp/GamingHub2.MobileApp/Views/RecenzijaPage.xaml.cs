@@ -27,6 +27,15 @@ namespace GamingHub2.MobileApp.Views
             base.OnAppearing();
             await model.Init();
         }
+           
 
+        private async void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            var item = e.SelectedItem as Recenzija;
+
+            await Navigation.PushModalAsync(new RecenzijaDetaljiPage(item));
+           // await Navigation.PushModalAsync(new ArticleDetailPage(item));
+
+        }
     }
 }
