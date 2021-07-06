@@ -1,4 +1,5 @@
-﻿using GamingHub2.Model;
+﻿using GamingHub2.MobileApp.Services;
+using GamingHub2.Model;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -12,7 +13,7 @@ namespace GamingHub2.MobileApp.ViewModels
         public ProizvodDetaljiViewModel()
         {
             PovecajKolicinuCommand = new Command(() => Kolicina += 1);
-           // NaruciCommand = new Command(Naruci);
+            NaruciCommand = new Command(Naruci);
         }
         public Proizvod Proizvod { get; set; }
 
@@ -25,5 +26,13 @@ namespace GamingHub2.MobileApp.ViewModels
         public ICommand PovecajKolicinuCommand { get; set; }
         public ICommand NaruciCommand { get; set; }
 
+        private void Naruci()
+        {
+            if (CartService.Cart.ContainsKey(Proizvod.ID))
+            {
+                CartService.Cart.Remove(Proizvod.ID);
+            }
+            CartService.Cart.Add(Proizvod.ID, this);
+        }
     }
 }
