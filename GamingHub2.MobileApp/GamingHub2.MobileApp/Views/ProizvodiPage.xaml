@@ -19,7 +19,7 @@
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
             <Picker ItemsSource="{Binding KonzolaList}" SelectedItem="{Binding SelectedKonzola}" ItemDisplayBinding="{Binding Naziv}"></Picker>
-            <ListView ItemsSource="{Binding ProizvodiList}">
+            <ListView ItemsSource="{Binding ProizvodiList}" ItemSelected="ListView_ItemSelected">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>

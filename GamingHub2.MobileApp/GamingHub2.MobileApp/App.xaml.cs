@@ -20,7 +20,8 @@ namespace GamingHub2.MobileApp
             InitializeComponent();
 
             DependencyService.Register<MockDataStore>();
-            MainPage = new AppShell();
+            MainPage = new LoginPage();
+            //MainPage = new AppShell();
            //  MainPage = new RecenzijaPage();
             //MainPage = new ProizvodiPage();
         }

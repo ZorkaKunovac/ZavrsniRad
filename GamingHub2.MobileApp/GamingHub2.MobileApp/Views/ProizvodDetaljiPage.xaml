@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:vm="clr-namespace:GamingHub2.MobileApp.ViewModels" xmlns:converters="clr-namespace:GamingHub2.MobileApp.Converters"
+             x:Class="GamingHub2.MobileApp.Views.ProizvodDetaljiPage">
+    <ContentPage.BindingContext>
+        <vm:ProizvodDetaljiViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ImageConverter x:Key="imgConv"></converters:ImageConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <ContentPage.Content>
+        <StackLayout>
+            <ScrollView>
+                <StackLayout Padding="10" >
+                    <!--<Image Source="{Binding IgraKonzola.Igra.SlikaLink,Converter={StaticResource imgConv}}"></Image>-->
+                    <Label Text="{Binding Proizvod.NazivProizvoda}" 
+                            LineBreakMode="NoWrap" 
+                            Style="{DynamicResource ListItemTextStyle}" 
+                            FontSize="16" />
+                    <Label Text="{Binding Proizvod.ProdajnaCijena}" 
+                            LineBreakMode="NoWrap"
+                            Style="{DynamicResource ListItemDetailTextStyle}"
+                            FontSize="13" />
+                    <StackLayout Orientation="Horizontal">
+                        <Entry Text="{Binding Kolicina}" Keyboard="Numeric"></Entry>
+                        <Button Text="+1" Command="{Binding PovecajKolicinuCommand}"></Button>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+            <Image Source="cart.png">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding NaruciCommand}"></TapGestureRecognizer>
+                </Image.GestureRecognizers>
+            </Image>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
