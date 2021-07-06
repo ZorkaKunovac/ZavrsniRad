@@ -1,18 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:vm="clr-namespace:GamingHub2.MobileApp.ViewModels"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:vm="clr-namespace:GamingHub2.MobileApp.ViewModels" xmlns:template="clr-namespace:GamingHub2.MobileApp.Views.Templates" xmlns:converters="clr-namespace:GamingHub2.MobileApp.Converters"
              x:Class="GamingHub2.MobileApp.Views.RecenzijaDetaljiPage">
 
     <ContentPage.BindingContext>
         <vm:RecenzijaDetaljiViewModel />
     </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ImageConverter x:Key="imgConv"></converters:ImageConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="DetaljiRecenzije"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-
             <!--<ListView ItemsSource="{Binding recenzije}">-->
             <!--<ScrollView>
                 <StackLayout Padding="10"  Orientation="Horizontal" >
@@ -83,20 +85,45 @@
                         </Label>
 
                         <!--  Image of the blog  -->
-                        <Image
-                        Margin="{OnIdiom Phone='-16,0',
+                            <StackLayout>
+                            <Image  Margin="{OnIdiom Phone='-16,0',
                                          Tablet='-48,0',
                                          Desktop='-48,0'}"
-                        Aspect="AspectFill"
-                        BackgroundColor="{DynamicResource Gray-200}"
-                        HeightRequest="210">
-                            <Image.Source>
-                                <UriImageSource
-                                CacheValidity="14"
-                                CachingEnabled="true"
-                                Uri="{Binding Recenzija.Slika}" />
-                            </Image.Source>
-                        </Image>
+                        Aspect="Fill"
+                        BackgroundColor="{DynamicResource Gray-200}" 
+                        HeightRequest="350" Source="{Binding Recenzija.Slika,Converter={StaticResource imgConv}}">
+                            </Image>
+                                
+                        <StackLayout Padding="10" Orientation="Horizontal">
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label  Text="Datum izlaska igre:" 
+                                           LineBreakMode="NoWrap" 
+                                           Style="{DynamicResource ListItemTextStyle}" 
+                                           FontSize="13" />
+                                <Label Text="{Binding Recenzija.Igra.DatumIzlaska}" 
+                                           LineBreakMode="NoWrap" 
+                                           Style="{DynamicResource ListItemDetailTextStyle}" 
+                                           FontSize="13" />
+                                <Label  Text="Developer:" 
+                                           LineBreakMode="NoWrap" 
+                                           Style="{DynamicResource ListItemTextStyle}" 
+                                           FontSize="13" />
+                                <Label Text="{Binding Recenzija.Igra.Developer}"
+                                           LineBreakMode="NoWrap"
+                                           Style="{DynamicResource ListItemDetailTextStyle}"
+                                           FontSize="13" />
+                                <Label  Text="Izdavac:" 
+                                           LineBreakMode="NoWrap" 
+                                           Style="{DynamicResource ListItemTextStyle}" 
+                                           FontSize="13" />
+                                <Label Text="{Binding Recenzija.Igra.Izdavac}" 
+                                           LineBreakMode="NoWrap"
+                                           Style="{DynamicResource ListItemDetailTextStyle}"
+                                           FontSize="13" />
+                            </StackLayout>
+                        </StackLayout>
+
 
                         <!--  Article content  -->
                         <Label
@@ -106,38 +133,6 @@
                         LineHeight="1.5"
                         Text="{Binding Recenzija.Sadrzaj}"
                         TextColor="{DynamicResource Gray-700}" />
-
-                        <!--  Decription image of the blog  -->
-                        <!--<Image
-                        Margin="{OnIdiom Phone='16,8',
-                                         Tablet='0,24,0,8',
-                                         Desktop='0,24,0,8'}"
-                        Aspect="AspectFill"
-                        BackgroundColor="{DynamicResource Gray-200}"
-                        HeightRequest="150"
-                        HorizontalOptions="{OnIdiom Tablet=Center,
-                                                    Desktop=Center,
-                                                    Phone=FillAndExpand}"
-                        Source="{Binding ArticleSubImage}" />-->
-
-                        <!--  Description image name  -->
-                        <!--<Label
-                        FontFamily="Montserrat-Medium"
-                        FontSize="12"
-                        HorizontalOptions="Center"
-                        HorizontalTextAlignment="Center"
-                        LineHeight="1.25"
-                        Text="Image_1"
-                        TextColor="{DynamicResource Gray-700}" />-->
-
-                        <!--  Subtitle of the blog  -->
-                        <!--<Label
-                        Margin="0,24,0,8"
-                        FontFamily="Montserrat-SemiBold"
-                        FontSize="16"
-                        LineHeight="1.25"
-                        Text="{Binding SubTitle1}"
-                        TextColor="{DynamicResource Gray-900}" />-->
 
                         <StackLayout
                         Margin="0,0,0,24"
@@ -180,7 +175,7 @@
                     TextColor="{DynamicResource Gray-800}" />
 
                     <!--  Related blog list  -->
-                    <!--<StackLayout
+                    <StackLayout
                     x:Name="stackLayout"
                     Padding="0,16"
                     BindableLayout.ItemsSource="{Binding RelatedStories}"
@@ -190,7 +185,7 @@
                                 <template:ArticleListTemplate ParentBindingContext="{Binding Path=BindingContext, Source={x:Reference detailPage}}" />
                             </DataTemplate>
                         </BindableLayout.ItemTemplate>
-                    </StackLayout>-->
+                    </StackLayout>
 
                 </StackLayout>
             </ScrollView>

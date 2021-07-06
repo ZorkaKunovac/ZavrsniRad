@@ -33,7 +33,7 @@ namespace GamingHub2.MobileApp.Views
         {
             var item = e.SelectedItem as Recenzija;
 
-            await Navigation.PushModalAsync(new RecenzijaDetaljiPage(item));
+            await Navigation.PushAsync(new RecenzijaDetaljiPage(item));
            // await Navigation.PushModalAsync(new ArticleDetailPage(item));
 
         }

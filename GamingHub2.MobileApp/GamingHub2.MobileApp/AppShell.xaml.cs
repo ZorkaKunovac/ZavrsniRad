@@ -13,7 +13,6 @@ namespace GamingHub2.MobileApp
             InitializeComponent();
             Routing.RegisterRoute(nameof(ItemDetailPage), typeof(ItemDetailPage));
             Routing.RegisterRoute(nameof(NewItemPage), typeof(NewItemPage));
-          //  Routing.RegisterRoute(nameof(ProizvodiPage), typeof(ProizvodiPage));
         }
 
         private async void OnMenuItemClicked(object sender, EventArgs e)

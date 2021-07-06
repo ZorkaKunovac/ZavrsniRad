@@ -21,6 +21,11 @@ namespace GamingHub2.MobileApp.Views
             BindingContext = model = new RecenzijaDetaljiViewModel() { Recenzija = recenzija };
 
         }
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+            //await model.Init();
+        }
 
     }
 }
