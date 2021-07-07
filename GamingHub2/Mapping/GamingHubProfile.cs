@@ -39,7 +39,8 @@ namespace GamingHub2.Mapping
             CreateMap<Database.Korisnik, KorisniciUpdateProfileRequest>().ReverseMap();
             CreateMap<Database.Korisnik, KorisniciRegistracijaRequest>().ReverseMap();
             CreateMap<Database.Narudzba, Model.Narudzba>().ReverseMap();
-            CreateMap<NarudzbaUpsertRequest, Database.Narudzba>();
+            CreateMap<NarudzbaInsertRequest, Database.Narudzba>();
+            CreateMap<NarudzbaUpdateRequest, Database.Narudzba>();
             CreateMap<Database.NarudzbaStavka, Model.NarudzbaStavka>().ReverseMap();
             CreateMap<NarudzbaStavkaInsertRequest, Database.NarudzbaStavka>();
             CreateMap<Database.Ocjena, Model.Ocjena>().ReverseMap();
@@ -48,7 +49,7 @@ namespace GamingHub2.Mapping
             CreateMap<Database.Drzava, Model.Drzava>().ReverseMap();
 
             CreateMap<Database.Kupac, Model.Kupac>().ReverseMap();
-            CreateMap<KupacInsertRequest, Database.Kupac>();
+            CreateMap<KupacUpsertRequest, Database.Kupac>();
         }
     }
 }

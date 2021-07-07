@@ -14,16 +14,13 @@ namespace GamingHub2.Database
         }
         [Key]
         public int NarudzbaId { get; set; }
-       // public string BrojNarudzbe { get; set; }
         public int KorisnikID { get; set; }
-//        public int KupacID { get; set; }
 
         public DateTime Datum { get; set; } 
         public bool Status { get; set; }
         public bool? Otkazano { get; set; }
 
         public virtual Korisnik Korisnik { get; set; }
-        //public Kupac Kupac { get; set; }
         public virtual ICollection<NarudzbaStavka> NarudzbaStavke { get; set; }
     }
 }

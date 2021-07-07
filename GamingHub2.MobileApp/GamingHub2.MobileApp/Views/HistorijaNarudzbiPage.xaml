@@ -9,9 +9,33 @@
     <ContentPage.Content>
         
         <StackLayout>
-            <Label Text="Historija narudzbi"
+            <Label Text="Historija narudžbi"
+                   FontSize="24"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
+
+            <StackLayout Padding="10"  Orientation="Horizontal" >
+                <Label Text="Šifra" 
+                    LineBreakMode="NoWrap" 
+                    Style="{DynamicResource ListItemTextStyle}" 
+                    FontSize="13" WidthRequest="50" />
+
+                <Label Text="Datum" 
+                    LineBreakMode="NoWrap"
+                    Style="{DynamicResource ListItemTextStyle}" 
+                    FontSize="13" WidthRequest="150" />
+
+                <Label Text="Iznos" 
+                    LineBreakMode="NoWrap"
+                    Style="{DynamicResource ListItemTextStyle}"
+                    FontSize="13" WidthRequest="100" />
+
+                <Label Text="Plaćeno" 
+                    LineBreakMode="NoWrap"
+                    Style="{DynamicResource ListItemTextStyle}" 
+                    FontSize="13" WidthRequest="50" />
+
+            </StackLayout>
 
             <ListView ItemsSource="{Binding NarudzbaList}" ItemSelected="ListView_ItemSelected">
                 <ListView.ItemTemplate>
@@ -21,14 +45,20 @@
                                     <Label Text="{Binding NarudzbaId}" 
                                     LineBreakMode="NoWrap" 
                                     Style="{DynamicResource ListItemTextStyle}" 
-                                    FontSize="13" />
-                                    <Label Text="{Binding Datum}" 
+                                    FontSize="13" WidthRequest="50" />
+
+                                    <Label Text="{Binding Datum, StringFormat='{0:MMMM dd, yyyy}'}" 
                                     LineBreakMode="NoWrap"
                                     Style="{DynamicResource ListItemDetailTextStyle}"
-                                    FontSize="13" />
-                                    <Label Text="{Binding Status}" 
+                                           FontSize="13" WidthRequest="150" />
+                                
+                                    <Label Text="{Binding Iznos, StringFormat='{0:C}'}" 
+                                    LineBreakMode="NoWrap"
                                     Style="{DynamicResource ListItemDetailTextStyle}"
-                                    FontSize="13" />
+                                    FontSize="13" WidthRequest="100" />
+                                
+                                    <CheckBox WidthRequest="50" IsChecked="{Binding Status}" IsEnabled="False"/>
+                                
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>

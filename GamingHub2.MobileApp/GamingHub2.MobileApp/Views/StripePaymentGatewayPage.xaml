@@ -17,8 +17,11 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
 
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
@@ -49,11 +52,43 @@
                                       Completed="Cvv_Completed" TextChanged="Cvv_TextChanged" Keyboard="Keyboard.Numeric"/>
                     <Label x:Name="ErrorLabel_Cvv" Text="CVV can not be empty !!" IsVisible="{Binding IsError_Cvv}" TextColor="Red" FontSize="13" />
                 </StackLayout>
+                
+                <BoxView Grid.Row="3" Grid.ColumnSpan="2" CornerRadius="25" HeightRequest="2" Margin="0,10,0,10" BackgroundColor="Gray"/>
+
+                <StackLayout Grid.Row="4" Grid.Column="0">
+                    <Entry Placeholder="Ime" Text="{Binding CreditCardModel.FirstName}"  ReturnType="Next"  />
+                </StackLayout>
+                <StackLayout Grid.Row="4" Grid.Column="1">
+                    <Entry Placeholder="Prezime" Text="{Binding CreditCardModel.LastName}"  ReturnType="Next"  />
+                </StackLayout>
+                <StackLayout Grid.Row="5" Grid.Column="0">
+                    <Entry Placeholder="Email adresa" Text="{Binding CreditCardModel.EmailAddress}"  ReturnType="Next"  />
+                </StackLayout>
+                <StackLayout Grid.Row="5" Grid.Column="1">
+                    <Entry Placeholder="Broj telefona" Text="{Binding CreditCardModel.PhoneNumber}"  ReturnType="Next"  />
+                </StackLayout>
+                <StackLayout Grid.Row="6" Grid.Column="0">
+                    <Entry Placeholder="Adresa 1" Text="{Binding CreditCardModel.AddressLine1}"  ReturnType="Next"  />
+                </StackLayout>
+                <StackLayout Grid.Row="6" Grid.Column="1">
+                    <Entry Placeholder="Adresa 2" Text="{Binding CreditCardModel.AddressLine2}"  ReturnType="Next"  />
+                </StackLayout>
+                <StackLayout Grid.Row="7" Grid.Column="0">
+                    <Entry Placeholder="Država" Text="{Binding CreditCardModel.AddressCountry}"  ReturnType="Next"  />
+                </StackLayout>
+                <StackLayout Grid.Row="7" Grid.Column="1">
+                    <Entry Placeholder="Grad" Text="{Binding CreditCardModel.AddressCity}"  ReturnType="Next"  />
+                </StackLayout>
+                <StackLayout Grid.Row="8" Grid.Column="0">
+                    <Entry Placeholder="Poštanski kod" Text="{Binding CreditCardModel.AddressZip}"  ReturnType="Next"  />
+                </StackLayout>
 
             </Grid>
+
             <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="End" >
                 <Button x:Name="Submit_Button" BorderRadius="0"  Text="Submit" Command="{Binding SubmitCommand}" HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand"/>
             </StackLayout>
+            
         </StackLayout>
     </ContentView>
 </ContentPage>

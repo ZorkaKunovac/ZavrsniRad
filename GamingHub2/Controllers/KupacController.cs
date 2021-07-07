@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace GamingHub2.Controllers
 {
-    public class KupacController : BaseCRUDController<Model.Kupac, object, KupacInsertRequest, object>
+    public class KupacController : BaseCRUDController<Model.Kupac, KupacSearchRequest, KupacUpsertRequest, KupacUpsertRequest>
     {
-        public KupacController(ICRUDService<Kupac, object, KupacInsertRequest, object> service) : base(service)
+        public KupacController(ICRUDService<Kupac, KupacSearchRequest, KupacUpsertRequest, KupacUpsertRequest> service) : base(service)
         {
         }
     }

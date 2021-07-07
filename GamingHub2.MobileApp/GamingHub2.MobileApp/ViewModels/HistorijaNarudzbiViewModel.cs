@@ -23,19 +23,12 @@ namespace GamingHub2.MobileApp.ViewModels
 
         public async Task Init()
         {
-            //RecenzijaSearchRequest search = new RecenzijaSearchRequest
-            //{
-            //    Naslov = _searchnaslov
-            //};
+            NarudzbaList.Clear();
 
             var lista = await _service.Get<IEnumerable<Narudzba>>(null);
-            NarudzbaList.Clear();
             foreach (var narudzba in lista)
             {
-                if (narudzba.KorisnikID == APIService.TrenutniKorisnik.KorisnikId)
-                {
-                    NarudzbaList.Add(narudzba);
-                }
+                NarudzbaList.Add(narudzba);
             }
         }
     }

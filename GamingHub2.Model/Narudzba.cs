@@ -12,7 +12,7 @@ namespace GamingHub2.Model
         public bool? Otkazano { get; set; }
         public int KorisnikID { get; set; }
         public string KorisnikKorisnickoIme { get; set; }
-
+        public decimal Iznos { get; set; }
         //public decimal IznosBezPdv { get; set; }
         //public decimal IznosSaPdv { get; set; }
     }

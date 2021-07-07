@@ -14,7 +14,7 @@ namespace GamingHub2.Model
         public string Adresa1 { get; set; }
 
         public string Adresa2 { get; set; }
-        public int DrzavaID { get; set; }
+        public string Drzava { get; set; }
         public string Grad { get; set; }
         public string PostanskiBroj { get; set; }
 

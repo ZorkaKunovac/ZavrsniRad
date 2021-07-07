@@ -1,6 +1,7 @@
 ﻿using GamingHub2.Model;
 using GamingHub2.Model.Requests;
 using GamingHub2.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,8 @@ using System.Threading.Tasks;
 
 namespace GamingHub2.Controllers
 {
-    public class NarudzbaController : BaseCRUDController<Model.Narudzba, NarudzbaSearchRequest, NarudzbaUpsertRequest, NarudzbaUpsertRequest>
+    [Authorize]
+    public class NarudzbaController : BaseCRUDController<Model.Narudzba, NarudzbaSearchRequest, NarudzbaInsertRequest, NarudzbaUpdateRequest>
     {
         public NarudzbaController(INarudzbaService service) : base(service)
         {

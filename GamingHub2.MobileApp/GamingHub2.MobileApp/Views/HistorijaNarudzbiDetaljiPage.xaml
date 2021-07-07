@@ -9,29 +9,54 @@
 
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Detalji narudzbe"
+            <Label Text="Detalji narudžbe"
+                   FontSize="24"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
 
+            <StackLayout Padding="10"  Orientation="Horizontal" >
+                <Label Text="Šifra" WidthRequest="50"
+                                    LineBreakMode="NoWrap" 
+                                    Style="{DynamicResource ListItemTextStyle}" 
+                                    FontSize="13" />
+                <Label Text="Naziv proizvoda" WidthRequest="150"
+                                    LineBreakMode="NoWrap"
+                                    Style="{DynamicResource ListItemTextStyle}"
+                                    FontSize="13" />
+                <Label Text="Količina" WidthRequest="50"
+                                    LineBreakMode="NoWrap"
+                                    Style="{DynamicResource ListItemTextStyle}"
+                                    FontSize="13" />
+                <Label Text="Cijena"  WidthRequest="50"
+                                    Style="{DynamicResource ListItemTextStyle}"
+                                    FontSize="13" />
+                <Label Text="Popust"   WidthRequest="50"
+                                    Style="{DynamicResource ListItemTextStyle}"
+                                    FontSize="13" />
+            </StackLayout>
+            
             <ListView ItemsSource="{Binding NarudzbaStavkaList}" >
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout Padding="10"  Orientation="Horizontal" >
-                                <Label Text="{Binding NarudzbaId}" 
+                                <Label Text="{Binding NarudzbaStavkaId}" WidthRequest="50"
                                     LineBreakMode="NoWrap" 
                                     Style="{DynamicResource ListItemTextStyle}" 
                                     FontSize="13" />
-                                <Label Text="{Binding NazivProizvoda}" 
+                                <Label Text="{Binding NazivProizvoda}" WidthRequest="150"
                                     LineBreakMode="NoWrap"
                                     Style="{DynamicResource ListItemDetailTextStyle}"
                                     FontSize="13" />
-                                <Label Text="{Binding Kolicina}" 
+                                <Label Text="{Binding Kolicina}" WidthRequest="50"
                                     LineBreakMode="NoWrap"
                                     Style="{DynamicResource ListItemDetailTextStyle}"
                                     FontSize="13" />
-                                <Label Text="{Binding Cijena}" 
+                                <Label Text="{Binding Cijena, StringFormat='{0:C}'}"  WidthRequest="50"
                                     Style="{DynamicResource ListItemDetailTextStyle}"
+                                    FontSize="13" />
+                                <Label Text="{Binding Popust, StringFormat='-{0:0}%'}"   WidthRequest="50"
+                                    Style="{DynamicResource ListItemTextStyle}"
                                     FontSize="13" />
                             </StackLayout>
                         </ViewCell>

@@ -13,8 +13,12 @@ using Xamarin.Forms;
 
 namespace GamingHub2.MobileApp.ViewModels
 {
+    [QueryProperty(nameof(NarudzbaId), nameof(NarudzbaId))]
     public class PaymentGatewayPageViewModel : BindableBase
     {
+        private readonly APIService _serviceNarudzba = new APIService("Narudzba");
+        private readonly APIService _servicKupac = new APIService("Kupac");
+
         #region Variable
 
         private CreditCardModel _creditCardModel;
@@ -25,15 +29,51 @@ namespace GamingHub2.MobileApp.ViewModels
         private bool _isError_CardNumber;
         private bool _isError_Month;
         private bool _isError_Year;
+
+        public async Task Init()
+        {
+            List<Kupac> kupac = await GetKupacByKorisnikid();
+            if (kupac != null && kupac.Count > 0)
+            {
+                var KupacData = kupac[0];
+
+                var CCM = new CreditCardModel();
+
+                CCM.AddressCity = KupacData.Grad;
+                CCM.AddressCountry = KupacData.Drzava;
+                CCM.AddressLine1 = KupacData.Adresa1;
+                CCM.AddressLine2 = KupacData.Adresa2;
+                CCM.AddressZip = KupacData.PostanskiBroj;
+                CCM.FirstName = KupacData.Ime;
+                CCM.LastName = KupacData.Prezime;
+                CCM.PhoneNumber = KupacData.BrojTelefona;
+                CCM.EmailAddress = KupacData.Email;
+
+                CreditCardModel = CCM;
+            }
+        }
+
         private bool _isError_Cvv;
         private string _expMonth;
         private string _expYear;
         private string _title;
         private decimal _iznos = 0;
 
+
+        private int _narudzbaId;
+
         #endregion Variable
 
         #region Public Property
+
+
+        public int NarudzbaId
+        {
+            get { return _narudzbaId; }
+            set { SetProperty(ref _narudzbaId, value); _narudzbaId = value; }
+        }
+
+
         public string ExpMonth
         {
             get { return _expMonth; }
@@ -126,7 +166,7 @@ namespace GamingHub2.MobileApp.ViewModels
                     Console.Write("Payment Gateway" + "Token :" + Token);
                     if (Token != null)
                     {
-                        IsTransectionSuccess = MakePayment(100.00m);
+                        IsTransectionSuccess = await MakePayment();
                     }
                     else
                     {
@@ -166,6 +206,7 @@ namespace GamingHub2.MobileApp.ViewModels
 
         #region Method
 
+
         private string CreateToken()
         {
             try
@@ -201,13 +242,17 @@ namespace GamingHub2.MobileApp.ViewModels
             }
         }
 
-        public bool MakePayment(decimal Iznos)
+        public async Task<bool> MakePayment()
         {
+            var Narudzba = await _serviceNarudzba.GetById<Narudzba>(NarudzbaId);
+            if (Narudzba == null)
+                return false;
+
             try
             {
                 var options = new ChargeCreateOptions
                 {
-                    Amount = ((long)Iznos) * 100,
+                    Amount = ((long)Narudzba.Iznos) * 100,
                     Currency = "usd",
                     Description = "Charge for " + APIService.TrenutniKorisnik.Email,
                     Source = stripeToken.Id,
@@ -218,13 +263,60 @@ namespace GamingHub2.MobileApp.ViewModels
                 //Make Payment
                 var service = new ChargeService();
                 Charge charge = service.Create(options);
-                return true;
+
+                if(charge.Captured)
+                {
+                    await _serviceNarudzba.Update<Narudzba>(NarudzbaId, new Model.Requests.NarudzbaUpdateRequest
+                    {
+                        Status = true,
+                        Otkazano = Narudzba.Otkazano
+                    });
+
+                    await CreateOrUpdateKupac();
+                }
+                return true; 
             }
             catch (Exception ex)
             {
                 Console.Write("Payment Gatway (CreateCharge)" + ex.Message);
                 throw ex;
             }
+        }
+
+        private async Task CreateOrUpdateKupac()
+        {
+
+            var request = new Model.Requests.KupacUpsertRequest
+            {
+                Adresa1 = CreditCardModel.AddressLine1,
+                Adresa2 = CreditCardModel.AddressLine2,
+                BrojTelefona = CreditCardModel.PhoneNumber,
+                Drzava = CreditCardModel.AddressCountry,
+                Email = CreditCardModel.EmailAddress,
+                Grad = CreditCardModel.AddressCity,
+                Ime = CreditCardModel.FirstName,
+                Prezime = CreditCardModel.LastName,
+                PostanskiBroj = CreditCardModel.AddressZip,
+                KorisnikId = APIService.TrenutniKorisnik.KorisnikId
+            };
+            List<Kupac> kupac = await GetKupacByKorisnikid();
+
+            if (kupac != null && kupac.Count > 0)
+            {
+                await _servicKupac.Update<Model.Kupac>(kupac[0].ID, request);
+            }
+            else
+            {
+                await _servicKupac.Insert<Model.Kupac>(request);
+            }
+        }
+
+        private async Task<List<Kupac>> GetKupacByKorisnikid()
+        {
+            return await _servicKupac.Get<List<Model.Kupac>>(new Model.Requests.KupacSearchRequest
+            {
+                KorisnikId = APIService.TrenutniKorisnik.KorisnikId
+            });
         }
 
         private bool ValidateCard()

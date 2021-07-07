@@ -1,9 +1,10 @@
-﻿using System;
+﻿using GamingHub2.MobileApp.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -12,19 +13,23 @@ namespace GamingHub2.MobileApp.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class StripePaymentGatewayPage : ContentPage
     {
+        private readonly PaymentGatewayPageViewModel model;
+
         public StripePaymentGatewayPage()
         {
             InitializeComponent();
-            BindingContext = new GamingHub2.MobileApp.ViewModels.PaymentGatewayPageViewModel();
+            BindingContext = model = new PaymentGatewayPageViewModel();
         }
 
-        protected override void OnAppearing()
+        protected async override void OnAppearing()
         {
             Submit_Button.IsEnabled = false;
             ErrorLabel_CardNumber.IsVisible = false;
             ErrorLabel_Cvv.IsVisible = false;
             ErrorLabel_Month.IsVisible = false;
             ErrorLabel_Year.IsVisible = false;
+
+            await model.Init();
         }
         private void CardNumber_TextChanged(object sender, TextChangedEventArgs e)
         {

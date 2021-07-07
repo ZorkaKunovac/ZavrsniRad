@@ -27,9 +27,7 @@ namespace GamingHub2.Database
 
         [StringLength(70, ErrorMessage = "{0} mora biti izmedju {2} i {1} znakova.", MinimumLength = 2)]
         public string Adresa2 { get; set; }
-        public int DrzavaID { get; set; }
-        public Drzava Drzava { get; set; }
-
+     
         [Required(ErrorMessage = "Polje je obavezno")]
         [StringLength(70, ErrorMessage = "{0} mora biti izmedju {2} i {1} znakova.", MinimumLength = 5)]
         public string Grad { get; set; }
@@ -37,6 +35,10 @@ namespace GamingHub2.Database
         [Required(ErrorMessage = "Polje je obavezno")]
         [StringLength(20, ErrorMessage = "{0} mora biti izmedju {2} i {1} znakova.", MinimumLength = 3)]
         public string PostanskiBroj { get; set; }
+
+        [Required(ErrorMessage = "Polje je obavezno")]
+        [StringLength(20, ErrorMessage = "{0} mora biti izmedju {2} i {1} znakova.", MinimumLength = 3)]
+        public string Drzava { get; set; }
 
         public int KorisnikId { get; set; }
         public Korisnik Korisnik { get; set; }

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace GamingHub2.Model.Requests
 {
-    public class KupacInsertRequest
+    public class KupacUpsertRequest
     {
         [Required(ErrorMessage = "Polje je obavezno")]
         [StringLength(50, ErrorMessage = "{0} mora biti izmedju {2} i {1} znakova.", MinimumLength = 2)]
@@ -30,9 +30,6 @@ namespace GamingHub2.Model.Requests
         public string Adresa2 { get; set; }
 
         [Required(ErrorMessage = "Polje je obavezno")]
-        public int DrzavaID { get; set; }
-
-        [Required(ErrorMessage = "Polje je obavezno")]
         [StringLength(70, ErrorMessage = "{0} mora biti izmedju {2} i {1} znakova.", MinimumLength = 5)]
         public string Grad { get; set; }
 
@@ -40,6 +37,10 @@ namespace GamingHub2.Model.Requests
         [StringLength(20, ErrorMessage = "{0} mora biti izmedju {2} i {1} znakova.", MinimumLength = 3)]
         public string PostanskiBroj { get; set; }
 
+        [Required(ErrorMessage = "Polje je obavezno")]
         public int KorisnikId { get; set; }
+        [Required(ErrorMessage = "Polje je obavezno")]
+        [StringLength(70, ErrorMessage = "{0} mora biti izmedju {2} i {1} znakova.", MinimumLength = 5)]
+        public string Drzava { get; set; }
     }
 }

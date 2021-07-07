@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace GamingHub2.Services
 {
-    public interface INarudzbaService : ICRUDService<Narudzba, NarudzbaSearchRequest, NarudzbaUpsertRequest, NarudzbaUpsertRequest>
+    public interface INarudzbaService : ICRUDService<Narudzba, NarudzbaSearchRequest, NarudzbaInsertRequest, NarudzbaUpdateRequest>
     {
 
     }
