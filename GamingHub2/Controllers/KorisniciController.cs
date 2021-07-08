@@ -44,7 +44,13 @@ namespace GamingHub2.Controllers
         {
             return _service.Insert(request);
         }
-     
+
+        [HttpPost("Registracija")]
+        public Model.Korisnici Registracija(KorisniciRegistracijaRequest request)
+        {
+            return _service.Registracija(request);
+        }
+
         [HttpPut("{id}")]
         public Model.Korisnici Update(int id, [FromBody] KorisniciUpsertRequest request)
         {

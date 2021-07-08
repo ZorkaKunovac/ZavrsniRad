@@ -19,9 +19,6 @@ namespace GamingHub2.Services
         Model.Korisnici GetTrenutniKorisnik();
         void SetTrenutniKorisnik(Model.Korisnici korisnik);
         Model.Korisnici UpdateProfile(KorisniciUpdateProfileRequest request);
+        Model.Korisnici Registracija(KorisniciRegistracijaRequest request);
     }
-    //public interface IKorisnikService : ICRUDService<Model.Korisnik, KorisnikSearchRequest, KorisnikInsertRequest, KorisnikUpdateRequest>
-    //{
-    //    Korisnik Authenticiraj(string username, string password);
-    //}
 }

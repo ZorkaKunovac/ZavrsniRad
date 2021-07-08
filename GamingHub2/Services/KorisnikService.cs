@@ -153,6 +153,53 @@ namespace GamingHub2.Services
 
             return _mapper.Map<Model.Korisnici>(entity);
         }
+        public Model.Korisnici Registracija(KorisniciRegistracijaRequest request)
+        {
+            var entity = _mapper.Map<Database.Korisnik>(request);
+
+            if (request.Password != request.PasswordPotvrda)
+            {
+                throw new Exception("Passwordi se ne slažu");
+            }
+
+            Korisnik user = _context.Korisnik.FirstOrDefault(u => u.KorisnickoIme == request.KorisnickoIme);
+            Korisnik emil = _context.Korisnik.FirstOrDefault(u => u.Email == request.Email);
+
+            if (user != null)
+                throw new UserException("Korisnicko ime vec postoji!");
+            if (emil != null)
+                throw new UserException("Email vec postoji!");
+
+            entity.LozinkaSalt = GenerateSalt();
+            entity.LozinkaHash = GenerateHash(entity.LozinkaSalt, request.Password);
+
+            _context.Korisnik.Add(entity);
+            _context.SaveChanges();
+
+
+            //foreach (var uloga in request.Uloge)
+            //{
+            //    Database.KorisniciUloge korisniciUloge = new Database.KorisniciUloge
+            //    {
+            //        KorisnikId = entity.KorisnikId,
+            //        UlogaId = uloga,
+            //        DatumIzmjene = DateTime.Now
+            //    };
+            //    _context.KorisniciUloge.Add(korisniciUloge);
+            //}
+                Database.KorisniciUloge korisniciUloge = new Database.KorisniciUloge
+                {
+                    KorisnikId = entity.KorisnikId,
+                    UlogaId = 3, //Po defaultu dodaje ulogu Korisnik
+                    DatumIzmjene = DateTime.Now
+                };
+                _context.KorisniciUloge.Add(korisniciUloge);
+
+            _context.SaveChanges();
+
+            return _mapper.Map<Model.Korisnici>(entity);
+        }
+
         public Model.Korisnici Update(int id, KorisniciUpsertRequest request)
         {
             var entity = _context.Korisnik.Find(id);

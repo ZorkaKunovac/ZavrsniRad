@@ -75,13 +75,21 @@ namespace GamingHub2.MobileApp
             var url = $"{_apiURL}/{_route}/{id}";
             return await url.WithBasicAuth(Username, Password).GetJsonAsync<T>();
         }
-        public async Task<T> Insert<T>(object request)
+        public async Task<T> Insert<T>(object request, string endpointName = null)
         {
-            var url = $"{_apiURL}/{_route}";
-            //var result = await url.PostJsonAsync(request).ReceiveJson<T>();
-            //return result;
+            //var url = $"{_apiURL}/{_route}";
             try
             {
+                string url;
+                if (endpointName == null)
+                {
+                    url = $"{_apiURL}/{_route}";
+                }
+                else
+                {
+                    url = $"{_apiURL}/{_route}/{endpointName}";
+                }
+
                 return await url.WithBasicAuth(Username, Password).PostJsonAsync(request).ReceiveJson<T>();
             }
             catch (FlurlHttpException ex)
