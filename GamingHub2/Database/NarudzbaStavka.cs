@@ -11,17 +11,16 @@ namespace GamingHub2.Database
         [Key]
         public int NarudzbaStavkaId { get; set; }
         public int ProizvodID { get; set; }
-        public virtual Proizvod Proizvod { get; set; }
-        public float JedinicnaCijena { get; set; }
-        [Range(1, 10)]
+        public int NarudzbaID { get; set; }// bez ? ?
+        public decimal Cijena { get; set; }
         public int Kolicina { get; set; }
-        public float Popust { get; set; }
-        public int? NarudzbaID { get; set; }// bez ? ?
-        public virtual Narudzba Narudzba { get; set; }
-        public bool IsKompletirano { get; set; }
-        public string KorisnikId { get; set; }
-        public Korisnik Korisnik { get; set; }
+        public decimal? Popust { get; set; }
+        //public bool IsKompletirano { get; set; }
+        //public string KorisnikId { get; set; }
+        //public Korisnik Korisnik { get; set; }
 
+        public virtual Proizvod Proizvod { get; set; }
+        public virtual Narudzba Narudzba { get; set; }
 
     }
 }

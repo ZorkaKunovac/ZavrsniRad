@@ -36,7 +36,7 @@ namespace GamingHub2.Mapping
             CreateMap<ProizvodUpdateRequest, Database.Proizvod>();
 
 
-            //CreateMap<Database.Korisnik, KorisnikInsertRequest>().ReverseMap(); //reversemap? V3 39:30
+           CreateMap<Database.Korisnik, KorisniciUpdateProfileRequest>().ReverseMap();
 
         }
     }

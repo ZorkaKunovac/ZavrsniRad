@@ -21,6 +21,8 @@ namespace GamingHub2.Services
     {
         private readonly ApplicationDbContext _context;
         private readonly IMapper _mapper;
+        public Model.Korisnici TrenutniKorisnik = null;
+
         public KorisniciService(ApplicationDbContext context, IMapper mapper)
         {
             _context = context;
@@ -107,6 +109,12 @@ namespace GamingHub2.Services
             return _mapper.Map<Model.Korisnici>(entity);
         }
 
+        public Model.Korisnici MojProfil()
+        {
+            var entity = _context.Korisnik.Include("KorisniciUloge").Where(x => x.KorisnikId == TrenutniKorisnik.KorisnikId).FirstOrDefault();
+            return _mapper.Map<Model.Korisnici>(entity);
+        }
+
         public Model.Korisnici Insert(KorisniciUpsertRequest request)
         {
             var entity = _mapper.Map<Database.Korisnik>(request);
@@ -188,6 +196,46 @@ namespace GamingHub2.Services
             _context.SaveChanges();
 
             return _mapper.Map<Model.Korisnici>(entity);
+        }
+
+        public Model.Korisnici UpdateProfile(KorisniciUpdateProfileRequest request)
+        {
+            var entity = _context.Korisnik.Find(TrenutniKorisnik.KorisnikId);
+
+            if(request.Slika == null || request.Slika.Length == 0)
+            {
+                request.Slika = entity.Slika;
+            }
+
+            _context.Korisnik.Attach(entity);
+            _context.Korisnik.Update(entity);
+
+            if (!string.IsNullOrWhiteSpace(request.Password))
+            {
+                if (request.Password != request.PasswordPotvrda)
+                {
+                    throw new UserException("Passwordi se ne slažu");
+                }
+
+                entity.LozinkaSalt = GenerateSalt();
+                entity.LozinkaHash = GenerateHash(entity.LozinkaSalt, request.Password);
+            }
+
+            _context.SaveChanges();
+
+            _mapper.Map(request, entity);
+
+            return _mapper.Map<Model.Korisnici>(entity);
+        }
+
+        public Korisnici GetTrenutniKorisnik()
+        {
+            return TrenutniKorisnik;
+        }
+
+        public void SetTrenutniKorisnik(Korisnici korisnik)
+        {
+            TrenutniKorisnik = korisnik;
         }
     }
 

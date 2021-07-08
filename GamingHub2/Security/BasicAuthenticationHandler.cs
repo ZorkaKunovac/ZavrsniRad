@@ -55,6 +55,8 @@ namespace GamingHub2.Security
             if (user == null)
                 return AuthenticateResult.Fail("Invalid Username or Password");
 
+            _userService.SetTrenutniKorisnik(user);
+
             var claims = new List<Claim> {
                 new Claim(ClaimTypes.NameIdentifier, user.KorisnickoIme),
                 new Claim(ClaimTypes.Name, user.Ime),

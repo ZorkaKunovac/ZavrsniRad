@@ -13,6 +13,7 @@ namespace GamingHub2.MobileApp
     {
         public static string Username { get; set; }
         public static string Password { get; set; }
+        public static Model.Korisnici TrenutniKorisnik { get; set; }
 
         private string _route = null;
 #if DEBUG
@@ -25,14 +26,25 @@ namespace GamingHub2.MobileApp
         private string _apiURL = "https://mywebsite/api/";
 #endif
         //public string endpoint = $"{_apiURL}";
+
+
         public APIService(string route) //Kontroler
         {
             _route = route;
         }
 
-        public async Task<T> Get<T>(object searchRequest = null)
+        public async Task<T> Get<T>(object searchRequest = null, string endpointName = null)
         {
-            var url = $"{_apiURL}/{_route}";
+            string url;
+            if (endpointName == null)
+            {
+                url = $"{_apiURL}/{_route}";
+            }
+            else
+            {
+                url = $"{_apiURL}/{_route}/{endpointName}";
+            }
+
             try
             {
                 if (searchRequest != null)
@@ -47,7 +59,9 @@ namespace GamingHub2.MobileApp
             {
                 if (ex.StatusCode == (int)HttpStatusCode.Unauthorized)
                 {
-                     await Application.Current.MainPage.DisplayAlert("Greska","Niste autorizovani","OK");
+                    // ovo ce ti se pozvati ukoliko login ne uspije, jer ce vratiti exception, nece vratiti null u loginVM
+                    await Application.Current.MainPage.DisplayAlert("Greska", "Pogrešno korisničko ime ili lozinka!", "OK");
+
                 }
                 if (ex.StatusCode == (int)HttpStatusCode.Forbidden)
                 {
@@ -87,11 +101,19 @@ namespace GamingHub2.MobileApp
             }
         }
 
-        public async Task<T> Update<T>(object id, object request)
+        public async Task<T> Update<T>(object id, object request, string endpointName = null)
         {
             try
             {
-                var url = $"{_apiURL}/{_route}/{id}";
+                string url;
+                if (endpointName == null)
+                {
+                    url = $"{_apiURL}/{_route}/{id}";
+                }
+                else
+                {
+                    url = $"{_apiURL}/{_route}/{endpointName}";
+                }
 
                 return await url.WithBasicAuth(Username, Password).PutJsonAsync(request).ReceiveJson<T>();
             }

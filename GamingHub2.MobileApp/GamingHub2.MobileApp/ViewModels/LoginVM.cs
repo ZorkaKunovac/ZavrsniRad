@@ -38,22 +38,17 @@ namespace GamingHub2.MobileApp.ViewModels
             APIService.Password = Password;
             try
             {
-                await _service.Get<dynamic>(null);
+                var TrenutniKorisnik = await _service.Get<Model.Korisnici>(null, "MojProfil");
 
-                List<Model.Korisnici> listKorisnici = await _service.Get<List<Model.Korisnici>>(new KorisnikSearchRequest() { KorisnickoIme = APIService.Username });
-                Model.Korisnici korisnik = listKorisnici.Where(x => x.KorisnickoIme == APIService.Username).FirstOrDefault();
-                if (korisnik != null)
+                if (TrenutniKorisnik != null)
                 {
                     Application.Current.MainPage = new AppShell();
-                }
-                else
-                {
-                    await Application.Current.MainPage.DisplayAlert("Greska","Pogrešno korisničko ime ili lozinka!","OK");
+                    APIService.TrenutniKorisnik = TrenutniKorisnik;
                 }
             }
             catch (Exception ex)
             {
-                //MessageBox.Show(ex.Message);
+               
             }
         }
     }

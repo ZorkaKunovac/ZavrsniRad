@@ -1,0 +1,226 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="GamingHub2.MobileApp.Views.EditProfilePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ListCollection="clr-namespace:System.Collections.Generic;assembly=netstandard"
+    xmlns:behaviour="clr-namespace:GamingHub2.MobileApp.Behaviors"
+    xmlns:behaviours="clr-namespace:GamingHub2.MobileApp.Behaviors"
+    xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:combobox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
+    xmlns:controls="clr-namespace:GamingHub2.MobileApp.Controls"
+    xmlns:converter="clr-namespace:GamingHub2.MobileApp.Converters"
+    xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+    xmlns:local="clr-namespace:GamingHub2.MobileApp.Views"
+    xmlns:viewModel="clr-namespace:GamingHub2.MobileApp.ViewModels"
+    Title="Business Registration Form"
+    BackgroundColor="{DynamicResource Gray-100}"
+    NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.BindingContext>
+        <viewModel:EditProfilePageViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converter:BooleanToColorConverter x:Key="ColorConverter" />
+            <converter:InverseBoolConverter x:Key="InverseBoolConverter" />
+            <converter:NameValidationConverter x:Key="FirstValidationErrorConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.ControlTemplate>
+        <ControlTemplate>
+            <StackLayout BackgroundColor="{DynamicResource Gray-Bg}" Spacing="0">
+
+                <!--  Title  -->
+                <Label
+                    Margin="0,16"
+                    FontFamily="Montserrat-Medium"
+                    Style="{StaticResource TitleLabelStyle}"
+                    Text="Profil" />
+
+                <BoxView BackgroundColor="{DynamicResource Gray-200}" HeightRequest="1" />
+                <ContentPresenter />
+
+            </StackLayout>
+        </ControlTemplate>
+    </ContentPage.ControlTemplate>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout
+                Padding="16,24"
+                BackgroundColor="{DynamicResource Gray-100}"
+                Spacing="0">
+                <!--  Business Owner Name  -->
+                <Label
+                    Margin="0,0,0,4"
+                    FontFamily="Montserrat-Medium"
+                    FontSize="12"
+                    HeightRequest="18"
+                    Text="Korisničko ime"
+                    TextColor="{DynamicResource Gray-800}" />
+
+                <border:SfBorder BorderColor="{Binding Source={x:Reference KorisnickoImeEntry}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=3}" Style="{StaticResource DataFormBorderlessEntryBorderStyle}">
+                    <Grid ColumnDefinitions="*, Auto">
+
+                        <controls:BorderlessEntry
+                            x:Name="KorisnickoImeEntry"
+                            Margin="12,0"
+                            HeightRequest="40"
+                            Style="{StaticResource BorderlessEntryStyle}"
+                            Text="{Binding Korisnik.KorisnickoIme}"
+                            IsEnabled="False">
+                        </controls:BorderlessEntry>
+
+                    </Grid>
+                </border:SfBorder>
+
+                 <!--  Email  -->
+                <Label
+                    Margin="0,15,0,-8"
+                    FontFamily="Montserrat-Medium"
+                    FontSize="12"
+                    HeightRequest="18"
+                    Text="Email"
+                    TextColor="{DynamicResource Gray-800}" />
+
+                <StackLayout>
+                    <border:SfBorder
+                Margin="0,8,0,0"
+                Padding="12,0"
+                BackgroundColor="{DynamicResource Gray-Bg}"
+                BorderColor="{Binding Path=IsFocused, Source={x:Reference EmailEntry}, Converter={x:StaticResource ColorConverter}, ConverterParameter=3}"
+                Style="{StaticResource DataFormBorderlessEntryBorderStyle}"
+                VerticalOptions="FillAndExpand">
+                        <Grid ColumnDefinitions="*, Auto">
+                            <controls:BorderlessEntry
+                        x:Name="EmailEntry"
+                        Keyboard="Email"
+                        Placeholder="Email"
+                        HeightRequest="40"
+                        Style="{StaticResource BorderlessEntryStyle}"
+                        IsEnabled="False"
+                        Text="{Binding Korisnik.Email}">
+                            </controls:BorderlessEntry>
+                      
+                        </Grid>
+                    </border:SfBorder>
+                </StackLayout>
+
+                <!-- Ime -->
+                <Label
+                    Margin="0,15,0,0"
+                    FontFamily="Montserrat-Medium"
+                    FontSize="12"
+                    HeightRequest="18"
+                    Text="Ime"
+                    TextColor="{DynamicResource Gray-800}" />
+
+                <border:SfBorder BorderColor="{Binding Source={x:Reference ImeEntry}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=3}" Style="{StaticResource DataFormBorderlessEntryBorderStyle}">
+                    <controls:BorderlessEntry
+                        x:Name="ImeEntry"
+                        Margin="12,0"
+                        HeightRequest="40"
+                        Placeholder=""
+                        Style="{StaticResource BorderlessEntryStyle}"
+                        Text="{Binding Korisnik.Ime}" />
+                </border:SfBorder>
+
+
+                <!-- Prezime  -->
+                <Label
+                    Margin="0,15,0,0"
+                    FontFamily="Montserrat-Medium"
+                    FontSize="12"
+                    HeightRequest="18"
+                    Text="Prezime"
+                    TextColor="{DynamicResource Gray-800}" />
+
+                <border:SfBorder BorderColor="{Binding Source={x:Reference PrezimeEntry}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=3}" Style="{StaticResource DataFormBorderlessEntryBorderStyle}">
+                    <controls:BorderlessEntry
+                        x:Name="PrezimeEntry"
+                        Margin="12,0"
+                        HeightRequest="40"
+                        Placeholder=""
+                        Style="{StaticResource BorderlessEntryStyle}"
+                        Text="{Binding Korisnik.Prezime}" />
+                </border:SfBorder>
+
+                <!--  Phone Number  -->
+                <Label
+                    Margin="0,15,0,0"
+                    FontFamily="Montserrat-Medium"
+                    FontSize="12"
+                    HeightRequest="18"
+                    Text="Broj telefona"
+                    TextColor="{DynamicResource Gray-800}" />
+
+                <border:SfBorder BorderColor="{Binding Source={x:Reference BrojTelefonaEntry}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=3}" Style="{StaticResource DataFormBorderlessEntryBorderStyle}">
+                    <controls:BorderlessEntry
+                        x:Name="BrojTelefonaEntry"
+                        Margin="12,0"
+                        HeightRequest="40"
+                        Keyboard="Telephone"
+                        Placeholder="+387 61 000 111"
+                        Style="{StaticResource BorderlessEntryStyle}"
+                        Text="{Binding Korisnik.Telefon}">
+                    </controls:BorderlessEntry>
+                </border:SfBorder>
+
+
+                <!--  Nova Lozinka  -->
+                <Label
+                    Margin="0,15,0,0"
+                    FontFamily="Montserrat-Medium"
+                    FontSize="12"
+                    HeightRequest="18"
+                    Text="Nova lozinka"
+                    TextColor="{DynamicResource Gray-800}" />
+
+                <border:SfBorder BorderColor="{Binding Source={x:Reference NovaLozinkaEntry}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=3}" Style="{StaticResource DataFormBorderlessEntryBorderStyle}">
+                    <controls:BorderlessEntry
+                        x:Name="NovaLozinkaEntry"
+                        Margin="12,0"
+                        HeightRequest="40"
+                        IsPassword="True"
+                        Style="{StaticResource BorderlessEntryStyle}"
+                        Text="{Binding NovaLozinka}">
+                    </controls:BorderlessEntry>
+                </border:SfBorder>
+                
+
+                <!--  Potvrda lozinke  -->
+                <Label
+                    Margin="0,15,0,0"
+                    FontFamily="Montserrat-Medium"
+                    FontSize="12"
+                    HeightRequest="18"
+                    Text="Nova lozinka"
+                    TextColor="{DynamicResource Gray-800}" />
+
+                <border:SfBorder BorderColor="{Binding Source={x:Reference PotvrdaLozinkeEntry}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=3}" Style="{StaticResource DataFormBorderlessEntryBorderStyle}">
+                    <controls:BorderlessEntry
+                        x:Name="PotvrdaLozinkeEntry"
+                        Margin="12,0"
+                        HeightRequest="40"
+                        IsPassword="True"
+                        Style="{StaticResource BorderlessEntryStyle}"
+                        Text="{Binding PotvrdaLozinke}">
+                    </controls:BorderlessEntry>
+                </border:SfBorder>
+                
+                <!--  Submit Button  -->
+                <buttons:SfButton
+                    Margin="0,24,0,0"
+                    Command="{Binding SubmitCommand}"
+                    Style="{StaticResource GradientButtonStyle}"
+                    Text="SNIMI"
+                    WidthRequest="200" />
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

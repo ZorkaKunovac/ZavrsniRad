@@ -1,4 +1,5 @@
-﻿using GamingHub2.MobileApp.Views;
+﻿using GamingHub2.MobileApp.Validators;
+using GamingHub2.MobileApp.Views;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -20,5 +21,7 @@ namespace GamingHub2.MobileApp.ViewModels
             // Prefixing with `//` switches to a different navigation stack instead of pushing to the active one
             await Shell.Current.GoToAsync($"//{nameof(AboutPage)}");
         }
+
+        public ValidatableObject<string> Email { get; set; }
     }
 }
