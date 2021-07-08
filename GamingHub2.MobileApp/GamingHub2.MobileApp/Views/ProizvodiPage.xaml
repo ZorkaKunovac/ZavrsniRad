@@ -13,7 +13,7 @@
     </ContentPage.Resources>
 
     <ContentPage.Content>
-        
+
         <StackLayout>
             <Label Text="Proizvodi"
                 VerticalOptions="CenterAndExpand" 
@@ -23,18 +23,32 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                        <StackLayout Padding="10" >
-                                <!--<Image Source="{Binding IgraKonzola.Igra.SlikaLink,Converter={StaticResource imgConv}}"></Image>-->
-                            <Label Text="{Binding  NazivProizvoda}" 
+                            <StackLayout Padding="10" Orientation="Horizontal" >
+                                <StackLayout>
+                                    <Image Source="{Binding Slika, Converter={StaticResource imgConv}}"  WidthRequest="250" />
+                                </StackLayout>
+                                <StackLayout Orientation="Vertical">
+
+                                    <Label Text="{Binding NazivProizvoda}" 
                             LineBreakMode="NoWrap" 
                             Style="{DynamicResource ListItemTextStyle}" 
                             FontSize="16" />
-                            <Label Text="{Binding ProdajnaCijena}" 
+                                    <Label  
                             LineBreakMode="NoWrap"
                             Style="{DynamicResource ListItemDetailTextStyle}"
-                            FontSize="13" />
-                        
-                        </StackLayout>
+                            FontSize="16" >
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <FormattedString.Spans>
+                                                    <Span Text="$" />
+                                                    <Span Text="{Binding ProdajnaCijena}"/>
+                                                </FormattedString.Spans>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                </StackLayout>
+
+                            </StackLayout>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>

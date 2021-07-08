@@ -44,19 +44,6 @@ namespace GamingHub2.WinUI
                 //MessageBox.Show(ex.Message);
             }
 
-            //try
-            //{
-            //    APIService.Username = txtUsername.Text;
-            //    APIService.Password = txtPassword.Text;
-            //    await _service.Get<dynamic>(null);
-            //    frmPocetna frm = new frmPocetna();
-            //    frm.Show();
-            //}
-            //catch (Exception ex)
-            //{
-            //    //MessageBox.Show("Pogrešan username ili password");
-            //    MessageBox.Show(ex.Message, "Authentifikacija", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
         }
     }
 }

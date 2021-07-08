@@ -38,29 +38,25 @@ namespace GamingHub2.MobileApp.ViewModels
 
         public async Task Init()
         {
-            var list = await _service.Get<IEnumerable<Proizvod>>(null);
+            ProizvodiList.Clear();
 
-            if (SelectedKonzola == null)
+            ProizvodSearchRequest request = new ProizvodSearchRequest
             {
-                ProizvodiList.Clear();
-                foreach (var proizvod in list)
-                {
-                    ProizvodiList.Add(proizvod);
-                }
-            }
-            else
-            {
-                // if(SelectedKonzola !=null)
-                ProizvodSearchRequest search = new ProizvodSearchRequest();
-                search.NazivKonzole = SelectedKonzola.Naziv;
+                IncludeIgraKonzola = true
+            };
 
-                list = await _service.Get<IEnumerable<Proizvod>>(search);
-                ProizvodiList.Clear();
-                foreach (var proizvod in list)
-                {
-                    ProizvodiList.Add(proizvod);
-                }
+            if (SelectedKonzola != null)
+            {
+                request.NazivKonzole = SelectedKonzola.Naziv;
             }
+
+            IEnumerable<Proizvod> list = await _service.Get<IEnumerable<Proizvod>>(request);
+
+            foreach (var proizvod in list)
+            {
+                ProizvodiList.Add(proizvod);
+            }
+
             if (KonzolaList.Count == 0)
             {
                 var konzolalist = await _konzolaService.Get<IEnumerable<Konzola>>(null);

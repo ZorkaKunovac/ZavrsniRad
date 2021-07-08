@@ -14,31 +14,40 @@
     </ContentPage.Resources>
 
     <ContentPage.Content>
-            <Grid HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Padding="10">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="500"></RowDefinition>
-                    <RowDefinition Height="Auto"></RowDefinition>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"></ColumnDefinition>
-                </Grid.ColumnDefinitions>
-                <ScrollView>
+        <Grid HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Padding="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="500"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <ScrollView>
                 <StackLayout Grid.Row="0" Grid.Column="0">
-                    <!--<Image Source="{Binding IgraKonzola.Igra.SlikaLink,Converter={StaticResource imgConv}}"></Image>-->
-                        <Label Text="{Binding Proizvod.NazivProizvoda}" 
+                    <Image Source="{Binding Proizvod.Slika, Converter={StaticResource imgConv}}" WidthRequest="400" />
+                    <Label Text="{Binding Proizvod.NazivProizvoda}" 
                             LineBreakMode="NoWrap" 
                             Style="{DynamicResource ListItemTextStyle}" 
                             FontSize="16" />
-                        <Label Text="{Binding Proizvod.ProdajnaCijena}" 
+                    <Label
                             LineBreakMode="NoWrap"
                             Style="{DynamicResource ListItemDetailTextStyle}"
-                            FontSize="13" />
-                        <StackLayout Orientation="Horizontal">
-                            <Entry Text="{Binding Kolicina}" Keyboard="Numeric"></Entry>
-                            <Button Text="+1" Command="{Binding PovecajKolicinuCommand}"></Button>
-                        </StackLayout>
+                            FontSize="15" >
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <FormattedString.Spans>
+                                    <Span Text="$" />
+                                    <Span Text="{Binding Proizvod.ProdajnaCijena}"/>
+                                </FormattedString.Spans>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <StackLayout Orientation="Horizontal">
+                        <Entry Text="{Binding Kolicina}" Keyboard="Numeric"></Entry>
+                        <Button Text="+1" Command="{Binding PovecajKolicinuCommand}"></Button>
                     </StackLayout>
-                </ScrollView>
+                </StackLayout>
+            </ScrollView>
             <StackLayout Grid.Row="1" Grid.Column="0">
                 <Image Source="cart.png">
                     <Image.GestureRecognizers>

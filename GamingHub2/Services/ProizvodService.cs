@@ -28,15 +28,28 @@ namespace GamingHub2.Services
                 entity = entity.Where(x => x.NazivProizvoda.Contains(search.NazivKonzole));
             }
 
+            if (search.IncludeIgraKonzola.HasValue && search.IncludeIgraKonzola == true)
+            {
+                entity = entity.Include(x => x.IgraKonzola);
+            }
 
             //if (search.IgraKonzolaId != 0 && search.IgraKonzolaId.HasValue)
             //{
             //    entity = entity.Where(x => x.IgraKonzolaID == search.IgraKonzolaId);
             //}
 
-
             var list = entity.ToList();
-            return _mapper.Map<List<Model.Proizvod>>(list);
+            var mappedList = _mapper.Map<List<Model.Proizvod>>(list);
+
+            if (search.IncludeIgraKonzola.HasValue && search.IncludeIgraKonzola == true)
+            {
+                foreach (var item in mappedList)
+                {
+                    item.Slika = Context.Igra.Find(item.IgraKonzola.IgraID).SlikaLink;
+                }
+            }
+
+            return mappedList;
         }
     }
 }

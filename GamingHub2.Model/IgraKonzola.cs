@@ -15,9 +15,9 @@ namespace GamingHub2.Model
 
         public virtual Igra Igra { get; set; }
         public virtual Konzola Konzola { get; set; }
-        public virtual Proizvod Proizvod { get; set; }
+        //public virtual Proizvod Proizvod { get; set; }
 
         //public string Naziv => $"{Igra?.Naziv} - {Konzola?.Naziv}";
         public string Naziv { get; set; }
-}
+    }
 }
