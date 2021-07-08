@@ -37,6 +37,7 @@ namespace GamingHub2.Mapping
 
 
            CreateMap<Database.Korisnik, KorisniciUpdateProfileRequest>().ReverseMap();
+           CreateMap<Database.Korisnik, KorisniciRegistracijaRequest>().ReverseMap();
 
         }
     }

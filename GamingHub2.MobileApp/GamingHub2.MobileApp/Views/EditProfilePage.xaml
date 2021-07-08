@@ -14,7 +14,7 @@
     xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
     xmlns:local="clr-namespace:GamingHub2.MobileApp.Views"
     xmlns:viewModel="clr-namespace:GamingHub2.MobileApp.ViewModels"
-    Title="Business Registration Form"
+    Title="{Binding Title}"
     BackgroundColor="{DynamicResource Gray-100}"
     NavigationPage.HasNavigationBar="False">
 

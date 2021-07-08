@@ -10,11 +10,27 @@ using System.Threading.Tasks;
 
 namespace GamingHub2.Controllers
 {
-    [Authorize(Roles = "Administrator")]
+    [Authorize]
     public class KonzolaController : BaseCRUDController<Model.Konzola, object, KonzolaUpsertRequest, KonzolaUpsertRequest>
     {
         public KonzolaController(IKonzolaService service) : base(service)
         {
         }
+
+        [HttpPost]
+        [Authorize(Roles = "Administrator")]
+        public override Model.Konzola Insert([FromBody] KonzolaUpsertRequest request) //virtual?
+        {
+            return _crudService.Insert(request);
+        }
+
+        [HttpPut("{id}")]
+        [Authorize(Roles = "Administrator")]
+        public override Model.Konzola Update(int id, [FromBody] KonzolaUpsertRequest request)
+        {
+            return _crudService.Update(id, request);
+        }
+
+
     }
 }

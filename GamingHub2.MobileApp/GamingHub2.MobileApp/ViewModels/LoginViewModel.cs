@@ -14,6 +14,7 @@ namespace GamingHub2.MobileApp.ViewModels
         public LoginViewModel()
         {
             LoginCommand = new Command(OnLoginClicked);
+            this.UserName = new ValidatableObject<string>();
         }
 
         private async void OnLoginClicked(object obj)
@@ -22,6 +23,6 @@ namespace GamingHub2.MobileApp.ViewModels
             await Shell.Current.GoToAsync($"//{nameof(AboutPage)}");
         }
 
-        public ValidatableObject<string> Email { get; set; }
+        public ValidatableObject<string> UserName { get; set; }
     }
 }

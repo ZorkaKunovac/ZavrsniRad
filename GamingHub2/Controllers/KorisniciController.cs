@@ -45,6 +45,7 @@ namespace GamingHub2.Controllers
             return _service.Insert(request);
         }
 
+        [AllowAnonymous]
         [HttpPost("Registracija")]
         public Model.Korisnici Registracija(KorisniciRegistracijaRequest request)
         {

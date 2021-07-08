@@ -153,6 +153,8 @@ namespace GamingHub2.Services
 
             return _mapper.Map<Model.Korisnici>(entity);
         }
+
+        [AllowAnonymous]
         public Model.Korisnici Registracija(KorisniciRegistracijaRequest request)
         {
             var entity = _mapper.Map<Database.Korisnik>(request);
@@ -173,28 +175,13 @@ namespace GamingHub2.Services
             entity.LozinkaSalt = GenerateSalt();
             entity.LozinkaHash = GenerateHash(entity.LozinkaSalt, request.Password);
 
+            entity.KorisniciUloge.Add(new Database.KorisniciUloge
+            {
+                DatumIzmjene = DateTime.Now,
+                UlogaId = _context.Uloge.Where(x => x.Naziv == "Korisnik").FirstOrDefault().UlogaId
+            });
+
             _context.Korisnik.Add(entity);
-            _context.SaveChanges();
-
-
-            //foreach (var uloga in request.Uloge)
-            //{
-            //    Database.KorisniciUloge korisniciUloge = new Database.KorisniciUloge
-            //    {
-            //        KorisnikId = entity.KorisnikId,
-            //        UlogaId = uloga,
-            //        DatumIzmjene = DateTime.Now
-            //    };
-            //    _context.KorisniciUloge.Add(korisniciUloge);
-            //}
-                Database.KorisniciUloge korisniciUloge = new Database.KorisniciUloge
-                {
-                    KorisnikId = entity.KorisnikId,
-                    UlogaId = 3, //Po defaultu dodaje ulogu Korisnik
-                    DatumIzmjene = DateTime.Now
-                };
-                _context.KorisniciUloge.Add(korisniciUloge);
-
             _context.SaveChanges();
 
             return _mapper.Map<Model.Korisnici>(entity);

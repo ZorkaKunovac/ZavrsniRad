@@ -4,16 +4,16 @@ using Xamarin.Forms.Xaml;
 namespace GamingHub2.MobileApp.Views
 {
     /// <summary>
-    /// Page to login with user name and password
+    /// View used to show the email entry with validation status.
     /// </summary>
     [Preserve(AllMembers = true)]
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class LoginPage
+    public partial class SimpleEmailEntry
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="LoginPage" /> class.
+        /// Initializes a new instance of the <see cref="SimpleEmailEntry" /> class.
         /// </summary>
-        public LoginPage()
+        public SimpleEmailEntry()
         {
             this.InitializeComponent();
         }

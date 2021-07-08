@@ -226,7 +226,7 @@ namespace GamingHub2.WinUI.Korisnici
 
         private void txtTelefon_Validating(object sender, CancelEventArgs e)
         {
-           if (!Regex.IsMatch(txtTelefon.Text, @"^[+]?\d{3}[ ]?\d{2}[ ]?\d{3}[ ]?\d{3}$", RegexOptions.IgnoreCase))
+           if (!Regex.IsMatch(txtTelefon.Text, @"^[+]?\d{3}[ ]?\d{2}[ ]?\d{3}[ ]?\d{3,4}$", RegexOptions.IgnoreCase))
             {
                 errorProvider.SetError(txtTelefon, "Format telefona je: +387 61 000 111");
                 e.Cancel = true;
