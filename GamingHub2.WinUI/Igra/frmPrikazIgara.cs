@@ -1,4 +1,5 @@
 ﻿using GamingHub2.Model.Requests;
+using GamingHub2.WinUI.Helper;
 using GamingHub2.WinUI.Properties;
 using System;
 using System.Collections.Generic;
@@ -35,9 +36,17 @@ namespace GamingHub2.WinUI.Igra
 
         private async void frmIgre_Load(object sender, EventArgs e)
         {
-            //var result = await _service.Get<List<Model.Igra>>(null);
+            var result = await _service.Get<List<Model.Igra>>(null);
+            foreach (var igra in result)
+            {
+                if(igra.SlikaLink == null || igra.SlikaLink.Length == 0)
+                {
+                    igra.SlikaLink = ImageHelper.ImageToByteArray(Resources.no_game);
+                }
+            }
+
             dgvIgre.AutoGenerateColumns = false;
-            dgvIgre.DataSource = await _service.Get<List<Model.Igra>>(null);
+            dgvIgre.DataSource = result;
         }
 
         private async void dgvIgre_MouseDoubleClick(object sender, MouseEventArgs e)

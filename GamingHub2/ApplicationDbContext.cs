@@ -60,7 +60,9 @@ namespace GamingHub2
         public DbSet<Drzava> Drzava { get; set; }
         public virtual DbSet<Uloge> Uloge { get; set; }
         public virtual DbSet<KorisniciUloge> KorisniciUloge { get; set; }
-
+        public DbSet<Narudzba> Narudzba { get; set; }
+        public DbSet<NarudzbaStavka> NarudzbaStavka { get; set; }
+        public DbSet<Ocjena> Ocjena { get; set; }
 
     }
 }

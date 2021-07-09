@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GamingHub2.MobileApp.Androi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GamingHub2.MobileApp.iOS", "GamingHub2.MobileApp\GamingHub2.MobileApp.iOS\GamingHub2.MobileApp.iOS.csproj", "{486E0EF8-3FBE-4C84-9421-B940015C3CDA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GamingHub2.MobileApp", "GamingHub2.MobileApp\GamingHub2.MobileApp\GamingHub2.MobileApp.csproj", "{E9127158-C5F9-46F1-9F42-2B9811B13BB9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GamingHub2.MobileApp", "GamingHub2.MobileApp\GamingHub2.MobileApp\GamingHub2.MobileApp.csproj", "{E9127158-C5F9-46F1-9F42-2B9811B13BB9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -136,7 +136,6 @@ Global
 		{ABA6FD98-434B-4F94-9CDE-D543E0BCFAC3}.Release|x86.Build.0 = Release|x86
 		{ABA6FD98-434B-4F94-9CDE-D543E0BCFAC3}.Release|x86.Deploy.0 = Release|x86
 		{D6703207-60A9-45F1-A4D4-277830DD050C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D6703207-60A9-45F1-A4D4-277830DD050C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D6703207-60A9-45F1-A4D4-277830DD050C}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{D6703207-60A9-45F1-A4D4-277830DD050C}.Debug|ARM.ActiveCfg = Debug|Any CPU
 		{D6703207-60A9-45F1-A4D4-277830DD050C}.Debug|ARM.Build.0 = Debug|Any CPU

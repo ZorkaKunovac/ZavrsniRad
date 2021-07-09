@@ -20,6 +20,7 @@ namespace GamingHub2.Mapping
             CreateMap<Database.Igra, Model.Igra>();
             CreateMap<Database.Igra, IgraUpsertRequest>().ReverseMap();
             CreateMap<Database.IgraKonzola, Model.IgraKonzola>();
+            CreateMap<Database.IgraKonzola, Model.IgraKonzolaNoRelations>();
             CreateMap<Database.IgraZanr, Model.IgraZanr>();
             CreateMap<Database.Korisnik, Model.Korisnici>();
 

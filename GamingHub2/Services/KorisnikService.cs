@@ -33,17 +33,6 @@ namespace GamingHub2.Services
         {
             var entity = _context.Korisnik.Include("KorisniciUloge.Uloga").FirstOrDefault(x => x.KorisnickoIme == username);
 
-            //if (user != null)
-            //{
-            //    var newHash = GenerateHash(user.LozinkaSalt, pass);
-
-            //    if (newHash == user.LozinkaHash)
-            //    {
-            //        return _mapper.Map<Model.Korisnici>(user);
-            //    }
-            //}
-            //return null;
-
             if (entity == null)
             {
                 throw new UserException("Pogrešan username ili password");

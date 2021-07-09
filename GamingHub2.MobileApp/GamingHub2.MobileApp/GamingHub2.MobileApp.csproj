@@ -37,6 +37,7 @@
   <ItemGroup>
     <PackageReference Include="Flurl" Version="3.0.2" />
     <PackageReference Include="Flurl.Http" Version="3.2.0" />
+    <PackageReference Include="Stripe.net" Version="39.57.0" />
     <PackageReference Include="Syncfusion.Xamarin.Buttons" Version="19.2.0.44" />
     <PackageReference Include="Syncfusion.Xamarin.Core" Version="19.2.0.44" />
     <PackageReference Include="Syncfusion.Xamarin.SfComboBox" Version="19.2.0.44" />
@@ -111,9 +112,6 @@
     <EmbeddedResource Update="Themes\LightTheme.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\ArticleDetailPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Update="Views\ContactEmailEntry.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
@@ -145,9 +143,6 @@
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\SimpleEmailEntry.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\Templates\ArticleListTemplate.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>

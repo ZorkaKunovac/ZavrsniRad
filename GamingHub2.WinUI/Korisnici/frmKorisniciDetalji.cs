@@ -1,4 +1,5 @@
 ﻿using GamingHub2.Model.Requests;
+using GamingHub2.WinUI.Helper;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -111,7 +112,7 @@ namespace GamingHub2.WinUI.Korisnici
                 slikaTemp = result.Slika;
                 if (result.Slika.Length != 0)
                 {
-                    pbSlika.Image = BytesToImage(result.Slika);
+                    pbSlika.Image = ImageHelper.BytesToImage(result.Slika);
                 }
 
                 foreach (var item in result.KorisniciUloge)
@@ -143,19 +144,7 @@ namespace GamingHub2.WinUI.Korisnici
                 pbSlika.Image = image;
             }
         }
-        public Image BytesToImage(byte[] arr)
-        {
-            MemoryStream ms = new MemoryStream(arr);
-            return Image.FromStream(ms);
-        }
-        public byte[] ImageToByteArray(System.Drawing.Image imageIn)
-        {
-            using (var ms = new MemoryStream())
-            {
-                imageIn.Save(ms, imageIn.RawFormat);
-                return ms.ToArray();
-            }
-        }
+    
         private bool txtSlika_Validating()
         {
             if (string.IsNullOrWhiteSpace(txtSlika.Text) && !_id.HasValue)

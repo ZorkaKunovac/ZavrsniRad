@@ -14,29 +14,40 @@ namespace GamingHub2.WinUI
     {
         public static string Username { get; set; }
         public static string Password { get; set; }
+        public static Model.Korisnici TrenutniKorisnik { get; set; }
 
         private string _route = null;
-        public string endpoint = $"{Properties.Settings.Default.ApiURL2}";
+        public string endpoint = $"{Properties.Settings.Default.ApiURL}";
         public APIService(string route) //Kontroler
         {
             _route = route;
         }
 
-        public async Task<T> Get<T>(object searchRequest = null)
+        public async Task<T> Get<T>(object searchRequest = null, string endpointName = null)
         {
             try
             {
+                string url;
+                if(endpointName == null)
+                {
+                    url = $"{endpoint}/{_route}";
+                }
+                else {
+                    url = $"{endpoint}/{_route}/{endpointName}";
+                }
+
                 var query = "";
                 if (searchRequest != null)
                     query += await searchRequest?.ToQueryString();
 
-                return await $"{endpoint}/{_route}?{query}".WithBasicAuth(Username, Password).GetJsonAsync<T>();
+                return await $"{url}?{query}".WithBasicAuth(Username, Password).GetJsonAsync<T>();
             }
             catch (FlurlHttpException ex)
             {
                 if (ex.StatusCode == (int)HttpStatusCode.Unauthorized)
                 {
-                    MessageBox.Show(ex.Message + "\nNiste autorizovani", "Niste autorizovani", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    // ovo ce se pozvati ukoliko login ne uspije, jer ce vratiti exception, nece vratiti null u loginVM
+                    MessageBox.Show("Pogrešno korisničko ime ili lozinka!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 if (ex.StatusCode == (int)HttpStatusCode.Forbidden)
                 {

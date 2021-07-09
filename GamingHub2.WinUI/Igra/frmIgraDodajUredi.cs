@@ -1,4 +1,5 @@
 ﻿using GamingHub2.Model.Requests;
+using GamingHub2.WinUI.Helper;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -53,7 +54,7 @@ namespace GamingHub2.WinUI.Igra
                 slikaTemp = igra.SlikaLink;
                 if (igra.SlikaLink.Length != 0)
                 {
-                    pbSlika.Image = BytesToImage(igra.SlikaLink);
+                    pbSlika.Image = ImageHelper.BytesToImage(igra.SlikaLink);
                 }
                 // txtVideoLink.Text=igra.vi
                 foreach (var item in igra.IgraKonzola)
@@ -80,20 +81,6 @@ namespace GamingHub2.WinUI.Igra
                     }
                 }
 
-            }
-        }
-
-        public Image BytesToImage(byte[] arr)
-        {
-            MemoryStream ms = new MemoryStream(arr);
-            return Image.FromStream(ms);
-        }
-        public byte[] ImageToByteArray(System.Drawing.Image imageIn)
-        {
-            using (var ms = new MemoryStream())
-            {
-                imageIn.Save(ms, imageIn.RawFormat);
-                return ms.ToArray();
             }
         }
 

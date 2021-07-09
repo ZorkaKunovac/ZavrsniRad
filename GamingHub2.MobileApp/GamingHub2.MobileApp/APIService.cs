@@ -19,8 +19,6 @@ namespace GamingHub2.MobileApp
 #if DEBUG
         private string _apiURL = "http://localhost:25001/api";
         //    "https://localhost:5001/api/";
-        //http://localhost:51490
-        //http://localhost:25001
 #endif
 #if RELEASE
         private string _apiURL = "https://mywebsite/api/";
@@ -59,7 +57,7 @@ namespace GamingHub2.MobileApp
             {
                 if (ex.StatusCode == (int)HttpStatusCode.Unauthorized)
                 {
-                    // ovo ce ti se pozvati ukoliko login ne uspije, jer ce vratiti exception, nece vratiti null u loginVM
+                    // ovo ce se pozvati ukoliko login ne uspije, jer ce vratiti exception, nece vratiti null u loginVM
                     await Application.Current.MainPage.DisplayAlert("Greska", "Pogrešno korisničko ime ili lozinka!", "OK");
 
                 }

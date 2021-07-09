@@ -72,6 +72,7 @@
     <Compile Include="frmPocetna.Designer.cs">
       <DependentUpon>frmPocetna.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helper\ImageHelper.cs" />
     <Compile Include="Igra\frmIgraDodajUredi.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -237,6 +238,8 @@
       <Name>GamingHub2.Model</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Properties\no-game.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

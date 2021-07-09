@@ -22,7 +22,7 @@ namespace GamingHub2.Model
         public DateTime? DatumIzlaska { get; set; }
         public byte[] SlikaLink { get; set; }
 
-        public ICollection<IgraKonzola> IgraKonzola { get; set; }
+        public ICollection<IgraKonzolaNoRelations> IgraKonzola { get; set; }
         public ICollection<IgraZanr> IgraZanr { get; set; }
 
         //public string Konzola { get; set; }

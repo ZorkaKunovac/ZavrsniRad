@@ -175,7 +175,7 @@
                     TextColor="{DynamicResource Gray-800}" />
 
                     <!--  Related blog list  -->
-                    <StackLayout
+                    <!--<StackLayout
                     x:Name="stackLayout"
                     Padding="0,16"
                     BindableLayout.ItemsSource="{Binding RelatedStories}"
@@ -185,7 +185,7 @@
                                 <template:ArticleListTemplate ParentBindingContext="{Binding Path=BindingContext, Source={x:Reference detailPage}}" />
                             </DataTemplate>
                         </BindableLayout.ItemTemplate>
-                    </StackLayout>
+                    </StackLayout>-->
 
                 </StackLayout>
             </ScrollView>

@@ -13,6 +13,7 @@ namespace GamingHub2.MobileApp.ViewModels
         public ProizvodDetaljiViewModel()
         {
             PovecajKolicinuCommand = new Command(() => Kolicina += 1);
+            UmanjiKolicinuCommand = new Command(() => Kolicina = Math.Max(1, Kolicina - 1));
             NaruciCommand = new Command(Naruci);
         }
         public Proizvod Proizvod { get; set; }
@@ -24,6 +25,7 @@ namespace GamingHub2.MobileApp.ViewModels
             set { SetProperty(ref _kolicina, value); }
         }
         public ICommand PovecajKolicinuCommand { get; set; }
+        public ICommand UmanjiKolicinuCommand { get; set; }
         public ICommand NaruciCommand { get; set; }
 
         private void Naruci()

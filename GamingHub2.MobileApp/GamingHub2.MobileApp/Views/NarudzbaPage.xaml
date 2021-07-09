@@ -2,35 +2,62 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewModels="clr-namespace:GamingHub2.MobileApp.ViewModels"
-             x:Class="GamingHub2.MobileApp.Views.NarudzbaPage">
+             x:Class="GamingHub2.MobileApp.Views.NarudzbaPage"
+             x:Name="narudzbaPage">
     
     <ContentPage.BindingContext>
         <viewModels:NarudzbaViewModel></viewModels:NarudzbaViewModel>
     </ContentPage.BindingContext>
 
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout Padding="10">
             <Label Text="Narudzba"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
             <ListView ItemsSource="{Binding ProizvodiList}">
                 <ListView.ItemTemplate>
-                    <DataTemplate>
+                    <DataTemplate x:DataType="viewModels:ProizvodDetaljiViewModel">
                         <ViewCell>
                             <StackLayout>
                                 <Label Text="{Binding Proizvod.NazivProizvoda}"></Label>
                                 <Label Text="{Binding Proizvod.ProdajnaCijena, StringFormat='Cijena: {0:C}'}"></Label>
-                                
+
                                 <StackLayout Orientation="Horizontal">
-                                    <Entry Text="{Binding Kolicina}" Keyboard="Numeric"></Entry>
-                                    <Button Text="+1" Command="{Binding PovecajKolicinuCommand}"></Button>
+                                    <Button Text="-1" Command="{Binding BindingContext.UmanjiKolicinuIOsvjeziCommand, Source={x:Reference narudzbaPage}}"
+                                            CommandParameter="{Binding .}"/>
+                                    <Entry Text="{Binding Kolicina}" Keyboard="Numeric" IsReadOnly="True"></Entry>
+                                    <Button Text="+1" Command="{Binding BindingContext.PovecajKolicinuIOsvjeziCommand, Source={x:Reference narudzbaPage}}"
+                                            CommandParameter="{Binding .}"/>
+                                    <Button Text="X" Background="Red"
+                                            Command="{Binding BindingContext.RemoveStavkaCommand, Source={x:Reference narudzbaPage}}"
+                                            CommandParameter="{Binding .}"/>
                                 </StackLayout>
 
+
+                            
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+            <Label
+                LineBreakMode="NoWrap"
+                FontAttributes="Bold"
+                Style="{DynamicResource ListItemDetailTextStyle}"
+                FontSize="15"
+                HorizontalTextAlignment="Center"
+                >
+                <Label.FormattedText>
+                    <FormattedString>
+                        <FormattedString.Spans>
+                            <Span Text="Ukupni iznos: " />
+                            <Span Text="{Binding UkupniIznos, StringFormat='{0:C}'}"/>
+                        </FormattedString.Spans>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Button Text="Kupi" Command="{Binding KupiCommand}"/>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

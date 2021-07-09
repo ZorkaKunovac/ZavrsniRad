@@ -15,7 +15,7 @@ namespace GamingHub2.Database
         [Key]
         public int NarudzbaId { get; set; }
        // public string BrojNarudzbe { get; set; }
-        public string KorisnikID { get; set; }
+        public int KorisnikID { get; set; }
 //        public int KupacID { get; set; }
 
         public DateTime Datum { get; set; } 

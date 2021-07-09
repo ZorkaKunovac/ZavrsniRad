@@ -21,28 +21,46 @@ namespace GamingHub2.WinUI
 
         private async void btnLogin_Click(object sender, EventArgs e)
         {
+            APIService.Username = txtUsername.Text;
+            APIService.Password = txtPassword.Text;
             try
             {
-                APIService.Username = txtUsername.Text;
-                APIService.Password = txtPassword.Text;
-                await _korisniciService.Get<dynamic>(null);
+                var TrenutniKorisnik = await _korisniciService.Get<Model.Korisnici>(null, "MojProfil");
 
-                List<Model.Korisnici> listKorisnici = await _korisniciService.Get<List<Model.Korisnici>>(new KorisnikSearchRequest() { KorisnickoIme = APIService.Username });
-                Model.Korisnici korisnik = listKorisnici.Where(x => x.KorisnickoIme == APIService.Username).FirstOrDefault();
-                if (korisnik != null)
+                if (TrenutniKorisnik != null)
                 {
-                    frmPocetna frm = new frmPocetna();
-                    frm.Show();
-                }
-                else
-                {
-                    MessageBox.Show("Pogrešno korisničko ime ili lozinka!");
+                    APIService.TrenutniKorisnik = TrenutniKorisnik;
+                    DialogResult = DialogResult.OK;
                 }
             }
             catch (Exception ex)
             {
-                //MessageBox.Show(ex.Message);
+
             }
+
+
+            //try
+            //{
+            //    APIService.Username = txtUsername.Text;
+            //    APIService.Password = txtPassword.Text;
+            //    await _korisniciService.Get<dynamic>(null);
+
+            //    List<Model.Korisnici> listKorisnici = await _korisniciService.Get<List<Model.Korisnici>>(new KorisnikSearchRequest() { KorisnickoIme = APIService.Username });
+            //    Model.Korisnici korisnik = listKorisnici.Where(x => x.KorisnickoIme == APIService.Username).FirstOrDefault();
+            //    if (korisnik != null)
+            //    {
+            //        frmPocetna frm = new frmPocetna();
+            //        frm.Show();
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show("Pogrešno korisničko ime ili lozinka!");
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    //MessageBox.Show(ex.Message);
+            //}
 
         }
     }

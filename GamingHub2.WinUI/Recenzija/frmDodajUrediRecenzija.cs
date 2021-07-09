@@ -1,4 +1,5 @@
 ﻿using GamingHub2.Model.Requests;
+using GamingHub2.WinUI.Helper;
 using GamingHub2.WinUI.Properties;
 using System;
 using System.Collections.Generic;
@@ -53,21 +54,7 @@ namespace GamingHub2.WinUI.Recenzija
                 slikaTemp = recenzija.Slika;
                 rtbSadrzaj.Text = recenzija.Sadrzaj;
                 if (recenzija.Slika.Length != 0)
-                    pbSlika.Image = BytesToImage(recenzija.Slika);
-            }
-        }
-
-        public Image BytesToImage(byte[] arr)
-        {
-            MemoryStream ms = new MemoryStream(arr);
-            return Image.FromStream(ms);
-        }
-        public byte[] ImageToByteArray(System.Drawing.Image imageIn)
-        {
-            using (var ms = new MemoryStream())
-            {
-                imageIn.Save(ms, imageIn.RawFormat);
-                return ms.ToArray();
+                    pbSlika.Image = ImageHelper.BytesToImage(recenzija.Slika);
             }
         }
         

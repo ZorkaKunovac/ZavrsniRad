@@ -16,7 +16,12 @@ namespace GamingHub2.WinUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmLogin());
+
+            frmLogin form = new frmLogin();
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                Application.Run(new frmPocetna());
+            }
         }
     }
 }
