@@ -1,5 +1,6 @@
 ﻿using GamingHub2.MobileApp.Services;
 using GamingHub2.MobileApp.ViewModels;
+using GamingHub2.MobileApp.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -78,7 +79,7 @@ namespace GamingHub2.MobileApp.ViewModels
                 return;
             }
 
-            await Shell.Current.GoToAsync("//??");
+            await Shell.Current.GoToAsync(nameof(StripePaymentGatewayPage));
         }
 
         private void UpdateUkupniIznos()

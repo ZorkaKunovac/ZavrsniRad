@@ -1,5 +1,6 @@
 using GamingHub2.MobileApp.Services;
 using GamingHub2.MobileApp.Views;
+using Stripe;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -11,7 +12,7 @@ using Xamarin.Forms.Xaml;
      [assembly: ExportFont("UIFontIcons.ttf", Alias = "FontIcons")]
 namespace GamingHub2.MobileApp
 {
-    public partial class App : Application
+    public partial class App : Xamarin.Forms.Application
     {
         public static string ImageServerPath { get; } = "https://cdn.syncfusion.com/essential-ui-kit-for-xamarin.forms/common/uikitimages/";
 
@@ -20,6 +21,8 @@ namespace GamingHub2.MobileApp
             InitializeComponent();
 
             DependencyService.Register<MockDataStore>();
+            StripeConfiguration.ApiKey = "sk_test_51JB86lFLTqTMYcd1irDiRmWtHSxEMhyYcPVL1DoPK5HLcVt3oji5hXXEhkOGQOOc5KTUj79WpqyumTk6kp9QlHLl003QJK37cA";
+
             MainPage = new LoginPage();
             //MainPage = new AppShell();
         }
