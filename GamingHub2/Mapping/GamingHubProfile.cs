@@ -36,10 +36,19 @@ namespace GamingHub2.Mapping
             CreateMap<ProizvodInsertRequest, Database.Proizvod>();
             CreateMap<ProizvodUpdateRequest, Database.Proizvod>();
 
+            CreateMap<Database.Korisnik, KorisniciUpdateProfileRequest>().ReverseMap();
+            CreateMap<Database.Korisnik, KorisniciRegistracijaRequest>().ReverseMap();
+            CreateMap<Database.Narudzba, Model.Narudzba>().ReverseMap();
+            CreateMap<NarudzbaUpsertRequest, Database.Narudzba>();
+            CreateMap<Database.NarudzbaStavka, Model.NarudzbaStavka>().ReverseMap();
+            CreateMap<NarudzbaStavkaInsertRequest, Database.NarudzbaStavka>();
+            CreateMap<Database.Ocjena, Model.Ocjena>().ReverseMap();
+            CreateMap<OcjenaInsertRequest, Database.Ocjena>();
 
-           CreateMap<Database.Korisnik, KorisniciUpdateProfileRequest>().ReverseMap();
-           CreateMap<Database.Korisnik, KorisniciRegistracijaRequest>().ReverseMap();
+            CreateMap<Database.Drzava, Model.Drzava>().ReverseMap();
 
+            CreateMap<Database.Kupac, Model.Kupac>().ReverseMap();
+            CreateMap<KupacInsertRequest, Database.Kupac>();
         }
     }
 }

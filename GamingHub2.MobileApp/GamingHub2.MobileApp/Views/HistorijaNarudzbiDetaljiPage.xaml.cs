@@ -2,7 +2,6 @@
 using GamingHub2.Model;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,27 +12,19 @@ using Xamarin.Forms.Xaml;
 namespace GamingHub2.MobileApp.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class RecenzijaPage : ContentPage
+    public partial class HistorijaNarudzbiDetaljiPage : ContentPage
     {
-        private RecenzijaViewModel model = null;
-        public RecenzijaPage()
+        HistorijaNarudzbiDetaljiViewModel model = null;
+
+        public HistorijaNarudzbiDetaljiPage(Narudzba narudzba)
         {
             InitializeComponent();
-            BindingContext = model = new RecenzijaViewModel();
+            BindingContext = model = new HistorijaNarudzbiDetaljiViewModel() { Narudzba = narudzba };
         }
-
         protected async override void OnAppearing()
         {
             base.OnAppearing();
             await model.Init();
-        }
-           
-
-        private async void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
-        {
-            var item = e.SelectedItem as Recenzija;
-
-            await Navigation.PushAsync(new RecenzijaDetaljiPage(item));
         }
     }
 }

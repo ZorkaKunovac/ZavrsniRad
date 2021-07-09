@@ -77,16 +77,6 @@ namespace GamingHub2.MobileApp.ViewModels
             {
                 Naslov = _searchnaslov
             };
-            //if (SelectedKategorija != null)
-            //{
-            //    search.KategorijaId = SelectedKategorija.Id;
-            //}
-            //var list = await _service.Get<IEnumerable<Recenzija>>(null);
-            //recenzije.Clear();
-            //foreach (var recenzija in list)
-            //{
-            //    recenzije.Add(recenzija);
-            //}
 
             var list = await _service.Get<IEnumerable<Recenzija>>(search);
             recenzije.Clear();

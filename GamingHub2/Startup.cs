@@ -10,7 +10,6 @@ using GamingHub2.Model.Requests;
 using GamingHub2.Security;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.OpenApi.Models;
-//Microsoft.AspNetCore.Mvc.NewtonsoftJson;
 using Newtonsoft.Json;
 using Stripe;
 
@@ -87,6 +86,12 @@ namespace GamingHub2
             services.AddScoped<ICRUDService<Model.Uloge, object, UlogaInsertRequest, object>, BaseCRUDService<Model.Uloge, Database.Uloge, object, UlogaInsertRequest, object>>();
             services.AddScoped<IRecenzijaService, RecenzijaService>();
             services.AddScoped<IIgraKonzolaService, IgraKonzolaService>();
+            services.AddScoped<INarudzbaService, NarudzbaService>();
+            services.AddScoped<INarudzbaStavkaService, NarudzbaStavkaService>();
+            services.AddScoped<ICRUDService<Model.Ocjena, object,OcjenaInsertRequest,object>, OcjenaService>();
+
+            services.AddScoped<IReadService<Model.Drzava, object>, BaseReadService<Model.Drzava, Database.Drzava, object>>();
+            services.AddScoped<ICRUDService<Model.Kupac, object, KupacInsertRequest, object>, KupacService>();
 
         }
 

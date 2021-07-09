@@ -85,18 +85,22 @@
         <ShellContent Route="ItemsPage" ContentTemplate="{DataTemplate local:ItemsPage}" />
     </FlyoutItem> 
     
-    <FlyoutItem Title="Narudzba" Icon="icon_feed.png">
-        <ShellContent Route="NarudzbaPage" ContentTemplate="{DataTemplate local:NarudzbaPage}" />
+    <FlyoutItem Title="Recenzije" Icon="icon_feed.png">
+        <ShellContent Route="RecenzijaPage" ContentTemplate="{DataTemplate local:RecenzijaPage}" />
     </FlyoutItem>
     
     <FlyoutItem Title="Proizvodi" Icon="icon_feed.png">
         <ShellContent Route="ProizvodiPage" ContentTemplate="{DataTemplate local:ProizvodiPage}" />
     </FlyoutItem>
-
-    <FlyoutItem Title="Recenzije" Icon="icon_feed.png">
-        <ShellContent Route="RecenzijaPage" ContentTemplate="{DataTemplate local:RecenzijaPage}" />
-    </FlyoutItem>
     
+    <FlyoutItem Title="Narudzba" Icon="icon_feed.png">
+        <ShellContent Route="NarudzbaPage" ContentTemplate="{DataTemplate local:NarudzbaPage}" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Historija Narudzbi" Icon="icon_feed.png">
+        <ShellContent Route="HistorijaNarudzbiPage" ContentTemplate="{DataTemplate local:HistorijaNarudzbi}" />
+    </FlyoutItem>
+
     <FlyoutItem Title="Profil" Icon="icon_feed.png">
         <ShellContent Route="EditProfilePage" ContentTemplate="{DataTemplate local:EditProfilePage}" />
     </FlyoutItem>
