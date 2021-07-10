@@ -80,6 +80,7 @@ namespace GamingHub2
             services.AddScoped<IProizvodService, ProizvodService>();
             services.AddScoped<IKonzolaService, KonzolaService>();
             services.AddScoped<IKorisnikService, KorisniciService>();
+            services.AddScoped<IRecommenderService, RecommenderService>();
 
             //services.AddScoped<ICRUDService<Model.Uloga, object,UlogaInsertRequest,object>, BaseCRUDService<Model.Uloga, Database.Uloga, object,UlogaInsertRequest,object>>();
             //services.AddScoped<IReadService<Model.Uloge, object>, BaseReadService<Model.Uloge, Database.Uloge, object>>();
@@ -88,7 +89,7 @@ namespace GamingHub2
             services.AddScoped<IIgraKonzolaService, IgraKonzolaService>();
             services.AddScoped<INarudzbaService, NarudzbaService>();
             services.AddScoped<INarudzbaStavkaService, NarudzbaStavkaService>();
-            services.AddScoped<ICRUDService<Model.Ocjena, object,OcjenaInsertRequest,object>, OcjenaService>();
+            services.AddScoped<ICRUDService<Model.Ocjena, OcjenaSearchRequest, OcjenaUpsertRequest, OcjenaUpsertRequest>, OcjenaService>();
 
             services.AddScoped<IReadService<Model.Drzava, object>, BaseReadService<Model.Drzava, Database.Drzava, object>>();
             services.AddScoped<ICRUDService<Model.Kupac, KupacSearchRequest, KupacUpsertRequest, KupacUpsertRequest>, KupacService>();

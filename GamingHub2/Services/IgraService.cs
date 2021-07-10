@@ -8,10 +8,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using GamingHub2.Filters;
 
 namespace GamingHub2.Services
 {
-    public class IgraService : BaseCRUDService<Model.Igra, Database.Igra, IgraSearchRequest , IgraUpsertRequest, IgraUpsertRequest>, IIgraService
+    public class IgraService : BaseCRUDService<Model.Igra, Database.Igra, IgraSearchRequest, IgraUpsertRequest, IgraUpsertRequest>, IIgraService
     {
         public IgraService(ApplicationDbContext context, IMapper mapper) : base(context, mapper)
         {
@@ -36,7 +37,7 @@ namespace GamingHub2.Services
         {
             //var entity = Context.Rezervacije.Include("DodatnaOprema.Oprema").Include(x => x.Kupac).Include("Vozilo.Model").Include(x => x.Osiguranje).Where(x => x.RezervacijaId == id).FirstOrDefault();
             //return _mapper.Map<Model.Rezervacije>(entity);
-          //  var entity = Context.Igra.Include(x=>x.IgraKonzola.)
+            //  var entity = Context.Igra.Include(x=>x.IgraKonzola.)
             var entity = Context.Igra.Include("IgraKonzola.Konzola").Include("IgraZanr.Zanr")
                 .Where(x => x.ID == id).FirstOrDefault();
             return _mapper.Map<Model.Igra>(entity);
@@ -85,7 +86,17 @@ namespace GamingHub2.Services
 
             foreach (var item in listIgraKonzola)
             {
-                Context.IgraKonzola.Remove(item);
+                // Brisanje svih IgraKonzola objekata koji nisu sadrzani  u request.Konzole
+                if (!request.Konzole.Contains(item.KonzolaID))
+                {
+                    if (Context.Proizvod.Any(x => x.IgraKonzolaID == item.ID))
+                    {
+                        throw new UserException("Nije dozvoljeno brisanje igre na konzoli za koju ima kreiran proizvod.");
+                    }
+
+                    Context.IgraKonzola.Remove(item);
+
+                }
             }
             Context.SaveChanges();
 
@@ -94,12 +105,16 @@ namespace GamingHub2.Services
             {
                 if (konzola != 0)
                 {
+                    // IgraKonzola vec postoji, ne treba kreirati isti zapis ponovo
+
+                    if (Context.IgraKonzola.Any(x => x.KonzolaID == konzola && x.IgraID == entity.ID))
+                        continue;
 
                     Database.IgraKonzola igrakonzola = new Database.IgraKonzola
                     {
-                        IgraID= entity.ID,
-                        KonzolaID= konzola,
-                        DatumIzmjene =DateTime.Now
+                        IgraID = entity.ID,
+                        KonzolaID = konzola,
+                        DatumIzmjene = DateTime.Now
                     };
                     Context.IgraKonzola.Add(igrakonzola);
                 }
@@ -136,8 +151,8 @@ namespace GamingHub2.Services
 
             Context.SaveChanges();
 
-            return _mapper.Map<Model.Igra>(entity); 
-            
+            return _mapper.Map<Model.Igra>(entity);
+
             //if (!string.IsNullOrWhiteSpace(request.Password))
             //{
             //    if (request.Password != request.PasswordPotvrda)

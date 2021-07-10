@@ -1,8 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:vm="clr-namespace:GamingHub2.MobileApp.ViewModels" xmlns:converters="clr-namespace:GamingHub2.MobileApp.Converters"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             x:Class="GamingHub2.MobileApp.Views.ProizvodDetaljiPage">
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             x:Class="GamingHub2.MobileApp.Views.ProizvodDetaljiPage"
+             x:Name="proizvodDetaljiPage">
     <ContentPage.BindingContext>
         <vm:ProizvodDetaljiViewModel />
     </ContentPage.BindingContext>
@@ -14,40 +15,62 @@
     </ContentPage.Resources>
 
     <ContentPage.Content>
-        <Grid HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Padding="10">
+        <ScrollView HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+        <Grid HorizontalOptions="Center" Padding="10">
             <Grid.RowDefinitions>
-                <RowDefinition Height="500"></RowDefinition>
+                <RowDefinition Height="300"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition Height="Auto"></RowDefinition>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <ScrollView>
-                <StackLayout Grid.Row="0" Grid.Column="0">
-                    <Image Source="{Binding Proizvod.Slika, Converter={StaticResource imgConv}}" WidthRequest="400" />
-                    <Label Text="{Binding Proizvod.NazivProizvoda}" 
+                <StackLayout  Grid.Row="0" Grid.Column="0">
+                <StackLayout>
+                    <Image Source="{Binding Proizvod.Slika, Converter={StaticResource imgConv}}" Aspect="AspectFit" HeightRequest="250" WidthRequest="400" />
+                        <Label Text="{Binding Proizvod.NazivProizvoda}" 
                             LineBreakMode="NoWrap" 
                             Style="{DynamicResource ListItemTextStyle}" 
                             FontSize="16" />
-                    <Label
+                        <StackLayout Orientation="Vertical">
+                                <Label
+                            LineBreakMode="NoWrap"
+                            Style="{DynamicResource ListItemDetailTextStyle}"
+                            FontSize="15"
+                        TextDecorations="{Binding ProdajnaCijenaTextDecorations}"
+                        >
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <FormattedString.Spans>
+                                                <Span Text="$" />
+                                                <Span Text="{Binding Proizvod.ProdajnaCijena}"/>
+                                            </FormattedString.Spans>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label
+                            IsVisible="{Binding ImaPopust}"
                             LineBreakMode="NoWrap"
                             Style="{DynamicResource ListItemDetailTextStyle}"
                             FontSize="15" >
-                        <Label.FormattedText>
-                            <FormattedString>
-                                <FormattedString.Spans>
-                                    <Span Text="$" />
-                                    <Span Text="{Binding Proizvod.ProdajnaCijena}"/>
-                                </FormattedString.Spans>
-                            </FormattedString>
-                        </Label.FormattedText>
-                    </Label>
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <FormattedString.Spans>
+                                                <Span Text="{Binding Proizvod.CijenaSaPopustom, StringFormat='{0:C}'}"/>
+                                            </FormattedString.Spans>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </StackLayout>
+                   
                     <StackLayout Orientation="Horizontal">
                         <Entry Text="{Binding Kolicina}" Keyboard="Numeric"></Entry>
                         <Button Text="+1" Command="{Binding PovecajKolicinuCommand}"></Button>
                     </StackLayout>
                 </StackLayout>
-            </ScrollView>
+            </StackLayout>
             <StackLayout Grid.Row="1" Grid.Column="0">
                 <Image Source="cart.png">
                     <Image.GestureRecognizers>
@@ -55,6 +78,81 @@
                     </Image.GestureRecognizers>
                 </Image>
             </StackLayout>
+
+                <StackLayout Grid.Row="2" Orientation="Vertical">
+
+                    <Label  HorizontalOptions="Center">Ocijeni proizvod:</Label>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+
+
+                        <buttons:SfButton
+                            Command="{Binding OcijeniSa1Command}" Grid.Row="0" Grid.Column="0" FontSize="Micro" Text="1" WidthRequest="30" HeightRequest="30"  Style="{StaticResource GradientButtonStyle}" />
+                        
+                        <buttons:SfButton
+                            Command="{Binding OcijeniSa2Command}" Grid.Row="0" Grid.Column="0" FontSize="Micro" Text="2" WidthRequest="30" HeightRequest="30"  Style="{StaticResource GradientButtonStyle}" />
+                        
+                        <buttons:SfButton
+                            Command="{Binding OcijeniSa3Command}" Grid.Row="0" Grid.Column="0" FontSize="Micro" Text="3" WidthRequest="30" HeightRequest="30"  Style="{StaticResource GradientButtonStyle}" />
+                        
+                        <buttons:SfButton
+                            Command="{Binding OcijeniSa4Command}" Grid.Row="0" Grid.Column="0" FontSize="Micro" Text="4" WidthRequest="30" HeightRequest="30"  Style="{StaticResource GradientButtonStyle}" />
+                        
+                        <buttons:SfButton
+                            Command="{Binding OcijeniSa5Command}" Grid.Row="0" Grid.Column="0" FontSize="Micro" Text="5" WidthRequest="30" HeightRequest="30"  Style="{StaticResource GradientButtonStyle}" />
+                        
+                    </StackLayout>
+                </StackLayout>
+
+                <Label Grid.Row="3" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" FontAttributes="Bold">Preporučeni proizvodi:</Label>
+
+                <CollectionView 
+                     ItemsSource="{Binding RecommenderList}"
+                  x:Name="preporuceniProizvodiList"
+                    Grid.Row="4"
+                    WidthRequest="550"
+                    HeightRequest="260"
+                    ItemSizingStrategy="MeasureFirstItem"
+                SelectionMode="None"
+                    >
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Horizontal"
+                        Span="1" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout Padding="10" >
+                                <Grid HorizontalOptions="StartAndExpand">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <StackLayout Grid.Row="0">
+                                        <Image x:Name="proizvodImagerec" Margin="0,10,0,0" HeightRequest="150" WidthRequest="250" Aspect="AspectFit" HorizontalOptions="Center" Source="{Binding Slika, Converter={StaticResource imgConv}}"></Image>
+                                    </StackLayout>
+                                    <StackLayout Grid.Row="1" 
+                                                 VerticalOptions="FillAndExpand" Padding="5,0,5,0" HorizontalOptions="Center">
+                                            <Label  HorizontalOptions="Center" Text="{Binding NazivProizvoda}" ></Label>
+                                            <Label  HorizontalOptions="Center" Text="{Binding ProdajnaCijena, StringFormat=' ${0:F2} '}" Style="{DynamicResource ListItemTextStyle}" ></Label>
+                                            <Label  HorizontalOptions="Center" Text="{Binding ProsjecnaOcjena, StringFormat='Ocjena: {0:F2} '}" ></Label>
+
+                                    </StackLayout>
+                                </Grid>
+
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer 
+                                                Command="{Binding BindingContext.PrikaziProizvodCommand, Source={x:Reference proizvodDetaljiPage}}"
+                                                CommandParameter="{Binding .}"
+                                NumberOfTapsRequired="1">
+                                    </TapGestureRecognizer>
+                                </StackLayout.GestureRecognizers>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            
+               
+            
         </Grid>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

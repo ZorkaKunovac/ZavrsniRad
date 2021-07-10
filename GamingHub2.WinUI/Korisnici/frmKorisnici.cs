@@ -1,4 +1,6 @@
 ﻿using GamingHub2.Model.Requests;
+using GamingHub2.WinUI.Helper;
+using GamingHub2.WinUI.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -37,7 +39,13 @@ namespace GamingHub2.WinUI.Korisnici
                 {
                     item.Uloge += $"{x.Uloga.Naziv} ";
                 }
+
+                if (item.Slika == null || item.Slika.Length == 0)
+                {
+                    item.Slika = ImageHelper.ImageToByteArray(Resources.default_profile);
+                }
             }
+
             dgvKorisnici.AutoGenerateColumns = false;
             dgvKorisnici.DataSource = result;
         }

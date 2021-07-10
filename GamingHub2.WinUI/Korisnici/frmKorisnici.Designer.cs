@@ -113,6 +113,7 @@ namespace GamingHub2.WinUI.Korisnici
             // 
             this.dgvKorisnici.AllowUserToAddRows = false;
             this.dgvKorisnici.AllowUserToDeleteRows = false;
+            this.dgvKorisnici.AllowUserToResizeRows = false;
             this.dgvKorisnici.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvKorisnici.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvKorisnici.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -126,8 +127,11 @@ namespace GamingHub2.WinUI.Korisnici
             this.Uloge});
             this.dgvKorisnici.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvKorisnici.Location = new System.Drawing.Point(3, 16);
+            this.dgvKorisnici.MultiSelect = false;
             this.dgvKorisnici.Name = "dgvKorisnici";
             this.dgvKorisnici.ReadOnly = true;
+            this.dgvKorisnici.RowTemplate.Height = 100;
+            this.dgvKorisnici.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvKorisnici.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvKorisnici.Size = new System.Drawing.Size(741, 321);
             this.dgvKorisnici.TabIndex = 0;
@@ -200,6 +204,7 @@ namespace GamingHub2.WinUI.Korisnici
             // 
             this.Slika.DataPropertyName = "Slika";
             this.Slika.HeaderText = "Slika";
+            this.Slika.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
             this.Slika.Name = "Slika";
             this.Slika.ReadOnly = true;
             // 

@@ -32,16 +32,15 @@ namespace GamingHub2.WinUI.Igra
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgvIgre = new System.Windows.Forms.DataGridView();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnPrikazi = new System.Windows.Forms.Button();
+            this.txtNaziv = new System.Windows.Forms.TextBox();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Naziv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Developer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Izdavac = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DatumIzlaska = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SlikaLink = new System.Windows.Forms.DataGridViewImageColumn();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btnPrikazi = new System.Windows.Forms.Button();
-            this.txtNaziv = new System.Windows.Forms.TextBox();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvIgre)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -73,8 +72,7 @@ namespace GamingHub2.WinUI.Igra
             this.Naziv,
             this.Developer,
             this.Izdavac,
-            this.DatumIzlaska,
-            this.SlikaLink});
+            this.DatumIzlaska});
             this.dgvIgre.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvIgre.Location = new System.Drawing.Point(3, 16);
             this.dgvIgre.Name = "dgvIgre";
@@ -83,49 +81,6 @@ namespace GamingHub2.WinUI.Igra
             this.dgvIgre.Size = new System.Drawing.Size(743, 242);
             this.dgvIgre.TabIndex = 0;
             this.dgvIgre.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvIgre_MouseDoubleClick);
-            // 
-            // Id
-            // 
-            this.Id.DataPropertyName = "Id";
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            this.Id.Visible = false;
-            // 
-            // Naziv
-            // 
-            this.Naziv.DataPropertyName = "Naziv";
-            this.Naziv.HeaderText = "Naziv";
-            this.Naziv.Name = "Naziv";
-            this.Naziv.ReadOnly = true;
-            // 
-            // Developer
-            // 
-            this.Developer.DataPropertyName = "Developer";
-            this.Developer.HeaderText = "Developer";
-            this.Developer.Name = "Developer";
-            this.Developer.ReadOnly = true;
-            // 
-            // Izdavac
-            // 
-            this.Izdavac.DataPropertyName = "Izdavac";
-            this.Izdavac.HeaderText = "Izdavac";
-            this.Izdavac.Name = "Izdavac";
-            this.Izdavac.ReadOnly = true;
-            // 
-            // DatumIzlaska
-            // 
-            this.DatumIzlaska.DataPropertyName = "DatumIzlaska";
-            this.DatumIzlaska.HeaderText = "DatumIzlaska";
-            this.DatumIzlaska.Name = "DatumIzlaska";
-            this.DatumIzlaska.ReadOnly = true;
-            // 
-            // SlikaLink
-            // 
-            this.SlikaLink.DataPropertyName = "SlikaLink";
-            this.SlikaLink.HeaderText = "Slika";
-            this.SlikaLink.Name = "SlikaLink";
-            this.SlikaLink.ReadOnly = true;
             // 
             // groupBox1
             // 
@@ -165,6 +120,42 @@ namespace GamingHub2.WinUI.Igra
             this.txtNaziv.Size = new System.Drawing.Size(376, 20);
             this.txtNaziv.TabIndex = 0;
             // 
+            // Id
+            // 
+            this.Id.DataPropertyName = "Id";
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Visible = false;
+            // 
+            // Naziv
+            // 
+            this.Naziv.DataPropertyName = "Naziv";
+            this.Naziv.HeaderText = "Naziv";
+            this.Naziv.Name = "Naziv";
+            this.Naziv.ReadOnly = true;
+            // 
+            // Developer
+            // 
+            this.Developer.DataPropertyName = "Developer";
+            this.Developer.HeaderText = "Developer";
+            this.Developer.Name = "Developer";
+            this.Developer.ReadOnly = true;
+            // 
+            // Izdavac
+            // 
+            this.Izdavac.DataPropertyName = "Izdavac";
+            this.Izdavac.HeaderText = "Izdavac";
+            this.Izdavac.Name = "Izdavac";
+            this.Izdavac.ReadOnly = true;
+            // 
+            // DatumIzlaska
+            // 
+            this.DatumIzlaska.DataPropertyName = "DatumIzlaska";
+            this.DatumIzlaska.HeaderText = "DatumIzlaska";
+            this.DatumIzlaska.Name = "DatumIzlaska";
+            this.DatumIzlaska.ReadOnly = true;
+            // 
             // frmPrikazIgara
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -197,6 +188,5 @@ namespace GamingHub2.WinUI.Igra
         private System.Windows.Forms.DataGridViewTextBoxColumn Developer;
         private System.Windows.Forms.DataGridViewTextBoxColumn Izdavac;
         private System.Windows.Forms.DataGridViewTextBoxColumn DatumIzlaska;
-        private System.Windows.Forms.DataGridViewImageColumn SlikaLink;
     }
 }

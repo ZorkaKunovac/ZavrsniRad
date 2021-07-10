@@ -1,6 +1,7 @@
 ﻿using GamingHub2.MobileApp.Validators;
 using GamingHub2.MobileApp.Validators.Rules;
 using System;
+using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -29,7 +30,12 @@ namespace GamingHub2.MobileApp.ViewModels
 
         public async Task Init()
         {
-            Korisnik = await _serviceKorisnici.Get<Model.Korisnici>(null, "MojProfil");
+            var entity = await _serviceKorisnici.Get<Model.Korisnici>(null, "MojProfil");
+            if(entity.Slika == null || entity.Slika.Length == 0)
+            {
+                entity.Slika = File.ReadAllBytes("default_profile.png");
+            }
+            Korisnik = entity;
         }
 
         #endregion

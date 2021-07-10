@@ -49,16 +49,16 @@ namespace GamingHub2.WinUI.Korisnici
             this.txtPrezime = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.pbSlika = new System.Windows.Forms.PictureBox();
+            this.btnAddPicture = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.txtSlika = new System.Windows.Forms.TextBox();
-            this.btnAddPicture = new System.Windows.Forms.Button();
+            this.pbSlika = new System.Windows.Forms.PictureBox();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbSlika)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // btnSacuvaj
@@ -244,17 +244,15 @@ namespace GamingHub2.WinUI.Korisnici
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Lični podaci";
             // 
-            // errorProvider
+            // btnAddPicture
             // 
-            this.errorProvider.ContainerControl = this;
-            // 
-            // pbSlika
-            // 
-            this.pbSlika.Location = new System.Drawing.Point(369, 19);
-            this.pbSlika.Name = "pbSlika";
-            this.pbSlika.Size = new System.Drawing.Size(141, 133);
-            this.pbSlika.TabIndex = 11;
-            this.pbSlika.TabStop = false;
+            this.btnAddPicture.Location = new System.Drawing.Point(369, 158);
+            this.btnAddPicture.Name = "btnAddPicture";
+            this.btnAddPicture.Size = new System.Drawing.Size(141, 23);
+            this.btnAddPicture.TabIndex = 17;
+            this.btnAddPicture.Text = "Dodaj sliku";
+            this.btnAddPicture.UseVisualStyleBackColor = true;
+            this.btnAddPicture.Click += new System.EventHandler(this.btnAddPicture_Click);
             // 
             // label9
             // 
@@ -272,15 +270,17 @@ namespace GamingHub2.WinUI.Korisnici
             this.txtSlika.Size = new System.Drawing.Size(237, 20);
             this.txtSlika.TabIndex = 15;
             // 
-            // btnAddPicture
+            // pbSlika
             // 
-            this.btnAddPicture.Location = new System.Drawing.Point(369, 158);
-            this.btnAddPicture.Name = "btnAddPicture";
-            this.btnAddPicture.Size = new System.Drawing.Size(141, 23);
-            this.btnAddPicture.TabIndex = 17;
-            this.btnAddPicture.Text = "Dodaj sliku";
-            this.btnAddPicture.UseVisualStyleBackColor = true;
-            this.btnAddPicture.Click += new System.EventHandler(this.btnAddPicture_Click);
+            this.pbSlika.Location = new System.Drawing.Point(369, 19);
+            this.pbSlika.Name = "pbSlika";
+            this.pbSlika.Size = new System.Drawing.Size(141, 133);
+            this.pbSlika.TabIndex = 11;
+            this.pbSlika.TabStop = false;
+            // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
             // 
             // openFileDialog
             // 
@@ -290,6 +290,7 @@ namespace GamingHub2.WinUI.Korisnici
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.ClientSize = new System.Drawing.Size(580, 429);
             this.Controls.Add(this.btnSacuvaj);
             this.Controls.Add(this.groupBox2);
@@ -301,8 +302,8 @@ namespace GamingHub2.WinUI.Korisnici
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbSlika)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
 
         }

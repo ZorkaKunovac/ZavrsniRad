@@ -20,6 +20,9 @@ namespace GamingHub2.Model
 
         public string IgraKonzolaNaziv => $"{IgraKonzola?.Igra?.Naziv} - {IgraKonzola?.Konzola?.Naziv}";
         public byte[] Slika { get; set; }
+        public decimal ProsjecnaOcjena { get; set; }
+        public decimal CijenaSaPopustom => ProdajnaCijena * (1 - Popust / 100);
+        public bool ImaPopust => Popust > 0;
 
     }
 }

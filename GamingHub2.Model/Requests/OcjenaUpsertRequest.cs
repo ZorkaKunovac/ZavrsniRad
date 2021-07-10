@@ -5,7 +5,7 @@ using System.Text;
 
 namespace GamingHub2.Model.Requests
 {
-    public class OcjenaInsertRequest
+    public class OcjenaUpsertRequest
     {
         [Required(ErrorMessage = "Polje je obavezno")]
         public int ProizvodId { get; set; }

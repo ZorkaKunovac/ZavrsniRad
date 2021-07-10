@@ -51,5 +51,16 @@ namespace GamingHub2.Services
 
             return mappedList;
         }
+
+        public override Model.Proizvod GetById(int id)
+        {
+            var set = Context.Set<Database.Proizvod>();
+            var entity = set.Include(x => x.IgraKonzola).Where(x => x.ID == id).FirstOrDefault();
+            Model.Proizvod mappedEntity = _mapper.Map<Model.Proizvod>(entity);
+
+            mappedEntity.Slika = Context.Igra.Find(entity.IgraKonzola.IgraID).SlikaLink;
+            return mappedEntity;
+        }
+
     }
 }

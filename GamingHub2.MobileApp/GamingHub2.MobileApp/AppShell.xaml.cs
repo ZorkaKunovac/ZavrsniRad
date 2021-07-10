@@ -16,6 +16,7 @@ namespace GamingHub2.MobileApp
             Routing.RegisterRoute(nameof(LoginPage), typeof(LoginPage));
             Routing.RegisterRoute(nameof(SignUpPage), typeof(SignUpPage));
             Routing.RegisterRoute(nameof(StripePaymentGatewayPage), typeof(StripePaymentGatewayPage));
+            Routing.RegisterRoute(nameof(ProizvodDetaljiPage), typeof(ProizvodDetaljiPage));
         }
 
         private async void OnMenuItemClicked(object sender, EventArgs e)

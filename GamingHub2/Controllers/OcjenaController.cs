@@ -11,9 +11,9 @@ using System.Threading.Tasks;
 namespace GamingHub2.Controllers
 {
     [Authorize]
-    public class OcjenaController : BaseCRUDController<Model.Ocjena, object, OcjenaInsertRequest, object>
+    public class OcjenaController : BaseCRUDController<Ocjena, OcjenaSearchRequest, OcjenaUpsertRequest, OcjenaUpsertRequest>
     {
-        public OcjenaController(ICRUDService<Ocjena, object, OcjenaInsertRequest, object> service) : base(service)
+        public OcjenaController(ICRUDService<Ocjena, OcjenaSearchRequest, OcjenaUpsertRequest, OcjenaUpsertRequest> service) : base(service)
         {
         }
 

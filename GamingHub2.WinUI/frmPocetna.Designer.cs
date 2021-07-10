@@ -47,12 +47,13 @@ namespace GamingHub2.WinUI
             this.recenzijeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.prikazRecenzijaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.novaRecenzijaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.statusStrip = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.proizvodiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.prikazProizvodaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.noviProizvodToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.statusStrip = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.izvještajToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -65,7 +66,8 @@ namespace GamingHub2.WinUI
             this.igreToolStripMenuItem,
             this.konzoleToolStripMenuItem,
             this.recenzijeToolStripMenuItem,
-            this.proizvodiToolStripMenuItem});
+            this.proizvodiToolStripMenuItem,
+            this.izvještajToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Size = new System.Drawing.Size(632, 24);
@@ -184,16 +186,39 @@ namespace GamingHub2.WinUI
             // prikazRecenzijaToolStripMenuItem
             // 
             this.prikazRecenzijaToolStripMenuItem.Name = "prikazRecenzijaToolStripMenuItem";
-            this.prikazRecenzijaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.prikazRecenzijaToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.prikazRecenzijaToolStripMenuItem.Text = "Prikaz recenzija";
             this.prikazRecenzijaToolStripMenuItem.Click += new System.EventHandler(this.prikazRecenzijaToolStripMenuItem_Click);
             // 
             // novaRecenzijaToolStripMenuItem
             // 
             this.novaRecenzijaToolStripMenuItem.Name = "novaRecenzijaToolStripMenuItem";
-            this.novaRecenzijaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.novaRecenzijaToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.novaRecenzijaToolStripMenuItem.Text = "Nova recenzija";
             this.novaRecenzijaToolStripMenuItem.Click += new System.EventHandler(this.novaRecenzijaToolStripMenuItem_Click);
+            // 
+            // proizvodiToolStripMenuItem
+            // 
+            this.proizvodiToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.prikazProizvodaToolStripMenuItem,
+            this.noviProizvodToolStripMenuItem});
+            this.proizvodiToolStripMenuItem.Name = "proizvodiToolStripMenuItem";
+            this.proizvodiToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
+            this.proizvodiToolStripMenuItem.Text = "Proizvodi";
+            // 
+            // prikazProizvodaToolStripMenuItem
+            // 
+            this.prikazProizvodaToolStripMenuItem.Name = "prikazProizvodaToolStripMenuItem";
+            this.prikazProizvodaToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.prikazProizvodaToolStripMenuItem.Text = "Prikaz proizvoda";
+            this.prikazProizvodaToolStripMenuItem.Click += new System.EventHandler(this.prikazProizvodaToolStripMenuItem_Click);
+            // 
+            // noviProizvodToolStripMenuItem
+            // 
+            this.noviProizvodToolStripMenuItem.Name = "noviProizvodToolStripMenuItem";
+            this.noviProizvodToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.noviProizvodToolStripMenuItem.Text = "Novi proizvod";
+            this.noviProizvodToolStripMenuItem.Click += new System.EventHandler(this.noviProizvodToolStripMenuItem_Click);
             // 
             // statusStrip
             // 
@@ -211,28 +236,12 @@ namespace GamingHub2.WinUI
             this.toolStripStatusLabel.Size = new System.Drawing.Size(39, 17);
             this.toolStripStatusLabel.Text = "Status";
             // 
-            // proizvodiToolStripMenuItem
+            // izvještajToolStripMenuItem
             // 
-            this.proizvodiToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.prikazProizvodaToolStripMenuItem,
-            this.noviProizvodToolStripMenuItem});
-            this.proizvodiToolStripMenuItem.Name = "proizvodiToolStripMenuItem";
-            this.proizvodiToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
-            this.proizvodiToolStripMenuItem.Text = "Proizvodi";
-            // 
-            // prikazProizvodaToolStripMenuItem
-            // 
-            this.prikazProizvodaToolStripMenuItem.Name = "prikazProizvodaToolStripMenuItem";
-            this.prikazProizvodaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.prikazProizvodaToolStripMenuItem.Text = "Prikaz proizvoda";
-            this.prikazProizvodaToolStripMenuItem.Click += new System.EventHandler(this.prikazProizvodaToolStripMenuItem_Click);
-            // 
-            // noviProizvodToolStripMenuItem
-            // 
-            this.noviProizvodToolStripMenuItem.Name = "noviProizvodToolStripMenuItem";
-            this.noviProizvodToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.noviProizvodToolStripMenuItem.Text = "Novi proizvod";
-            this.noviProizvodToolStripMenuItem.Click += new System.EventHandler(this.noviProizvodToolStripMenuItem_Click);
+            this.izvještajToolStripMenuItem.Name = "izvještajToolStripMenuItem";
+            this.izvještajToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
+            this.izvještajToolStripMenuItem.Text = "Izvještaj";
+            this.izvještajToolStripMenuItem.Click += new System.EventHandler(this.izvještajToolStripMenuItem_Click);
             // 
             // frmPocetna
             // 
@@ -280,6 +289,7 @@ namespace GamingHub2.WinUI
         private System.Windows.Forms.ToolStripMenuItem proizvodiToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem prikazProizvodaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem noviProizvodToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem izvještajToolStripMenuItem;
     }
 }
 

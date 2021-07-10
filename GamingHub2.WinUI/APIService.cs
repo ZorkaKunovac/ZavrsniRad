@@ -49,9 +49,14 @@ namespace GamingHub2.WinUI
                     // ovo ce se pozvati ukoliko login ne uspije, jer ce vratiti exception, nece vratiti null u loginVM
                     MessageBox.Show("Pogrešno korisničko ime ili lozinka!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                if (ex.StatusCode == (int)HttpStatusCode.Forbidden)
+                else if (ex.StatusCode == (int)HttpStatusCode.Forbidden)
                 {
                     MessageBox.Show(ex.Message + "\nNemate privilegije", "Pristup zabranjen", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    var response = await ex.GetResponseStringAsync();
+                    MessageBox.Show(response, "Serverska greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 return default(T);
 
@@ -78,9 +83,14 @@ namespace GamingHub2.WinUI
                 {
                     MessageBox.Show(ex.Message + "\nNiste autorizovani", "Niste autorizovani", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                if (ex.StatusCode == (int)HttpStatusCode.Forbidden)
+                else if (ex.StatusCode == (int)HttpStatusCode.Forbidden)
                 {
                     MessageBox.Show(ex.Message + "\nNemate privilegije", "Pristup zabranjen", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    var response = await ex.GetResponseStringAsync();
+                    MessageBox.Show(response, "Serverska greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 return default(T);
 
@@ -103,9 +113,14 @@ namespace GamingHub2.WinUI
                 {
                     MessageBox.Show(ex.Message + "\nNiste autorizovani", "Niste autorizovani", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                if (ex.StatusCode == (int)HttpStatusCode.Forbidden)
+                else if (ex.StatusCode == (int)HttpStatusCode.Forbidden)
                 {
                     MessageBox.Show(ex.Message + "\nNemate privilegije", "Pristup zabranjen", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    var response = await ex.GetResponseStringAsync();
+                    MessageBox.Show(response, "Serverska greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 return default(T);
                 // throw new Exception(ex.Message);

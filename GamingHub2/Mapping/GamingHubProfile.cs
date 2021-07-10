@@ -44,7 +44,7 @@ namespace GamingHub2.Mapping
             CreateMap<Database.NarudzbaStavka, Model.NarudzbaStavka>().ReverseMap();
             CreateMap<NarudzbaStavkaInsertRequest, Database.NarudzbaStavka>();
             CreateMap<Database.Ocjena, Model.Ocjena>().ReverseMap();
-            CreateMap<OcjenaInsertRequest, Database.Ocjena>();
+            CreateMap<OcjenaUpsertRequest, Database.Ocjena>();
 
             CreateMap<Database.Drzava, Model.Drzava>().ReverseMap();
 

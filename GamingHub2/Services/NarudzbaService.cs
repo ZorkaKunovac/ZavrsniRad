@@ -50,7 +50,9 @@ namespace GamingHub2.Services
 
         private decimal IzracunajIznosNarudzbe(Narudzba narudzba)
         {
-            return Context.Set<Database.NarudzbaStavka>().Where(x => x.NarudzbaID == narudzba.NarudzbaId).Sum(x => x.Kolicina * (x.Cijena - x.Popust ?? 0));
+            return (decimal)Context.Set<Database.NarudzbaStavka>().Where(x => x.NarudzbaID == narudzba.NarudzbaId).Sum(x => x.Kolicina * x.Cijena * (1 - x.Popust / 100));
+            //sum += item.Kolicina * item.Proizvod.ProdajnaCijena * (1 - item.Proizvod.Popust / 100);
+
         }
 
         public override Narudzba Insert(NarudzbaInsertRequest request)

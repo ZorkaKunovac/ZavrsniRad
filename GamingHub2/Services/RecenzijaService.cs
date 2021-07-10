@@ -52,7 +52,6 @@ namespace GamingHub2.Services
             //    }
             //}
 
-            //  var list = entity.Include(x => x.Korisnik).Include(x => x.Igra).OrderByDescending(x => x.DatumObjave).ToList();
             var list = entity.Include(x => x.Korisnik).Include(x => x.Igra).OrderByDescending(x => x.DatumObjave).ToList();
             return _mapper.Map<List<Model.Recenzija>>(list);
         }
