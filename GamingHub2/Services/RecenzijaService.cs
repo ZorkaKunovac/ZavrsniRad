@@ -33,25 +33,6 @@ namespace GamingHub2.Services
                 entity = entity.Where(x => x.IgraId == search.IgraId);
             }
 
-
-            //if (search?.IncludeKorisnik == true)
-            //{
-            //    entity = entity.Include(x => x.Korisnik);
-            //}
-
-            //if (search?.IncludeIgra == true)
-            //{
-            //    entity = entity.Include(x => x.Igra);
-            //}
-
-            //if (search?.IncludeList?.Length > 0)
-            //{
-            //    foreach (var item in search.IncludeList)
-            //    {
-            //        entity = entity.Include(item);
-            //    }
-            //}
-
             var list = entity.Include(x => x.Korisnik).Include(x => x.Igra).OrderByDescending(x => x.DatumObjave).ToList();
             return _mapper.Map<List<Model.Recenzija>>(list);
         }

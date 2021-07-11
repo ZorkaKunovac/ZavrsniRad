@@ -58,6 +58,7 @@ namespace GamingHub2.Controllers
         {
             return _service.Update(id, request);
         }
+      // [AllowAnonymous]
         [HttpPut("UpdateProfile")]
         public Model.Korisnici UpdateProfile([FromBody] KorisniciUpdateProfileRequest request)
         {

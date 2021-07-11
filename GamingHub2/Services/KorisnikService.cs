@@ -232,6 +232,8 @@ namespace GamingHub2.Services
 
             _context.Korisnik.Attach(entity);
             _context.Korisnik.Update(entity);
+            
+            _mapper.Map(request, entity);
 
             if (!string.IsNullOrWhiteSpace(request.Password))
             {
@@ -246,7 +248,6 @@ namespace GamingHub2.Services
 
             _context.SaveChanges();
 
-            _mapper.Map(request, entity);
 
             return _mapper.Map<Model.Korisnici>(entity);
         }

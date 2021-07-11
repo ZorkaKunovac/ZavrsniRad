@@ -20,7 +20,7 @@ namespace GamingHub2.Services
 
             if (!string.IsNullOrWhiteSpace(search?.Naziv))
             {
-                entity = entity.Where(x => x.NazivProizvoda.StartsWith(search.Naziv));
+                entity = entity.Where(x => x.NazivProizvoda.Contains(search.Naziv));
             }
 
             if (!string.IsNullOrWhiteSpace(search?.NazivKonzole))
@@ -32,11 +32,6 @@ namespace GamingHub2.Services
             {
                 entity = entity.Include(x => x.IgraKonzola);
             }
-
-            //if (search.IgraKonzolaId != 0 && search.IgraKonzolaId.HasValue)
-            //{
-            //    entity = entity.Where(x => x.IgraKonzolaID == search.IgraKonzolaId);
-            //}
 
             var list = entity.ToList();
             var mappedList = _mapper.Map<List<Model.Proizvod>>(list);

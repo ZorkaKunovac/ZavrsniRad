@@ -75,7 +75,7 @@
                     </buttons:SfButton.Content>
                 </buttons:SfButton>
                 
-                <!--  Business Owner Name  -->
+                <!--  Korisničko ime  -->
                 <Label
                     Margin="0,0,0,4"
                     FontFamily="Montserrat-Medium"
@@ -132,27 +132,58 @@
                 </StackLayout>
 
                 <!-- Ime -->
-                <Label
+                
+                <StackLayout>
+                    <Label
                     Margin="0,15,0,0"
                     FontFamily="Montserrat-Medium"
                     FontSize="12"
                     HeightRequest="18"
                     Text="Ime"
                     TextColor="{DynamicResource Gray-800}" />
+                    
+                    <border:SfBorder
+                                BackgroundColor="{DynamicResource Gray-Bg}"
+                                BorderColor="{Binding Source={x:Reference ImeEntry}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=3}"
+                                Style="{StaticResource DataFormBorderlessEntryBorderStyle}">
+                    <Grid ColumnDefinitions="*, Auto">
 
-                <border:SfBorder BorderColor="{Binding Source={x:Reference ImeEntry}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=3}" Style="{StaticResource DataFormBorderlessEntryBorderStyle}">
-                    <controls:BorderlessEntry
-                        x:Name="ImeEntry"
-                        Margin="12,0"
-                        HeightRequest="40"
-                        Placeholder=""
-                        Style="{StaticResource BorderlessEntryStyle}"
-                        Text="{Binding Korisnik.Ime}" />
+                        <controls:BorderlessEntry
+                                        x:Name="ImeEntry"
+                                        Margin="15,0"
+                                        HeightRequest="40"
+                                        Placeholder="Ime"
+                                        Style="{StaticResource BorderlessEntryStyle}"
+                                        Text="{Binding Ime.Value}">
+                            <Entry.Behaviors>
+                                <behaviour:EntryLineValidationBehaviour IsValid="{Binding Ime.IsValid}" />
+                            </Entry.Behaviors>
+                        </controls:BorderlessEntry>
+
+                        <!--  Label to display error icon  -->
+                        <Label
+                                        Grid.Column="1"
+                                        IsVisible="{Binding Path=IsVisible, Source={x:Reference ImeValidationLabel}}"
+                                        Style="{StaticResource ErrorIconLabelStyle}"
+                                        Text="{StaticResource Error}" />
+                    </Grid>
                 </border:SfBorder>
+
+                <!--  Label to display error message  -->
+                <Label
+                                x:Name="ImeValidationLabel"
+                                Margin="15,-3,0,0"
+                                IsVisible="{Binding Ime.IsValid, Converter={StaticResource InverseBoolConverter}}"
+                                Style="{StaticResource SimpleLabelStyle}"
+                                Text="{Binding Ime.Errors, Converter={StaticResource FirstValidationErrorConverter}}"
+                                TextColor="{DynamicResource Red}"
+                                VerticalOptions="FillAndExpand" />
+            </StackLayout>
 
 
                 <!-- Prezime  -->
-                <Label
+                <StackLayout>
+                    <Label
                     Margin="0,15,0,0"
                     FontFamily="Montserrat-Medium"
                     FontSize="12"
@@ -160,79 +191,197 @@
                     Text="Prezime"
                     TextColor="{DynamicResource Gray-800}" />
 
-                <border:SfBorder BorderColor="{Binding Source={x:Reference PrezimeEntry}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=3}" Style="{StaticResource DataFormBorderlessEntryBorderStyle}">
-                    <controls:BorderlessEntry
-                        x:Name="PrezimeEntry"
-                        Margin="12,0"
-                        HeightRequest="40"
-                        Placeholder=""
-                        Style="{StaticResource BorderlessEntryStyle}"
-                        Text="{Binding Korisnik.Prezime}" />
-                </border:SfBorder>
+                    <!--  Entry to get Prezime from user  -->
+                    <border:SfBorder
+                                BackgroundColor="{DynamicResource Gray-Bg}"
+                                BorderColor="{Binding Source={x:Reference PrezimeEntry}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=3}"
+                                Style="{StaticResource DataFormBorderlessEntryBorderStyle}">
+                        <Grid ColumnDefinitions="*, Auto">
 
-                <!--  Phone Number  -->
-                <Label
+                            <controls:BorderlessEntry
+                                        x:Name="PrezimeEntry"
+                                        Margin="15,0"
+                                        HeightRequest="40"
+                                        Placeholder="Prezime"
+                                        Style="{StaticResource BorderlessEntryStyle}"
+                                        Text="{Binding Prezime.Value}">
+                                <Entry.Behaviors>
+                                    <behaviour:EntryLineValidationBehaviour IsValid="{Binding Prezime.IsValid}" />
+                                </Entry.Behaviors>
+                            </controls:BorderlessEntry>
+
+                            <!--  Label to display error icon  -->
+                            <Label
+                                        Grid.Column="1"
+                                        IsVisible="{Binding Path=IsVisible, Source={x:Reference PrezimeValidationLabel}}"
+                                        Style="{StaticResource ErrorIconLabelStyle}"
+                                        Text="{StaticResource Error}" />
+                        </Grid>
+                    </border:SfBorder>
+
+                    <!--  Label to display error message  -->
+                    <Label
+                                x:Name="PrezimeValidationLabel"
+                                Margin="15,-3,0,0"
+                                IsVisible="{Binding Prezime.IsValid, Converter={StaticResource InverseBoolConverter}}"
+                                Style="{StaticResource SimpleLabelStyle}"
+                                Text="{Binding Prezime.Errors, Converter={StaticResource FirstValidationErrorConverter}}"
+                                TextColor="{DynamicResource Red}"
+                                VerticalOptions="FillAndExpand" />
+                </StackLayout>
+
+            <!-- Telefon -->
+                <StackLayout>
+
+                    <Label
                     Margin="0,15,0,0"
                     FontFamily="Montserrat-Medium"
                     FontSize="12"
                     HeightRequest="18"
                     Text="Broj telefona"
                     TextColor="{DynamicResource Gray-800}" />
+                    
+                    <!--  Entry to get Telefon from user  -->
+                    <border:SfBorder
+                                BackgroundColor="{DynamicResource Gray-Bg}"
+                                BorderColor="{Binding Source={x:Reference TelefonEntry}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=3}"
+                                Style="{StaticResource DataFormBorderlessEntryBorderStyle}">
+                        <Grid ColumnDefinitions="*, Auto">
 
-                <border:SfBorder BorderColor="{Binding Source={x:Reference BrojTelefonaEntry}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=3}" Style="{StaticResource DataFormBorderlessEntryBorderStyle}">
-                    <controls:BorderlessEntry
-                        x:Name="BrojTelefonaEntry"
-                        Margin="12,0"
-                        HeightRequest="40"
-                        Keyboard="Telephone"
-                        Placeholder="+387 61 000 111"
-                        Style="{StaticResource BorderlessEntryStyle}"
-                        Text="{Binding Korisnik.Telefon}">
-                    </controls:BorderlessEntry>
-                </border:SfBorder>
+                            <controls:BorderlessEntry
+                                        x:Name="TelefonEntry"
+                                        Margin="15,0"
+                                        HeightRequest="40"
+                                        Placeholder="Telefon"
+                                        Style="{StaticResource BorderlessEntryStyle}"
+                                        Text="{Binding Telefon.Value}">
+                                <Entry.Behaviors>
+                                    <behaviour:EntryLineValidationBehaviour IsValid="{Binding Telefon.IsValid}" />
+                                </Entry.Behaviors>
+                            </controls:BorderlessEntry>
 
+                            <!--  Label to display error icon  -->
+                            <Label
+                                        Grid.Column="1"
+                                        IsVisible="{Binding Path=IsVisible, Source={x:Reference TelefonValidationLabel}}"
+                                        Style="{StaticResource ErrorIconLabelStyle}"
+                                        Text="{StaticResource Error}" />
+                        </Grid>
+                    </border:SfBorder>
 
-                <!--  Nova Lozinka  -->
-                <Label
+                    <!--  Label to display error message  -->
+                    <Label
+                                x:Name="TelefonValidationLabel"
+                                Margin="15,-3,0,0"
+                                IsVisible="{Binding Telefon.IsValid, Converter={StaticResource InverseBoolConverter}}"
+                                Style="{StaticResource SimpleLabelStyle}"
+                                Text="{Binding Telefon.Errors, Converter={StaticResource FirstValidationErrorConverter}}"
+                                TextColor="{DynamicResource Red}"
+                                VerticalOptions="FillAndExpand" />
+                </StackLayout>
+
+                <!-- Nova lozinka -->
+                <StackLayout>
+                    <Label
                     Margin="0,15,0,0"
                     FontFamily="Montserrat-Medium"
                     FontSize="12"
                     HeightRequest="18"
                     Text="Nova lozinka"
                     TextColor="{DynamicResource Gray-800}" />
+                    
+                    <!--  Entry to get password from user  -->
+                    <border:SfBorder
+                                BackgroundColor="{DynamicResource Gray-Bg}"
+                                BorderColor="{Binding Source={x:Reference PasswordEntry}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=3}"
+                                Style="{StaticResource DataFormBorderlessEntryBorderStyle}">
+                        <Grid ColumnDefinitions="*, Auto">
 
-                <border:SfBorder BorderColor="{Binding Source={x:Reference NovaLozinkaEntry}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=3}" Style="{StaticResource DataFormBorderlessEntryBorderStyle}">
-                    <controls:BorderlessEntry
-                        x:Name="NovaLozinkaEntry"
-                        Margin="12,0"
-                        HeightRequest="40"
-                        IsPassword="True"
-                        Style="{StaticResource BorderlessEntryStyle}"
-                        Text="{Binding NovaLozinka}">
-                    </controls:BorderlessEntry>
-                </border:SfBorder>
-                
+                            <controls:BorderlessEntry
+                                        x:Name="PasswordEntry"
+                                        Margin="15,0"
+                                        HeightRequest="40"
+                                        IsPassword="true"
+                                        Placeholder="Password"
+                                        Style="{StaticResource BorderlessEntryStyle}"
+                                        Text="{Binding Password.Item1.Value}">
+                                <Entry.Behaviors>
+                                    <behaviour:EntryLineValidationBehaviour IsValid="{Binding Password.Item1.IsValid}" />
+                                </Entry.Behaviors>
+                            </controls:BorderlessEntry>
 
-                <!--  Potvrda lozinke  -->
-                <Label
+                            <!--  Label to display error icon  -->
+                            <Label
+                                        Grid.Column="1"
+                                        IsVisible="{Binding Path=IsVisible, Source={x:Reference PasswordValidationLabel}}"
+                                        Style="{StaticResource ErrorIconLabelStyle}"
+                                        Text="{StaticResource Error}" />
+                        </Grid>
+                    </border:SfBorder>
+
+                    <!--  Label to display error message  -->
+                    <Label
+                                x:Name="PasswordValidationLabel"
+                                Margin="15,-3,0,0"
+                                IsVisible="{Binding Password.Item1.IsValid, Converter={StaticResource InverseBoolConverter}}"
+                                Style="{StaticResource SimpleLabelStyle}"
+                                Text="{Binding Password.Item1.Errors, Converter={StaticResource FirstValidationErrorConverter}}"
+                                TextColor="{DynamicResource Red}"
+                                VerticalOptions="FillAndExpand" />
+                </StackLayout>
+
+                <!-- Potvrda lozinke -->
+                <StackLayout>
+
+                    <Label
                     Margin="0,15,0,0"
                     FontFamily="Montserrat-Medium"
                     FontSize="12"
                     HeightRequest="18"
-                    Text="Nova lozinka"
+                    Text="Potvrda lozinke"
                     TextColor="{DynamicResource Gray-800}" />
 
-                <border:SfBorder BorderColor="{Binding Source={x:Reference PotvrdaLozinkeEntry}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=3}" Style="{StaticResource DataFormBorderlessEntryBorderStyle}">
-                    <controls:BorderlessEntry
-                        x:Name="PotvrdaLozinkeEntry"
-                        Margin="12,0"
-                        HeightRequest="40"
-                        IsPassword="True"
-                        Style="{StaticResource BorderlessEntryStyle}"
-                        Text="{Binding PotvrdaLozinke}">
-                    </controls:BorderlessEntry>
-                </border:SfBorder>
-                
+                    <!--  Entry to get the confirm password from user  -->
+                    <border:SfBorder
+                                BackgroundColor="{DynamicResource Gray-Bg}"
+                                BorderColor="{Binding Source={x:Reference ConfirmPasswordEntry}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=3}"
+                                Style="{StaticResource DataFormBorderlessEntryBorderStyle}">
+                        <Grid ColumnDefinitions="*, Auto">
+
+                            <controls:BorderlessEntry
+                                        x:Name="ConfirmPasswordEntry"
+                                        Margin="15,0"
+                                        HeightRequest="40"
+                                        IsPassword="true"
+                                        Placeholder="Potvrda lozinke"
+                                        Style="{StaticResource BorderlessEntryStyle}"
+                                        Text="{Binding Password.Item2.Value}">
+                                <Entry.Behaviors>
+                                    <behaviour:EntryLineValidationBehaviour IsValid="{Binding Password.Item2.IsValid}" />
+                                </Entry.Behaviors>
+                            </controls:BorderlessEntry>
+
+                            <!--  Label to display error icon  -->
+                            <Label
+                                        Grid.Column="1"
+                                        IsVisible="{Binding Path=IsVisible, Source={x:Reference ConfirmPasswordValidationLabel}}"
+                                        Style="{StaticResource ErrorIconLabelStyle}"
+                                        Text="{StaticResource Error}" />
+                        </Grid>
+                    </border:SfBorder>
+
+                    <!--  Label to display error message  -->
+                    <Label
+                                x:Name="ConfirmPasswordValidationLabel"
+                                Margin="15,-3,0,0"
+                                IsVisible="{Binding Password.Item2.IsValid, Converter={StaticResource InverseBoolConverter}}"
+                                Style="{StaticResource SimpleLabelStyle}"
+                                Text="{Binding Password.Item2.Errors, Converter={StaticResource FirstValidationErrorConverter}}"
+                                TextColor="{DynamicResource Red}"
+                                VerticalOptions="FillAndExpand" />
+                </StackLayout>
+
+            
                 <!--  Submit Button  -->
                 <buttons:SfButton
                     Margin="0,24,0,0"

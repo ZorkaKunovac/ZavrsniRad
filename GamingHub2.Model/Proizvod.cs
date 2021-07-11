@@ -17,8 +17,6 @@ namespace GamingHub2.Model
         public bool? Status { get; set; }
         public int IgraKonzolaID { get; set; }
         public virtual IgraKonzola IgraKonzola { get; set; }
-
-        public string IgraKonzolaNaziv => $"{IgraKonzola?.Igra?.Naziv} - {IgraKonzola?.Konzola?.Naziv}";
         public byte[] Slika { get; set; }
         public decimal ProsjecnaOcjena { get; set; }
         public decimal CijenaSaPopustom => ProdajnaCijena * (1 - Popust / 100);

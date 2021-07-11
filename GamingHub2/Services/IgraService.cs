@@ -24,7 +24,7 @@ namespace GamingHub2.Services
 
             if (!string.IsNullOrWhiteSpace(search?.Naziv))
             {
-                entity = entity.Where(x => x.Naziv.StartsWith(search.Naziv));
+                entity = entity.Where(x => x.Naziv.Contains(search.Naziv));
             }
 
             var list = entity.ToList();

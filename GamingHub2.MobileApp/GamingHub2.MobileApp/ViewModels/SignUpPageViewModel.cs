@@ -278,7 +278,7 @@ namespace GamingHub2.MobileApp.ViewModels
 
                 }
                 else
-                    await Application.Current.MainPage.DisplayAlert("Greska", "Neka greska.", "OK");
+                    await Application.Current.MainPage.DisplayAlert("Greska", "Postoji korisnik sa tim korisnickim imenom ili emailom.", "OK");
 
             }
         }

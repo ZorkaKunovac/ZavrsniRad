@@ -6,6 +6,7 @@ using Stripe;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -152,6 +153,13 @@ namespace GamingHub2.MobileApp.ViewModels
 
         public ICommand SubmitCommand => new Command(async () =>
         {
+            string poljeSaGreskom = null;
+            if (!ValidateKupacFields(ref poljeSaGreskom))
+            {
+                await Shell.Current.DisplayAlert("Greška", "Polje " + poljeSaGreskom + " nije uneseno ispravno.", "OK");
+                return;
+            }
+
             CreditCardModel.ExpMonth = Convert.ToInt64(ExpMonth);
             CreditCardModel.ExpYear = Convert.ToInt64(ExpYear);
             CancellationTokenSource tokenSource = new CancellationTokenSource();
@@ -201,6 +209,38 @@ namespace GamingHub2.MobileApp.ViewModels
             }
 
         });
+
+        private bool ValidateKupacFields(ref string poljeSaGreskom)
+        {
+            if (string.IsNullOrWhiteSpace(CreditCardModel.FirstName) || CreditCardModel.FirstName.Length < 2 || CreditCardModel.FirstName.Length > 50)
+                poljeSaGreskom = "Ime";
+
+            else if (string.IsNullOrWhiteSpace(CreditCardModel.LastName) || CreditCardModel.LastName.Length < 2 || CreditCardModel.LastName.Length > 50)
+                poljeSaGreskom = "Prezime";
+
+            else if (string.IsNullOrWhiteSpace(CreditCardModel.EmailAddress) || !Regex.IsMatch(CreditCardModel.EmailAddress, @"^[a-z]+[-+.'\w]+@[a-z]+\.[-.\w]+$", RegexOptions.IgnoreCase))
+                poljeSaGreskom = "Email adresa";
+
+            else if (string.IsNullOrWhiteSpace(CreditCardModel.PhoneNumber) || !Regex.IsMatch(CreditCardModel.PhoneNumber, @"^[+]?\d{3}[ ]?\d{2}[ ]?\d{3}[ ]?\d{3,4}$", RegexOptions.IgnoreCase))
+                poljeSaGreskom = "Broj telefona";
+
+            else if (string.IsNullOrWhiteSpace(CreditCardModel.AddressLine1) || CreditCardModel.AddressLine1.Length < 5 || CreditCardModel.AddressLine1.Length > 70)
+                poljeSaGreskom = "Adresa 1";
+
+            else if (string.IsNullOrWhiteSpace(CreditCardModel.AddressLine2) || CreditCardModel.AddressLine2.Length < 2 || CreditCardModel.AddressLine2.Length > 70)
+                poljeSaGreskom = "Adresa 2";
+
+            else if (string.IsNullOrWhiteSpace(CreditCardModel.AddressCountry) || CreditCardModel.AddressCountry.Length < 3 || CreditCardModel.AddressCountry.Length > 20)
+                poljeSaGreskom = "Država";
+
+            else if (string.IsNullOrWhiteSpace(CreditCardModel.AddressCity) || CreditCardModel.AddressCity.Length < 5 || CreditCardModel.AddressCity.Length > 70)
+                poljeSaGreskom = "Grad";
+
+            else if (string.IsNullOrWhiteSpace(CreditCardModel.AddressZip) || CreditCardModel.AddressZip.Length < 3 || CreditCardModel.AddressZip.Length > 20)
+                poljeSaGreskom = "Poštanski kod";
+
+            return poljeSaGreskom == null;
+        }
 
         #endregion Command
 

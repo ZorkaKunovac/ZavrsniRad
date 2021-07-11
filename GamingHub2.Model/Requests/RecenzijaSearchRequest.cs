@@ -9,8 +9,6 @@ namespace GamingHub2.Model.Requests
         public string Naslov { get; set; }
         public int? KorisnikId { get; set; }
         public int? IgraId { get; set; }
-        public bool? IncludeKorisnik { get; set; }
-        public bool? IncludeIgra { get; set; }
 
         public string[] IncludeList { get; set; }
     }
