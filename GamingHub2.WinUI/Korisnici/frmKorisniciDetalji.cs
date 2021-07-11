@@ -33,19 +33,7 @@ namespace GamingHub2.WinUI.Korisnici
             if (ValidateChildren() && txtSlika_Validating())
             {
                 var roleList = clbUloge.CheckedItems.Cast<Model.Uloge>().Select(x => x.UlogaId).ToList();
-                //try
-                //{
-                //var korisnici = await _korisniciService.Get<List<Model.Korisnici>>(null);
-
-                //var user = korisnici.FirstOrDefault(u => u.KorisnickoIme == request.KorisnickoIme);
-                //var emil = korisnici.FirstOrDefault(u => u.Email == request.Email);
-
-                //if (user != null)
-                //    throw new UserException("Korisnicko ime vec postoji!");
-                ////ModelState.AddModelError("UserName", "Username Already Exist!");
-                //if (emil != null)
-                //    throw new UserException("Email vec postoji!");
-
+           
                 request.Ime = txtIme.Text;
                 request.Prezime = txtPrezime.Text;
                 request.Email = txtEmail.Text;

@@ -140,12 +140,6 @@ namespace GamingHub2.WinUI
         {
             frmKorisniciDetalji frm = new frmKorisniciDetalji();
             frm.Show();
-           // frm.MdiParent = this;
-
-            // frm.ShowDialog(); omogucava refreshanje dgv-a nakon unosa podataka ali nije moguce jer forma ima parent.
-            //DialogResult = DialogResult.OK;
-            //this.Close();
-
         }
 
         private void prikaToolStripMenuItem_Click(object sender, EventArgs e)

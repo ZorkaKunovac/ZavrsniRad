@@ -52,9 +52,6 @@ namespace GamingHub2.WinUI.Zanr
                 MessageBox.Show("Uspješno izvršeno");
                 DialogResult = DialogResult.OK;
                 this.Close();
-                
-                //frmPrikazZanrova.dgvZanrovi
-                //dgvZanrovi.DataSource = await _service.Get<List<Model.Zanr>>(null);
             }
         }
 
@@ -72,7 +69,6 @@ namespace GamingHub2.WinUI.Zanr
             }
             else
             {
-                //ili errorProvider.SetError(txtNaziv, null);
                 errorProvider.Clear();
             }
         }
@@ -85,11 +81,8 @@ namespace GamingHub2.WinUI.Zanr
             }
             else
             {
-                //ili errorProvider.SetError(txtNaziv, null);
                 errorProvider.Clear();
             }
         }
-
-
     }
 }

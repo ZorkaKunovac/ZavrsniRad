@@ -23,8 +23,6 @@ namespace GamingHub2.MobileApp
 #if RELEASE
         private string _apiURL = "https://mywebsite/api/";
 #endif
-        //public string endpoint = $"{_apiURL}";
-
 
         public APIService(string route) //Kontroler
         {
@@ -75,7 +73,6 @@ namespace GamingHub2.MobileApp
         }
         public async Task<T> Insert<T>(object request, string endpointName = null)
         {
-            //var url = $"{_apiURL}/{_route}";
             try
             {
                 string url;
@@ -102,8 +99,6 @@ namespace GamingHub2.MobileApp
                 }
 
                 return default(T);
-
-                // return default;
             }
         }
 

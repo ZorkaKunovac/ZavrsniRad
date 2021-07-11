@@ -56,7 +56,6 @@ namespace GamingHub2.WinUI.Igra
                 {
                     pbSlika.Image = ImageHelper.BytesToImage(igra.SlikaLink);
                 }
-                // txtVideoLink.Text=igra.vi
                 foreach (var item in igra.IgraKonzola)
                 {
                     for (int i = 0; i < clbKonzole.Items.Count; i++)
@@ -108,7 +107,7 @@ namespace GamingHub2.WinUI.Igra
                 {
                     request.SlikaLink = slikaTemp;
                 }
-                // await _service.Insert<Model.Proizvod>(request);
+
                 Model.Igra entity = null;
                 if (!_id.HasValue)
                 {
@@ -161,7 +160,6 @@ namespace GamingHub2.WinUI.Igra
         private void txtNaziv_Validating(object sender, CancelEventArgs e)
         {
             //prvo slovo veliko, min duzina 5, max 50 slova
-            // Regex reg = new Regex(@"^[A-Z][a-z]{1,19}$");
             if (string.IsNullOrWhiteSpace(txtNaziv.Text))
             {
                 errorProvider.SetError(txtNaziv, Properties.Resources.ObaveznoPolje);
@@ -174,14 +172,11 @@ namespace GamingHub2.WinUI.Igra
             }
             else
             {
-                //ili errorProvider.SetError(txtNaziv, null);
                 errorProvider.Clear();
             }
         }
         private void txtDeveloper_Validating(object sender, CancelEventArgs e)
         {
-            //prvo slovo veliko, min duzina 5, max 50 slova
-            // Regex reg = new Regex(@"^[A-Z][a-z]{1,19}$");
             if (string.IsNullOrWhiteSpace(txtDeveloper.Text))
             {
                 errorProvider.SetError(txtDeveloper, Properties.Resources.ObaveznoPolje);
@@ -215,8 +210,6 @@ namespace GamingHub2.WinUI.Igra
                 errorProvider.Clear();
             }
         }
-
-       
         
     }
 }

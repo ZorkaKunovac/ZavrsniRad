@@ -52,6 +52,7 @@ namespace GamingHub2.Controllers
             return _service.Registracija(request);
         }
 
+        [Authorize(Roles = "Administrator")]
         [HttpPut("{id}")]
         public Model.Korisnici Update(int id, [FromBody] KorisniciUpsertRequest request)
         {

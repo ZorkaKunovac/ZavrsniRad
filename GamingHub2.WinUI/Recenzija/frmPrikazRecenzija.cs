@@ -40,9 +40,6 @@ namespace GamingHub2.WinUI.Recenzija
             else
                 request.KorisnikId = int.Parse(objKorisnici.ToString());
 
-            //var objKorisnici = cmbKorisnici.SelectedValue;
-            //request.KorisnikId = int.Parse(objKorisnici?.ToString() ?? "0");
-
             var objIgre = cmbIgre.SelectedValue;
             if (objIgre == null)
                 request.IgraId = 0;
@@ -62,7 +59,6 @@ namespace GamingHub2.WinUI.Recenzija
             await LoadIgre();
            
         }
-
         private async Task LoadKorisnici()
         {
             var result = await _korisniciService.Get<List<Model.Korisnici>>(null);
@@ -94,7 +90,6 @@ namespace GamingHub2.WinUI.Recenzija
                 dgvRecenzije.DataSource = await _recenzijaService.Get<List<Model.Recenzija>>(null);
             }
         }
-
         private async void btnDodajRecenziju_Click(object sender, EventArgs e)
         {
             frmDodajUrediRecenzija frm = new frmDodajUrediRecenzija();

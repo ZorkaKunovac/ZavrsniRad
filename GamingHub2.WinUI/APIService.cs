@@ -94,8 +94,6 @@ namespace GamingHub2.WinUI
                 }
                 return default(T);
 
-                // return default;
-                // throw new Exception(ex.Message);
             }
         }
   
@@ -123,11 +121,7 @@ namespace GamingHub2.WinUI
                     MessageBox.Show(response, "Serverska greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 return default(T);
-                // throw new Exception(ex.Message);
             }
-
-            //var result = await url.PutJsonAsync(request).ReceiveJson<T>();
-            //return result;
         }
     }
 }
