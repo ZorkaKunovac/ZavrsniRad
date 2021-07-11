@@ -29,6 +29,14 @@ namespace GamingHub2.WinUI
 
                 if (TrenutniKorisnik != null)
                 {
+                    bool isAdmin = TrenutniKorisnik.KorisniciUloge.Any(x => x.Uloga.Naziv == "Administrator");
+                    bool isModerator = TrenutniKorisnik.KorisniciUloge.Any(x => x.Uloga.Naziv == "Moderator");
+                    if(!isAdmin && !isModerator)
+                    {
+                        MessageBox.Show("Pristup aplikaciji je dozovljen samo administratorima i moderatorima.", "Pristup zabranjen", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
                     APIService.TrenutniKorisnik = TrenutniKorisnik;
                     DialogResult = DialogResult.OK;
                 }

@@ -268,8 +268,7 @@ namespace GamingHub2.MobileApp.ViewModels
                 {
                     await _serviceNarudzba.Update<Narudzba>(NarudzbaId, new Model.Requests.NarudzbaUpdateRequest
                     {
-                        Status = true,
-                        Otkazano = Narudzba.Otkazano
+                        Status = true
                     });
 
                     await CreateOrUpdateKupac();

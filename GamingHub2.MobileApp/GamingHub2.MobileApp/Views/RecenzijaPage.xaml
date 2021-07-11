@@ -25,9 +25,9 @@
                       
                         />-->
             <!--<Label FontSize="30" HorizontalTextAlignment="Center">Pretraga Recenzija</Label>-->
-            <StackLayout Orientation="Horizontal">
+            <StackLayout Padding="10" Orientation="Horizontal">
                 <Label VerticalTextAlignment="Center">Naslov</Label>
-                <Entry Text="{Binding Naslov}"></Entry>
+                <Entry Text="{Binding Naslov}" WidthRequest="180"></Entry>
                 <Button VerticalOptions="Center" Text="Prikazi" Command="{Binding PretragaCommand}"/>
             </StackLayout>
             <ListView ItemsSource="{Binding recenzije}" ItemSelected="ListView_ItemSelected">
@@ -35,7 +35,7 @@
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout Padding="10"  Orientation="Horizontal" >
-                                <StackLayout WidthRequest="400" HeightRequest="400">
+                                <StackLayout WidthRequest="400" HeightRequest="250">
                                     <Image Source="{Binding Slika,Converter={StaticResource imgConv}}"></Image>
                                 </StackLayout>
                                 <StackLayout  Orientation="Vertical">
@@ -47,7 +47,7 @@
                                     LineBreakMode="NoWrap"
                                     Style="{DynamicResource ListItemDetailTextStyle}"
                                     FontSize="13" />
-                                    <Label Text="{Binding DatumObjave}" 
+                                    <Label Text="{Binding DatumObjave, StringFormat='{0:MMMM dd, yyyy}'}" 
                                     Style="{DynamicResource ListItemDetailTextStyle}"
                                     FontSize="13" />
                                 </StackLayout>

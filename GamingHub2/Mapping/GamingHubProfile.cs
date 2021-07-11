@@ -46,8 +46,6 @@ namespace GamingHub2.Mapping
             CreateMap<Database.Ocjena, Model.Ocjena>().ReverseMap();
             CreateMap<OcjenaUpsertRequest, Database.Ocjena>();
 
-            CreateMap<Database.Drzava, Model.Drzava>().ReverseMap();
-
             CreateMap<Database.Kupac, Model.Kupac>().ReverseMap();
             CreateMap<KupacUpsertRequest, Database.Kupac>();
         }

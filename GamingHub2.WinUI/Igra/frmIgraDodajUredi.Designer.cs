@@ -40,9 +40,7 @@ namespace GamingHub2.WinUI.Igra
             this.btnAddPicture = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.pbSlika = new System.Windows.Forms.PictureBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.dtpDatumIzlaska = new System.Windows.Forms.DateTimePicker();
-            this.txtVideoLink = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtIzdavac = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -68,9 +66,7 @@ namespace GamingHub2.WinUI.Igra
             this.groupBox1.Controls.Add(this.btnAddPicture);
             this.groupBox1.Controls.Add(this.btnSave);
             this.groupBox1.Controls.Add(this.pbSlika);
-            this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.dtpDatumIzlaska);
-            this.groupBox1.Controls.Add(this.txtVideoLink);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.txtIzdavac);
             this.groupBox1.Controls.Add(this.label3);
@@ -80,7 +76,7 @@ namespace GamingHub2.WinUI.Igra
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(493, 406);
+            this.groupBox1.Size = new System.Drawing.Size(482, 368);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dodavanje/uredjivanje igara";
@@ -88,7 +84,7 @@ namespace GamingHub2.WinUI.Igra
             // clbZanrovi
             // 
             this.clbZanrovi.FormattingEnabled = true;
-            this.clbZanrovi.Location = new System.Drawing.Point(104, 291);
+            this.clbZanrovi.Location = new System.Drawing.Point(104, 262);
             this.clbZanrovi.Name = "clbZanrovi";
             this.clbZanrovi.Size = new System.Drawing.Size(175, 94);
             this.clbZanrovi.TabIndex = 18;
@@ -96,7 +92,7 @@ namespace GamingHub2.WinUI.Igra
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(48, 291);
+            this.label8.Location = new System.Drawing.Point(48, 262);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(46, 13);
             this.label8.TabIndex = 17;
@@ -105,7 +101,7 @@ namespace GamingHub2.WinUI.Igra
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(46, 204);
+            this.label7.Location = new System.Drawing.Point(46, 175);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(48, 13);
             this.label7.TabIndex = 16;
@@ -114,7 +110,7 @@ namespace GamingHub2.WinUI.Igra
             // clbKonzole
             // 
             this.clbKonzole.FormattingEnabled = true;
-            this.clbKonzole.Location = new System.Drawing.Point(104, 204);
+            this.clbKonzole.Location = new System.Drawing.Point(104, 175);
             this.clbKonzole.Name = "clbKonzole";
             this.clbKonzole.Size = new System.Drawing.Size(175, 79);
             this.clbKonzole.TabIndex = 15;
@@ -122,7 +118,7 @@ namespace GamingHub2.WinUI.Igra
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(64, 179);
+            this.label6.Location = new System.Drawing.Point(64, 150);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(30, 13);
             this.label6.TabIndex = 14;
@@ -130,7 +126,7 @@ namespace GamingHub2.WinUI.Igra
             // 
             // txtSlika
             // 
-            this.txtSlika.Location = new System.Drawing.Point(104, 175);
+            this.txtSlika.Location = new System.Drawing.Point(104, 146);
             this.txtSlika.Name = "txtSlika";
             this.txtSlika.Size = new System.Drawing.Size(175, 20);
             this.txtSlika.TabIndex = 13;
@@ -148,7 +144,7 @@ namespace GamingHub2.WinUI.Igra
             // btnSave
             // 
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(372, 352);
+            this.btnSave.Location = new System.Drawing.Point(372, 323);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(89, 33);
             this.btnSave.TabIndex = 11;
@@ -164,28 +160,12 @@ namespace GamingHub2.WinUI.Igra
             this.pbSlika.TabIndex = 10;
             this.pbSlika.TabStop = false;
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(37, 149);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(57, 13);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "Video Link";
-            // 
             // dtpDatumIzlaska
             // 
             this.dtpDatumIzlaska.Location = new System.Drawing.Point(104, 117);
             this.dtpDatumIzlaska.Name = "dtpDatumIzlaska";
             this.dtpDatumIzlaska.Size = new System.Drawing.Size(175, 20);
             this.dtpDatumIzlaska.TabIndex = 8;
-            // 
-            // txtVideoLink
-            // 
-            this.txtVideoLink.Location = new System.Drawing.Point(104, 146);
-            this.txtVideoLink.Name = "txtVideoLink";
-            this.txtVideoLink.Size = new System.Drawing.Size(175, 20);
-            this.txtVideoLink.TabIndex = 7;
             // 
             // label4
             // 
@@ -259,7 +239,7 @@ namespace GamingHub2.WinUI.Igra
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(519, 444);
+            this.ClientSize = new System.Drawing.Size(506, 384);
             this.Controls.Add(this.groupBox1);
             this.Name = "frmIgraDodajUredi";
             this.Text = "frmIgraDodajUredi";
@@ -284,9 +264,7 @@ namespace GamingHub2.WinUI.Igra
         private System.Windows.Forms.Button btnAddPicture;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.PictureBox pbSlika;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DateTimePicker dtpDatumIzlaska;
-        private System.Windows.Forms.TextBox txtVideoLink;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtIzdavac;
         private System.Windows.Forms.Label label3;

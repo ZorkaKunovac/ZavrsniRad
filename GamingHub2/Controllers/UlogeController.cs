@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc;
 using GamingHub2.Model;
 using GamingHub2.Services;
 using GamingHub2.Model.Requests;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GamingHub2.Controllers
 {
+    [Authorize]
     public class UlogeController : BaseCRUDController<Model.Uloge, object,UlogaInsertRequest,object>
     {
         public UlogeController(ICRUDService<Uloge, object,UlogaInsertRequest,object> service) : base(service)

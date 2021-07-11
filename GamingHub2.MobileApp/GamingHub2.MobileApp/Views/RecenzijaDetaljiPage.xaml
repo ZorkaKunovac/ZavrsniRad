@@ -72,7 +72,7 @@
                                     <Span Text="    " />
                                     <Span
                                     FontFamily="Montserrat-Regular"
-                                    Text="{Binding Recenzija.DatumObjave}"
+                                    Text="{Binding Recenzija.DatumObjave, StringFormat='{0:MMMM dd, yyyy}'}"
                                     TextColor="{DynamicResource Gray-700}" />
                                     <Span Text=" | " TextColor="{DynamicResource Gray-700}" />
                                     <Span
@@ -86,22 +86,25 @@
 
                         <!--  Image of the blog  -->
                             <StackLayout>
-                            <Image  Margin="{OnIdiom Phone='-16,0',
+                            <Image
+                                Aspect="AspectFit"
+                                Margin="{OnIdiom Phone='-16,0',
                                          Tablet='-48,0',
                                          Desktop='-48,0'}"
-                        Aspect="Fill"
                         BackgroundColor="{DynamicResource Gray-200}" 
                         HeightRequest="350" Source="{Binding Recenzija.Slika,Converter={StaticResource imgConv}}">
                             </Image>
                                 
-                        <StackLayout Padding="10" Orientation="Horizontal">
+                        <StackLayout Orientation="Horizontal">
+
+                                <Label Text="{Binding Recenzija.Igra.Naziv}" FontSize="24" FontAttributes="Bold"/>
                             </StackLayout>
                             <StackLayout Orientation="Horizontal">
                                 <Label  Text="Datum izlaska igre:" 
                                            LineBreakMode="NoWrap" 
                                            Style="{DynamicResource ListItemTextStyle}" 
                                            FontSize="13" />
-                                <Label Text="{Binding Recenzija.Igra.DatumIzlaska}" 
+                                <Label Text="{Binding Recenzija.Igra.DatumIzlaska, StringFormat='{0:MMMM dd, yyyy}'}" 
                                            LineBreakMode="NoWrap" 
                                            Style="{DynamicResource ListItemDetailTextStyle}" 
                                            FontSize="13" />

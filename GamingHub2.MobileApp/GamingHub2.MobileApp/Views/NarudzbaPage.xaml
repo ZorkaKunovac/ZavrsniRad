@@ -20,7 +20,7 @@
                         <ViewCell>
                             <StackLayout>
                                 <Label Text="{Binding Proizvod.NazivProizvoda}"></Label>
-                                <Label Text="{Binding Proizvod.ProdajnaCijena, StringFormat='Cijena: {0:C}'}"></Label>
+                                <Label Text="{Binding Proizvod.CijenaSaPopustom, StringFormat='Cijena: {0:C}'}"></Label>
 
                                 <StackLayout Orientation="Horizontal">
                                     <Button Text="-1" Command="{Binding BindingContext.UmanjiKolicinuIOsvjeziCommand, Source={x:Reference narudzbaPage}}"

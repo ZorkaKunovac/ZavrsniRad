@@ -11,13 +11,11 @@ namespace GamingHub2.Database
         [Key]
         public int OcjenaId { get; set; }
         public int ProizvodId { get; set; }
-        public int KupacId { get; set; } //ili KorisnikID?
-        //public int KorisnikID { get; set; }
+        public int KupacId { get; set; }
         public DateTime Datum { get; set; }
         public int OcjenaProizvoda { get; set; }
 
         public Proizvod Proizvod { get; set; }
-       // public Korisnik Korisnik { get; set; }
          public Kupac Kupac { get; set; }
     }
 }

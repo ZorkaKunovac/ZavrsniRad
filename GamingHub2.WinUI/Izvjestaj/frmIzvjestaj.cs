@@ -27,7 +27,12 @@ namespace GamingHub2.WinUI.Izvjestaj
             if (dtpDatumDo.Enabled == true && dtpDatumOd.Enabled == true)
             {
 
-                var listaNarudzbi = await _serviceNarudzba.Get<List<Model.Narudzba>>(null);
+                var request = new Model.Requests.NarudzbaSearchRequest
+                {
+                    Status = true
+                };
+
+                var listaNarudzbi = await _serviceNarudzba.Get<List<Model.Narudzba>>(request);
                 List<Model.NarudzbaIzvjestaj> result = new List<Model.NarudzbaIzvjestaj>();
                 UkupnoIznos = listaNarudzbi.Sum(x => x.Iznos);
 

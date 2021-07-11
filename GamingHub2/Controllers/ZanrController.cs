@@ -1,11 +1,12 @@
 ﻿using GamingHub2.Model;
 using GamingHub2.Model.Requests;
 using GamingHub2.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GamingHub2.Controllers
 {
-    //[Authorize(Roles = "Admin,Moderator")]
+    [Authorize(Roles = "Admin,Moderator")]
     [ApiController]
     [Route("api/[controller]")]
     public class ZanrController : BaseCRUDController<Model.Zanr, ZanrSearchRequest, ZanrUpsertRequest, ZanrUpsertRequest>

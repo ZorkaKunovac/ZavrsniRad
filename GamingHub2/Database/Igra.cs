@@ -26,7 +26,6 @@ namespace GamingHub2.Database
         [StringLength(50, ErrorMessage = "{0} mora biti izmedju {2} i {1} znakova.", MinimumLength = 3)]
         public string Izdavac { get; set; }
         public DateTime? DatumIzlaska { get; set; }
-        public string VideoLink { get; set; }
         public byte[] SlikaLink { get; set; }
         public virtual ICollection<IgraKonzola> IgraKonzola { get; set; }
         public virtual ICollection<IgraZanr> IgraZanr { get; set; }

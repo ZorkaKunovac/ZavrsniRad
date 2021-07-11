@@ -91,7 +91,6 @@ namespace GamingHub2
             services.AddScoped<INarudzbaStavkaService, NarudzbaStavkaService>();
             services.AddScoped<ICRUDService<Model.Ocjena, OcjenaSearchRequest, OcjenaUpsertRequest, OcjenaUpsertRequest>, OcjenaService>();
 
-            services.AddScoped<IReadService<Model.Drzava, object>, BaseReadService<Model.Drzava, Database.Drzava, object>>();
             services.AddScoped<ICRUDService<Model.Kupac, KupacSearchRequest, KupacUpsertRequest, KupacUpsertRequest>, KupacService>();
 
         }

@@ -52,12 +52,6 @@ namespace GamingHub2
         public DbSet<Recenzija> Recenzija { get; set; }
         public DbSet<Proizvod> Proizvod { get; set; }
         public DbSet<Kupac> Kupac { get; set; }
-        //public DbSet<Narudzba> Narudzba { get; set; }
-        //public DbSet<NarudzbaStavka> NarudzbaStavka { get; set; }
-        ////public DbSet<OdabranaNarudžbaStavke> OdabranaNarudžbaStavke { get; set; }
-        public DbSet<KreditnaKartica> KreditnaKartica { get; set; }
-        public DbSet<TipKartice> TipKartice { get; set; }
-        public DbSet<Drzava> Drzava { get; set; }
         public virtual DbSet<Uloge> Uloge { get; set; }
         public virtual DbSet<KorisniciUloge> KorisniciUloge { get; set; }
         public DbSet<Narudzba> Narudzba { get; set; }

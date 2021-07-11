@@ -21,9 +21,14 @@ namespace GamingHub2.Services
         {
             var entity = Context.Set<Database.Narudzba>().AsQueryable();
 
-            if (search?.NarudzbaID !=null)
+            if (search?.NarudzbaID != null)
             {
                 entity = entity.Where(x => x.NarudzbaId == search.NarudzbaID);
+            }
+
+            if (search?.Status != null)
+            {
+                entity = entity.Where(x => x.Status == search.Status);
             }
 
             Korisnici logiraniKorisnik = korisnikService.GetTrenutniKorisnik();
@@ -35,7 +40,7 @@ namespace GamingHub2.Services
                 // filtriranje narudzbi, kako bi se prikazalo samo narudzbe logiranog korisnika
                 entity = entity.Where(x => x.KorisnikID == logiraniKorisnik.KorisnikId);
             }
-           
+
 
             var list = entity.ToList();
 

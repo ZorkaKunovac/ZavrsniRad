@@ -18,7 +18,6 @@ namespace GamingHub2.Database
 
         public DateTime Datum { get; set; } 
         public bool Status { get; set; }
-        public bool? Otkazano { get; set; }
 
         public virtual Korisnik Korisnik { get; set; }
         public virtual ICollection<NarudzbaStavka> NarudzbaStavke { get; set; }

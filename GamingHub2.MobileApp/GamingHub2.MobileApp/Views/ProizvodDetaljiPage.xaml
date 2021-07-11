@@ -20,66 +20,58 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="300"></RowDefinition>
                 <RowDefinition Height="Auto"></RowDefinition>
-                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="40"></RowDefinition>
                 <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition Height="Auto"></RowDefinition>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="100"></ColumnDefinition>
+                <ColumnDefinition Width="750"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-                <StackLayout  Grid.Row="0" Grid.Column="0">
-                <StackLayout>
-                    <Image Source="{Binding Proizvod.Slika, Converter={StaticResource imgConv}}" Aspect="AspectFit" HeightRequest="250" WidthRequest="400" />
-                        <Label Text="{Binding Proizvod.NazivProizvoda}" 
-                            LineBreakMode="NoWrap" 
-                            Style="{DynamicResource ListItemTextStyle}" 
-                            FontSize="16" />
-                        <StackLayout Orientation="Vertical">
-                                <Label
-                            LineBreakMode="NoWrap"
-                            Style="{DynamicResource ListItemDetailTextStyle}"
-                            FontSize="15"
-                        TextDecorations="{Binding ProdajnaCijenaTextDecorations}"
-                        >
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <FormattedString.Spans>
-                                                <Span Text="$" />
-                                                <Span Text="{Binding Proizvod.ProdajnaCijena}"/>
-                                            </FormattedString.Spans>
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-                                <Label
-                            IsVisible="{Binding ImaPopust}"
-                            LineBreakMode="NoWrap"
-                            Style="{DynamicResource ListItemDetailTextStyle}"
-                            FontSize="15" >
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <FormattedString.Spans>
-                                                <Span Text="{Binding Proizvod.CijenaSaPopustom, StringFormat='{0:C}'}"/>
-                                            </FormattedString.Spans>
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-                            </StackLayout>
-                   
-                    <StackLayout Orientation="Horizontal">
-                        <Entry Text="{Binding Kolicina}" Keyboard="Numeric"></Entry>
-                        <Button Text="+1" Command="{Binding PovecajKolicinuCommand}"></Button>
-                    </StackLayout>
+                <StackLayout  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalOptions="Fill">
+                    <Image Source="{Binding Proizvod.Slika, Converter={StaticResource imgConv}}" Aspect="AspectFit" HeightRequest="400" WidthRequest="550" />
                 </StackLayout>
-            </StackLayout>
-            <StackLayout Grid.Row="1" Grid.Column="0">
-                <Image Source="cart.png">
-                    <Image.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding NaruciCommand}"></TapGestureRecognizer>
-                    </Image.GestureRecognizers>
-                </Image>
-            </StackLayout>
+                <StackLayout  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal">
+                    <StackLayout>
+                    <Label Text="{Binding Proizvod.NazivProizvoda}" 
+                                LineBreakMode="NoWrap" 
+                                Style="{DynamicResource ListItemTextStyle}" 
+                                FontSize="16" />
+                        <StackLayout Orientation="Vertical">
+                            <Label
+                                LineBreakMode="NoWrap"
+                                Style="{DynamicResource ListItemDetailTextStyle}"
+                                FontSize="15"
+                            TextDecorations="{Binding ProdajnaCijenaTextDecorations}"
+                            >
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <FormattedString.Spans>
+                                            <Span Text="$" />
+                                            <Span Text="{Binding Proizvod.ProdajnaCijena}"/>
+                                        </FormattedString.Spans>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label
+                                IsVisible="{Binding ImaPopust}"
+                                LineBreakMode="NoWrap"
+                                Style="{DynamicResource ListItemDetailTextStyle}"
+                                FontSize="15" >
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <FormattedString.Spans>
+                                            <Span Text="{Binding Proizvod.CijenaSaPopustom, StringFormat='{0:C}'}"/>
+                                        </FormattedString.Spans>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </StackLayout>
+                        </StackLayout>
 
-                <StackLayout Grid.Row="2" Orientation="Vertical">
+                </StackLayout>
+            
+                <StackLayout Grid.Row="1" Grid.Column="1" Orientation="Vertical" HorizontalOptions="FillAndExpand" Padding="0,40,0,0">
 
                     <Label  HorizontalOptions="Center">Ocijeni proizvod:</Label>
                     <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
@@ -103,12 +95,28 @@
                     </StackLayout>
                 </StackLayout>
 
-                <Label Grid.Row="3" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" FontAttributes="Bold">Preporučeni proizvodi:</Label>
+
+
+                <StackLayout Grid.Row="2" Grid.Column="0" Orientation="Horizontal" HorizontalOptions="Start">
+                    <Entry Text="{Binding Kolicina}" HeightRequest="10" Keyboard="Numeric"></Entry>
+                    <Button Text="+1" Command="{Binding PovecajKolicinuCommand}"></Button>
+
+
+                    <Image Source="cart.png">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding NaruciCommand}"></TapGestureRecognizer>
+                        </Image.GestureRecognizers>
+                    </Image>
+
+                </StackLayout>
+
+                <Label Grid.Row="3" HorizontalOptions="Start" Grid.ColumnSpan="2" VerticalOptions="CenterAndExpand" FontAttributes="Bold">Preporučeni proizvodi:</Label>
 
                 <CollectionView 
                      ItemsSource="{Binding RecommenderList}"
                   x:Name="preporuceniProizvodiList"
                     Grid.Row="4"
+                    Grid.ColumnSpan="2"
                     WidthRequest="550"
                     HeightRequest="260"
                     ItemSizingStrategy="MeasureFirstItem"

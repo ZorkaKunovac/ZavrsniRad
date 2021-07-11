@@ -97,7 +97,6 @@ namespace GamingHub2.WinUI.Igra
                 request.Developer = txtDeveloper.Text;
                 request.Izdavac = txtIzdavac.Text;
                 request.DatumIzlaska = dtpDatumIzlaska.Value;
-                request.VideoLink = txtVideoLink.Text;
                 request.Konzole = konzole;
                 request.Zanrovi = zanrovi;
                 if (txtSlika.Text != string.Empty)//Slika

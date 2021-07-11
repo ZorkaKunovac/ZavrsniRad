@@ -23,7 +23,6 @@ namespace GamingHub2.Database
         public string Prezime { get; set; }
         [Required]
         [EmailAddress]
-       // [Index(IsUnique = true)]
         public string Email { get; set; }
         [Phone]
         public string Telefon { get; set; }

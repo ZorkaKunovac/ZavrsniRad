@@ -7,5 +7,6 @@ namespace GamingHub2.Model.Requests
     public class NarudzbaSearchRequest
     {
         public int? NarudzbaID { get; set; }
+        public bool? Status { get; set; }
     }
 }
