@@ -3,13 +3,11 @@
 FROM mcr.microsoft.com/dotnet/aspnet:3.1 AS base
 WORKDIR /app
 EXPOSE 80
-EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:3.1 AS build
 WORKDIR /src
-COPY ["GamingHub2/GamingHub2.csproj", "GamingHub2/"]
-RUN dotnet restore "GamingHub2/GamingHub2.csproj"
 COPY . .
+RUN dotnet restore "GamingHub2/GamingHub2.csproj"
 WORKDIR "/src/GamingHub2"
 RUN dotnet build "GamingHub2.csproj" -c Release -o /app/build
 

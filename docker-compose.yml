@@ -1,0 +1,33 @@
+version: '3'
+services:
+#mssql docker
+  gaminghub2-sql:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    restart: unless-stopped
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=QWElkj132!
+      - MSSQL_PID=Developer
+    ports:
+      - 1401:1433
+    networks:
+      - gaminghub2net
+
+  gaminghub2-api:
+    restart: unless-stopped
+    build:
+      context: .
+    environment:
+      - ConnectionStrings:DefaultConnection=Server=gaminghub2-sql,1433;Database=160089;User=sa;Password=QWElkj132!;ConnectRetryCount=0
+    ports:
+      - 25001:80
+    networks:
+      - gaminghub2net
+    links:
+      - gaminghub2-sql
+    depends_on:
+      - gaminghub2-sql
+
+networks:
+  gaminghub2net:
+    driver: bridge
