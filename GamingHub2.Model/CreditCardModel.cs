@@ -39,6 +39,5 @@ namespace GamingHub2.Model
         public string LastName { get; set; }
         public string PhoneNumber { get; set; }
         public string EmailAddress { get; set; }
-        public int DrzavaID { get; set; }
     }
 }

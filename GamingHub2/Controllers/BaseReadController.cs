@@ -8,11 +8,8 @@ using System.Threading.Tasks;
 
 namespace GamingHub2.Controllers
 {
-    //[ApiController]
-    //[Route("[controller]")]
-
     [ApiController]
-    [Route("api/[controller]")] //api dodano naknadno, tokom izrade Proizvoda, nije provjereno radi li bez problema
+    [Route("api/[controller]")] 
     public class BaseReadController<T,TSearch> : ControllerBase where T: class where TSearch : class
     {
         protected IReadService<T, TSearch> _service { get; set; }

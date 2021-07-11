@@ -56,15 +56,12 @@ namespace GamingHub2.Services
         private decimal IzracunajIznosNarudzbe(Narudzba narudzba)
         {
             return (decimal)Context.Set<Database.NarudzbaStavka>().Where(x => x.NarudzbaID == narudzba.NarudzbaId).Sum(x => x.Kolicina * x.Cijena * (1 - x.Popust / 100));
-            //sum += item.Kolicina * item.Proizvod.ProdajnaCijena * (1 - item.Proizvod.Popust / 100);
-
         }
 
         public override Narudzba Insert(NarudzbaInsertRequest request)
         {
             var set = Context.Set<Database.Narudzba>();
             Database.Narudzba entity = _mapper.Map<Database.Narudzba>(request);
-
 
             // dodjela nove narudzbe trenutno logiranom korisnku
             entity.KorisnikID = korisnikService.GetTrenutniKorisnik().KorisnikId;

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace GamingHub2.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")] //Dodano naknadno, tokom izrade Proizvoda, nije provjereno radi li bez problema
+    [Route("api/[controller]")]
     public class BaseCRUDController<T, TSearch, TInsert, TUpdate> : BaseReadController<T, TSearch> where T : class where TSearch : class where TInsert : class where TUpdate : class
     {
         protected ICRUDService<T, TSearch, TInsert, TUpdate> _crudService;

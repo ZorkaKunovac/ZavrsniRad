@@ -96,8 +96,8 @@ namespace GamingHub2.Services
         {
             List<Database.Proizvod> aktivniProizvodi = _context.Proizvod.Include(y => y.IgraKonzola.Igra.IgraZanr).Where(x => x.ID != ProizvodID).ToList();
 
-            Database.Proizvod posmatraniartikal = _context.Proizvod.Where(x => x.ID == ProizvodID).Include(x => x.IgraKonzola.Igra.IgraZanr).SingleOrDefault();
-            if (posmatraniartikal == null)
+            Database.Proizvod posmatraniproizvod = _context.Proizvod.Where(x => x.ID == ProizvodID).Include(x => x.IgraKonzola.Igra.IgraZanr).SingleOrDefault();
+            if (posmatraniproizvod == null)
                 return;
 
             List<Model.Proizvod> novalista = new List<Model.Proizvod>();
@@ -108,7 +108,7 @@ namespace GamingHub2.Services
             List<Model.Proizvod> listakonacna = new List<Model.Proizvod>();
             foreach (var item in novalista)
             {
-                if (item.IgraKonzola.KonzolaID == posmatraniartikal.IgraKonzola.KonzolaID && item.IgraKonzola.Igra.IgraZanr.Any(x => posmatraniartikal.IgraKonzola.Igra.IgraZanr.Any(y => y.ZanrID == x.ZanrID)))
+                if (item.IgraKonzola.KonzolaID == posmatraniproizvod.IgraKonzola.KonzolaID && item.IgraKonzola.Igra.IgraZanr.Any(x => posmatraniproizvod.IgraKonzola.Igra.IgraZanr.Any(y => y.ZanrID == x.ZanrID)))
                 {
                     listakonacna.Add(item);
                 }

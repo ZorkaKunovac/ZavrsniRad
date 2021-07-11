@@ -14,7 +14,6 @@ namespace GamingHub2.Model
         public decimal? Popust { get; set; }
 
         public virtual Proizvod Proizvod { get; set; }
-        //public string NazivProizvoda { get; set; } //NazivProizvoda?
         public string NazivProizvoda => $"{Proizvod?.NazivProizvoda}";
 
     }

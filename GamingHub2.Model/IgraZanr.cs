@@ -12,6 +12,5 @@ namespace GamingHub2.Model
         public DateTime DatumIzmjene { get; set; }
 
         public virtual Zanr Zanr { get; set; }
-       // public virtual Igra Igra { get; set; }
     }
 }

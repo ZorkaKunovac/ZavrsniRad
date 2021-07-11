@@ -16,9 +16,5 @@ namespace GamingHub2.Model
 
         public ICollection<KorisniciUloge> KorisniciUloge { get; set; }
         public string Uloge { get; set; }
-
-        //public int KorisnikId { get; set; }
-        //public DateTime? DatumRodjenja { get; set; }
-        //public bool? Status { get; set; }
     }
 }

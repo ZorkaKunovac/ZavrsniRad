@@ -35,13 +35,9 @@ namespace GamingHub2.Services
         [HttpGet("{id}")]
         public override Model.Igra GetById(int id)
         {
-            //var entity = Context.Rezervacije.Include("DodatnaOprema.Oprema").Include(x => x.Kupac).Include("Vozilo.Model").Include(x => x.Osiguranje).Where(x => x.RezervacijaId == id).FirstOrDefault();
-            //return _mapper.Map<Model.Rezervacije>(entity);
-            //  var entity = Context.Igra.Include(x=>x.IgraKonzola.)
             var entity = Context.Igra.Include("IgraKonzola.Konzola").Include("IgraZanr.Zanr")
                 .Where(x => x.ID == id).FirstOrDefault();
             return _mapper.Map<Model.Igra>(entity);
-
         }
 
         public override Model.Igra Insert(IgraUpsertRequest request)
@@ -121,7 +117,6 @@ namespace GamingHub2.Services
             }
             Context.SaveChanges();
 
-
             var listIgraZanr = Context.IgraZanr.Where(x => x.IgraID == id).ToList();
 
             foreach (var item in listIgraZanr)
@@ -146,23 +141,9 @@ namespace GamingHub2.Services
             }
             Context.SaveChanges();
 
-
             _mapper.Map(request, entity);
-
             Context.SaveChanges();
-
             return _mapper.Map<Model.Igra>(entity);
-
-            //if (!string.IsNullOrWhiteSpace(request.Password))
-            //{
-            //    if (request.Password != request.PasswordPotvrda)
-            //    {
-            //        throw new Exception("Passwordi se ne slažu");
-            //    }
-
-            //    entity.LozinkaSalt = GenerateSalt();
-            //    entity.LozinkaHash = GenerateHash(entity.LozinkaSalt, request.Password);
-            //}
         }
     }
 }

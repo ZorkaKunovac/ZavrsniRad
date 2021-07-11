@@ -29,6 +29,5 @@ namespace GamingHub2.Model
 
         public string KorisnikNaziv => Korisnik?.KorisnickoIme;
         public string IgraNaziv => Igra?.Naziv;
-        // public string VrstaIdNaziv => $"{Vrsta?.VrstaId} - {Vrsta?.Naziv}";
     }
 }
