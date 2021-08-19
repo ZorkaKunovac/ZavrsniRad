@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace GamingHub2.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class IgraKonzolaController : BaseReadController<Model.IgraKonzola, IgraKonzolaSearchRequest>
     {
         public IgraKonzolaController(IIgraKonzolaService service) : base(service)

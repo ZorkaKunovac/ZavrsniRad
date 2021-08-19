@@ -1,0 +1,59 @@
+﻿@model GamingHub2.Model.Requests.ProizvodInsertRequest
+
+@{
+    ViewData["Title"] = "Dodaj";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h4>Dodavanje proizvoda</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Dodaj" asp-controller="Proizvod">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="IgraKonzolaID" class="control-label"></label>
+                <select asp-for="IgraKonzolaID" class="form-control" asp-items="Model.IgraKonzola"> </select>
+                <span asp-validation-for="IgraKonzolaID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProdajnaCijena" class="control-label"></label>
+                <input asp-for="ProdajnaCijena" class="form-control" />
+                <span asp-validation-for="ProdajnaCijena" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Popust" class="control-label"></label>
+                <input asp-for="Popust" class="form-control" />
+                <span asp-validation-for="Popust" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Status" class="control-label"></label>
+                @Html.CheckBoxFor(m => m.Status)
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Snimi" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<div>
+    <a asp-action="Index">Natrag na listu</a>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+@*<script>
+    $.validator.methods.number = function (value, element) {
+        return this.optional(element) || /^-?(?:\d+|\d{1,3}(?:\,\d{3})+)?(?:,\d+)?$/.test(value);
+    }
+
+</script>*@
+   
+
+}

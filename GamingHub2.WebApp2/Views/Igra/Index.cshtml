@@ -1,0 +1,81 @@
+﻿@model IEnumerable<GamingHub2.Model.Igra>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Uredi">Create New</a>
+</p>
+
+
+@using (Html.BeginForm("Index", "Igra", FormMethod.Get))
+{
+    @Html.TextBox("Naziv")
+    <input type="submit" name="submit" value="Trazi" />
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+            @Html.DisplayNameFor(model => model.SlikaLink)
+        </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Naziv)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Developer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Izdavac)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DatumIzlaska)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @if (item.SlikaLink == null || item.SlikaLink.Length == 0)
+                {
+                    <img src="~/img/no-game.jpg" style="max-width:100px; max-height:100px" />
+                }
+                else
+                {
+                    <img src="@item.SlikaLink" style="max-width:100px; max-height:100px" />
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Naziv)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Developer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Izdavac)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DatumIzlaska)
+            </td>
+            <td>
+                @Html.ActionLink("Uredi", "Uredi", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

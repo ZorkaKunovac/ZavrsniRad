@@ -10,15 +10,17 @@ namespace GamingHub2.Model.Requests
     {
         [Required(ErrorMessage = "Polje je obavezno")]
         [StringLength(50, ErrorMessage = "{0} mora biti izmedju {2} i {1} znakova.", MinimumLength = 3)]
+        [Display(Name ="Naziv proizvoda")]
         public string NazivProizvoda { get; set; }
 
         [Required(ErrorMessage = "Polje je obavezno")]
         [Column(TypeName = "decimal(8, 2)")]
+        [Display(Name = "Cijena")]
         public decimal ProdajnaCijena { get; set; }
         [Column(TypeName = "decimal(8, 2)")]
         public decimal Popust { get; set; }
 
         [Required(ErrorMessage = "Polje je obavezno")]
-        public bool? Status { get; set; }
+        public bool Status { get; set; }
     }
 }

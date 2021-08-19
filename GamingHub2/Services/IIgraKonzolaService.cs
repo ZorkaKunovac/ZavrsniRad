@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GamingHub2.Services
 {
-    public interface IIgraKonzolaService : IReadService<Model.IgraKonzola, IgraKonzolaSearchRequest> //Zanr je model
+    public interface IIgraKonzolaService : IReadService<Model.IgraKonzola, IgraKonzolaSearchRequest> 
     {
     }
 }

@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using GamingHub2.Helpers;
 
 namespace GamingHub2.Mapping
 {
@@ -18,6 +19,7 @@ namespace GamingHub2.Mapping
             CreateMap<Database.Konzola, Model.Konzola>();
             CreateMap<KonzolaUpsertRequest, Database.Konzola>();
             CreateMap<Database.Igra, Model.Igra>();
+                
             CreateMap<Database.Igra, IgraUpsertRequest>().ReverseMap();
             CreateMap<Database.IgraKonzola, Model.IgraKonzola>();
             CreateMap<Database.IgraKonzola, Model.IgraKonzolaNoRelations>();

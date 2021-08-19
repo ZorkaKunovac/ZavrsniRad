@@ -24,6 +24,8 @@ namespace GamingHub2.WebApp.Controllers
         public async Task<IActionResult> Index()
         {
             List<KonzolaViewModel> konzolas = new List<KonzolaViewModel>();
+            //neki tekst
+
             HttpClient client = service.Initial();
             HttpResponseMessage res = await client.GetAsync("api/konzola");
             if (res.IsSuccessStatusCode)

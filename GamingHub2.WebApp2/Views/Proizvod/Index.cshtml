@@ -1,0 +1,68 @@
+﻿@model IEnumerable<GamingHub2.Model.Proizvod>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Dodaj">Create New</a>
+</p>
+
+
+@using (Html.BeginForm("Index", "Proizvod", FormMethod.Get))
+{
+    @Html.TextBox("Naziv")
+    <input type="submit" name="submit" value="Trazi" />
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+
+                @Html.DisplayNameFor(model => model.ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NazivProizvoda)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProdajnaCijena)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Popust)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NazivProizvoda)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProdajnaCijena)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Popust)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
+                    @Html.ActionLink("Uredi", "Uredi", new { id = item.ID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

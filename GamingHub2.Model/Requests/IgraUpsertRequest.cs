@@ -1,7 +1,9 @@
-﻿using System;
+﻿using GamingHub2.Helpers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
+
 
 namespace GamingHub2.Model.Requests
 {
@@ -22,6 +24,11 @@ namespace GamingHub2.Model.Requests
         public byte[] SlikaLink { get; set; }
         public List<int> Konzole { get; set; } = new List<int>();
         public List<int> Zanrovi { get; set; } = new List<int>();
+
+        //Za WEB dio
+        public int KonzolaId { get; set; }
+        public List<CheckBoxHelper> CheckBox { get; set; }
+
 
     }
 }

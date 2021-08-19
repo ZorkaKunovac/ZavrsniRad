@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace GamingHub2.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [ApiController]
     [Route("api/[controller]")]
     public class ProizvodController : BaseCRUDController<Model.Proizvod, ProizvodSearchRequest, ProizvodInsertRequest, ProizvodUpdateRequest>

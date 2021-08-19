@@ -80,7 +80,7 @@ namespace GamingHub2.Services
 
             var listIgraKonzola = Context.IgraKonzola.Where(x => x.IgraID == id).ToList();
 
-            foreach (var item in listIgraKonzola)
+            foreach (var item in listIgraKonzola)//one koje su u bazi
             {
                 // Brisanje svih IgraKonzola objekata koji nisu sadrzani  u request.Konzole
                 if (!request.Konzole.Contains(item.KonzolaID))

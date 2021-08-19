@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
@@ -8,9 +9,11 @@ namespace GamingHub2.Model
     public class Proizvod
     {
         public int ID { get; set; }
+        [Display(Name = "Naziv proizvoda")]
         public string NazivProizvoda { get; set; }
 
         [Column(TypeName = "decimal(8, 2)")]
+        [Display(Name = "Cijena")]
         public decimal ProdajnaCijena { get; set; }
         [Column(TypeName = "decimal(8, 2)")]
         public decimal Popust { get; set; }

@@ -1,0 +1,81 @@
+﻿@model GamingHub2.Model.Requests.IgraUpsertRequest
+
+@{
+    ViewData["Title"] = "Dodaj";
+}
+
+<h4>Uredi igru</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Uredi" asp-controller="Igra" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                @*<label asp-for="Id" readonly hidden class="control-label"></label>
+                <input asp-for="Id" readonly hidden class="form-control" />*@
+                @*<span asp-validation-for="Id" class="text-danger"></span>*@
+            </div>
+            <div class="form-group">
+                <label asp-for="Naziv" class="control-label"></label>
+                <input asp-for="Naziv" class="form-control" />
+                <span asp-validation-for="Naziv" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Developer" class="control-label"></label>
+                <input asp-for="Developer" class="form-control" />
+                <span asp-validation-for="Developer" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Izdavac" class="control-label"></label>
+                <input asp-for="Izdavac" class="form-control" />
+                <span asp-validation-for="Izdavac" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DatumIzlaska" class="control-label"></label>
+                <input asp-for="DatumIzlaska" class="form-control" />
+                <span asp-validation-for="DatumIzlaska" class="text-danger"></span>
+            </div>
+            @*<div class="form-group">
+                <label asp-for="VideoLink" class="control-label"></label>
+                <input asp-for="VideoLink" class="form-control" />
+                <span asp-validation-for="VideoLink" class="text-danger"></span>
+            </div>*@
+            @*<div class="form-group">
+                <label asp-for="SlikaLink" class="control-label"></label><br />
+                @if (!string.IsNullOrEmpty(Model.SlikaLink))
+                {
+                    <img src="@Model.SlikaLink" style="max-width:100px; max-height:100px" />
+                }
+                <input asp-for="SlikaLink" type="file" name="file" id="file" />
+                <span asp-validation-for="SlikaLink" class="text-danger"></span>
+            </div>*@
+        <div>
+            @*@for (int i = 0; i < Model.Konzola.Count(); i++)
+        {
+            <input asp-for="@Model.Konzola[i].IsChecked" type="checkbox" />
+            <label asp-for="@Model.Konzola[i].Text">@Model.Konzola[i].Text</label>
+            <input asp-for="@Model.Konzola[i].Id" type="hidden" />
+            <input asp-for="@Model.Konzola[i].Text" type="hidden" />
+
+            <input asp-for="@Model.Konzola[i].KonzolaId" type="hidden" />
+
+        }*@
+
+            @for (int i = 0; i < Model.CheckBox.Count; i++)
+            {
+                <input asp-for="@Model.CheckBox[i].IsChecked" type="checkbox" />
+                <label asp-for="@Model.CheckBox[i].Text">@Model.CheckBox[i].Text</label>
+                <input type="hidden" asp-for="@Model.CheckBox[i].KonzolaId"/>
+            }
+        </div>
+
+            <div class="form-group">
+                <input type="submit" value="Uredi" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Prikaz">Natrag na listu</a>
+</div>
