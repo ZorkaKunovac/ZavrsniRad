@@ -48,22 +48,32 @@ namespace GamingHub2.WebApp2.Controllers
         public async Task<IActionResult> Dodaj(ProizvodInsertRequest request)
         {
             var igrakonzola = await _igraKonzolaService.Get<List<IgraKonzola>>(null);
-            Proizvod proizvod;
             if (ModelState.IsValid)
             {
-                //proizvod = new Proizvod()
-                //{
                 request.NazivProizvoda = igrakonzola.Where(ik => ik.ID == request.IgraKonzolaID)
                  .Select(ik => ik.Naziv).SingleOrDefault();
-                    //     ImeProizvoda = db.IgraKonzola.Where(ik => ik.ID == proizvodvm.IgraKonzolaID)
-                    //.Select(ik => ik.Igra.Naziv + " - " + ik.Konzola.Naziv).SingleOrDefault(),
-                //};
                 await _service.Insert<Model.Proizvod>(request);
             }
             //else
             //    return View(request);
 
             return Redirect("/Proizvod/Index");
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Uredi(int id)
+        {
+            var proizvod = await _service.GetById<Model.Proizvod>(id);
+            ProizvodUpdateRequest request = new ProizvodUpdateRequest()
+            {
+                NazivProizvoda = proizvod.NazivProizvoda,
+                ProdajnaCijena = proizvod.ProdajnaCijena,
+                Popust = proizvod.Popust,
+                Status = (bool)proizvod.Status 
+            };
+
+            ViewBag.Id = id;
+            return View(request);
         }
 
         [HttpPost]
@@ -78,41 +88,7 @@ namespace GamingHub2.WebApp2.Controllers
         }
 
 
-        [HttpGet]
-        public async Task<IActionResult> Uredi(int id)
-        {
-            var proizvod = await _service.GetById<Model.Proizvod>(id);
-            ProizvodUpdateRequest request = new ProizvodUpdateRequest()
-            {
-                NazivProizvoda = proizvod.NazivProizvoda,
-                ProdajnaCijena = proizvod.ProdajnaCijena,
-                Popust = proizvod.Popust,
-                Status = (bool)proizvod.Status
-            };
+   
 
-            ViewBag.Id = id;
-            return View(request);
-        }
-
-        //[HttpPost]
-        //public async Task<IActionResult> Uredi(int id, ZanrUpsertRequest request)
-        //{
-        //    Zanr zanr;
-        //    if (ModelState.IsValid)
-        //    {
-        //        if (id == 0)
-        //        {
-        //            zanr = new Zanr();
-        //            await _service.Insert<Model.Zanr>(request);
-        //        }
-        //        else
-        //            await _service.Update<Model.Zanr>(id, request);
-        //    }
-        //    else
-        //    {
-        //        return View(request);
-        //    }
-        //    return Redirect("/Zanr/Index");
-        //}
     }
 }

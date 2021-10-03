@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace GamingHub2.Controllers
 {
-    [Authorize(Roles = "Administrator")]
+   // [Authorize(Roles = "Administrator")]
     public class UlogeController : BaseCRUDController<Model.Uloge, object,UlogaInsertRequest,object>
     {
         public UlogeController(ICRUDService<Uloge, object,UlogaInsertRequest,object> service) : base(service)

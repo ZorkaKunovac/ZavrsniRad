@@ -1,0 +1,33 @@
+﻿@model IEnumerable<GamingHub2.Model.Korisnici>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}<h1>Korisnicke uloge</h1>
+
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Korisnicko ime</th>
+            <th>Email</th>
+            <th>Uloge</th>
+            <th>Akcija</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.KorisnickoIme</td>
+                <td>@user.Email</td>
+                <td>@string.Join("", user.Uloge.ToList())</td>
+                <td>
+                   @*@Html.ActionLink("Manage", "Manage", new { id = user.KorisnikId }) |*@
+
+                    <a class="btn btn-primary" asp-controller="Korisnici" asp-action="Manage" asp-route-id="@user.KorisnikId">Upravljaj</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

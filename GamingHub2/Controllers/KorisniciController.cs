@@ -11,7 +11,7 @@ using GamingHub2.Services;
 
 namespace GamingHub2.Controllers
 {
-    [Authorize]
+  //  [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class KorisniciController : ControllerBase
@@ -38,7 +38,7 @@ namespace GamingHub2.Controllers
         {
             return _service.MojProfil();
         }
-        [Authorize(Roles = "Administrator")]
+      //  [Authorize(Roles = "Administrator")]
         [HttpPost]
         public Model.Korisnici Insert(KorisniciUpsertRequest request)
         {
@@ -52,7 +52,7 @@ namespace GamingHub2.Controllers
             return _service.Registracija(request);
         }
 
-        [Authorize(Roles = "Administrator")]
+      //  [Authorize(Roles = "Administrator")]
         [HttpPut("{id}")]
         public Model.Korisnici Update(int id, [FromBody] KorisniciUpsertRequest request)
         {

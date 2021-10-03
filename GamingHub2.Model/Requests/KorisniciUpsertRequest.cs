@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GamingHub2.Helpers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
@@ -29,5 +30,10 @@ namespace GamingHub2.Model.Requests
         public byte[] Slika { get; set; }
 
         public List<int> Uloge { get; set; } = new List<int>();
+
+
+        //Za WEB dio
+        public int UlogaId { get; set; }
+        public List<CheckBoxHelper> CheckBox { get; set; }
     }
 }

@@ -1,0 +1,82 @@
+﻿@model GamingHub2.Model.Requests.KorisniciUpsertRequest
+
+@{
+    ViewData["Title"] = "Manage"; Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Manage" asp-controller="Korisnici" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                @*<label asp-for="Id" readonly hidden class="control-label"></label>
+            <input asp-for="Id" readonly hidden class="form-control" />*@
+                @*<span asp-validation-for="Id" class="text-danger"></span>*@
+            </div>
+            <div class="form-group">
+                <label asp-for="Ime" class="control-label"></label>
+                <input asp-for="Ime" class="form-control" readonly />
+                <span asp-validation-for="Ime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Prezime" class="control-label"></label>
+                <input asp-for="Prezime" readonly class="form-control" />
+                <span asp-validation-for="Prezime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Telefon" class="control-label"></label>
+                <input asp-for="Telefon" class="form-control" />
+                <span asp-validation-for="Telefon" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="KorisnickoIme" class="control-label"></label>
+                <input asp-for="KorisnickoIme" class="form-control" />
+                <span asp-validation-for="KorisnickoIme" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PasswordPotvrda" class="control-label"></label>
+                <input asp-for="PasswordPotvrda" class="form-control" />
+                <span asp-validation-for="PasswordPotvrda" class="text-danger"></span>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <h2>Upravljanje korisnickim ulogama</h2>
+                    Dodaj/Ukloni Ulogu za Korisnika / @ViewBag.UserName.
+                </div>
+                <div class="card-body">
+
+                    @for (int i = 0; i < Model.CheckBox.Count; i++)
+                    {
+                        <div class="form-check m-1">
+                            <input type="hidden" asp-for="@Model.CheckBox[i].KonzolaId" />
+                            <label asp-for="@Model.CheckBox[i].Text">@Model.CheckBox[i].Text</label>
+                            <input asp-for="@Model.CheckBox[i].IsChecked" type="checkbox" />
+                        </div>
+                    }
+                </div>
+                @*<div class="card-footer">
+                <input type="submit" value="Update" class="btn btn-primary" style="width:auto" />
+                <a asp-action="Index" asp-route-id="@ViewBag.KorisnikId" class="btn btn-primary" style="width:auto">Cancel</a>
+            </div>*@
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Snimi" class="btn btn-primary" />
+            </div>
+
+        </form>
+    </div>
+</div>
+<div>
+    <a asp-action="Index">Natrag na listu</a>
+</div>

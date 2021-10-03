@@ -30,7 +30,32 @@ namespace GamingHub2.WebApp2.Controllers
             return View(igras);
         }
 
-         [HttpGet]
+        //[HttpGet]
+        //public async Task<IActionResult> Dodaj()
+        //{
+        //    var konzole = await _konzolaService.Get<List<Model.Konzola>>(null);//sve
+        //    IgraUpsertRequest request = new IgraUpsertRequest();
+        //    request.CheckBox = new List<CheckBoxHelper>();
+
+        //    foreach (var item in konzole)
+        //    {
+               
+        //            request.CheckBox.Add(new CheckBoxHelper { KonzolaId = item.ID, Text = item.Naziv, IsChecked = false });
+        //    }
+
+        //    request.Naziv = igra.Naziv;
+        //    request.Developer = igra.Developer;
+        //    request.Izdavac = igra.Izdavac;
+        //    request.DatumIzlaska = igra.DatumIzlaska;
+        //    request.SlikaLink = igra.SlikaLink;
+
+        //    ViewBag.Id = id;
+        //    return View(request);
+        //}
+
+
+
+        [HttpGet]
         public async Task<IActionResult> Uredi(int id)
         {
             var igra = await _service.GetById<Model.Igra>(id);//postojece
@@ -39,7 +64,7 @@ namespace GamingHub2.WebApp2.Controllers
             request.CheckBox = new List<CheckBoxHelper>();
             foreach (var item in konzole)
             {
-                if (igra.IgraKonzola.Any(a => a.KonzolaID == item.ID))
+                if (igra!=null && igra.IgraKonzola.Any(a => a.KonzolaID == item.ID))
                 {
                     request.CheckBox.Add(new CheckBoxHelper { KonzolaId = item.ID, Text = item.Naziv, IsChecked = true });
                 }
@@ -48,95 +73,17 @@ namespace GamingHub2.WebApp2.Controllers
                     request.CheckBox.Add(new CheckBoxHelper { KonzolaId = item.ID, Text = item.Naziv, IsChecked = false });
                 }
             }
-            request.Naziv = igra.Naziv;
-            request.Developer = igra.Developer;
-            request.Izdavac = igra.Izdavac;
-            request.DatumIzlaska = igra.DatumIzlaska;
-            request.SlikaLink = igra.SlikaLink;
+            if (igra != null && id != 0)
+            {
+                request.Naziv = igra.Naziv;
+                request.Developer = igra.Developer;
+                request.Izdavac = igra.Izdavac;
+                request.DatumIzlaska = igra.DatumIzlaska;
+                request.SlikaLink = igra.SlikaLink;
 
-
-
-            //var igrekonzole = await _igrakonzolaservice.Get<List<IgraKonzola>>(null);
-            //var proizvodi = await _proizvodService.Get<List<Proizvod>>(null);
-
-            //IgraUpsertRequest request = new IgraUpsertRequest();
-            //if (id == 0)
-            //{
-            //    request = new IgraUpsertRequest() { };
-            //}
-            //else
-            //{
-            //    var igra = await _service.GetById<Model.Igra>(id);
-            //    request.Naziv = igra.Naziv;
-            //    request.Developer = igra.Developer;
-            //    request.Izdavac = igra.Izdavac;
-            //    request.DatumIzlaska = igra.DatumIzlaska;
-            //    var konzoleList = await _konzolaService.Get<List<Model.Konzola>>(null);
-
-            //    //foreach (var item in igra.IgraKonzola)
-            //    //{
-            //    //    for (int i = 0; i < konzoleList.Items.Count; i++)
-            //    //    {
-            //    //        Model.Konzola trenutni = (Model.Konzola)clbKonzole.Items[i];
-            //    //        if (trenutni.ID == item.KonzolaID)
-            //    //        {
-            //    //            clbKonzole.SetItemCheckState(i, CheckState.Checked);
-            //    //        }
-            //    //    }
-            //    //}
-
-            //    var listIgraKonzola = igrekonzole.Where(x => x.IgraID == id).ToList();
-            //    //var listProizvodi  = proizvodi.Where
-            //    foreach (var item in listIgraKonzola)
-            //    {
-            //        // Brisanje svih IgraKonzola objekata koji nisu sadrzani  u request.Konzole
-            //        if (!request.Konzole.Contains(item.KonzolaID))
-            //        {
-            //            if (proizvodi.Any(x => x.IgraKonzolaID == item.ID))
-            //            {
-            //                throw new Exception("Nije dozvoljeno brisanje igre na konzoli za koju ima kreiran proizvod.");
-            //            }
-
-            //            listIgraKonzola.Remove(item);
-
-            //        }
-            //    }
-            //    //Context.SaveChanges();
-
-
-            //    //foreach (var konzola in request.Konzole)
-            //    //{
-            //    //    if (konzola != 0)
-            //    //    {
-            //    //        // IgraKonzola vec postoji, ne treba kreirati isti zapis ponovo
-
-            //    //        if (Context.IgraKonzola.Any(x => x.KonzolaID == konzola && x.IgraID == entity.ID))
-            //    //            continue;
-
-            //    //        Database.IgraKonzola igrakonzola = new Database.IgraKonzola
-            //    //        {
-            //    //            IgraID = entity.ID,
-            //    //            KonzolaID = konzola,
-            //    //            DatumIzmjene = DateTime.Now
-            //    //        };
-            //    //        Context.IgraKonzola.Add(igrakonzola);
-            //    //    }
-            //    //}
-            //    //Context.SaveChanges();
-
-            //    // request.CheckBox =igrekonzole
-            //    //.Where(ik => ik.IgraID == id)
-            //    //.Select(ik => new CheckBoxHelper
-            //    //{
-            //    //    Id = ik.ID,
-            //    //    Text = ik.Konzola.Naziv,
-            //    //    IsChecked = ik.IsChecked,
-            //    //    KonzolaId = ik.KonzolaID
-            //    //}).ToList()
-            //}
-            ViewBag.Id = id;
+                ViewBag.Id = id;
+            }
             return View(request);
-            //return View();
         }
 
         [HttpPost]

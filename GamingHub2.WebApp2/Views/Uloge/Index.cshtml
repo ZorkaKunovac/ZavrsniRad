@@ -1,0 +1,38 @@
+﻿@model IEnumerable<GamingHub2.Model.Uloge>
+
+@{
+    ViewData["Title"] = "Upravljanje ulogama";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Role Manager</h1>
+
+
+<form method="post" asp-action="AddRole" asp-controller="Uloge">
+
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="input-group">
+        <input name="roleName" class="form-control w-25">
+        <span class="input-group-btn">
+            <button class="btn btn-info">Dodaj Ulogu</button>
+        </span>
+    </div>
+</form>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Uloga</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var role in Model)
+        {
+            <tr>
+                <td>@role.UlogaId</td>
+                <td>@role.Naziv</td>
+            </tr>
+        }
+    </tbody>
+</table>
