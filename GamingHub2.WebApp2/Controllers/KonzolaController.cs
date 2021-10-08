@@ -1,6 +1,7 @@
 ﻿using GamingHub2.Model;
 using GamingHub2.Model.Requests;
 using GamingHub2.WebApp2.Helper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,8 @@ using System.Threading.Tasks;
 
 namespace GamingHub2.WebApp2.Controllers
 {
+
+    // [Authorize(Roles = "Administrator")]
 
     public class KonzolaController : Controller
     {

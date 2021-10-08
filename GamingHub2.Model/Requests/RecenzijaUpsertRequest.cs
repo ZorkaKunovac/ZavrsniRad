@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
@@ -23,6 +24,8 @@ namespace GamingHub2.Model.Requests
         [MaxLength(100, ErrorMessage = "Maksimalno {1} znakova")]
         public string VideoRecenzija { get; set; }
 
+        //Za web dio
+        public List<SelectListItem> Igre { get; set; }
 
     }
 }

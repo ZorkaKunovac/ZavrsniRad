@@ -1,3 +1,5 @@
+//using GamingHub2.Security;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -23,6 +25,37 @@ namespace GamingHub2.WebApp2
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            /*services.AddMvc(x => x.Filters.Add<ErrorFilter>()).AddRazorPagesOptions(options =>
+            //{
+            //    options.Conventions.AddPageRoute("/Swagger", "");
+            //});
+
+
+            //services.AddSwaggerGen(c =>
+            //{
+            //    c.SwaggerDoc("v1", new OpenApiInfo { Title = "eProdaja API", Version = "v1" });
+
+            //    c.AddSecurityDefinition("basicAuth", new OpenApiSecurityScheme
+            //    {
+            //        Type = SecuritySchemeType.Http,
+            //        Scheme = "basic"
+            //    });
+
+            //    c.AddSecurityRequirement(new OpenApiSecurityRequirement
+            //    {
+            //        {
+            //            new OpenApiSecurityScheme
+            //            {
+            //                Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "basicAuth" }
+            //            },
+            //            new string[]{}
+            //        }
+            //    });
+            //});*/
+            services.AddAuthentication("BasicAuthentication");
+             //.AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", null);
+
+
             services.AddControllersWithViews();
             services.AddMvc();
             services.AddOptions();
@@ -46,6 +79,7 @@ namespace GamingHub2.WebApp2
             app.UseStaticFiles();
 
             app.UseRouting();
+            app.UseAuthentication();
 
             app.UseAuthorization();
 
@@ -53,7 +87,7 @@ namespace GamingHub2.WebApp2
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Login}/{action=Index}/{id?}");
             });
         }
     }

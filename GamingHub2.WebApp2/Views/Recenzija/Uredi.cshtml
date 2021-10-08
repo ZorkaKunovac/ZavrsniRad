@@ -1,0 +1,66 @@
+﻿@model GamingHub2.Model.Requests.RecenzijaUpsertRequest
+
+@{
+    ViewData["Title"] = "Uredi";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+<h4>Dodavanje/Uredjivanje recenzije</h4>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Uredi" asp-controller="Recenzija" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Naslov" class="control-label"></label>
+                <input asp-for="Naslov" class="form-control" />
+                <span asp-validation-for="Naslov" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DatumObjave" class="control-label"></label>
+                <input asp-for="DatumObjave" readonly class="form-control" />
+                <span asp-validation-for="DatumObjave" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Sadrzaj" class="control-label"></label>
+                <textarea asp-for="Sadrzaj" value="@Model.Sadrzaj" class="form-control" rows="6"></textarea>
+                <span asp-validation-for="Sadrzaj" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IgraId" class="control-label"></label>
+                <select asp-for="IgraId" asp-items="Model.Igre" class="form-group"> </select>
+                <span asp-validation-for="IgraId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="VideoRecenzija" class="control-label"></label>
+                <input asp-for="VideoRecenzija" class="form-control" />
+                <span asp-validation-for="VideoRecenzija" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Slika" class="control-label"></label><br />
+                @if (Model.Slika != null && Model.Slika.Length != 0)
+                {
+                    @*<img src="@Model.Slika" style="max-width:100px; max-height:100px" />*@
+                    <img src="@Model.Slika" />
+                }
+                <input asp-for="Slika" type="file" name="file" id="file" />
+                <span asp-validation-for="Slika" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Snimi" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<div>
+    <a asp-action="Index">Natrag</a>
+</div>
+<script>
+        $(function () {
+            $("#IgraID").chosen();
+            //alert("ok");
+        });
+</script>

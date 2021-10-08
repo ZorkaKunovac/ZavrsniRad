@@ -1,0 +1,47 @@
+﻿@model IEnumerable<GamingHub2.Model.Recenzija>
+
+@{
+}
+
+<div class="container">
+
+    <div class="row">
+
+        <!-- Blog Entries Column -->
+        <div class="col-md-8">
+
+            <h2 class="my-4">
+                Prikaz recenzija
+            </h2>
+            <br />
+            <a href="/Recenzija/Dodaj" class="btn btn-success">Dodaj recenziju</a>
+            <br /><br />
+            <!-- Blog Recenzija -->
+            @foreach (var r in Model)
+            {
+        <div class="card mb-4">
+            @*<img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">*@
+            @* @if (!string.IsNullOrEmpty(r.Slika))>*@
+            @if (r.Slika != null && r.Slika.Length !=0)
+            {
+            @*<img src="@Model.Slika" style="max-width:320px; max-height:520px" /> }*@
+            <img class="card-img-top" alt="Card image cap" src="@r.Slika" style="max-width:750px; max-height:250px" />
+            }
+            else
+            {
+            <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
+            }
+            <div class="card-body">
+                <h2 class="card-title">@r.Naslov</h2>
+                <p class="card-text"> @r.Sadrzaj.Substring(0, 200) ...</p>
+                <a href="/Recenzija/Detalji?RecenzijaID=@r.ID" class="btn btn-primary">Procitaj vise &rarr;</a>
+            </div>
+            <div class="card-footer text-muted">
+                <a href="#"> @r.KorisnikNaziv </a> / @(r.DatumObjave.ToString("dd.MM.yyyy"))
+            </div>
+        </div>
+            }
+
+        </div>
+    </div>
+</div>
