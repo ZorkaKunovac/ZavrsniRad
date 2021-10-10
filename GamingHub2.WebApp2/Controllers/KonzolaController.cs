@@ -10,9 +10,7 @@ using System.Threading.Tasks;
 
 namespace GamingHub2.WebApp2.Controllers
 {
-
     // [Authorize(Roles = "Administrator")]
-
     public class KonzolaController : Controller
     {
         APIService _service = new APIService("Konzola");
@@ -47,18 +45,6 @@ namespace GamingHub2.WebApp2.Controllers
         [HttpPost]
         public async Task<IActionResult> Uredi(int id, KonzolaUpsertRequest request)
         {
-            //_servic.getbjid
-            //    mapiraj request na taj objekat koji ti vrati 
-            //    var vraceniObjekat;
-            //vracenobjekat.nesti = request.nest1;
-            //itd.
-            //ovako je na winui de mi da vidim vie
-            // meni prima akcija post objekat koji saljem sa forme
-            //KonzolaUpsertRequest request = new KonzolaUpsertRequest()
-            //{
-            //    Naziv = txtNaziv.Text,
-            //    Detalji = rtbDetalji.Text
-            //};
 
             //Model.Konzola entity = null;
             //if (!_id.HasValue)
@@ -79,7 +65,6 @@ namespace GamingHub2.WebApp2.Controllers
                 {
                     var t = await _service.Update<Model.Konzola>(id, request);//samo ovo ti je dovoljno
                 }
-
             }
             else
             {
@@ -87,7 +72,6 @@ namespace GamingHub2.WebApp2.Controllers
             }
             return Redirect("/Konzola/Index");
         }
-
 
     }
 }

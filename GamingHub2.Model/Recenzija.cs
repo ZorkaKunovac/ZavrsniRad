@@ -29,5 +29,9 @@ namespace GamingHub2.Model
 
         public string KorisnikNaziv => Korisnik?.KorisnickoIme;
         public string IgraNaziv => Igra?.Naziv;
+
+        //Za Web dio
+        public string stringSlika { get; set; }
+
     }
 }

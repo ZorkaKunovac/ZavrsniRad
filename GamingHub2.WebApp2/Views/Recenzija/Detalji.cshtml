@@ -1,0 +1,127 @@
+﻿@model GamingHub2.Model.RecenzijaDetaljiVM
+
+@{
+    ViewData["Title"] = "Detalji";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Klix sekcija</title>
+    <!-- Roboto font CDN -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+
+    <!-- FA-ICONS CDN -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
+
+    <!-- CUSTOM STYLE LINK -->
+    <link rel="stylesheet" href="../css/recenzijaStil.css">
+</head>
+
+<body>
+    <div class="row">
+        <form asp-action="Detalji">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ID" readonly hidden class="control-label"></label>
+                <input asp-for="ID" readonly hidden class="form-control" />
+                <span asp-validation-for="ID" class="text-danger"></span>
+            </div>
+
+            <div id="main-container">
+                <div id="postInfo">
+                    <h2>@Model.Naslov</h2>
+                    <span id="autor">@Model.Korisnik</span> <span>@(Model.DatumObjaveRecenzije?.ToString("dd.MM.yyyy"))</span>
+                </div>
+                <div id="gornjiDio" class="clearfix">
+                    <div id="dioZaVideo">
+                        @if (!string.IsNullOrEmpty(Model.YouTubeId))
+                        {
+                            <iframe src="https://www.youtube.com/embed/@Model.YouTubeId">
+                            </iframe>
+                        }
+                    </div>
+
+                    <div id="dioSaIgrom">
+                        <div id="igra">
+                            <div class="image2">
+                                @if (!string.IsNullOrEmpty(Model.SlikaLink))
+                                {
+                                    <img src="@Model.SlikaLink" /> }
+                                else
+                                {
+                                    <img src="~/img/no-game.jpg" />
+                                }
+                                @*<img src="../img/promo/game1.jpg">*@
+                            </div>
+                            <div class="sadrzaj">
+                                <span class="subtitleColumn">DATUM IZLASKA: </span> <span class="summaryColumn">@(Model.DatumIzlaskaIgre?.ToString("dd.MM.yyyy"))</span>
+                                <br>
+                                <span class="subtitleColumn">DEVELOPER: </span><span class="summaryColumn">@Model.Developer</span>
+                                <br>
+                                <span class="subtitleColumn">IZDAVAČ: </span><span class="summaryColumn">@Model.Izdavac</span>
+                                <br>
+                                <span class="subtitleColumn">ŽANR: </span> <span class="summaryColumn">@string.Join(" , ", Model.Zarnovi.ToList()) </span>
+                                <br>
+                                <span class="subtitleColumn">KONZOLE: </span> <span class="summaryColumn">@string.Join(" , ", Model.Konzole.ToList()) </span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <p style="clear:both"></p>
+
+                <div id="donjiDio" class="clearfix">
+                    <div id="sadrzajRecenzije">
+                        <p>
+                            @Model.Sadrzaj
+                        </p>
+                    </div>
+                    <div id="sidebar">
+                        @*@for (Model.RecenzijaRow i = 0; i < 3; i++)
+                            {*@
+                        @foreach (var r in Model.NajnovijeRecenzije)
+                        {
+                            <div class="article">
+
+                                <div class="image">
+                                    @if (!string.IsNullOrEmpty(r.SlikaLink))
+                                    {
+                                        <img src="@r.SlikaLink" /> }
+                                    else
+                                    {
+                                        <img src="~/img/no-game.jpg" />
+                                    }
+                                </div>
+
+                                <div class="content">
+                                    <span class="title">@r.Naslov </span>
+                                    <span class="time">
+                                        @(r.DatumObjaveRecenzije?.ToString("dd.MM.yyyy"))
+                                    </span>
+                                </div>
+                            </div>
+                            <div style="clear: both;"></div>
+                        }
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                <a class="btn btn-primary" asp-controller="Recenzija" asp-action="Uredi" asp-route-id="@Model.ID">Uredi</a>
+                <a class="btn btn-primary" asp-controller="Recenzija" asp-action="Obrisi" asp-route-id="@Model.ID">Obrisi</a>
+
+                <a class="btn btn-primary" asp-action="Index">Natrag</a>
+            </div>
+
+        </form>
+
+    </div>
+</body>
+</html>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

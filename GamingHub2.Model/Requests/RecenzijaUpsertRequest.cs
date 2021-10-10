@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
@@ -26,6 +27,10 @@ namespace GamingHub2.Model.Requests
 
         //Za web dio
         public List<SelectListItem> Igre { get; set; }
+        [DisplayName("Igra")]
+        public string ImeIgre { get; set; }
+        public string stringSlika { get; set; }
+
 
     }
 }
