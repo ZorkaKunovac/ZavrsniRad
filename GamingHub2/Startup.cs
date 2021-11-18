@@ -89,6 +89,7 @@ namespace GamingHub2
             services.AddScoped<IIgraKonzolaService, IgraKonzolaService>();
             services.AddScoped<INarudzbaService, NarudzbaService>();
             services.AddScoped<INarudzbaStavkaService, NarudzbaStavkaService>();
+            services.AddScoped<IAutorizacijskiTokenService, AutorizacijskiTokenService>();
             services.AddScoped<ICRUDService<Model.Ocjena, OcjenaSearchRequest, OcjenaUpsertRequest, OcjenaUpsertRequest>, OcjenaService>();
 
             services.AddScoped<ICRUDService<Model.Kupac, KupacSearchRequest, KupacUpsertRequest, KupacUpsertRequest>, KupacService>();

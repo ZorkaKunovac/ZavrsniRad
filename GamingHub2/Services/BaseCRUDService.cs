@@ -13,6 +13,7 @@ namespace GamingHub2.Services
         public BaseCRUDService(ApplicationDbContext context, IMapper mapper) : base(context,mapper)
         {
         }
+
         public virtual T Insert(TInsert request)
         {
             var set = Context.Set<TDb>(); //TDb je neka klasa iz Baze npr Proizvodi
@@ -36,5 +37,21 @@ namespace GamingHub2.Services
 
             return _mapper.Map<T>(entity);
         }
+
+        public virtual T Delete(int id)
+        {
+            var set = Context.Set<TDb>();
+            var entity = set.Find(id);
+
+            if(entity != null)
+            {
+                set.Remove(entity);
+                Context.SaveChanges();
+                return _mapper.Map<T>(entity);
+            }
+
+            return null;
+        }
+
     }
 }

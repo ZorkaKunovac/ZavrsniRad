@@ -54,21 +54,21 @@ namespace GamingHub2.WebApp2.Helper
             }
             catch (FlurlHttpException ex)
             {
-                if (ex.StatusCode == (int)HttpStatusCode.Unauthorized)
+                if (ex.StatusCode == (int)HttpStatusCode.Unauthorized || ex.StatusCode == (int)HttpStatusCode.Forbidden)
                 {
-                    // ovo ce se pozvati ukoliko login ne uspije, jer ce vratiti exception, nece vratiti null u loginVM
-                    throw new Exception("Pogrešno korisničko ime ili lozinka!");
-                    //Userexception?
-                    //  await Application.Current.MainPage.DisplayAlert("Greska", "Pogrešno korisničko ime ili lozinka!", "OK");
-
+                    throw new UnauthorizedAccessException();
                 }
-                if (ex.StatusCode == (int)HttpStatusCode.Forbidden)
-                {
-                    throw new Exception("Pristup zabranjen!");
-                }
+                
                 return default(T);
             }
         }
+
+        public async Task<T> Delete<T>(int id)
+        {
+            var url = $"{_apiURL}/{_route}/{id}";
+            return await url.WithBasicAuth(Username, Password).DeleteAsync().ReceiveJson<T>();
+        }
+
         public async Task<T> GetById<T>(object id)
         {
             var url = $"{_apiURL}/{_route}/{id}";

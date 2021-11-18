@@ -25,41 +25,11 @@ namespace GamingHub2.WebApp2
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            /*services.AddMvc(x => x.Filters.Add<ErrorFilter>()).AddRazorPagesOptions(options =>
-            //{
-            //    options.Conventions.AddPageRoute("/Swagger", "");
-            //});
-
-
-            //services.AddSwaggerGen(c =>
-            //{
-            //    c.SwaggerDoc("v1", new OpenApiInfo { Title = "eProdaja API", Version = "v1" });
-
-            //    c.AddSecurityDefinition("basicAuth", new OpenApiSecurityScheme
-            //    {
-            //        Type = SecuritySchemeType.Http,
-            //        Scheme = "basic"
-            //    });
-
-            //    c.AddSecurityRequirement(new OpenApiSecurityRequirement
-            //    {
-            //        {
-            //            new OpenApiSecurityScheme
-            //            {
-            //                Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "basicAuth" }
-            //            },
-            //            new string[]{}
-            //        }
-            //    });
-            //});*/
-            services.AddAuthentication("BasicAuthentication");
-             //.AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", null);
-
-
             services.AddControllersWithViews();
             services.AddMvc();
             services.AddOptions();
-
+            services.AddDistributedMemoryCache();
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -76,12 +46,10 @@ namespace GamingHub2.WebApp2
                 app.UseHsts();
             }
             app.UseHttpsRedirection();
-            app.UseStaticFiles();
+            app.UseSession();
 
             app.UseRouting();
             app.UseAuthentication();
-
-            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

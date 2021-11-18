@@ -1,6 +1,7 @@
 ﻿using GamingHub2.Model;
 using GamingHub2.Model.Requests;
 using GamingHub2.WebApp2.Helper;
+using GamingHub2.WebApp2.Helpers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace GamingHub2.WebApp2.Controllers
 {
-    // [Authorize(Roles = "Administrator")]
+    [Autorizacija(administrator: true/*, moderator: true, korisnik: true*/)]
     public class KonzolaController : Controller
     {
         APIService _service = new APIService("Konzola");

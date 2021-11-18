@@ -16,28 +16,7 @@ namespace GamingHub2.WebApp2.Controllers
     {
         APIService _service = new APIService("Korisnici");
         APIService _ulogeService = new APIService("Uloge");
-        public Model.Korisnici TrenutniKorisnik = null;
-        //public async Task<Korisnici> AuthenticirajAsync(string username, string pass)
-        //{
-          //  List<Korisnici> query = await _service.Get<List<Korisnici>>(null);
-            
 
-          //// var entity = _context.Korisnik.Include("KorisniciUloge.Uloga").FirstOrDefault(x => x.KorisnickoIme == username);
-
-          //  if (entity == null)
-          //  {
-          //      //throw new UserException("Pogrešan username ili password");
-          //  }
-
-          //  var hash = GenerateHash(entity.LozinkaSalt, pass);
-
-          //  if (hash != entity.LozinkaHash)
-          //  {
-          //      //throw new UserException("Pogrešan username ili password");
-          //  }
-
-          //  return entity;
-        //}
         //-----------------------------------------------------------------------------------
         public static string GenerateSalt()
         {

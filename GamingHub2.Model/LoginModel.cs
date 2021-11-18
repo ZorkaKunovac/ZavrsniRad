@@ -4,14 +4,12 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
-using System.Web.Mvc;
 
 namespace GamingHub2.Model
 {
     //class LoginModel
     //{
     //}
-    [AllowAnonymous]
     public class LoginModel
     {
         //private readonly UserManager<Korisnik> _userManager;

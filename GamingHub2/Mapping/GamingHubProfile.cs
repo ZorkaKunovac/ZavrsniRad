@@ -48,6 +48,9 @@ namespace GamingHub2.Mapping
 
             CreateMap<Database.Kupac, Model.Kupac>().ReverseMap();
             CreateMap<KupacUpsertRequest, Database.Kupac>();
+
+            CreateMap<Database.AutorizacijskiToken, Model.AutorizacijskiToken>();
+            CreateMap<AutorizacijskiTokenInsertRequest, Database.AutorizacijskiToken>();
         }
     }
 }

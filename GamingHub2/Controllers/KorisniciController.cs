@@ -34,6 +34,7 @@ namespace GamingHub2.Controllers
             return _service.GetById(id);
         }
         [HttpGet("MojProfil")]
+        [Authorize]
         public Model.Korisnici MojProfil()
         {
             return _service.MojProfil();

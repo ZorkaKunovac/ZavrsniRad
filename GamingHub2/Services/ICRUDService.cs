@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GamingHub2.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -9,5 +10,6 @@ namespace GamingHub2.Services
     {
         T Insert(TInsert request);
         T Update(int id, TUpdate request);
+        T Delete(int id);
     }
 }

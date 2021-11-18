@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using GamingHub2.Model;
+using GamingHub2.WebApp2.Helpers;
 // @model GamingHub2.Model.LoginModel
 namespace GamingHub2.WebApp2.Controllers
 {
@@ -12,71 +13,54 @@ namespace GamingHub2.WebApp2.Controllers
     {
         APIService _korisniciService = new APIService("Korisnici");
 
-
-        /*
-         *  APIService.Username = txtUsername.Text;
-            APIService.Password = txtPassword.Text;
-            try
-            {
-                var TrenutniKorisnik = await _korisniciService.Get<Model.Korisnici>(null, "MojProfil");
-
-                if (TrenutniKorisnik != null)
-                {
-                    bool isAdmin = TrenutniKorisnik.KorisniciUloge.Any(x => x.Uloga.Naziv == "Administrator");
-                    bool isModerator = TrenutniKorisnik.KorisniciUloge.Any(x => x.Uloga.Naziv == "Moderator");
-                    if(!isAdmin && !isModerator)
-                    {
-                        MessageBox.Show("Pristup aplikaciji je dozovljen samo administratorima i moderatorima.", "Pristup zabranjen", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-
-                    APIService.TrenutniKorisnik = TrenutniKorisnik;
-                    DialogResult = DialogResult.OK;
-                }
-            }
-            catch (Exception ex)
-            {
-
-            }
-         */
-
- 
         [HttpGet]
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
+            Korisnici k = await HttpContext.GetLogiraniKorisnik();
+            if (k != null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> Index( LoginModel loginModel)
+        public async Task<IActionResult> Index(LoginModel loginModel)
         {
+            var TrenutniKorisnik = await Autentifikacija.Authenticiraj(loginModel.Input.KorisnickoIme, loginModel.Input.Password);
 
-            //if (ModelState.IsValid)
-            //{
-            APIService.Username = loginModel.Input.KorisnickoIme;  //viewbag
-            APIService.Password = loginModel.Input.Password;
-            try
+            if (TrenutniKorisnik != null)
             {
-                var TrenutniKorisnik = await _korisniciService.Get<Model.Korisnici>(null, "MojProfil");
-
-                if (TrenutniKorisnik != null)
+                bool isAdmin = TrenutniKorisnik.KorisniciUloge.Any(x => x.Uloga.Naziv == "Administrator");
+                bool isModerator = TrenutniKorisnik.KorisniciUloge.Any(x => x.Uloga.Naziv == "Moderator");
+                if (!isAdmin && !isModerator)
                 {
-                    bool isAdmin = TrenutniKorisnik.KorisniciUloge.Any(x => x.Uloga.Naziv == "Administrator");
-                    bool isModerator = TrenutniKorisnik.KorisniciUloge.Any(x => x.Uloga.Naziv == "Moderator");
-                    if (!isAdmin && !isModerator)
-                    {
-                        //MessageBox.Show("Pristup aplikaciji je dozovljen samo administratorima i moderatorima.", "Pristup zabranjen", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return View("/Login/AccessDenied");
-                    }
+                    await HttpContext.SetLogiraniKorisnik(null);
+                    return View("/Login/AccessDenied");
                 }
+
                 APIService.TrenutniKorisnik = TrenutniKorisnik;
+                await HttpContext.SetLogiraniKorisnik(TrenutniKorisnik);
+
+                return RedirectToAction("Index", "Home");
             }
-            catch (Exception ex)
+            else
             {
-
+                TempData["error_message"] = "Neispravno korisničko ime ili lozinka.";
+                return View("Index");
             }
 
-            return RedirectToAction("Index", "Home");
+        }
+
+        public async Task<IActionResult> Odjava()
+        {
+            await HttpContext.SetLogiraniKorisnik(null);
+            return RedirectToAction("Index");
+        }
+        public IActionResult AccessDenied()
+        {
+            return View();
         }
     }
 

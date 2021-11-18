@@ -3,6 +3,7 @@
 
 @{
     ViewData["Title"] = "Log in";
+    string error_message = TempData["error_message"] != null ? TempData["error_message"].ToString() : null;
 }
 
 <h1>@ViewData["Title"]</h1>
@@ -42,6 +43,12 @@
                         <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a>
                     </p>
                 </div>*@
+                @if(error_message != null)
+            {
+                <div class="alert alert-danger">
+                    @error_message
+                </div>
+            }
             </form>
         </section>
     </div>

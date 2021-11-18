@@ -25,7 +25,10 @@ namespace GamingHub2.WebApp2.Controllers
         public async Task<IActionResult> Index()
         {
             List<Recenzija> recenzijas = await _recenzijaService.Get<List<Recenzija>>(null);
-
+            foreach (var item in recenzijas)
+            {
+                item.stringSlika = ImageHelper.GetImageBase64(item.Slika);
+            }
             return View(recenzijas);
         }
 
@@ -69,13 +72,15 @@ namespace GamingHub2.WebApp2.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Uredi(int id, IFormFile file)
+        public async Task<IActionResult> Uredi(int id)
         {
             var recenzija = await _recenzijaService.GetById<Model.Recenzija>(id);
             List<Igra> igre = await _igraService.Get<List<Igra>>(null);
-            //var igra = await _recenzijaService.GetById<Model.Recenzija>(id);
-
-
+     //var novaSlika = ImageHelper.GetImageByteArray(file);
+     //       if (novaSlika != null)
+     //       {
+     //           recenzija.Slika = novaSlika;
+     //       }
             RecenzijaUpsertRequest request = new RecenzijaUpsertRequest()
             {
                 Naslov = recenzija.Naslov,
@@ -85,19 +90,25 @@ namespace GamingHub2.WebApp2.Controllers
                 ImeIgre = igre.Where(i => i.Id == recenzija.IgraId).Select(i => i.Naziv).SingleOrDefault(),
                 stringSlika = ImageHelper.GetImageBase64(recenzija.Slika),
                 VideoRecenzija = recenzija.VideoRecenzija,
-                KorisnikId = recenzija.KorisnikId,
-                
-            };
+                KorisnikId = recenzija.KorisnikId
+             };
 
             ViewBag.Id = id;
             return View(request);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Uredi(int id, RecenzijaUpsertRequest request)
+        public async Task<IActionResult> Uredi(int id, RecenzijaUpsertRequest request, IFormFile file)
         {
             if (ModelState.IsValid)
+            {
+                var novaSlika = ImageHelper.GetImageByteArray(file);
+                if (novaSlika != null)
+                {
+                    request.Slika = novaSlika;
+                }
                 await _recenzijaService.Update<Model.Recenzija>(id, request);
+            }
             else
                 return View(request);
 
@@ -114,7 +125,6 @@ namespace GamingHub2.WebApp2.Controllers
                      .Select(r => new RecenzijaDetaljiVM
                      {
                          //  RecenzijaDetaljiVM recenzija = new RecenzijaDetaljiVM()
-
                          ID = r.ID,
                          Naslov = r.Naslov,
                          DatumObjaveRecenzije = r.DatumObjave,

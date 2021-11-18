@@ -43,6 +43,7 @@ namespace GamingHub2
             : base(options)
         {
         }
+        public DbSet<AutorizacijskiToken> AutorizacijskiToken { get; set; }
         public DbSet<Zanr> Zanr { get; set; }
         public DbSet<Korisnik> Korisnik { get; set; }
         public DbSet<Konzola> Konzola { get; set; }
