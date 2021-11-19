@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.Rendering;
+//using System.Web.Mvc;
 
 namespace GamingHub2.WebApp2.Controllers
 {
@@ -15,7 +16,12 @@ namespace GamingHub2.WebApp2.Controllers
         APIService _service = new APIService("Proizvod");
         APIService _igraKonzolaService = new APIService("IgraKonzola");
 
-        public async Task<IActionResult> Index(ProizvodSearchRequest search = null)
+        public IActionResult Index()
+        {
+            return View();
+        }
+
+        public async Task<IActionResult> GetProizvode(ProizvodSearchRequest search = null)
         {
             List<Proizvod> proizvods = await _service.Get<List<Proizvod>>(null);
             if (!string.IsNullOrWhiteSpace(search?.Naziv))
@@ -23,8 +29,16 @@ namespace GamingHub2.WebApp2.Controllers
                 proizvods = proizvods.Where(x => x.NazivProizvoda.StartsWith(search.Naziv)).ToList();
             }
 
-            return View(proizvods);
+            //var leaveTypes = _context.OptLeaveType.OrderBy(a => a.LeaveTypeId).ToList();
+            //return Json(new { data = leaveTypes });
+
+            //var leaveTypes = _context.OptLeaveType.OrderBy(a => a.LeaveTypeId).ToList();
+            //return Json(new { data = leaveTypes }, System.Web.Mvc.JsonRequestBehavior.AllowGet);
+
+            // return View(proizvods);
+            return Json(new { data = proizvods });
         }
+
 
         [HttpGet]
         public async Task<IActionResult> Dodaj()
