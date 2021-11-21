@@ -4,45 +4,76 @@
 @{
     ViewData["Title"] = "Index";
 }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - GamingHub2.WebApp2</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Tangerine&display=swap" rel="stylesheet">
+    <link asp-append-version="true" rel="stylesheet" href="/css/headerandfooter.css">
+ 
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
 
-<h1>Index</h1>
-
-<p>
-    <a asp-action="Uredi">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.ID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Naziv)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Detalji)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ID)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Naziv)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Detalji)
-                </td>
-                <td>
-                    @Html.ActionLink("Uredi", "Uredi", new {  id=item.ID }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
-                </td>
-            </tr>
+    <style>
+        #sredisnjisadrzaj {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 3% 3%;
+            max-width: 100%;
+            background-image: url("../img/grey-background.png");
+            background-size: cover;
         }
-    </tbody>
-</table>
+        html {
+            background-size: cover;
+            /* background: #4c4c4c; */
+            background-image: url(../img/dark-wallpaper.jpg);
+        }
+ 
+    </style>
+</head>
+
+<body>
+ 
+    <p>
+        <a type="button" class="btn btn-secondary" asp-action="Uredi">Dodaj konzolu</a>
+    </p>
+    <table class="table table-dark table-striped">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Naziv)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Detalji)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Naziv)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Detalji)
+                    </td>
+                    <td>
+                        <a type="button" class="btn btn-secondary" href="/Konzola/Uredi/@item.ID">Uredi</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+</html>

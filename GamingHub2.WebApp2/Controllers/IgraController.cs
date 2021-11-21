@@ -30,6 +30,17 @@ namespace GamingHub2.WebApp2.Controllers
             return View(igras);
         }
 
+        public async Task<IActionResult> GetIgre(IgraSearchRequest search = null)
+        {
+            List<Igra> igras = await _service.Get<List<Igra>>(null);
+            if (!string.IsNullOrWhiteSpace(search?.Naziv))
+            {
+                igras = igras.Where(x => x.Naziv.StartsWith(search.Naziv)).ToList();
+            }
+
+            return Json(new { data = igras });
+        }
+
         //[HttpGet]
         //public async Task<IActionResult> Dodaj()
         //{
@@ -39,7 +50,7 @@ namespace GamingHub2.WebApp2.Controllers
 
         //    foreach (var item in konzole)
         //    {
-               
+
         //            request.CheckBox.Add(new CheckBoxHelper { KonzolaId = item.ID, Text = item.Naziv, IsChecked = false });
         //    }
 

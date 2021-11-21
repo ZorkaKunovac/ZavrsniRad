@@ -242,7 +242,7 @@ a:hover {
 }
 
 footer {
-    background-color: rgba(0, 0, 0, 0.7);
-    color: lightgray;
-    padding: 2.5%;
+    /*    background-color: rgba(0, 0, 0, 0.7);
+*/ color: lightgray;
+    background-color: #4c4c4c;
 }
