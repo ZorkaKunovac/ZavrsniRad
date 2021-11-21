@@ -107,6 +107,11 @@ namespace GamingHub2.WebApp2.Controllers
                 {
                     request.Slika = novaSlika;
                 }
+                else
+                {
+                    var recenzija = await _recenzijaService.GetById<Model.Recenzija>(id);
+                    request.Slika = recenzija.Slika;
+                }
                 await _recenzijaService.Update<Model.Recenzija>(id, request);
             }
             else

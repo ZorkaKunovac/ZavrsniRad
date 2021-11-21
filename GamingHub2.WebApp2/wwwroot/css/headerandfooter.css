@@ -103,14 +103,18 @@ a:hover {
     min-width: 150px;
 }
 
-.dropdown-content>a:hover {
+/*.dropdown-content>a:hover {
     background-color: gray;
-}
+}*/
 
 .dropdown:hover .dropdown-content {
     display: block;
 }
 
+.dropdown a:hover {
+    text-decoration: none;
+    color: white;
+}
 
 /* OVDJE ZAVRSAVA DROPDOWN DIO A POCINJE SIGN IN DIO*/
 

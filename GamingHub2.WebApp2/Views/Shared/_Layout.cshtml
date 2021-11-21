@@ -1,57 +1,168 @@
-﻿<!DOCTYPE html>
+﻿@using GamingHub2.WebApp2.Helpers
+@{
+    var LogiraniKorisnik = await Context.GetLogiraniKorisnik();
+}
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - GamingHub2.WebApp2</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Tangerine&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/headerandfooter.css">
+    @*<link rel="stylesheet" href="../css/shopStil.css">*@
+
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 
-    <!-- App favicon -->
-    @*<link rel="shortcut icon" href="~/assets/"
-        <link rel="shortcut icon" href="~/assets/images/favicon.ico">*@
+    <style>
+        .half {
+            width: 50%;
+            float: left;
+        }
 
-    <!-- third party css -->
-    <!--<link rel="stylesheet" href="~/assets/libs/datatables.net-bs5/css/dataTables.bootstrap5.min.css" />
-    <link rel="stylesheet" href="~/assets/libs/datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css" />
-    <link rel="stylesheet" href="~/assets/libs/datatables.net-buttons-bs5/css/buttons.bootstrap5.min.css" />
-    <link rel="stylesheet" href="~/assets/libs/datatables.net-select-bs5/css/select.bootstrap5.min.css" />-->
+        .formicons {
+            display: inline;
+            font-size: 200%;
+            margin: 2% 3%;
+        }
 
-    <!-- third party css end -->
-    <!-- App css -->
-    <!--<link rel="stylesheet" id="bs-default-stylesheet" href="~/assets/css/config/default/bootstrap.min.css" />
-    <link rel="stylesheet" id="app-default-stylesheet" href="~/assets/css/config/default/app.min.css" />
+            .formicons:hover {
+                color: white;
+                cursor: pointer;
+            }
 
-    <link rel="stylesheet" id="bs-dark-stylesheet" disabled="disabled" href="~/assets/css/config/default/app-dark.min.css" />
-    <link rel="stylesheet" id="app-dark-stylesheet" disabled="disabled" href="~/assets/css/config/default/app-dark.min.css" />-->
+        #groupForm-icons {
+            margin: 6% 0 3%;
+        }
 
-    <!-- icons -->
-    <!--<link rel="stylesheet" href="~/assets/css/icons.min.css" />-->
+        .half input {
+            margin: 4% auto 6%;
+            padding: 2%;
+            text-align: center;
+            background-color: lightgray;
+            outline: none;
+            width: 70%;
+            display: block;
+        }
 
+            .half input:hover {
+                background-color: white;
+            }
 
+        #submit {
+            width: 85%;
+            padding: 2%;
+            margin: 4% 0;
+        }
+
+        .text-danger ul li {
+            display: block;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">GamingHub2.WebApp2</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+
+    <div id="main-container">
+        <div id="headerbg">
+            <header>
+                <div id="left-header">
+                    <ul>
+                        <li><a href="/Home">Početna</a></li>
+                        <li>
+                            <div class="dropdown">
+                                <a href="~/Korisnici/Index">Korisnici</a>
+                                <div class="dropdown-content">
+                                    <a href="~/Korisnici/Index">Prikaz korisnika</a>
+                                    <a href="#">Novi korisnik</a>
+                                    <a href="~/Uloge/Index">Uloge</a>
+                                </div>
+                            </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+
+                        <li>
+                            <a href="~/Konzola/Index">Konzole</a>
                         </li>
+
+                        <li>
+                            <a href="~/Zanr/Index">Zanrovi</a>
+                        </li>
+
+                        <li>
+                            <div class="dropdown">
+                                <a href="~/Igra/Index">Igre</a>
+                                <div class="dropdown-content">
+                                    <a href="~/Igra/Index">Prikaz igara</a>
+                                    <a href="~/Igra/Dodaj">Nova igra</a>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="dropdown">
+                                <a href="~/Recenzija/Index">Recenzije</a>
+                                <div class="dropdown-content">
+                                    <a href="~/Recenzija/Index">Prikaz recenzija</a>
+                                    <a href="~/Recenzija/Dodaj">Nova recenzija</a>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="dropdown">
+                                <a href="~/Proizvod/Index">Proizvodi</a>
+                                <div class="dropdown-content">
+                                    <a href="~/Proizvod/Index">Prikaz proizvoda</a>
+                                    <a href="~/Proizvod/Dodaj">Novi proizvod</a>
+                                </div>
+                            </div>
+                        </li>
+
+
                     </ul>
                 </div>
-            </div>
-        </nav>
-    </header>
+
+                <div id="right-header">
+                    <ul>
+                        @if (LogiraniKorisnik == null)
+                        {
+                            <li><a href="~/Login/Index">Prijava</a></li>
+                        }
+                        else
+                        {
+                            <li><a href="~/Login/Logout">Odjava</a></li>
+                        }
+
+                    </ul>
+                </div>
+                <div class="clear"></div>
+            </header>
+        </div>
+    </div>
+
+
+    @*<header>
+            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+                <div class="container">
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">GamingHub2.WebApp2</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                        <ul class="navbar-nav flex-grow-1">
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>*@
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()

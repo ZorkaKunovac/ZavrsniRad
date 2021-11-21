@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<GamingHub2.Model.Igra>
-
+@using GamingHub2.Helpers
 @{
     ViewData["Title"] = "Index";
 }
@@ -25,8 +25,8 @@
                 @Html.DisplayNameFor(model => model.Id)
             </th>
             <th>
-            @Html.DisplayNameFor(model => model.SlikaLink)
-        </th>
+                @Html.DisplayNameFor(model => model.SlikaLink)
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Naziv)
             </th>
@@ -45,37 +45,37 @@
     <tbody>
         @foreach (var item in Model)
         {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>
-            <td>
-                @if (item.SlikaLink == null || item.SlikaLink.Length == 0)
-                {
-                    <img src="~/img/no-game.jpg" style="max-width:100px; max-height:100px" />
-                }
-                else
-                {
-                    <img src="@item.SlikaLink" style="max-width:100px; max-height:100px" />
-                }
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Naziv)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Developer)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Izdavac)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DatumIzlaska)
-            </td>
-            <td>
-                @Html.ActionLink("Uredi", "Uredi", new { id = item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-            </td>
-        </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @if (item.SlikaLink == null || item.SlikaLink.Length == 0)
+                    {
+                        <img src="~/img/no-game.jpg" style="max-width:100px; max-height:100px" />
+                    }
+                    else
+                    {
+                        <img src="@ImageHelper.GetImageBase64(@item.SlikaLink)" style="max-width:100px; max-height:100px" />
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Naziv)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Developer)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Izdavac)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DatumIzlaska)
+                </td>
+                <td>
+                    @Html.ActionLink("Uredi", "Uredi", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+            </tr>
         }
     </tbody>
 </table>

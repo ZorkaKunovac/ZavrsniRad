@@ -53,7 +53,7 @@ namespace GamingHub2.WebApp2.Controllers
 
         }
 
-        public async Task<IActionResult> Odjava()
+        public async Task<IActionResult> Logout()
         {
             await HttpContext.SetLogiraniKorisnik(null);
             return RedirectToAction("Index");

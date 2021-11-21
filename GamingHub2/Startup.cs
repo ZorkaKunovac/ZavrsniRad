@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
 using Stripe;
+using System.Globalization;
 
 namespace GamingHub2
 {
@@ -99,6 +100,11 @@ namespace GamingHub2
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            var cultureInfo = new CultureInfo("en-US");
+
+            CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
+            CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
+
             //app.UseMvc();
 
             if (env.IsDevelopment())
