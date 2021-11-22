@@ -2,32 +2,142 @@
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
-}<h1>Korisnicke uloge</h1>
+}
 
+<!DOCTYPE html>
+<html>
+<head>
 
+    <!-- third party css -->
+    <link rel="stylesheet" href="~/assets/libs/datatables.net-bs5/css/dataTables.bootstrap5.min.css" />
 
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Korisnicko ime</th>
-            <th>Email</th>
-            <th>Uloge</th>
-            <th>Akcija</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var user in Model)
-        {
-            <tr>
-                <td>@user.KorisnickoIme</td>
-                <td>@user.Email</td>
-                <td>@string.Join("", user.Uloge.ToList())</td>
-                <td>
-                   @*@Html.ActionLink("Manage", "Manage", new { id = user.KorisnikId }) |*@
+    <!-- third party css end -->
+    <!-- App css -->
+    <link rel="stylesheet" id="bs-default-stylesheet" href="~/assets/css/config/default/bootstrap.min.css" />
+    <link rel="stylesheet" id="app-default-stylesheet" href="~/assets/css/config/default/app.min.css" />
 
-                    <a class="btn btn-primary" asp-controller="Korisnici" asp-action="Manage" asp-route-id="@user.KorisnikId">Upravljaj</a>
-                </td>
-            </tr>
+    <!-- icons -->
+    <link rel="stylesheet" href="~/assets/css/icons.min.css" />
+
+    @*<style>
+        #sredisnjisadrzaj {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 3% 7%;
+            max-width: 100%;
+            background-image: url("../img/grey-background.png");
+            background-size: cover;
         }
-    </tbody>
-</table>
+
+        html {
+            background-size: cover;
+            /* background: #4c4c4c; */
+            background-image: url(../img/dark-wallpaper.jpg);
+        }
+
+        .card {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 3% 7%;
+            max-width: 100%;
+        }
+    </style>*@
+
+</head>
+
+
+<body class="loading" data-layout-mode="horizontal" data-layout='{"mode": "light", "width": "fluid", "menuPosition": "fixed", "topbar": {"color": "dark"}, "showRightSidebarOnPageLoad": true}'>
+    <h1>Korisnicke uloge</h1>
+
+    <!-- Begin page -->
+    <div id="wrapper">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <table style="width:100%;" id="korisniciDatatable" class="table table-dark table-hover table-bordered dt-responsive">
+                            <thead class="bg-dark text-white">
+                                <tr>
+                                    <th>
+                                        Korisničko ime
+                                    </th>
+                                    <th>
+                                        Email
+                                    </th>
+                                    <th>
+                                        Uloge
+                                    </th>
+                                    <th>
+                                        Akcija
+                                    </th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end row -->
+    </div>
+    <!-- END wrapper -->
+    <!-- GLAVNI LINK -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.11.3/datatables.min.css" />
+
+    @section scripts
+    {
+        <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.11.3/datatables.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $("#korisniciDatatable").DataTable(
+                    {
+                        "ajax": {
+                            "url": "/Korisnici/GetKorisnici",
+                            "type": "GET",
+                            "dataType": "json"
+                        },
+                        "columns": [
+                            { "data": "korisnickoIme" },
+                            { "data": "email" },
+                            { "data": "uloge" },
+                            {
+                                "render": function (data, type, full, meta) { return '<a class="btn btn-secondary" href="/Korisnici/Manage/' + full.korisnikId + '">Upravljaj</a>'; }
+                            }
+                        ]
+                    });
+            });
+
+        </script>
+        <!-- Vendor js -->
+        <!--<script src="~/assets/js/vendor.min.js"></script>-->
+        <!-- third party js -->
+        <script src="~/assets/libs/datatables.net/js/jquery.dataTables.min.js"></script>
+        <script src="~/assets/libs/datatables.net-bs5/js/dataTables.bootstrap5.min.js"></script>
+        @*<script src="~/assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js"></script>*@
+
+
+        <script src="~/assets/libs/datatables.net-responsive-bs5/js/responsive.bootstrap5.min.js"></script>
+        <script src="~/assets/libs/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+        <script src="~/assets/libs/datatables.net-buttons-bs5/js/buttons.bootstrap5.min.js"></script>
+        <script src="~/assets/libs/datatables.net-buttons/js/buttons.html5.min.js"></script>
+        <script src="~/assets/libs/datatables.net-buttons/js/buttons.flash.min.js"></script>
+        <script src="~/assets/libs/datatables.net-buttons/js/buttons.print.min.js"></script>
+        <script src="~/assets/libs/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+        <script src="~/assets/libs/datatables.net-select/js/dataTables.select.min.js"></script>
+        <script src="~/assets/libs/pdfmake/build/pdfmake.min.js"></script>
+        <script src="~/assets/libs/pdfmake/build/vfs_fonts.js"></script> <!---->
+        <!-- third party js ends -->
+        <!-- Datatables init -->
+        <script src="~/assets/js/pages/datatables.init.js"></script>-->
+        <!-- App js -->
+        <script src="~/assets/js/app.min.js"></script>
+
+    }
+
+
+</body>
+</html>
+
+
+
+
+ 

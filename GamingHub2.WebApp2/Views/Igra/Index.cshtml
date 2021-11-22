@@ -10,9 +10,6 @@
 
     <!-- third party css -->
     <link rel="stylesheet" href="~/assets/libs/datatables.net-bs5/css/dataTables.bootstrap5.min.css" />
-    <link rel="stylesheet" href="~/assets/libs/datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css" />
-    <link rel="stylesheet" href="~/assets/libs/datatables.net-buttons-bs5/css/buttons.bootstrap5.min.css" />
-    <link rel="stylesheet" href="~/assets/libs/datatables.net-select-bs5/css/select.bootstrap5.min.css" />
 
     <!-- third party css end -->
     <!-- App css -->
@@ -22,85 +19,95 @@
     <!-- icons -->
     <link rel="stylesheet" href="~/assets/css/icons.min.css" />
 
+    <style>
+        #sredisnjisadrzaj {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 3% 7%;
+            max-width: 100%;
+            background-image: url("../img/grey-background.png");
+            background-size: cover;
+        }
+
+        html {
+            background-size: cover;
+            /* background: #4c4c4c; */
+            background-image: url(../img/dark-wallpaper.jpg);
+        }
+
+        .card {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 3% 7%;
+            max-width: 100%;
+        }
+    </style>
+
 </head>
 
 
 <p>
-    <a asp-action="Uredi">Create New</a>
+    <a type="button" class="btn btn-secondary" asp-action="Uredi">Dodaj igru</a>
 </p>
 
 <body class="loading" data-layout-mode="horizontal" data-layout='{"mode": "light", "width": "fluid", "menuPosition": "fixed", "topbar": {"color": "dark"}, "showRightSidebarOnPageLoad": true}'>
 
     <!-- Begin page -->
     <div id="wrapper">
-
         <!-- ============================================================== -->
         <!-- Start Page Content here -->
         <!-- ============================================================== -->
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="mt-0 header-title">Default Example</h4>
 
-        <div class="content-page">
-            <div class="content">
-                <!-- Start Content-->
-                <div class="container-fluid">
-
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h4 class="mt-0 header-title">Default Example</h4>
-
-                                    <table style="width:100%;" id="igreDatatable" class="table table-dark table-hover table-bordered dt-responsive @*table-responsive nowrap*@">
-                                        <thead class="bg-dark text-white"> 
-                                        <tr>
-                                            <th>
-                                                ID
-                                            </th>
-                                            @*<th>
-                                                SlikaLink
-                                            </th>*@
-                                            <th>
-                                                Naziv
-                                            </th>
-                                            <th>
-                                                Developer
-                                            </th>
-                                            <th>
-                                                Izdavac
-                                            </th>
-                                            <th>
-                                                DatumIzlaska
-                                            </th>
-                                            <th>
-                                                Akcija
-                                            </th>
-                                        </tr>
-                                        </thead>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
+                        <table style="width:100%;" id="igreDatatable" class="table table-dark table-hover table-bordered dt-responsive @*table-responsive nowrap*@">
+                            <thead class="bg-dark text-white">
+                                <tr>
+                                    <th>
+                                        ID
+                                    </th>
+                                    @*<th>
+                                            SlikaLink
+                                        </th>*@
+                                    <th>
+                                        Naziv
+                                    </th>
+                                    <th>
+                                        Developer
+                                    </th>
+                                    <th>
+                                        Izdavac
+                                    </th>
+                                    <th>
+                                        DatumIzlaska
+                                    </th>
+                                    <th>
+                                        Akcija
+                                    </th>
+                                </tr>
+                            </thead>
+                        </table>
                     </div>
-                    <!-- end row -->
                 </div>
-                <!-- container-fluid -->
-
             </div>
-            <!-- content -->
-
         </div>
-
+        <!-- end row -->
         <!-- ============================================================== -->
         <!-- End Page content -->
         <!-- ============================================================== -->
     </div>
     <!-- END wrapper -->
+
     <!-- GLAVNI LINK -->
-     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.11.3/datatables.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.11.3/datatables.min.css" />
 
     @section scripts
     {
         <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.11.3/datatables.min.js"></script>
-         <script>
+        <script>
             $(document).ready(function () {
                 $("#igreDatatable").DataTable(
                     {
@@ -124,10 +131,7 @@
                     });
             });
 
-
         </script>
-
-
         <!-- Vendor js -->
         <!--<script src="~/assets/js/vendor.min.js"></script>-->
         <!-- third party js -->
@@ -157,10 +161,6 @@
 
 </body>
 </html>
-
-
-
-
 
 
 

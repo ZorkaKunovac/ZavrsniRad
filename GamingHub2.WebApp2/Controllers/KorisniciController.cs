@@ -76,6 +76,45 @@ namespace GamingHub2.WebApp2.Controllers
             return View(list);
         }
 
+        public async Task<IActionResult> GetKorisnici(KorisnikSearchRequest request = null)
+        {
+            List<Korisnici> query = await _service.Get<List<Korisnici>>(null);
+
+            if (!string.IsNullOrWhiteSpace(request?.Ime))
+            {
+                query = query.Where(x => x.Ime.StartsWith(request.Ime)).ToList();
+            }
+
+            if (!string.IsNullOrWhiteSpace(request?.Prezime))
+            {
+                query = query.Where(x => x.Prezime.StartsWith(request.Prezime)).ToList();
+            }
+
+            if (!string.IsNullOrWhiteSpace(request?.KorisnickoIme))
+            {
+                query = query.Where(x => x.KorisnickoIme.StartsWith(request.KorisnickoIme)).ToList();
+            }
+
+            var list = query.ToList();
+
+            foreach (var item in list)
+            {
+                item.Uloge = "";
+                foreach (var x in item.KorisniciUloge)
+                {
+                    item.Uloge += $"{x.Uloga.Naziv} ";
+                }
+
+                //if (item.Slika == null || item.Slika.Length == 0)
+                //{
+                //    item.Slika = ImageHelper.ImageToByteArray(Resources.default_profile);
+                //}
+            }
+
+            return Json(new { data = list });
+        }
+
+
         [HttpGet]
         public async Task<IActionResult> Manage(int id)
         {
