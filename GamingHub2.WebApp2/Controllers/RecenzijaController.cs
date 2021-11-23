@@ -76,11 +76,7 @@ namespace GamingHub2.WebApp2.Controllers
         {
             var recenzija = await _recenzijaService.GetById<Model.Recenzija>(id);
             List<Igra> igre = await _igraService.Get<List<Igra>>(null);
-     //var novaSlika = ImageHelper.GetImageByteArray(file);
-     //       if (novaSlika != null)
-     //       {
-     //           recenzija.Slika = novaSlika;
-     //       }
+
             RecenzijaUpsertRequest request = new RecenzijaUpsertRequest()
             {
                 Naslov = recenzija.Naslov,

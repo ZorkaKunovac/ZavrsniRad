@@ -2,6 +2,7 @@
 using GamingHub2.Model;
 using GamingHub2.Model.Requests;
 using GamingHub2.WebApp2.Helper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -91,6 +92,7 @@ namespace GamingHub2.WebApp2.Controllers
                 request.Izdavac = igra.Izdavac;
                 request.DatumIzlaska = igra.DatumIzlaska;
                 request.SlikaLink = igra.SlikaLink;
+                request.stringSlika = ImageHelper.GetImageBase64(igra.SlikaLink);
 
                 ViewBag.Id = id;
             }
@@ -98,7 +100,7 @@ namespace GamingHub2.WebApp2.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Uredi(int id, IgraUpsertRequest request)
+        public async Task<IActionResult> Uredi(int id, IgraUpsertRequest request, IFormFile file)
         {
             foreach (var item in request.CheckBox)
             {
@@ -113,10 +115,23 @@ namespace GamingHub2.WebApp2.Controllers
                 if (id == 0)
                 {
                     igra = new Igra();
+                    igra.SlikaLink = ImageHelper.GetImageByteArray(file);
                     await _service.Insert<Model.Igra>(request);
                 }
                 else
+                {
+                    var novaSlika = ImageHelper.GetImageByteArray(file);
+                    if (novaSlika != null)
+                    {
+                        request.SlikaLink = novaSlika;
+                    }
+                    else
+                    {
+                        igra = await _service.GetById<Model.Igra>(id);
+                        request.SlikaLink = igra.SlikaLink;
+                    }
                     await _service.Update<Model.Igra>(id, request);
+                }
             }
             else
             {

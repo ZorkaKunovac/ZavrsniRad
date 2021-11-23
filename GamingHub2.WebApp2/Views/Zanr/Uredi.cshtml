@@ -1,7 +1,23 @@
 ﻿@model GamingHub2.Model.Requests.ZanrUpsertRequest
 
+<style>
+    #sredisnjisadrzaj {
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        padding: 3% 7%;
+        max-width: 100%;
+        background-image: url("../img/dark-wallpaper.jpg");
+        background-size: cover;
+    }
 
-<h4>Konzola</h4>
+    html {
+        background-size: cover;
+        background: #4c4c4c;
+        background-image: url(../img/dark-wallpaper.jpg);
+    }
+</style>
+
+<h4>Žanrovi</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -23,15 +39,15 @@
                 <span asp-validation-for="Opis" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Snimi" class="btn btn-primary" />
+                <div class="dugmad">
+                    <input type="submit" value="Snimi" class="dugme-read">  <a asp-action="Index" type="button" class="dugme-read dugme-cancel">Odustani</a>
+                </div>
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Nazad na listu</a>
-</div>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
