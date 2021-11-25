@@ -3,6 +3,22 @@
 @{
     ViewData["Title"] = "Manage"; Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<style>
+    #sredisnjisadrzaj {
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        padding: 3% 7%;
+        max-width: 100%;
+        background-image: url("../img/dark-wallpaper.jpg");
+        background-size: cover;
+    }
+
+    html {
+        background-size: cover;
+        background: #4c4c4c;
+        background-image: url(../img/dark-wallpaper.jpg);
+    }
+</style>
 
 <div class="row">
     <div class="col-md-6">
@@ -48,7 +64,7 @@
                 <input asp-for="PasswordPotvrda" class="form-control" />
                 <span asp-validation-for="PasswordPotvrda" class="text-danger"></span>
             </div>
-            <div class="card">
+            <div class="card text-white bg-dark">
                 <div class="card-header">
                     <h2>Upravljanje korisnickim ulogama</h2>
                     Dodaj/Ukloni Ulogu za Korisnika / @ViewBag.UserName.

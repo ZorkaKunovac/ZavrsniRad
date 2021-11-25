@@ -5,6 +5,23 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<style>
+    #sredisnjisadrzaj {
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        padding: 3% 7%;
+        max-width: 100%;
+        background-image: url("../img/dark-wallpaper.jpg");
+        background-size: cover;
+    }
+
+    html {
+        background-size: cover;
+        background: #4c4c4c;
+        background-image: url(../img/dark-wallpaper.jpg);
+    }
+</style>
+
 <h4>Dodavanje proizvoda</h4>
 <hr />
 <div class="row">
@@ -36,15 +53,13 @@
             </div>
 
             <div class="form-group">
-                <input type="submit" value="Snimi" class="btn btn-primary" />
+                <div class="dugmad">
+                    <input type="submit" value="Snimi" class="dugme-read">  <a asp-action="Index" type="button" class="dugme-read dugme-cancel">Odustani</a>
+                </div>
             </div>
         </form>
     </div>
-</div>
-<div>
-    <a asp-action="Index">Natrag na listu</a>
-</div>
-
+ 
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

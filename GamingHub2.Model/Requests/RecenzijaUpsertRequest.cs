@@ -15,6 +15,7 @@ namespace GamingHub2.Model.Requests
         [Required(ErrorMessage = "Obavezno polje")]
         [StringLength(250, ErrorMessage = "{0} mora biti izmedju {2} i {1} znakova.", MinimumLength = 5)]
         public string Naslov { get; set; }
+        [DisplayName("Datum objave")]
         public DateTime DatumObjave { get; set; }
 
         [Required(ErrorMessage = "Obavezno polje")]
@@ -23,12 +24,15 @@ namespace GamingHub2.Model.Requests
         public byte[] Slika { get; set; }
 
         [MaxLength(100, ErrorMessage = "Maksimalno {1} znakova")]
+        [DisplayName("Video recenzija")]
         public string VideoRecenzija { get; set; }
 
         //Za web dio
         public List<SelectListItem> Igre { get; set; }
         [DisplayName("Igra")]
         public string ImeIgre { get; set; }
+
+        [DisplayName("Slika")]
         public string stringSlika { get; set; }
 
 
