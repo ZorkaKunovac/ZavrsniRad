@@ -52,19 +52,19 @@ namespace GamingHub2.WebApp2.Controllers
         {
             var korisniklist = await _korisniciService.Get<List<Model.Korisnici>>(new KorisnikSearchRequest() { KorisnickoIme = APIService.Username });
             var korisnik = korisniklist.Where(x => x.KorisnickoIme == APIService.Username).FirstOrDefault();
-
-            Recenzija novaRecenzija = new Recenzija
-            {
-                Naslov = recenzija.Naslov,
-                DatumObjave = recenzija.DatumObjave,
-                Sadrzaj = recenzija.Sadrzaj,
-                IgraId = recenzija.IgraId,
-                Slika = ImageHelper.GetImageByteArray(file),
-                VideoRecenzija = recenzija.VideoRecenzija,
-                KorisnikId = korisnik.KorisnikId
-            };
             if (ModelState.IsValid)
             {
+                Recenzija novaRecenzija = new Recenzija
+                {
+                    Naslov = recenzija.Naslov,
+                    DatumObjave = recenzija.DatumObjave,
+                    Sadrzaj = recenzija.Sadrzaj,
+                    IgraId = recenzija.IgraId,
+                    Slika = ImageHelper.GetImageByteArray(file),
+                    VideoRecenzija = recenzija.VideoRecenzija,
+                    KorisnikId = korisnik.KorisnikId
+                };
+
                 await _recenzijaService.Insert<Model.Recenzija>(novaRecenzija);
             }
 
@@ -155,6 +155,26 @@ namespace GamingHub2.WebApp2.Controllers
 
             return View(m);
         }
+
+        ////        [HttpDelete("{id}")]
+        //public virtual Model.AutorizacijskiToken Delete(int id)
+        //{
+        //    return _crudService.Delete(id);
+        //}
+
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Obrisi(int id)
+        {
+            var recenzija = _recenzijaService.GetById<Model.Recenzija>(id);
+            if (recenzija != null)
+            {
+                await _recenzijaService.Delete<Model.Recenzija>(id);
+            }
+
+            return Redirect("/Recenzija/Index");
+        }
+
 
         //[Authorize(Roles = "Administrator,Moderator")]
         //public async Task<IActionResult> ObrisiAsync(int id)

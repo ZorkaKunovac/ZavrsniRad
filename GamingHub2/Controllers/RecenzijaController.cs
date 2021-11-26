@@ -17,5 +17,11 @@ namespace GamingHub2.Controllers
         {
 
         }
+        [HttpDelete("{id}")]
+        public virtual Model.Recenzija Delete(int id)
+        {
+            return _crudService.Delete(id);
+        }
+
     }
 }

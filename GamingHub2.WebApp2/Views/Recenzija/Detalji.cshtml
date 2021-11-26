@@ -144,8 +144,7 @@
 
                 <div class="form-group">
                     <a class="btn btn-secondary" asp-controller="Recenzija" asp-action="Uredi" asp-route-id="@Model.ID">Uredi</a>
-                    <a class="btn btn-danger" asp-controller="Recenzija" asp-action="Obrisi" asp-route-id="@Model.ID">Obrisi</a>
-
+                    <a class="btn btn-danger" href="/Recenzija/Obrisi?RecenzijaID=@Model.ID">Obrisi</a>
                     <a class="btn btn-light" asp-action="Index">Natrag</a>
                 </div>
             </div>
