@@ -16,7 +16,40 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
 
     <!-- CUSTOM STYLE LINK -->
-    <link rel="stylesheet" href="../css/recenzijaStil.css">
+    <link asp-append-version="true" rel="stylesheet" href="../css/recenzijaStil.css">
+    <style>
+        #main-container {
+            width: 100%;
+            margin-top: 0;
+        }
+
+        #center-container {
+            width: 85%;
+            margin-top: 20px;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 3px 10px 0 rgba(0, 0, 0, .07);
+            background-color: rgba(80, 252, 0, 0.041);
+        }
+
+        #igra {
+            height: 100%;
+        }
+
+        .image2 img {
+            width: 100%;
+            height: 100%;
+        }
+
+        #sidebar .article {
+            float: left;
+        }
+
+            #sidebar .article .content {
+                float: left;
+                width: 60%;
+            }
+    </style>
 
 </head>
 
@@ -30,7 +63,7 @@
                 <span asp-validation-for="ID" class="text-danger"></span>
             </div>
 
-            <div id="main-container">
+            <div id="center-container">
                 <div id="postInfo">
                     <h2>@Model.Naslov</h2>
                     <span id="autor">@Model.Korisnik</span> <span>@(Model.DatumObjaveRecenzije?.ToString("dd.MM.yyyy"))</span>
@@ -81,7 +114,7 @@
                     </div>
                     <div id="sidebar">
                         @*@for (Model.RecenzijaRow i = 0; i < 3; i++)
-                            {*@
+                {*@
                         @foreach (var r in Model.NajnovijeRecenzije)
                         {
                             <div class="article">
@@ -108,13 +141,13 @@
                     </div>
                 </div>
 
-            </div>
 
-            <div class="form-group">
-                <a class="btn btn-primary" asp-controller="Recenzija" asp-action="Uredi" asp-route-id="@Model.ID">Uredi</a>
-                <a class="btn btn-primary" asp-controller="Recenzija" asp-action="Obrisi" asp-route-id="@Model.ID">Obrisi</a>
+                <div class="form-group">
+                    <a class="btn btn-secondary" asp-controller="Recenzija" asp-action="Uredi" asp-route-id="@Model.ID">Uredi</a>
+                    <a class="btn btn-danger" asp-controller="Recenzija" asp-action="Obrisi" asp-route-id="@Model.ID">Obrisi</a>
 
-                <a class="btn btn-primary" asp-action="Index">Natrag</a>
+                    <a class="btn btn-light" asp-action="Index">Natrag</a>
+                </div>
             </div>
 
         </form>

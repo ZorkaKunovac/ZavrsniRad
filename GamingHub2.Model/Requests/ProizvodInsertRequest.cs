@@ -21,6 +21,7 @@ namespace GamingHub2.Model.Requests
         public decimal ProdajnaCijena { get; set; }
         [DataType(DataType.Currency)]
         //[Column(TypeName = "decimal(8, 2)")]
+        [Required(ErrorMessage = "Polje je obavezno")]
         public decimal Popust { get; set; }
 
         [Required(ErrorMessage = "Polje je obavezno")]

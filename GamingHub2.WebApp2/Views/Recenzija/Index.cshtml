@@ -3,6 +3,36 @@
 @{
 }
 
+<head>
+    <!-- icons -->
+    <link rel="stylesheet" href="~/assets/css/icons.min.css" />
+    <link asp-append-version="true" rel="stylesheet" href="/css/headerandfooter.css">
+
+    <style>
+        #sredisnjisadrzaj {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 3% 7%;
+            max-width: 100%;
+             background-image: url("../img/grey-background.png");
+            background-image: url(../img/dark-wallpaper.jpg);
+            background-size: cover;
+        }
+
+        html, body {
+            background-size: cover;
+            background-image: url(../img/dark-wallpaper.jpg);
+        }
+
+        .card {
+            background-color: rgba(0, 0, 0, 0.5);
+             max-width: 100%;
+        }
+    </style>
+
+</head>
+
+
+
 <div class="container">
 
     <div class="row">
@@ -10,16 +40,16 @@
         <!-- Blog Entries Column -->
         <div class="col-md-8">
 
-            <h2 class="my-4">
+            <h2 class="my-4" style="color:white;">
                 Prikaz recenzija
             </h2>
             <br />
-            <a href="/Recenzija/Dodaj" class="btn btn-success">Dodaj recenziju</a>
+            <a href="/Recenzija/Dodaj" class="btn btn-secondary">Dodaj recenziju</a>
             <br /><br />
             <!-- Blog Recenzija -->
             @foreach (var r in Model)
             {
-                <div class="card mb-4">
+                <div class="card bg-light mb-4">
 
                     @if (!string.IsNullOrEmpty(r.stringSlika))
                     {
