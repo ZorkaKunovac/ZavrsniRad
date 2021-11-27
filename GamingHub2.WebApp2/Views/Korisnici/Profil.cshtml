@@ -1,0 +1,312 @@
+﻿@model GamingHub2.Model.Korisnici
+
+
+@{
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gaming portal</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Tangerine&display=swap" rel="stylesheet">
+     <link asp-append-version="true" rel="stylesheet" href="/css/headerandfooter.css">
+
+    <style>
+        #sredisnjisadrzaj {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 3% 7%;
+            max-width: 100%;
+             background-image: url(../img/dark-wallpaper.jpg);
+            background-size: contain;
+        }
+
+        html, body {
+            background-size: cover;
+             background-image: url(../img/dark-wallpaper.jpg);
+        }
+
+        #first-content {
+            margin: 10% 6% 0;
+        }
+
+            #first-content h1 {
+                margin-bottom: 6%;
+                font-family: 'Tangerine', cursive;
+                font-size: 350%;
+            }
+
+        .tabovi {
+            margin-top: 7%;
+        }
+
+        .mydatas {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 3% 5%;
+            position: relative;
+            color: white;
+            font-family: cursive;
+        }
+
+        .mojiPodaci {
+            color: lightgray;
+            margin: 2% 0;
+            width: 90%;
+            max-width: 90%;
+        }
+
+            .mojiPodaci td {
+                border: 1px solid lightgray;
+                padding: 2% 2%;
+            }
+
+                .mojiPodaci td:first-of-type {
+                    width: 25%;
+                }
+
+                .mojiPodaci td:nth-of-type(2) {
+                    width: 40%;
+                }
+
+        #vlastite-informacije #editInformationForm {
+            width: 50%;
+            margin: auto;
+        }
+
+        #editInformationForm input,
+        #editInformationForm select {
+            display: block;
+            padding: 0.5%;
+            background-color: lightgray;
+            outline: none;
+        }
+
+        #editInformationForm input {
+            width: 100%;
+        }
+
+            #editInformationForm input:hover,
+            #Postavke input:hover {
+                border: inset;
+                background-color: white;
+            }
+
+        .tab-button {
+/*            background-color: transparent;
+*/            color: black;
+            outline: none;
+            border: none;
+            padding: 1%;
+            font-family: cursive;
+            font-size: 110%;
+        }
+
+            .tab-button:hover {
+                cursor: pointer;
+                background-color: rgba(255, 255, 255, 0.4);
+            }
+
+        .tab-button-active {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: lightgray;
+        }
+
+        #Postavke form {
+            margin: 2% auto;
+        }
+
+        .changes {
+            float: left;
+            width: 48%;
+            margin-right: 2%;
+            font-size: 110%;
+        }
+
+            .changes h3 {
+                margin-bottom: 7%;
+            }
+
+        #Postavke input {
+            display: block;
+            background-color: lightgray;
+            outline: none;
+            margin: 2% 0;
+            width: 80%;
+            padding: 1.5%;
+        }
+
+        .paragrafi {
+            padding-left: 5%;
+        }
+
+            .paragrafi p {
+                margin: 3% 0;
+            }
+    </style>
+</head>
+
+<body>
+
+    <div id="first-content">
+        <h1>Dobrodosli u gaming svijet!</h1>
+         <div class="tabovi">
+            <button class="tab-button activetab tab-button-active" onclick="openSettings(event, 'Profil')">Profil</button>
+            <button class="tab-button activetab" onclick="openSettings(event, 'Postavke')">Postavke</button>
+        </div>
+    </div>
+
+    <div class="mydatas">
+
+
+        <div id="Profil" class="postavke">
+
+            <table class="mojiPodaci">
+                <h2>Osnovni podaci</h2>
+                <tr>
+                    <td>Ime i prezime:</td>
+                    <td>
+                        @Model.Ime @Model.Prezime
+                    </td>
+                </tr>
+                <tr>
+                    <td>KorisnickoIme: </td>
+                    <td>@Model.KorisnickoIme</td>
+                </tr>
+                <tr>
+                    <td>E-mail adresa:</td>
+                    <td>@Model.Email </td>
+                </tr>
+                <tr>
+                    <td>Telefon:</td>
+                    <td>@Model.Telefon</td>
+                </tr>
+
+
+            </table>
+
+        </div>
+
+        <div id="Postavke" class="postavke" style="display:none">
+            <h2>Promjena šifre</h2>
+            <form id="password-change">
+                <div class="changes">
+                    <label for="changePassword">Nova šifra</label>
+                    <input type="password" name="changePassword" value="" placeholder="Lozinka" id="changePassword">
+                    <br>
+                    <label for="changePasswordRepeat ">Ponovite šifru</label>
+                    <input type="password" name="changePasswordRepeat" value="" placeholder="Ponovi lozinku" id="changePasswordRepeat">
+                </div>
+                <div class="changes paragrafi">
+                    <h3>Pravila za mijenjanje šifre:</h3>
+                    <p>Šifra mora imati najmanje 7 karaktera</p>
+                    <p>Šifra ne smije sadrzavati razmak</p>
+                </div>
+                <div class="clear"></div>
+                <div class="dugmad"><button type="submit" class="dugme-read">Promjeni šifru</button> <button type="reset" class="dugme-read dugme-cancel">Poništi</button></div>
+            </form>
+
+            <h2>Email:</h2>
+            <form id="email-change">
+                <div class="changes">
+                    <label>Trenutni email:</label> <label>zorka*****</label><br><br>
+                    <label>Trenutni email:</label> <input type="email" name="email" value="" placeholder="Novi email" id="change-email">
+                </div>
+                <div class="changes paragrafi">
+                    <h3>Pravila za mijenjanje email-a:</h3>
+                    <p>Email mora sadržavati a</p>
+                    <p>Email ne smije završavati na tačku ili broj</p>
+                </div>
+                <div class="clear"></div>
+                <div class="dugmad"><button type="submit" class="dugme-read">Promjeni email</button> <button type="reset" class="dugme-read dugme-cancel">Poništi</button></div>
+
+            </form>
+
+            <h2>Broj telefona:</h2>
+            <form id="phone-change">
+                <div class="changes">
+                    <label>Trenutni broj telefona: </label> <label>061*****1</label><br><br>
+                    <label>Novi broj:</label> <input type="tel" name="changePhone" value="" placeholder="Novi broj" id="changePhone">
+                </div>
+                <div class="changes paragrafi ">
+                    <h3>Pravila za mijenjanje broja telefona:</h3>
+                    <p>Broj telefona mora imati tačno 9 cifara</p>
+                    <p>Broj ne smije sadržavati nijedan karakter ni slovo</p>
+                </div>
+                <div class="clear"></div>
+                <div class="dugmad"><button type="submit" class="dugme-read">Promjeni broj</button> <button type="reset" class="dugme-read dugme-cancel">Poništi</button></div>
+
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function openSettings(evt, settingName) {
+            var i, activetab;
+            var x = document.getElementsByClassName("postavke");
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            /* document.getElementById(settingName).style.display = "block ";*/
+            activetab = document.getElementsByClassName("activetab");
+            for (i = 0; i < x.length; i++) {
+                activetab[i].className = activetab[i].className.replace(" tab-button-active", " ");
+            }
+            document.getElementById(settingName).style.display = "block";
+            evt.currentTarget.className += " tab-button-active";
+        }
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.js"></script>
+
+
+
+    <script>
+        $.validator.addMethod(
+            "regex",
+            function(value, element, regexp) {
+                var check = false;
+                return this.optional(element) || regexp.test(value);
+            },
+            "Please check your input."
+        );
+
+        $("#password-change").validate({
+            rules: {
+                changePassword: {
+                    required: true,
+                    minlength: 7,
+                    regex: /^[^\s]+$/
+                },
+
+                changePasswordRepeat: {
+                    required: true,
+                    minlength: 7,
+                    equalTo: "#changePassword",
+                    regex: /^[^\s]+$/
+                }
+            }
+        });
+
+        $("#email-change").validate({
+            rules: {
+                email: {
+                    required: true,
+                    @*regex: /^([a-z0-9_.+-])+\@([a-z0-9.])+([a-z])+$/*@
+                }
+            }
+        });
+
+        $("#phone-change").validate({
+            rules: {
+                changePhone: {
+                    regex: /^\d{9}$/
+                }
+            }
+        });
+    </script>
+
+
+</body>
+</html>
