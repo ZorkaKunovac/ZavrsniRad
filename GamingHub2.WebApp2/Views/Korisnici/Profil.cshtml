@@ -8,7 +8,7 @@
 <html>
 <head>
     <title>Gaming portal</title>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
+
     <link href="https://fonts.googleapis.com/css?family=Tangerine&display=swap" rel="stylesheet">
      <link asp-append-version="true" rel="stylesheet" href="/css/headerandfooter.css">
 
@@ -189,13 +189,13 @@
 
         <div id="Postavke" class="postavke" style="display:none">
             <h2>Promjena šifre</h2>
-            <form id="password-change">
+            <form id="password-change" asp-action="ChangePassword">
                 <div class="changes">
-                    <label for="changePassword">Nova šifra</label>
-                    <input type="password" name="changePassword" value="" placeholder="Lozinka" id="changePassword">
-                    <br>
-                    <label for="changePasswordRepeat ">Ponovite šifru</label>
-                    <input type="password" name="changePasswordRepeat" value="" placeholder="Ponovi lozinku" id="changePasswordRepeat">
+                    <label for="Password">Nova šifra</label>
+                    <input type="password" name="Password" value="" placeholder="Lozinka" id="Password">
+                    <br />
+                    <label for="PasswordPotvrda">Ponovite šifru</label>
+                    <input type="password" name="PasswordPotvrda" value="" placeholder="Ponovi lozinku" id="PasswordPotvrda">
                 </div>
                 <div class="changes paragrafi">
                     <h3>Pravila za mijenjanje šifre:</h3>
@@ -206,27 +206,11 @@
                 <div class="dugmad"><button type="submit" class="dugme-read">Promjeni šifru</button> <button type="reset" class="dugme-read dugme-cancel">Poništi</button></div>
             </form>
 
-            <h2>Email:</h2>
-            <form id="email-change">
-                <div class="changes">
-                    <label>Trenutni email:</label> <label>zorka*****</label><br><br>
-                    <label>Trenutni email:</label> <input type="email" name="email" value="" placeholder="Novi email" id="change-email">
-                </div>
-                <div class="changes paragrafi">
-                    <h3>Pravila za mijenjanje email-a:</h3>
-                    <p>Email mora sadržavati a</p>
-                    <p>Email ne smije završavati na tačku ili broj</p>
-                </div>
-                <div class="clear"></div>
-                <div class="dugmad"><button type="submit" class="dugme-read">Promjeni email</button> <button type="reset" class="dugme-read dugme-cancel">Poništi</button></div>
-
-            </form>
-
             <h2>Broj telefona:</h2>
-            <form id="phone-change">
+            <form id="phone-change" asp-action="ChangePhoneNumber">
                 <div class="changes">
-                    <label>Trenutni broj telefona: </label> <label>061*****1</label><br><br>
-                    <label>Novi broj:</label> <input type="tel" name="changePhone" value="" placeholder="Novi broj" id="changePhone">
+                    <label>Trenutni broj telefona: </label>  @Model.Telefon
+                    <label for="Telefon">Novi broj:</label> <input type="tel" name="Telefon" value="" placeholder="Novi broj" id="Telefon">
                 </div>
                 <div class="changes paragrafi ">
                     <h3>Pravila za mijenjanje broja telefona:</h3>
@@ -274,33 +258,24 @@
 
         $("#password-change").validate({
             rules: {
-                changePassword: {
+                Password: {
                     required: true,
                     minlength: 7,
                     regex: /^[^\s]+$/
                 },
 
-                changePasswordRepeat: {
+                PasswordPotvrda: {
                     required: true,
                     minlength: 7,
-                    equalTo: "#changePassword",
+                    equalTo: "#Password",
                     regex: /^[^\s]+$/
-                }
-            }
-        });
-
-        $("#email-change").validate({
-            rules: {
-                email: {
-                    required: true,
-                    @*regex: /^([a-z0-9_.+-])+\@([a-z0-9.])+([a-z])+$/*@
                 }
             }
         });
 
         $("#phone-change").validate({
             rules: {
-                changePhone: {
+                Telefon: {
                     regex: /^\d{9}$/
                 }
             }

@@ -37,7 +37,7 @@ namespace GamingHub2.WebApp2.Controllers
                 if (!isAdmin && !isModerator)
                 {
                     await HttpContext.SetLogiraniKorisnik(null);
-                    return View("/Login/AccessDenied");
+                    return View("AccessDenied");
                 }
 
                 APIService.TrenutniKorisnik = TrenutniKorisnik;

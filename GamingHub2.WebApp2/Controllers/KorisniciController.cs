@@ -2,6 +2,7 @@
 using GamingHub2.Model;
 using GamingHub2.Model.Requests;
 using GamingHub2.WebApp2.Helper;
+using GamingHub2.WebApp2.Helpers;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -13,11 +14,11 @@ using System.Threading.Tasks;
 
 namespace GamingHub2.WebApp2.Controllers
 {
+    [Autorizacija(administrator: true, moderator: true)]
     public class KorisniciController : Controller
     {
         APIService _service = new APIService("Korisnici");
         APIService _ulogeService = new APIService("Uloge");
-        public Model.Korisnici TrenutniKorisnik = null;
 
         //-----------------------------------------------------------------------------------
         public static string GenerateSalt()
@@ -190,7 +191,6 @@ namespace GamingHub2.WebApp2.Controllers
             return Redirect("/Korisnici/Index");
         }
 
-
         public  async Task<IActionResult> Profil()
         {
             //var korisniklist = await _service.Get<List<Model.Korisnici>>(new KorisnikSearchRequest() { KorisnickoIme = APIService.Username });
@@ -200,42 +200,65 @@ namespace GamingHub2.WebApp2.Controllers
             //    _context.Korisnik.Include("KorisniciUloge").Where(x => x.KorisnikId == TrenutniKorisnik.KorisnikId).FirstOrDefault();
             //return _mapper.Map<Model.Korisnici>(entity);
 
-            var korisniklist = await _service.Get<List<Model.Korisnici>>(new KorisnikSearchRequest() { KorisnickoIme = APIService.Username });
-            var korisnik = korisniklist.Where(x => x.KorisnickoIme == APIService.Username).FirstOrDefault();
+            //var korisniklist = await _service.Get<List<Model.Korisnici>>(new KorisnikSearchRequest() { KorisnickoIme = APIService.Username });
+            //var korisnik = korisniklist.Where(x => x.KorisnickoIme == APIService.Username).FirstOrDefault();
+
+            Korisnici korisnik = await HttpContext.GetLogiraniKorisnik();
 
             return View(korisnik);
         }
 
-        //public Model.Korisnici UpdateProfile(KorisniciUpdateProfileRequest request)
-        //{
-        //    var entity = _context.Korisnik.Find(TrenutniKorisnik.KorisnikId);
+        public async Task<IActionResult> ChangePassword(KorisniciChangePasswordRequest request)
+        {
+            Korisnici korisnik = await HttpContext.GetLogiraniKorisnik();
 
-        //    if (request.Slika == null || request.Slika.Length == 0)
-        //    {
-        //        request.Slika = entity.Slika;
-        //    }
+            if (request.Password != request.PasswordPotvrda)
+            {
+                ModelState.AddModelError("Password", "Passwordi se ne slažu");
+                return View("Profil", korisnik);
+            }
 
-        //    _context.Korisnik.Attach(entity);
-        //    _context.Korisnik.Update(entity);
+            if (ModelState.IsValid)
+            {
+                var result = await _service.Update<Model.Korisnici>(korisnik.KorisnikId, new KorisniciUpdateProfileRequest
+                {
+                    Ime = korisnik.Ime,
+                    Prezime = korisnik.Prezime,
+                    Password = request.Password,
+                    PasswordPotvrda = request.PasswordPotvrda,
+                    Telefon = korisnik.Telefon
+                }, "UpdateProfile");
+                if (result != null)
+                {
+                    return RedirectToAction("Profil", new { passwordChanged = true });
+                }
+                else
+                    ModelState.AddModelError("Password", "Greška prilikom izmjene lozinke.");
+            }
+            return View("Profil", korisnik);
+        }
+        
 
-        //    _mapper.Map(request, entity);
+        public async Task<IActionResult> ChangePhoneNumber(KorisniciChangePhoneNumberRequest request)
+        {
+            Korisnici korisnik = await HttpContext.GetLogiraniKorisnik();
 
-        //    if (!string.IsNullOrWhiteSpace(request.Password))
-        //    {
-        //        if (request.Password != request.PasswordPotvrda)
-        //        {
-        //            throw new UserException("Passwordi se ne slažu");
-        //        }
+            if (ModelState.IsValid)
+            {
+                var result = await _service.Update<Model.Korisnici>(korisnik.KorisnikId, new KorisniciUpdateProfileRequest
+                {
+                    Ime = korisnik.Ime,
+                    Prezime = korisnik.Prezime,
+                    Telefon = request.Telefon
+                }, "UpdateProfile");
+                if(result != null)
+                    return RedirectToAction("Profil", new { phoneChanged = true });
+                else
+                    ModelState.AddModelError("Password", "Greška prilikom izmjene telefona.");
+            }
+            return View("Profil", korisnik);
+        }
 
-        //        entity.LozinkaSalt = GenerateSalt();
-        //        entity.LozinkaHash = GenerateHash(entity.LozinkaSalt, request.Password);
-        //    }
-
-        //    _context.SaveChanges();
-
-
-        //    return _mapper.Map<Model.Korisnici>(entity);
-        //}
 
         [HttpGet]
         public async Task<IActionResult> NoviKorisnik()
