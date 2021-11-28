@@ -24,6 +24,7 @@ namespace GamingHub2.Model.Requests
         [Phone]
         public string Telefon { get; set; }
         [Required]
+        [Display(Name = "Korisnicko ime")]
         public string KorisnickoIme { get; set; }
         public string Password { get; set; }
         public string PasswordPotvrda { get; set; }

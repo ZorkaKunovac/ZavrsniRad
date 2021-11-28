@@ -1,5 +1,93 @@
-﻿@*
+﻿@model GamingHub2.Model.Requests.KorisniciUpsertRequest
+@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
 }
+
+<div class="row">
+    <div class="col-md-10">
+        <form asp-action="NoviKorisnik" asp-controller="Korisnici"  method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label asp-for="Ime" class="control-label"></label>
+                    <input asp-for="Ime" placeholder="Jane" class="form-control" />
+                    <span asp-validation-for="Ime" class="text-danger"></span>
+                </div>
+
+                <div class="form-group  col-md-6">
+                    <label asp-for="Prezime" class="control-label"></label>
+                    <input asp-for="Prezime" placeholder="Doe" class="form-control" />
+                    <span asp-validation-for="Prezime" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-row">
+
+                <div class="form-group  col-md-6">
+                    <label asp-for="Email" class="control-label"></label>
+                    <input asp-for="Email" placeholder="korisnik@hotmail.com" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group  col-md-6">
+                    <label asp-for="Telefon" class="control-label"></label>
+                    <input asp-for="Telefon" placeholder="061/000-000" class="form-control" />
+                    <span asp-validation-for="Telefon" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-row">
+
+                <div class="form-group">
+                    <label asp-for="Slika" class="control-label"></label><br />
+                    @if (Model.Slika != null && Model.Slika.Length != 0)
+                    {
+                        @*<img src="@Model.Slika" style="max-width:100px; max-height:100px" />*@
+                        <img src="@Model.Slika" />
+                    }
+                    <input asp-for="Slika" type="file" name="file" id="file" />
+                    <span asp-validation-for="Slika" class="text-danger"></span>
+                </div>
+            </div>
+            <br /><br />
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label asp-for="KorisnickoIme" class="control-label"></label>
+                    <input asp-for="KorisnickoIme" placeholder="Jane" class="form-control" />
+                    <span asp-validation-for="KorisnickoIme" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-row">
+
+                <div class="form-group  col-md-6">
+                    <label asp-for="Password" class="control-label"></label>
+                    <input asp-for="Password" placeholder="Doe" class="form-control" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div class="form-group  col-md-6">
+                    <label asp-for="PasswordPotvrda" class="control-label"></label>
+                    <input asp-for="PasswordPotvrda" placeholder="Doe" class="form-control" />
+                    <span asp-validation-for="PasswordPotvrda" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div>
+                <label asp-for="Uloge" class="control-label"></label>
+
+                @for (int i = 0; i < Model.CheckBox.Count; i++)
+                {
+                    <input asp-for="@Model.CheckBox[i].IsChecked" type="checkbox" />
+                    <label asp-for="@Model.CheckBox[i].Text">@Model.CheckBox[i].Text</label>
+                    <input type="hidden" asp-for="@Model.CheckBox[i].KonzolaId" />
+                }
+            </div>
+
+            <div class="form-group">
+                <div class="dugmad">
+                    <input type="submit" value="Snimi" class="dugme-read">  <a asp-action="Index" type="button" class="dugme-read dugme-cancel">Odustani</a>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>

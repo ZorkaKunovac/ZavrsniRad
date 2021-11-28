@@ -2,6 +2,7 @@
 using GamingHub2.Model;
 using GamingHub2.Model.Requests;
 using GamingHub2.WebApp2.Helper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -235,5 +236,98 @@ namespace GamingHub2.WebApp2.Controllers
 
         //    return _mapper.Map<Model.Korisnici>(entity);
         //}
+
+        [HttpGet]
+        public async Task<IActionResult> NoviKorisnik()
+        {
+            var ulogeList = await _ulogeService.Get<List<Model.Uloge>>(null);
+
+            //var konzole = await _konzolaService.Get<List<Model.Konzola>>(null);//sve
+
+            List<CheckBoxHelper> listauloga = new List<CheckBoxHelper>();
+
+            listauloga = ulogeList.Select(a => new CheckBoxHelper
+            {
+                Id = a.UlogaId,
+                Text = a.Naziv,
+                IsChecked = false,                
+                KonzolaId = a.UlogaId
+            }).ToList();
+
+            KorisniciUpsertRequest request = new KorisniciUpsertRequest
+            {
+                CheckBox = listauloga
+            };
+
+            //KorisniciUpsertRequest request = new KorisniciUpsertRequest();
+            //request.CheckBox = new List<CheckBoxHelper>();
+            //foreach (var item in ulogeList)
+            //{
+            //    if (igra != null && igra.IgraKonzola.Any(a => a.KonzolaID == item.ID))
+            //    {
+            //        request.CheckBox.Add(new CheckBoxHelper { KonzolaId = item.ID, Text = item.Naziv, IsChecked = true });
+            //    }
+            //    else
+            //    {
+            //        request.CheckBox.Add(new CheckBoxHelper { KonzolaId = item.ID, Text = item.Naziv, IsChecked = false });
+            //    }
+            //}
+
+
+            //ProizvodInsertRequest request = new ProizvodInsertRequest()
+            //{
+            //    IgraKonzola = igrakonzola.Where(ik => !proizvodi.Any(p => p.IgraKonzolaID == ik.ID))
+            //    .Select(ik => new SelectListItem
+            //    {
+            //        Value = ik.ID.ToString(),
+            //        Text = ik.Naziv
+            //    })/*.Distinct()*/.ToList()
+            //};
+            return View(request);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> NoviKorisnik(KorisniciUpsertRequest request, IFormFile file)
+        {
+            var ulogeList = await _ulogeService.Get<List<Model.Uloge>>(null);
+
+            foreach (var item in request.CheckBox)
+            {
+                if (item.IsChecked)
+                {
+                    request.Uloge.Add(item.KonzolaId);
+                }
+            }
+            //if (ModelState.IsValid)
+            //{
+            //    request.Ime =
+            //}
+
+            //var igrakonzola = await _igraKonzolaService.Get<List<IgraKonzola>>(null);
+            //if (ModelState.IsValid)
+            //{
+            //    request.NazivProizvoda = igrakonzola.Where(ik => ik.ID == request.IgraKonzolaID)
+            //     .Select(ik => ik.Naziv).SingleOrDefault();
+            //    await _service.Insert<Model.Proizvod>(request);
+            //}
+            ////else
+            ////    return View(request);
+            ///       Igra igra;
+
+            Korisnici novikorisnik;
+            if (ModelState.IsValid)
+            {
+                novikorisnik = new Korisnici();
+                novikorisnik.Slika = ImageHelper.GetImageByteArray(file);
+                await _service.Insert<Model.Korisnici>(request);
+            } 
+            else
+            {
+                return View(request);
+            }
+
+            return Redirect("/Korisnici/Index");
+        }
+
     }
 }

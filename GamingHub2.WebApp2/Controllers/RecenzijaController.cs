@@ -67,6 +67,10 @@ namespace GamingHub2.WebApp2.Controllers
 
                 await _recenzijaService.Insert<Model.Recenzija>(novaRecenzija);
             }
+            else
+            {
+                return View(recenzija);
+            }
 
             return Redirect("/Recenzija/Index");
         }
