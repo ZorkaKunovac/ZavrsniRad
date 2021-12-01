@@ -211,11 +211,10 @@ namespace GamingHub2.WebApp2.Controllers
         public async Task<IActionResult> ChangePassword(KorisniciChangePasswordRequest request)
         {
             Korisnici korisnik = await HttpContext.GetLogiraniKorisnik();
-
+            
             if (request.Password != request.PasswordPotvrda)
             {
                 ModelState.AddModelError("Password", "Passwordi se ne slažu");
-                return View("Profil", korisnik);
             }
 
             if (ModelState.IsValid)
@@ -230,11 +229,14 @@ namespace GamingHub2.WebApp2.Controllers
                 }, "UpdateProfile");
                 if (result != null)
                 {
+                    TempData["success_poruka"] = "Lozinka je uspješno izmijenjena.";
+                    APIService.Password = request.Password;
                     return RedirectToAction("Profil", new { passwordChanged = true });
                 }
                 else
                     ModelState.AddModelError("Password", "Greška prilikom izmjene lozinke.");
             }
+            TempData["error_count"] = ModelState.ErrorCount;
             return View("Profil", korisnik);
         }
         
@@ -252,9 +254,12 @@ namespace GamingHub2.WebApp2.Controllers
                     Telefon = request.Telefon
                 }, "UpdateProfile");
                 if(result != null)
-                    return RedirectToAction("Profil", new { phoneChanged = true });
+                {
+                    TempData["success_poruka"] = "Broj telefona je uspješno izmijenjen.";
+                    return RedirectToAction("Profil");
+                }
                 else
-                    ModelState.AddModelError("Password", "Greška prilikom izmjene telefona.");
+                    ModelState.AddModelError("Telefon", "Greška prilikom izmjene telefona.");
             }
             return View("Profil", korisnik);
         }

@@ -58,7 +58,7 @@ namespace GamingHub2.WebApp2.Helpers
             {
                 Vrijednost = token
             });
-            if (sesija.Count == 0 || sesija[0].Korisnik == null)
+            if (sesija is null || sesija.Count == 0 || sesija[0].Korisnik == null)
                 return null;
 
             return sesija[0].Korisnik;

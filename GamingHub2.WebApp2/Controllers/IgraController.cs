@@ -93,6 +93,7 @@ namespace GamingHub2.WebApp2.Controllers
                 request.DatumIzlaska = igra.DatumIzlaska;
                 request.SlikaLink = igra.SlikaLink;
                 request.stringSlika = ImageHelper.GetImageBase64(igra.SlikaLink);
+                //stringSlika = ImageHelper.GetImageBase64(recenzija.Slika),
 
                 ViewBag.Id = id;
             }
@@ -114,8 +115,7 @@ namespace GamingHub2.WebApp2.Controllers
             {
                 if (id == 0)
                 {
-                    igra = new Igra();
-                    igra.SlikaLink = ImageHelper.GetImageByteArray(file);
+                    request.SlikaLink = ImageHelper.GetImageByteArray(file);
                     await _service.Insert<Model.Igra>(request);
                 }
                 else

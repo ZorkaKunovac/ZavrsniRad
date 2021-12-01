@@ -166,14 +166,13 @@ namespace GamingHub2.WebApp2.Controllers
         //    return _crudService.Delete(id);
         //}
 
-
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> Obrisi(int id)
+        
+        public async Task<IActionResult> Obrisi(int RecenzijaID)
         {
-            var recenzija = _recenzijaService.GetById<Model.Recenzija>(id);
+            var recenzija = _recenzijaService.GetById<Model.Recenzija>(RecenzijaID);
             if (recenzija != null)
             {
-                await _recenzijaService.Delete<Model.Recenzija>(id);
+                await _recenzijaService.Delete<Model.Recenzija>(RecenzijaID);
             }
 
             return Redirect("/Recenzija/Index");
