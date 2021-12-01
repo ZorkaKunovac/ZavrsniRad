@@ -46,13 +46,6 @@ namespace GamingHub2.WebApp2.Controllers
         [HttpPost]
         public async Task<IActionResult> Uredi(int id, KonzolaUpsertRequest request)
         {
-
-            //Model.Konzola entity = null;
-            //if (!_id.HasValue)
-            //    entity = await _service.Insert<Model.Konzola>(request);
-            //else
-            //    entity = await _service.Update<Model.Konzola>(_id, request);
-
             Konzola konzola;
 
             if (ModelState.IsValid)
@@ -64,7 +57,7 @@ namespace GamingHub2.WebApp2.Controllers
                 }
                 else
                 {
-                    var t = await _service.Update<Model.Konzola>(id, request);//samo ovo ti je dovoljno
+                    var t = await _service.Update<Model.Konzola>(id, request);
                 }
             }
             else

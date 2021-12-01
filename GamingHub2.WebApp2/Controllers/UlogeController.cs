@@ -11,11 +11,6 @@ namespace GamingHub2.WebApp2.Controllers
 {
     public class UlogeController : Controller
     {
-        //private readonly RoleManager<IdentityRole> _roleManager;
-        //public UlogeController(RoleManager<IdentityRole> roleManager)
-        //{
-        //    _roleManager = roleManager;
-        //}
 
         APIService _service = new APIService("Uloge");
 

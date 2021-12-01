@@ -101,8 +101,5 @@ namespace GamingHub2.WebApp2.Controllers
             return Redirect("/Proizvod/Index");
         }
 
-
-   
-
     }
 }

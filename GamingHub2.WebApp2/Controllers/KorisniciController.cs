@@ -196,13 +196,6 @@ namespace GamingHub2.WebApp2.Controllers
             //var korisniklist = await _service.Get<List<Model.Korisnici>>(new KorisnikSearchRequest() { KorisnickoIme = APIService.Username });
             //var korisnik = korisniklist.Where(x => x.KorisnickoIme == APIService.Username).FirstOrDefault();
 
-            //var entity = _service
-            //    _context.Korisnik.Include("KorisniciUloge").Where(x => x.KorisnikId == TrenutniKorisnik.KorisnikId).FirstOrDefault();
-            //return _mapper.Map<Model.Korisnici>(entity);
-
-            //var korisniklist = await _service.Get<List<Model.Korisnici>>(new KorisnikSearchRequest() { KorisnickoIme = APIService.Username });
-            //var korisnik = korisniklist.Where(x => x.KorisnickoIme == APIService.Username).FirstOrDefault();
-
             Korisnici korisnik = await HttpContext.GetLogiraniKorisnik();
 
             return View(korisnik);
@@ -286,31 +279,6 @@ namespace GamingHub2.WebApp2.Controllers
             {
                 CheckBox = listauloga
             };
-
-            //KorisniciUpsertRequest request = new KorisniciUpsertRequest();
-            //request.CheckBox = new List<CheckBoxHelper>();
-            //foreach (var item in ulogeList)
-            //{
-            //    if (igra != null && igra.IgraKonzola.Any(a => a.KonzolaID == item.ID))
-            //    {
-            //        request.CheckBox.Add(new CheckBoxHelper { KonzolaId = item.ID, Text = item.Naziv, IsChecked = true });
-            //    }
-            //    else
-            //    {
-            //        request.CheckBox.Add(new CheckBoxHelper { KonzolaId = item.ID, Text = item.Naziv, IsChecked = false });
-            //    }
-            //}
-
-
-            //ProizvodInsertRequest request = new ProizvodInsertRequest()
-            //{
-            //    IgraKonzola = igrakonzola.Where(ik => !proizvodi.Any(p => p.IgraKonzolaID == ik.ID))
-            //    .Select(ik => new SelectListItem
-            //    {
-            //        Value = ik.ID.ToString(),
-            //        Text = ik.Naziv
-            //    })/*.Distinct()*/.ToList()
-            //};
             return View(request);
         }
 
@@ -326,21 +294,6 @@ namespace GamingHub2.WebApp2.Controllers
                     request.Uloge.Add(item.KonzolaId);
                 }
             }
-            //if (ModelState.IsValid)
-            //{
-            //    request.Ime =
-            //}
-
-            //var igrakonzola = await _igraKonzolaService.Get<List<IgraKonzola>>(null);
-            //if (ModelState.IsValid)
-            //{
-            //    request.NazivProizvoda = igrakonzola.Where(ik => ik.ID == request.IgraKonzolaID)
-            //     .Select(ik => ik.Naziv).SingleOrDefault();
-            //    await _service.Insert<Model.Proizvod>(request);
-            //}
-            ////else
-            ////    return View(request);
-            ///       Igra igra;
 
             Korisnici novikorisnik;
             if (ModelState.IsValid)

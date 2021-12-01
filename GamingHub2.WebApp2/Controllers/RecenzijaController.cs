@@ -160,13 +160,7 @@ namespace GamingHub2.WebApp2.Controllers
             return View(m);
         }
 
-        ////        [HttpDelete("{id}")]
-        //public virtual Model.AutorizacijskiToken Delete(int id)
-        //{
-        //    return _crudService.Delete(id);
-        //}
-
-        
+ 
         public async Task<IActionResult> Obrisi(int RecenzijaID)
         {
             var recenzija = _recenzijaService.GetById<Model.Recenzija>(RecenzijaID);
@@ -178,19 +172,7 @@ namespace GamingHub2.WebApp2.Controllers
             return Redirect("/Recenzija/Index");
         }
 
-
-        //[Authorize(Roles = "Administrator,Moderator")]
-        //public async Task<IActionResult> ObrisiAsync(int id)
-        //{
-        //    var recen = await _recenzijaService.GetById<Model.Recenzija>(id);
-
-
-        //    Recenzija recenzija = db.Recenzija.Find(RecenzijaID);
-        //    db.Remove(recenzija);
-
-        //    db.SaveChanges();
-        //    return Redirect("/Recenzija/Index");
-        //}
+ 
     }
 }
 

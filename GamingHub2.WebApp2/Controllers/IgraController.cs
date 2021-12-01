@@ -42,31 +42,7 @@ namespace GamingHub2.WebApp2.Controllers
             return Json(new { data = igras });
         }
 
-        //[HttpGet]
-        //public async Task<IActionResult> Dodaj()
-        //{
-        //    var konzole = await _konzolaService.Get<List<Model.Konzola>>(null);//sve
-        //    IgraUpsertRequest request = new IgraUpsertRequest();
-        //    request.CheckBox = new List<CheckBoxHelper>();
-
-        //    foreach (var item in konzole)
-        //    {
-
-        //            request.CheckBox.Add(new CheckBoxHelper { KonzolaId = item.ID, Text = item.Naziv, IsChecked = false });
-        //    }
-
-        //    request.Naziv = igra.Naziv;
-        //    request.Developer = igra.Developer;
-        //    request.Izdavac = igra.Izdavac;
-        //    request.DatumIzlaska = igra.DatumIzlaska;
-        //    request.SlikaLink = igra.SlikaLink;
-
-        //    ViewBag.Id = id;
-        //    return View(request);
-        //}
-
-
-
+ 
         [HttpGet]
         public async Task<IActionResult> Uredi(int id)
         {
@@ -93,7 +69,6 @@ namespace GamingHub2.WebApp2.Controllers
                 request.DatumIzlaska = igra.DatumIzlaska;
                 request.SlikaLink = igra.SlikaLink;
                 request.stringSlika = ImageHelper.GetImageBase64(igra.SlikaLink);
-                //stringSlika = ImageHelper.GetImageBase64(recenzija.Slika),
 
                 ViewBag.Id = id;
             }

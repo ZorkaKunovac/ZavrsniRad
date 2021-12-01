@@ -6,7 +6,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using GamingHub2.Model;
 using GamingHub2.WebApp2.Helpers;
-// @model GamingHub2.Model.LoginModel
 namespace GamingHub2.WebApp2.Controllers
 {
     public class LoginController : Controller
