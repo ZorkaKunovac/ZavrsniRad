@@ -263,8 +263,6 @@ namespace GamingHub2.WebApp2.Controllers
         {
             var ulogeList = await _ulogeService.Get<List<Model.Uloge>>(null);
 
-            //var konzole = await _konzolaService.Get<List<Model.Konzola>>(null);//sve
-
             List<CheckBoxHelper> listauloga = new List<CheckBoxHelper>();
 
             listauloga = ulogeList.Select(a => new CheckBoxHelper
@@ -300,6 +298,8 @@ namespace GamingHub2.WebApp2.Controllers
             {
                 novikorisnik = new Korisnici();
                 novikorisnik.Slika = ImageHelper.GetImageByteArray(file);
+               // novikorisnik.Slika = ImageHelper.GetImageByteArray(file),
+
                 await _service.Insert<Model.Korisnici>(request);
             } 
             else

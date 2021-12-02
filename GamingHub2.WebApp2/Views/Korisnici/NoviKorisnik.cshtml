@@ -4,6 +4,22 @@
 *@
 @{
 }
+<style>
+    #sredisnjisadrzaj {
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        padding: 3% 7%;
+        max-width: 100%;
+        background-image: url("../img/dark-wallpaper.jpg");
+        background-size: cover;
+    }
+
+    html {
+        background-size: cover;
+        background: #4c4c4c;
+        background-image: url(../img/dark-wallpaper.jpg);
+    }
+</style>
 
 <div class="row">
     <div class="col-md-10">
@@ -47,7 +63,8 @@
                     <input asp-for="Slika" type="file" name="file" id="file" />
                     <span asp-validation-for="Slika" class="text-danger"></span>
                 </div>
-            </div>
+
+             </div>
             <br /><br />
 
             <div class="form-row">
