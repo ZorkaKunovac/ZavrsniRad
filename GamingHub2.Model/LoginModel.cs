@@ -12,26 +12,9 @@ namespace GamingHub2.Model
     //}
     public class LoginModel
     {
-        //private readonly UserManager<Korisnik> _userManager;
-        //private readonly SignInManager<Korisnik> _signInManager;
-        //private readonly ILogger<LoginModel> _logger;
-        //private readonly ApplicationDbContext _context;
-
-        //public LoginModel(SignInManager<Korisnik> signInManager,
-        //    ILogger<LoginModel> logger,
-        //    UserManager<Korisnik> userManager, ApplicationDbContext context)
-        //{
-        //    _userManager = userManager;
-        //    _signInManager = signInManager;
-        //    _logger = logger;
-        //    _context = context;
-        //}
-
+ 
         [BindProperty]
         public InputModel Input { get; set; }
-
-        //public IList<AuthenticationScheme> ExternalLogins { get; set; }
-
         public string ReturnUrl { get; set; }
 
         [TempData]
@@ -45,9 +28,11 @@ namespace GamingHub2.Model
 
             [Required]
             [DataType(DataType.Password)]
+            [Display(Name = "Lozinka")]
+
             public string Password { get; set; }
 
-            [Display(Name = "Remember me?")]
+            [Display(Name = "Zapamti me?")]
             public bool RememberMe { get; set; }
         }
     }
