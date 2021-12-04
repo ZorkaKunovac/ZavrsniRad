@@ -115,5 +115,25 @@ namespace GamingHub2.WebApp2.Controllers
             return Redirect("/Igra/Index");
         }
 
+        public async Task<IActionResult> Detalji(int id)
+        {
+            var igra = await _service.GetById<Model.IgraDetaljiVM>(id);
+ 
+
+            //var m = db.Igra.Where(i => i.ID == IgraID)
+            //         .Select(i => new IgraDetaljiVM
+            //         {
+            //             Id = i.ID,
+            //             Naziv = i.Naziv,
+            //             DatumIzlaska = i.DatumIzlaska,
+            //             Developer = i.Developer,
+            //             Izdavac = i.Izdavac,
+            //             VideoLink = i.VideoLink,
+            //             SlikaLink = ImageHelper.GetImageBase64(i.SlikaLink)
+            //         }).FirstOrDefault();
+
+            return View(igra);
+        }
+
     }
 }

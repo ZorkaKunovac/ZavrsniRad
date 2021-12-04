@@ -19,7 +19,8 @@ namespace GamingHub2.Mapping
             CreateMap<Database.Konzola, Model.Konzola>();
             CreateMap<KonzolaUpsertRequest, Database.Konzola>();
             CreateMap<Database.Igra, Model.Igra>();
-                
+            CreateMap<Database.Igra, Model.IgraDetaljiVM>();
+
             CreateMap<Database.Igra, IgraUpsertRequest>().ReverseMap();
             CreateMap<Database.IgraKonzola, Model.IgraKonzola>();
             CreateMap<Database.IgraKonzola, Model.IgraKonzolaNoRelations>();

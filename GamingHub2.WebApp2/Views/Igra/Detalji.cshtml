@@ -8,16 +8,7 @@
 <div>
     <h4>Detalji igre</h4>
     <hr />
-    <dl class="row">
-        @if (!string.IsNullOrEmpty(Model.YouTubeId))
-        {
-            <span style="margin:0 0 0 20px">
-                <iframe width="800" height="520"
-                        src="https://www.youtube.com/embed/@Model.YouTubeId">
-                </iframe>
-            </span>
-        }
-    </dl>
+
 
     <dl class="row">
         <dt class="col-sm-2">
@@ -46,12 +37,6 @@
             @Html.DisplayFor(model => model.DatumIzlaska)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.VideoLink)
-        </dt>
-        <dd class="col-sm-10">
-            <a href="@Html.DisplayFor(model => model.VideoLink)" target="_blank">@Html.DisplayFor(model => model.VideoLink)</a>
-        </dd>
-        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.SlikaLink)
         </dt>
         <dd class="col-sm-10">
@@ -70,39 +55,40 @@
 </div>
 <script>
     function UcitajStavke() {
-        $.get("/IgraZarn/Index?IgraID=@Model.Id", function (d) {
+        $.get("/IgraZanr/Index?IgraID=@Model.Id", function (d) {
             $("#ajaxDiv").html(d);
         })
     }
     UcitajStavke();
-
-    function StavkaDodaj(IgraID) {
-        $.get("/IgraZarn/Dodaj?IgraID=" + IgraID,
-            function (d) {
-                $("#ajaxDiv").html(d);
-            });
-    }
-
-    function StavkaSnimi() {
-        var form = $("#IgraZarnForma");
-        var url = "/IgraZarn/Snimi";
-        $.ajax({
-            type: "POST",
-            url: url,
-            data: form.serialize(),
-            success: function (data) { UcitajStavke(); }
-        });
-    }
-    function StavkaObrisi(IgraZarnID) {
-        $.get("/IgraZarn/Obrisi?IgraZarnID=" + IgraZarnID,
-            function (d) {
-                UcitajStavke();
-            });
-    }
-
 </script>
+@*
+        function StavkaDodaj(IgraID) {
+            $.get("/IgraZanr/Dodaj?IgraID=" + IgraID,
+                function (d) {
+                    $("#ajaxDiv").html(d);
+                });
+        }
+
+        function StavkaSnimi() {
+            var form = $("#IgraZanrForma");
+            var url = "/IgraZanr/Snimi";
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: form.serialize(),
+                success: function (data) { UcitajStavke(); }
+            });
+        }
+        function StavkaObrisi(IgraZarnID) {
+            $.get("/IgraZanr/Obrisi?IgraZarnID=" + IgraZarnID,
+                function (d) {
+                    UcitajStavke();
+                });
+        }
+
+    </script>*@
 
 <div>
 
-    <a asp-action="Prikaz">Natrag na listu</a>
+    <a asp-action="Index">Natrag na listu</a>
 </div>

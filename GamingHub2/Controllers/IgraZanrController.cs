@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 
 namespace GamingHub2.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class IgraZanrController : Controller
     {
         //private ApplicationDbContext db;
@@ -27,29 +29,20 @@ namespace GamingHub2.Controllers
         //    m.IgraID = IgraID;
         //    return View(m);
         //}
-        private readonly IIgraZanrService2 _service;
-        public IgraZanrController(IIgraZanrService2 service)
+        private readonly IIgraZanrService _service;
+        public IgraZanrController(IIgraZanrService service)
         {
             _service = service;
         }
 
+        [HttpGet("GetIgraZanr")]
         //[HttpGet]
-        //public List<Model.Korisnici> Get()
-        //{
-        //    return _service.Get(request);
-        //}
+        //[Route("{IgraID}")]
 
-        [HttpGet]
-        public IgraZanrPrikazVM Get(int IgraID)
-        {
-            return _service.GetIZ(IgraID);
-        }
-
-        [HttpGet("GetIZ")]
         //[Authorize]
-        public IgraZanrPrikazVM GetIZ(int IgraID)
+        public IgraZanrPrikazVM GetIgraZanr(int IgraID)
         {
-            return _service.GetIZ(IgraID);
+            return _service.GetIgraZanr(IgraID);
         }
     }
 }

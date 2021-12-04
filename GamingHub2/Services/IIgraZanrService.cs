@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace GamingHub2.Services
 {
-    public interface IIgraZanrService2
+    public interface IIgraZanrService
     {
         //List<Model.IgraZanrPrikazVM> Get();
         //Model.IgraZanrPrikazVM GetById(int id);
         //Model.IgraZanrPrikazVM Insert(IgraZanrDodajVM request);
-        Model.IgraZanrPrikazVM GetIZ(int IgraID);
+        Model.IgraZanrPrikazVM GetIgraZanr(int IgraID);
         //IActionResult Get(int IgraID);
     }
 }
