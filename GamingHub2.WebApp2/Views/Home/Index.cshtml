@@ -6,44 +6,195 @@
 }
 
 <h1>Index</h1>
+<!DOCTYPE html>
+<html>
+<head>
 
-<p>
-    <a asp-action="Uredi">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.ID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Naziv)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Detalji)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ID)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Naziv)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Detalji)
-                </td>
-                <td>
-                    @Html.ActionLink("Uredi", "Uredi", new {  id=item.ID }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
-                </td>
-            </tr>
+    <!-- third party css -->
+    <!--<link rel="stylesheet" href="~/assets/libs/datatables.net-bs5/css/dataTables.bootstrap5.min.css" />-->
+    <!-- third party css end -->
+    <!-- App css -->
+    <!--<link rel="stylesheet" id="bs-default-stylesheet" href="~/assets/css/config/default/bootstrap.min.css" />
+    <link rel="stylesheet" id="app-default-stylesheet" href="~/assets/css/config/default/app.min.css" />-->
+
+
+    <title>Gaming portal</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Tangerine&display=swap" rel="stylesheet">
+    @*<link rel="stylesheet" href="../css/headerandfooter.css">*@
+    <!-- icons -->
+    @*<link rel="stylesheet" href="~/assets/css/icons.min.css" />*@
+    <link asp-append-version="true" rel="stylesheet" href="/css/headerandfooter.css">
+
+
+    <style>
+        #first-content {
+            margin: 10% 6% 0;
         }
-    </tbody>
-</table>
+
+            #first-content h1 {
+                margin-bottom: 7%;
+                font-family: 'Tangerine', cursive;
+                font-size: 350%;
+            }
+
+        q {
+            font-weight: bold;
+        }
+
+        .mySlides {
+            width: 90%;
+            display: none;
+            margin-left: 10%;
+        }
+
+        .left-button,
+        .right-button {
+            background-color: lightgray;
+            display: inline;
+            padding: 1%;
+            position: absolute;
+            cursor: pointer;
+        }
+
+        .left-button {
+            bottom: 49%;
+            left: 7%;
+        }
+
+        .right-button {
+            bottom: 50%;
+        }
+
+        .stars {
+            color: white;
+        }
+    </style>
+
+
+    @*<style>
+            #sredisnjisadrzaj {
+                background-color: rgba(0, 0, 0, 0.5);
+                color: white;
+                padding: 3% 7%;
+                max-width: 100%;
+                background-image: url("../img/grey-background.png");
+                background-size: cover;
+            }
+
+            html, body {
+                background-size: cover;
+                /* background: #4c4c4c; */
+                background-image: url(../img/dark-wallpaper.jpg);
+            }
+
+            .card {
+                background-color: rgba(0, 0, 0, 0.5);
+                color: white;
+                padding: 2% 6%;
+                max-width: 100%;
+            }
+        </style>*@
+
+</head>
+
+<body>
+    <div id="rpg-games">
+        <div id="whitening">
+            <div class="mySlides">
+
+                <div class="articles">
+                    <img src="../img/rpgindex/gandc.jpg" alt="Geralt and Ciri">
+                    <h3>Witcher 3</h3>
+                    <div class="bijelacrta"></div>
+                    <div class="stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                </div>
+                <div class="articles">
+                    <img src="../img/rpgindex/monsterhunter.png" alt="Monster Hunter">
+                    <h3>Monster Hunter</h3>
+                    <div class="bijelacrta"></div>
+                    <div class="stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+                <div class="articles">
+                    <img src="../img/rpgindex/fallout4.jpg" alt="Fallout 4">
+                    <h3>Fallout 4</h3>
+                    <div class="bijelacrta"></div>
+                    <div class="stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+
+                <div class="left-button" onclick="plusDivs(-1)">
+                    &#10094;
+                </div>
+                <div class="right-button" onclick="plusDivs(1)">&#10095;</div>
+                <div class="clear"></div>
+            </div>
+
+
+            <div class="mySlides">
+                <div class="articles">
+                    <img src="../img/rpgindex/Skyrim.jpg" alt="Skyrim">
+                    <h3>Skyrim</h3>
+                    <div class="bijelacrta"></div>
+                    <div class="stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+                <div class="articles">
+                    <img src="../img/rpgindex/ffxv.jpg" alt="Final Fantasy XV">
+                    <h3>Final Fantasy XV</h3>
+                    <div class="bijelacrta"></div>
+                    <div class="stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></i><i class="fas fa-star"></i><i class="far fa-star"></i></i>
+                    </div>
+                </div>
+                <div class="articles">
+                    <img src="../img/rpgindex/darksouls.jpg" alt="Dark Souls">
+                    <h3>Dark Souls</h3>
+                    <div class="bijelacrta"></div>
+                    <div class="stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+
+                <div class="left-button" onclick="plusDivs(-1)">
+                    &#10094;
+                </div>
+                <div class="right-button" onclick="plusDivs(1)">&#10095;</div>
+                <div class="clear"></div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        var slideIndex = 1;
+        showDivs(slideIndex);
+
+        function plusDivs(n) {
+            showDivs(slideIndex += n);
+        }
+
+        function showDivs(n) {
+            var i;
+            var x = document.getElementsByClassName("mySlides");
+            if (n > x.length) {
+                slideIndex = 1
+            }
+            if (n < 1) {
+                slideIndex = x.length
+            }
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            x[slideIndex - 1].style.display = "block";
+        }
+    </script>
+
+</body>
+</html>

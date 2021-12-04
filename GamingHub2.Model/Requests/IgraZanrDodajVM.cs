@@ -11,7 +11,7 @@ namespace GamingHub2.Model.Requests
         public int IgraID { get; set; }
 
         [DisplayName("Zanr")]
-        public int ZarnID { get; set; }
+        public int ZanrID { get; set; }
         public List<SelectListItem> Zarnovi { get; set; }
 
     }

@@ -13,6 +13,8 @@ namespace GamingHub2.Services
         //Model.IgraZanrPrikazVM GetById(int id);
         //Model.IgraZanrPrikazVM Insert(IgraZanrDodajVM request);
         Model.IgraZanrPrikazVM GetIgraZanr(int IgraID);
+        IgraZanrDodajVM Dodaj(int IgraID);
+
         //IActionResult Get(int IgraID);
     }
 }
