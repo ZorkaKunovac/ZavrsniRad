@@ -30,6 +30,10 @@
         .container {
             margin: 1.5% auto;
         }
+        .dugme-read {
+            margin: 1% 0 1%;
+            padding: 0;
+        }
     </style>
 
 </head>
@@ -46,6 +50,11 @@
             <h2 class="my-4" style="color:white;">
                 Prikaz recenzija
             </h2>
+            @using (Html.BeginForm("Index", "Recenzija", FormMethod.Get))
+            {
+                @Html.TextBox("Naslov")
+                <input type="submit" name="submit" value="Traži" class="dugme-read" />
+            }
             <br />
             <a href="/Recenzija/Dodaj" class="btn btn-secondary">Dodaj recenziju</a>
             <br /><br />

@@ -25,14 +25,21 @@ namespace GamingHub2.WebApp2.Controllers
         APIService _zanrService = new APIService("Zanr");
         APIService _konzolaService = new APIService("Konzola");
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(RecenzijaSearchRequest search = null)
         {
             List<Recenzija> recenzijas = await _recenzijaService.Get<List<Recenzija>>(null);
+            
+            if (!string.IsNullOrWhiteSpace(search?.Naslov))
+            {
+                recenzijas = recenzijas.Where(x => x.Naslov.Contains(search.Naslov)).ToList();
+            }
             foreach (var item in recenzijas)
             {
                 item.stringSlika = ImageHelper.GetImageBase64(item.Slika);
             }
+
             return View(recenzijas);
+
         }
 
         [HttpGet]
