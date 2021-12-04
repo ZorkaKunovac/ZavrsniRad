@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Text;
 
-
 namespace GamingHub2.Model
 {
     public partial class IgraKonzola

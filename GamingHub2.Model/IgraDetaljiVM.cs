@@ -5,7 +5,7 @@ using System.Text;
 
 namespace GamingHub2.Model
 {
-    class IgraDetaljiVM
+    public class IgraDetaljiVM
     {
         public int Id { get; set; }
         public string Naziv { get; set; }
