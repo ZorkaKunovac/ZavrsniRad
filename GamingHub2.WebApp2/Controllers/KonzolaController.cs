@@ -15,6 +15,7 @@ namespace GamingHub2.WebApp2.Controllers
     public class KonzolaController : Controller
     {
         APIService _service = new APIService("Konzola");
+        [Autorizacija(administrator: true, moderator: true/*, korisnik: true*/)]
 
         public async Task<IActionResult> Index()
         {

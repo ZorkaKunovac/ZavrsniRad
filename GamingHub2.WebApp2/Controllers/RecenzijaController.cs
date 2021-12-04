@@ -2,6 +2,7 @@
 using GamingHub2.Model;
 using GamingHub2.Model.Requests;
 using GamingHub2.WebApp2.Helper;
+using GamingHub2.WebApp2.Helpers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -14,6 +15,8 @@ using System.Threading.Tasks;
 
 namespace GamingHub2.WebApp2.Controllers
 {
+    [Autorizacija(administrator: true, moderator: true/*, korisnik: true*/)]
+
     public class RecenzijaController : Controller
     {
         APIService _recenzijaService = new APIService("Recenzija");

@@ -7,10 +7,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using GamingHub2.WebApp2.Helpers;
 //using System.Web.Mvc;
 
 namespace GamingHub2.WebApp2.Controllers
 {
+    [Autorizacija(administrator: true, moderator: true/*, korisnik: true*/)]
+
     public class ProizvodController : Controller
     {
         APIService _service = new APIService("Proizvod");

@@ -117,6 +117,7 @@ namespace GamingHub2.WebApp2.Controllers
             return Json(new { data = list });
         }
 
+        [Autorizacija(administrator: true/*, moderator: true, korisnik: true*/)]
 
         [HttpGet]
         public async Task<IActionResult> Manage(int id)
@@ -162,6 +163,7 @@ namespace GamingHub2.WebApp2.Controllers
             return View(request);
 
         }
+        [Autorizacija(administrator: true/*, moderator: true, korisnik: true*/)]
 
         [HttpPost]
         public async Task<IActionResult> Manage(int id, KorisniciUpsertRequest request)
@@ -257,6 +259,7 @@ namespace GamingHub2.WebApp2.Controllers
             return View("Profil", korisnik);
         }
 
+        [Autorizacija(administrator: true/*, moderator: true, korisnik: true*/)]
 
         [HttpGet]
         public async Task<IActionResult> NoviKorisnik()
@@ -279,6 +282,8 @@ namespace GamingHub2.WebApp2.Controllers
             };
             return View(request);
         }
+
+        [Autorizacija(administrator: true/*, moderator: true, korisnik: true*/)]
 
         [HttpPost]
         public async Task<IActionResult> NoviKorisnik(KorisniciUpsertRequest request, IFormFile file)

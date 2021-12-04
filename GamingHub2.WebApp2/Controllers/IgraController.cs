@@ -2,6 +2,7 @@
 using GamingHub2.Model;
 using GamingHub2.Model.Requests;
 using GamingHub2.WebApp2.Helper;
+using GamingHub2.WebApp2.Helpers;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -11,14 +12,14 @@ using System.Threading.Tasks;
 
 namespace GamingHub2.WebApp2.Controllers
 {
+    [Autorizacija(administrator: true, moderator: true/*, korisnik: true*/)]
+
     public class IgraController : Controller
     {
         APIService _service = new APIService("Igra");
         APIService _igrakonzolaservice = new APIService("IgraKonzola");
         APIService _konzolaService = new APIService("Konzola");
         APIService _proizvodService = new APIService("Proizvod");
-
-
 
         public async Task<IActionResult> Index(IgraSearchRequest search = null)
         {

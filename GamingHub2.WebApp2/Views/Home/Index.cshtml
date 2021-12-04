@@ -1,28 +1,16 @@
-﻿@*@model IEnumerable<GamingHub2.WebApp2.Models.KonzolaViewModel>*@
-@model IEnumerable<GamingHub2.Model.Konzola>
+﻿@using GamingHub2.WebApp2.Helpers
 
 @{
-    ViewData["Title"] = "Index";
-}
+    Layout = null;
+    var LogiraniKorisnik = await Context.GetLogiraniKorisnik();
 
-<h1>Index</h1>
+}
 <!DOCTYPE html>
 <html>
 <head>
-
-    <!-- third party css -->
-    <!--<link rel="stylesheet" href="~/assets/libs/datatables.net-bs5/css/dataTables.bootstrap5.min.css" />-->
-    <!-- third party css end -->
-    <!-- App css -->
-    <!--<link rel="stylesheet" id="bs-default-stylesheet" href="~/assets/css/config/default/bootstrap.min.css" />
-    <link rel="stylesheet" id="app-default-stylesheet" href="~/assets/css/config/default/app.min.css" />-->
-
-
     <title>Gaming portal</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Tangerine&display=swap" rel="stylesheet">
-    @*<link rel="stylesheet" href="../css/headerandfooter.css">*@
-    <!-- icons -->
     @*<link rel="stylesheet" href="~/assets/css/icons.min.css" />*@
     <link asp-append-version="true" rel="stylesheet" href="/css/headerandfooter.css">
 
@@ -69,107 +57,210 @@
         .stars {
             color: white;
         }
+
+        footer {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: lightgray;
+            padding: 2.5%;
+        }
     </style>
 
-
-    @*<style>
-            #sredisnjisadrzaj {
-                background-color: rgba(0, 0, 0, 0.5);
-                color: white;
-                padding: 3% 7%;
-                max-width: 100%;
-                background-image: url("../img/grey-background.png");
-                background-size: cover;
-            }
-
-            html, body {
-                background-size: cover;
-                /* background: #4c4c4c; */
-                background-image: url(../img/dark-wallpaper.jpg);
-            }
-
-            .card {
-                background-color: rgba(0, 0, 0, 0.5);
-                color: white;
-                padding: 2% 6%;
-                max-width: 100%;
-            }
-        </style>*@
 
 </head>
 
 <body>
-    <div id="rpg-games">
-        <div id="whitening">
-            <div class="mySlides">
+    <div id="main-container">
+        <div id="headerbg">
 
-                <div class="articles">
-                    <img src="../img/rpgindex/gandc.jpg" alt="Geralt and Ciri">
-                    <h3>Witcher 3</h3>
-                    <div class="bijelacrta"></div>
-                    <div class="stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-                </div>
-                <div class="articles">
-                    <img src="../img/rpgindex/monsterhunter.png" alt="Monster Hunter">
-                    <h3>Monster Hunter</h3>
-                    <div class="bijelacrta"></div>
-                    <div class="stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-                    </div>
-                </div>
-                <div class="articles">
-                    <img src="../img/rpgindex/fallout4.jpg" alt="Fallout 4">
-                    <h3>Fallout 4</h3>
-                    <div class="bijelacrta"></div>
-                    <div class="stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-                    </div>
+            <header>
+                <div id="left-header">
+                    <ul>
+                        <li><a href="/Home">Početna</a></li>
+                        <li>
+                            <div class="dropdown">
+                                <a href="~/Korisnici/Index">Korisnici</a>
+                                <div class="dropdown-content">
+                                    <a href="~/Korisnici/NoviKorisnik">Novi korisnik</a>
+                                    <a href="~/Uloge/Index">Uloge</a>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li>
+                            <a href="~/Konzola/Index">Konzole</a>
+                        </li>
+
+                        <li>
+                            <a href="~/Zanr/Index">Žanrovi</a>
+                        </li>
+
+                        <li>
+                            <div class="dropdown">
+                                <a href="~/Igra/Index">Igre</a>
+                                <div class="dropdown-content">
+                                    <a href="~/Igra/Index">Prikaz igara</a>
+                                    <a href="~/Igra/Uredi">Nova igra</a>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="dropdown">
+                                <a href="~/Recenzija/Index">Recenzije</a>
+                                <div class="dropdown-content">
+                                    <a href="~/Recenzija/Index">Prikaz recenzija</a>
+                                    <a href="~/Recenzija/Dodaj">Nova recenzija</a>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="dropdown">
+                                <a href="~/Proizvod/Index">Proizvodi</a>
+                                <div class="dropdown-content">
+                                    <a href="~/Proizvod/Index">Prikaz proizvoda</a>
+                                    <a href="~/Proizvod/Dodaj">Novi proizvod</a>
+                                </div>
+                            </div>
+                        </li>
+
+                    </ul>
                 </div>
 
-                <div class="left-button" onclick="plusDivs(-1)">
-                    &#10094;
+                <div id="right-header">
+                    <ul>
+                        <li>
+                            <a href="~/Korisnici/Profil">Profil</a>
+                        </li>
+
+
+                        @if (LogiraniKorisnik == null)
+                        {
+                            <li><a href="~/Login/Index">Prijava</a></li>
+                        }
+                        else
+                        {
+                            <li><a href="~/Login/Logout">Odjava</a></li>
+                        }
+
+                    </ul>
                 </div>
-                <div class="right-button" onclick="plusDivs(1)">&#10095;</div>
                 <div class="clear"></div>
+            </header>
+
+
+            <div id="first-content">
+                <h1>Dobrodosli u gaming svijet!</h1>
+                <q><em>Jedna od najboljih igara</em></q>
+                <br><br>
+                <div class="dugme-read">
+                    Vidi više
+                </div>
             </div>
-
-
-            <div class="mySlides">
-                <div class="articles">
-                    <img src="../img/rpgindex/Skyrim.jpg" alt="Skyrim">
-                    <h3>Skyrim</h3>
-                    <div class="bijelacrta"></div>
-                    <div class="stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-                    </div>
-                </div>
-                <div class="articles">
-                    <img src="../img/rpgindex/ffxv.jpg" alt="Final Fantasy XV">
-                    <h3>Final Fantasy XV</h3>
-                    <div class="bijelacrta"></div>
-                    <div class="stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></i><i class="fas fa-star"></i><i class="far fa-star"></i></i>
-                    </div>
-                </div>
-                <div class="articles">
-                    <img src="../img/rpgindex/darksouls.jpg" alt="Dark Souls">
-                    <h3>Dark Souls</h3>
-                    <div class="bijelacrta"></div>
-                    <div class="stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-                    </div>
-                </div>
-
-                <div class="left-button" onclick="plusDivs(-1)">
-                    &#10094;
-                </div>
-                <div class="right-button" onclick="plusDivs(1)">&#10095;</div>
-                <div class="clear"></div>
-            </div>
-
         </div>
+
+        <div id="rpg-games">
+            <div id="whitening">
+                <div class="mySlides">
+
+                    <div class="articles">
+                        <img src="../img/rpgindex/gandc.jpg" alt="Geralt and Ciri">
+                        <h3>Witcher 3</h3>
+                        <div class="bijelacrta"></div>
+                        <div class="stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <div class="articles">
+                        <img src="../img/rpgindex/monsterhunter.png" alt="Monster Hunter">
+                        <h3>Monster Hunter</h3>
+                        <div class="bijelacrta"></div>
+                        <div class="stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                    <div class="articles">
+                        <img src="../img/rpgindex/fallout4.jpg" alt="Fallout 4">
+                        <h3>Fallout 4</h3>
+                        <div class="bijelacrta"></div>
+                        <div class="stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+
+                    <div class="left-button" onclick="plusDivs(-1)">
+                        &#10094;
+                    </div>
+                    <div class="right-button" onclick="plusDivs(1)">&#10095;</div>
+                    <div class="clear"></div>
+                </div>
+
+
+                <div class="mySlides">
+                    <div class="articles">
+                        <img src="../img/rpgindex/Skyrim.jpg" alt="Skyrim">
+                        <h3>Skyrim</h3>
+                        <div class="bijelacrta"></div>
+                        <div class="stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                    <div class="articles">
+                        <img src="../img/rpgindex/ffxv.jpg" alt="Final Fantasy XV">
+                        <h3>Final Fantasy XV</h3>
+                        <div class="bijelacrta"></div>
+                        <div class="stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></i><i class="fas fa-star"></i><i class="far fa-star"></i></i>
+                        </div>
+                    </div>
+                    <div class="articles">
+                        <img src="../img/rpgindex/darksouls.jpg" alt="Dark Souls">
+                        <h3>Dark Souls</h3>
+                        <div class="bijelacrta"></div>
+                        <div class="stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+
+                    <div class="left-button" onclick="plusDivs(-1)">
+                        &#10094;
+                    </div>
+                    <div class="right-button" onclick="plusDivs(1)">&#10095;</div>
+                    <div class="clear"></div>
+                </div>
+
+            </div>
+        </div>
+
+        <div id="social-networks">
+
+            <h2>Follow us on social networks!</h2>
+
+
+            <div id="network-icons">
+                <div class="iconsbg">
+                    <i class="fab fa-facebook-square"></i>
+                    <p>Like on Facebook</p>
+                </div>
+                <div class="iconsbg">
+                    <i class="fab fa-twitter-square"></i>
+                    <p>Follow on Twitter</p>
+                </div>
+                <div class="iconsbg">
+                    <i class="fab fa-instagram"> </i>
+                    <p>Follow on Instagram</p>
+                </div>
+                <div class="iconsbg">
+                    <i class="fab fa-youtube"> </i>
+                    <p>Watch on YouTube</p>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <footer>
+                2021 © Sva prava pridržana/All rights reserved
+            </footer>
+        </div>
+
     </div>
 
     <script>

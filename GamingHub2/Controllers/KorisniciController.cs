@@ -11,7 +11,7 @@ using GamingHub2.Services;
 
 namespace GamingHub2.Controllers
 {
-  //  [Authorize]
+    //[Authorize(Roles = "Administrator")]
     [Route("api/[controller]")]
     [ApiController]
     public class KorisniciController : ControllerBase
