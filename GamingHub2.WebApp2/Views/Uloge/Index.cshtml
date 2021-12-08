@@ -29,10 +29,9 @@
 
 <body>
 
-    <h1>Role Manager</h1>
+    <h1>Upravljanje ulogama</h1>
 
-
-    <form method="post" asp-action="AddRole" asp-controller="Uloge">
+    <form style="width:60%;" method="post" asp-action="AddRole" asp-controller="Uloge">
 
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="input-group">
@@ -43,10 +42,9 @@
         </div>
     </form>
 
-    <table class="table  table-dark table-striped">
+    <table class="table  table-dark table-striped" style="width:60%;" >
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Uloga</th>
             </tr>
         </thead>
@@ -54,7 +52,6 @@
             @foreach (var role in Model)
             {
                 <tr>
-                    <td>@role.UlogaId</td>
                     <td>@role.Naziv</td>
                 </tr>
             }
