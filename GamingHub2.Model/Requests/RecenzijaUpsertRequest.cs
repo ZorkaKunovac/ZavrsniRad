@@ -10,6 +10,8 @@ namespace GamingHub2.Model.Requests
     public class RecenzijaUpsertRequest
     {
         public int KorisnikId { get; set; }
+        [DisplayName("Igra")]
+
         public int IgraId { get; set; }
 
         [Required(ErrorMessage = "Obavezno polje")]
