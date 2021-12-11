@@ -14,7 +14,7 @@ namespace GamingHub2.WebApp2.Controllers
         public async Task<IActionResult> Index(int IgraID)
         {
             //var igrazanr = await _service.Get<Model.IgraZanrPrikazVM>(null, "GetIgraZanr");
-            var igrazanr = await _service.Get<Model.IgraZanrPrikazVM>(IgraID, "GetIgraZanr"  );
+            var igrazanr = await _service.Get<Model.IgraZanrPrikazVM>(IgraID, "GetIgraZanr");
 
 
             return View(igrazanr);

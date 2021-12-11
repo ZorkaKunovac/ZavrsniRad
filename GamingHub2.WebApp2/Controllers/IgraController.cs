@@ -17,9 +17,10 @@ namespace GamingHub2.WebApp2.Controllers
     public class IgraController : Controller
     {
         APIService _service = new APIService("Igra");
-        APIService _igrakonzolaservice = new APIService("IgraKonzola");
+        //APIService _igrakonzolaservice = new APIService("IgraKonzola");
         APIService _konzolaService = new APIService("Konzola");
         APIService _proizvodService = new APIService("Proizvod");
+        APIService _zanrService = new APIService("Zanr");
 
         public async Task<IActionResult> Index(IgraSearchRequest search = null)
         {
@@ -50,18 +51,34 @@ namespace GamingHub2.WebApp2.Controllers
             var igra = await _service.GetById<Model.Igra>(id);//postojece
             var konzole = await _konzolaService.Get<List<Model.Konzola>>(null);//sve
             IgraUpsertRequest request = new IgraUpsertRequest();
-            request.CheckBox = new List<CheckBoxHelper>();
+            request.ListaKonzola = new List<CheckBoxHelper>();
             foreach (var item in konzole)
             {
                 if (igra!=null && igra.IgraKonzola.Any(a => a.KonzolaID == item.ID))
                 {
-                    request.CheckBox.Add(new CheckBoxHelper { KonzolaId = item.ID, Text = item.Naziv, IsChecked = true });
+                    request.ListaKonzola.Add(new CheckBoxHelper { KonzolaId = item.ID, Text = item.Naziv, IsChecked = true });
                 }
                 else
                 {
-                    request.CheckBox.Add(new CheckBoxHelper { KonzolaId = item.ID, Text = item.Naziv, IsChecked = false });
+                    request.ListaKonzola.Add(new CheckBoxHelper { KonzolaId = item.ID, Text = item.Naziv, IsChecked = false });
                 }
             }
+            var zanrovi = await _zanrService.Get<List<Model.Zanr>>(null);//sve
+            request.ListaZanrova = new List<CheckBoxHelper>();
+
+            foreach (var item in zanrovi)
+            {
+                if (igra != null && igra.IgraZanr.Any(a => a.ZanrID == item.ID))
+                {
+                    request.ListaZanrova.Add(new CheckBoxHelper { KonzolaId = item.ID, Text = item.Naziv, IsChecked = true });
+                }
+                else
+                {
+                    request.ListaZanrova.Add(new CheckBoxHelper { KonzolaId = item.ID, Text = item.Naziv, IsChecked = false });
+                }
+            }
+
+
             if (igra != null && id != 0)
             {
                 request.Naziv = igra.Naziv;
@@ -79,13 +96,22 @@ namespace GamingHub2.WebApp2.Controllers
         [HttpPost]
         public async Task<IActionResult> Uredi(int id, IgraUpsertRequest request, IFormFile file)
         {
-            foreach (var item in request.CheckBox)
+            foreach (var item in request.ListaKonzola)
             {
                 if (item.IsChecked)
                 {
                     request.Konzole.Add(item.KonzolaId);
                 }
             }
+
+            foreach (var item in request.ListaZanrova)
+            {
+                if (item.IsChecked)
+                {
+                    request.Zanrovi.Add(item.KonzolaId);
+                }
+            }
+
             Igra igra;
             if (ModelState.IsValid)
             {
@@ -115,26 +141,6 @@ namespace GamingHub2.WebApp2.Controllers
             }
             return Redirect("/Igra/Index");
         }
-
-        public async Task<IActionResult> Detalji(int id)
-        {
-            var igra = await _service.GetById<Model.IgraDetaljiVM>(id);
  
-
-            //var m = db.Igra.Where(i => i.ID == IgraID)
-            //         .Select(i => new IgraDetaljiVM
-            //         {
-            //             Id = i.ID,
-            //             Naziv = i.Naziv,
-            //             DatumIzlaska = i.DatumIzlaska,
-            //             Developer = i.Developer,
-            //             Izdavac = i.Izdavac,
-            //             VideoLink = i.VideoLink,
-            //             SlikaLink = ImageHelper.GetImageBase64(i.SlikaLink)
-            //         }).FirstOrDefault();
-
-            return View(igra);
-        }
-
     }
 }

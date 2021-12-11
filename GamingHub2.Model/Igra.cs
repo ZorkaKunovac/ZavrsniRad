@@ -19,6 +19,8 @@ namespace GamingHub2.Model
         [Required(ErrorMessage = "Polje je obavezno")]
         [StringLength(50, ErrorMessage = "{0} mora biti izmedju {2} i {1} znakova.", MinimumLength = 3)]
         public string Izdavac { get; set; }
+        // [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd MMM yyyy}", ApplyFormatInEditMode = true)]
         public DateTime? DatumIzlaska { get; set; }
         public byte[] SlikaLink { get; set; }
 

@@ -28,7 +28,12 @@ namespace GamingHub2.Model.Requests
 
         //Za WEB dio
         public int KonzolaId { get; set; }
-        public List<CheckBoxHelper> CheckBox { get; set; }
+        [Display(Name = "Konzole ")]
+        public List<CheckBoxHelper> ListaKonzola { get; set; }
+        [Display(Name = "Zanrovi ")]
+
+        public List<CheckBoxHelper> ListaZanrova { get; set; }
+
 
         [Display(Name = "Slika")]
         public string stringSlika { get; set; }
