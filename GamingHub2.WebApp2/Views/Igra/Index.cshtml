@@ -66,9 +66,6 @@
                             <thead class="bg-dark text-white">
                                 <tr>
                                     <th>
-                                        ID
-                                    </th>
-                                    <th>
                                         Naziv
                                     </th>
                                     <th>
@@ -79,9 +76,6 @@
                                     </th>
                                     <th>
                                         Datum izlaska
-                                    </th>
-                                    <th>
-                                        Akcija
                                     </th>
                                     <th>
                                         Akcija
@@ -113,7 +107,6 @@
                             "dataType": "json"
                         },
                         "columns": [
-                            { "data": "id" },
                             { "data": "naziv" },
                             { "data": "developer" },
                             { "data": "izdavac" },
@@ -121,9 +114,6 @@
                             ,
                             {
                                 "render": function (data, type, full, meta) { return '<a class="btn btn-secondary" href="/Igra/Uredi/' + full.id + '">Uredi</a>'; }
-                            },
-                            {
-                                "render": function (data, type, full, meta) { return '<a class="btn btn-secondary" href="/Igra/Detalji/' + full.id + '">Detalji</a>'; }
                             },
                         ]
                     });
