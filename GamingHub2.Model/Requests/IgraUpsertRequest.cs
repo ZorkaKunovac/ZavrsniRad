@@ -21,6 +21,7 @@ namespace GamingHub2.Model.Requests
         [StringLength(50, ErrorMessage = "{0} mora biti izmedju {2} i {1} znakova.", MinimumLength = 3)]
         public string Izdavac { get; set; }
         [Display(Name = "Datum izlaska")]
+        [DataType(DataType.Date)]
         public DateTime? DatumIzlaska { get; set; }
         public byte[] SlikaLink { get; set; }
         public List<int> Konzole { get; set; } = new List<int>();

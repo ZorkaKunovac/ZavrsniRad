@@ -66,18 +66,10 @@ namespace GamingHub2.WebApp2.Helpers
 
         public static async Task<Model.Korisnici> Authenticiraj(string username, string pass)
         {
-            try
-            {
-                APIService.Username = username;
-                APIService.Password = pass;
-                var entity = await _service.Get<Model.Korisnici>(null, "MojProfil");
-                return entity;
-            }
-            catch (UnauthorizedAccessException ex)
-            {
-                return null;
-            }
-
+            APIService.Username = username;
+            APIService.Password = pass;
+            var entity = await _service.Get<Model.Korisnici>(null, "MojProfil");
+            return entity;
         }
 
     }

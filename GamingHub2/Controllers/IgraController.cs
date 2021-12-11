@@ -9,7 +9,9 @@ using System.Threading.Tasks;
 
 namespace GamingHub2.Controllers
 {
-   // [Authorize(Roles = "Administrator,Moderator")]
+     [Authorize(Roles = "Administrator")]
+    //[Autorizacija(administrator: true, moderator: true/*, korisnik: true*/)]
+
     public class IgraController : BaseCRUDController<Model.Igra, IgraSearchRequest, IgraUpsertRequest, IgraUpsertRequest>
     {
         public IgraController(IIgraService service) : base(service)

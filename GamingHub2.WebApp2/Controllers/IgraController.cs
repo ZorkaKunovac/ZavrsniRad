@@ -22,26 +22,16 @@ namespace GamingHub2.WebApp2.Controllers
         APIService _proizvodService = new APIService("Proizvod");
         APIService _zanrService = new APIService("Zanr");
 
-        public async Task<IActionResult> Index(IgraSearchRequest search = null)
+        public IActionResult Index()
         {
-            List<Igra> igras = await _service.Get<List<Igra>>(null);
-            if (!string.IsNullOrWhiteSpace(search?.Naziv))
-            {
-                igras = igras.Where(x => x.Naziv.StartsWith(search.Naziv)).ToList();
-            }
-
-            return View(igras);
+            return View();
         }
 
-        public async Task<IActionResult> GetIgre(IgraSearchRequest search = null)
+        public async Task<IActionResult> GetIgre()
         {
-            List<Igra> igras = await _service.Get<List<Igra>>(null);
-            if (!string.IsNullOrWhiteSpace(search?.Naziv))
-            {
-                igras = igras.Where(x => x.Naziv.StartsWith(search.Naziv)).ToList();
-            }
+            List<Igra> igre = await _service.Get<List<Igra>>(null);
 
-            return Json(new { data = igras });
+            return Json(new { data = igre });
         }
 
  

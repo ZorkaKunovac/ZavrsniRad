@@ -43,14 +43,10 @@ namespace GamingHub2.Security
                 var password = credentials[1];
                 user = _userService.Authenticiraj(username, password);
             }
-            catch
+            catch(Exception ex)
             {
                 return AuthenticateResult.Fail("Invalid Authorization Header");
             }
-            //catch (Exception ex)
-            //{
-            //    return AuthenticateResult.Fail("Incorrect username or password");
-            //}
 
             if (user == null)
                 return AuthenticateResult.Fail("Invalid Username or Password");

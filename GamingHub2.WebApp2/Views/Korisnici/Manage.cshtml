@@ -75,8 +75,8 @@
                     {
                         <div class="form-check m-1">
                             <input type="hidden" asp-for="@Model.CheckBox[i].KonzolaId" />
-                            <label asp-for="@Model.CheckBox[i].Text">@Model.CheckBox[i].Text</label>
-                            <input asp-for="@Model.CheckBox[i].IsChecked" type="checkbox" />
+                            <input asp-for="@Model.CheckBox[i].IsChecked" type="checkbox" id="uloga_@i" />
+                            <label asp-for="@Model.CheckBox[i].Text" for="uloga_@i">@Model.CheckBox[i].Text</label>
                         </div>
                     }
                 </div>

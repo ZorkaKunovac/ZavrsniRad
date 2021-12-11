@@ -41,64 +41,14 @@ namespace GamingHub2.WebApp2.Controllers
             return Convert.ToBase64String(inArray);
         }
 
-        public async Task<IActionResult> Index(KorisnikSearchRequest request = null)
+        public IActionResult Index()
         {
-            List<Korisnici> query = await _service.Get<List<Korisnici>>(null);
-
-            if (!string.IsNullOrWhiteSpace(request?.Ime))
-            {
-                query = query.Where(x => x.Ime.StartsWith(request.Ime)).ToList();
-            }
-
-            if (!string.IsNullOrWhiteSpace(request?.Prezime))
-            {
-                query = query.Where(x => x.Prezime.StartsWith(request.Prezime)).ToList();
-            }
-
-            if (!string.IsNullOrWhiteSpace(request?.KorisnickoIme))
-            {
-                query = query.Where(x => x.KorisnickoIme.StartsWith(request.KorisnickoIme)).ToList();
-            }
-
-            var list = query.ToList();
-
-            foreach (var item in list)
-            {
-                item.Uloge = "";
-                foreach (var x in item.KorisniciUloge)
-                {
-                    item.Uloge += $"{x.Uloga.Naziv} ";
-                }
-
-                //if (item.Slika == null || item.Slika.Length == 0)
-                //{
-                //    item.Slika = ImageHelper.ImageToByteArray(Resources.default_profile);
-                //}
-            }
-
-            return View(list);
+            return View();
         }
 
-        public async Task<IActionResult> GetKorisnici(KorisnikSearchRequest request = null)
+        public async Task<IActionResult> GetKorisnici()
         {
-            List<Korisnici> query = await _service.Get<List<Korisnici>>(null);
-
-            if (!string.IsNullOrWhiteSpace(request?.Ime))
-            {
-                query = query.Where(x => x.Ime.StartsWith(request.Ime)).ToList();
-            }
-
-            if (!string.IsNullOrWhiteSpace(request?.Prezime))
-            {
-                query = query.Where(x => x.Prezime.StartsWith(request.Prezime)).ToList();
-            }
-
-            if (!string.IsNullOrWhiteSpace(request?.KorisnickoIme))
-            {
-                query = query.Where(x => x.KorisnickoIme.StartsWith(request.KorisnickoIme)).ToList();
-            }
-
-            var list = query.ToList();
+            List<Korisnici> list = await _service.Get<List<Korisnici>>(null);
 
             foreach (var item in list)
             {
@@ -131,23 +81,11 @@ namespace GamingHub2.WebApp2.Controllers
                 return NotFound();
             }
 
+
+            KorisniciUpsertRequest request = new KorisniciUpsertRequest();
+            await PrepareCheckboxData(user, request);
             ViewBag.UserName = user.KorisnickoIme;
 
-            var uloge = await _ulogeService.Get<List<Model.Uloge>>(null);//sve
-            KorisniciUpsertRequest request = new KorisniciUpsertRequest();
-            request.CheckBox = new List<CheckBoxHelper>();
-
-            foreach (var item in uloge)
-            {
-                if (user.KorisniciUloge.Any(a => a.UlogaId == item.UlogaId))
-                {
-                    request.CheckBox.Add(new CheckBoxHelper { KonzolaId = item.UlogaId, Text = item.Naziv, IsChecked = true });
-                }
-                else
-                {
-                    request.CheckBox.Add(new CheckBoxHelper { KonzolaId = item.UlogaId, Text = item.Naziv, IsChecked = false });
-                }
-            }
             if (user != null && id != 0)
             {
                 request.Ime = user.Ime;
@@ -163,6 +101,26 @@ namespace GamingHub2.WebApp2.Controllers
             return View(request);
 
         }
+
+        private async Task PrepareCheckboxData(Korisnici user, KorisniciUpsertRequest request)
+        {
+            var uloge = await _ulogeService.Get<List<Model.Uloge>>(null);//sve
+
+            request.CheckBox = new List<CheckBoxHelper>();
+
+            foreach (var item in uloge)
+            {
+                if (user.KorisniciUloge.Any(a => a.UlogaId == item.UlogaId))
+                {
+                    request.CheckBox.Add(new CheckBoxHelper { KonzolaId = item.UlogaId, Text = item.Naziv, IsChecked = true });
+                }
+                else
+                {
+                    request.CheckBox.Add(new CheckBoxHelper { KonzolaId = item.UlogaId, Text = item.Naziv, IsChecked = false });
+                }
+            }
+        }
+
         [Autorizacija(administrator: true/*, moderator: true, korisnik: true*/)]
 
         [HttpPost]
@@ -188,6 +146,12 @@ namespace GamingHub2.WebApp2.Controllers
             }
             else
             {
+                ViewBag.KorisnikId = id;
+                var user = await _service.GetById<Model.Korisnici>(id);
+
+                await PrepareCheckboxData(user, request);
+                ViewBag.UserName = user.KorisnickoIme;
+
                 return View(request);
             }
             return Redirect("/Korisnici/Index");
@@ -288,8 +252,6 @@ namespace GamingHub2.WebApp2.Controllers
         [HttpPost]
         public async Task<IActionResult> NoviKorisnik(KorisniciUpsertRequest request, IFormFile file)
         {
-            var ulogeList = await _ulogeService.Get<List<Model.Uloge>>(null);
-
             foreach (var item in request.CheckBox)
             {
                 if (item.IsChecked)
@@ -298,12 +260,9 @@ namespace GamingHub2.WebApp2.Controllers
                 }
             }
 
-            Korisnici novikorisnik;
             if (ModelState.IsValid)
             {
-                novikorisnik = new Korisnici();
-                novikorisnik.Slika = ImageHelper.GetImageByteArray(file);
-               // novikorisnik.Slika = ImageHelper.GetImageByteArray(file),
+                request.Slika = ImageHelper.GetImageByteArray(file);
 
                 await _service.Insert<Model.Korisnici>(request);
             } 

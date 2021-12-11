@@ -1,4 +1,5 @@
 //using GamingHub2.Security;
+using GamingHub2.WebApp2.Middleware;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -27,6 +28,7 @@ namespace GamingHub2.WebApp2
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddHttpContextAccessor();
             services.AddMvc();
             services.AddOptions();
             services.AddDistributedMemoryCache();
@@ -56,6 +58,7 @@ namespace GamingHub2.WebApp2
             app.UseStaticFiles();
             app.UseRouting();
             app.UseAuthentication();
+            app.UseMiddleware<ApiErrorMiddleWare>();
 
             app.UseEndpoints(endpoints =>
             {

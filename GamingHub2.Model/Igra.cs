@@ -26,6 +26,6 @@ namespace GamingHub2.Model
 
         public ICollection<IgraKonzolaNoRelations> IgraKonzola { get; set; }
         public ICollection<IgraZanr> IgraZanr { get; set; }
-
+        public string DatumIzlaskaFormatted => DatumIzlaska.HasValue ? DatumIzlaska.Value.ToShortDateString() : "";
     }
 }

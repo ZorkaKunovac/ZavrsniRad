@@ -31,19 +31,39 @@ namespace GamingHub2.Services
         //-----------------------------------------------------------------------------------
         public Model.Korisnici Authenticiraj(string username, string pass)
         {
-            var entity = _context.Korisnik.Include("KorisniciUloge.Uloga").FirstOrDefault(x => x.KorisnickoIme == username);
-
-            if (entity == null)
+            Database.Korisnik entity;
+            if (username == "authtoken")
             {
-                throw new UserException("Pogrešan username ili password");
+                entity = _context.AutorizacijskiToken
+                    .Where(x => x.Vrijednost == pass)
+                    .Include("Korisnik.KorisniciUloge.Uloga")
+                    .Select(x => x.Korisnik)
+                    .FirstOrDefault();
+
+                if (entity == null)
+                {
+                    throw new UserException("Pogrešan autorizacijski token");
+                }
+            }
+            else
+            {
+                entity = _context.Korisnik
+                    .Include("KorisniciUloge.Uloga")
+                    .FirstOrDefault(x => x.KorisnickoIme == username);
+
+                if (entity == null)
+                {
+                    throw new UserException("Pogrešan username ili password");
+                }
+
+                var hash = GenerateHash(entity.LozinkaSalt, pass);
+
+                if (hash != entity.LozinkaHash)
+                {
+                    throw new UserException("Pogrešan username ili password");
+                }
             }
 
-            var hash = GenerateHash(entity.LozinkaSalt, pass);
-
-            if (hash != entity.LozinkaHash)
-            {
-                throw new UserException("Pogrešan username ili password");
-            }
 
             return _mapper.Map<Model.Korisnici>(entity);
         }
@@ -118,10 +138,10 @@ namespace GamingHub2.Services
 
             if (user != null)
                 throw new UserException("Korisnicko ime vec postoji!");
-                //ModelState.AddModelError("UserName", "Username Already Exist!");
+            //ModelState.AddModelError("UserName", "Username Already Exist!");
             if (emil != null)
                 throw new UserException("Email vec postoji!");
-            
+
             entity.LozinkaSalt = GenerateSalt();
             entity.LozinkaHash = GenerateHash(entity.LozinkaSalt, request.Password);
 
@@ -181,6 +201,16 @@ namespace GamingHub2.Services
             var entity = _context.Korisnik.Find(id);
             _context.Korisnik.Attach(entity);
             _context.Korisnik.Update(entity);
+            if (!string.IsNullOrWhiteSpace(request.Password))
+            {
+                if (request.Password != request.PasswordPotvrda)
+                {
+                    throw new Exception("Passwordi se ne slažu");
+                }
+
+                entity.LozinkaSalt = GenerateSalt();
+                entity.LozinkaHash = GenerateHash(entity.LozinkaSalt, request.Password);
+            }
             //------------------------------------------
             var korisnickeUloge = _context.KorisniciUloge.Where(x => x.KorisnikId == id).ToList();
 
@@ -203,16 +233,6 @@ namespace GamingHub2.Services
             }
             _context.SaveChanges();
             //------------------------------------------
-            if (!string.IsNullOrWhiteSpace(request.Password))
-            {
-                if (request.Password != request.PasswordPotvrda)
-                {
-                    throw new Exception("Passwordi se ne slažu");
-                }
-
-                entity.LozinkaSalt = GenerateSalt();
-                entity.LozinkaHash = GenerateHash(entity.LozinkaSalt, request.Password);
-            }
 
             _mapper.Map(request, entity);
 
@@ -225,14 +245,14 @@ namespace GamingHub2.Services
         {
             var entity = _context.Korisnik.Find(TrenutniKorisnik.KorisnikId);
 
-            if(request.Slika == null || request.Slika.Length == 0)
+            if (request.Slika == null || request.Slika.Length == 0)
             {
                 request.Slika = entity.Slika;
             }
 
             _context.Korisnik.Attach(entity);
             _context.Korisnik.Update(entity);
-            
+
             _mapper.Map(request, entity);
 
             if (!string.IsNullOrWhiteSpace(request.Password))
