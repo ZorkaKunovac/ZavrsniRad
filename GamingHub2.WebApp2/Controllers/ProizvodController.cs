@@ -24,21 +24,10 @@ namespace GamingHub2.WebApp2.Controllers
             return View();
         }
 
-        public async Task<IActionResult> GetProizvode(ProizvodSearchRequest search = null)
+        public async Task<IActionResult> GetProizvode()
         {
             List<Proizvod> proizvods = await _service.Get<List<Proizvod>>(null);
-            if (!string.IsNullOrWhiteSpace(search?.Naziv))
-            {
-                proizvods = proizvods.Where(x => x.NazivProizvoda.StartsWith(search.Naziv)).ToList();
-            }
 
-            //var leaveTypes = _context.OptLeaveType.OrderBy(a => a.LeaveTypeId).ToList();
-            //return Json(new { data = leaveTypes });
-
-            //var leaveTypes = _context.OptLeaveType.OrderBy(a => a.LeaveTypeId).ToList();
-            //return Json(new { data = leaveTypes }, System.Web.Mvc.JsonRequestBehavior.AllowGet);
-
-            // return View(proizvods);
             return Json(new { data = proizvods });
         }
 
@@ -71,8 +60,6 @@ namespace GamingHub2.WebApp2.Controllers
                  .Select(ik => ik.Naziv).SingleOrDefault();
                 await _service.Insert<Model.Proizvod>(request);
             }
-            //else
-            //    return View(request);
 
             return Redirect("/Proizvod/Index");
         }

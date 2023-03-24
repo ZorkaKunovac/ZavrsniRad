@@ -54,8 +54,6 @@
 </p>
 
 <body class="loading" data-layout-mode="horizontal" data-layout='{"mode": "light", "width": "fluid", "menuPosition": "fixed", "topbar": {"color": "dark"}, "showRightSidebarOnPageLoad": true}'>
-
-    <!-- Begin page -->
     <div id="wrapper">
         <div class="row">
             <div class="col-12">
@@ -88,18 +86,12 @@
                 </div>
             </div>
         </div>
-        <!-- end row -->
-
     </div>
-    <!-- END wrapper -->
-    <!-- GLAVNI LINK -->
-    @*<link href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />*@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.11.3/datatables.min.css" />
 
     @section scripts
     {
         <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.11.3/datatables.min.js"></script>
-        @*<script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>*@
         <script>
             $(document).ready(function () {
                 $("#proizvodiDatatable").DataTable(
