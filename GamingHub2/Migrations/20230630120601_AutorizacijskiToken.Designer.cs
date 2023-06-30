@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GamingHub2.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20211117000204_autorizacijski_token")]
-    partial class autorizacijski_token
+    [Migration("20230630120601_AutorizacijskiToken")]
+    partial class AutorizacijskiToken
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace GamingHub2.Migrations
 {
-    public partial class autorizacijski_token : Migration
+    public partial class AutorizacijskiToken2 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -15,7 +15,8 @@ namespace GamingHub2.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Vrijednost = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     KorisnikId = table.Column<int>(type: "int", nullable: false),
-                    VrijemeEvidentiranja = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    VrijemeEvidentiranja = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Broj = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
